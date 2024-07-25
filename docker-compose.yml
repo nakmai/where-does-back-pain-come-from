@@ -1,0 +1,31 @@
+version: '3'
+services:
+  # データベース
+  db:
+    image: mysql:5.7                     # イメージ
+    environment:
+      MYSQL_ROOT_PASSWORD: password      # rootユーザのパスワード
+    ports:
+      - "3307:3306"                      # ホストとコンテナのポートをマッピング
+    volumes:
+      - db-volume:/var/lib/mysql         # ボリュームマウント (データの永続化)
+
+  # アプリケーションサーバ
+  web:
+    build: .                             # Dockerfileからイメージをビルド
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"  # PIDファイルの削除、サーバの起動
+    container_name: where-does-back-pain-come-from
+    tty: true
+    stdin_open: true
+    volumes:
+      - .:/app                           # バインドマウント (コードの変更をリアルタイムで反映)
+    environment:
+      TZ: Asia/Tokyo
+    ports:
+      - "3000:3000"                      # ホストとコンテナのポートをマッピング
+    depends_on:
+      - db                             # db に依存していることを明示
+
+# ボリュームの作成
+volumes:
+  db-volume:

@@ -99,4 +99,4 @@ Google Calendar API
 Figma：https://www.figma.com/design/SiYqMI2oVfb0wILmlhX03J/%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E8%85%B0%E7%97%9B%E3%81%A9%E3%81%93%E3%81%8B%E3%82%89%EF%BC%9F?node-id=0-1&t=vpkvjyVycpMbZgLD-1
 
 # ER図
-[![Image from Gyazo](https://i.gyazo.com/e8e01a1d5648a1d072fc89226a4343b9.png)](https://gyazo.com/e8e01a1d5648a1d072fc89226a4343b9)
+[![Image from Gyazo](https://i.gyazo.com/5070ab4579c29174624d5c0c5c52ef14.png)](https://gyazo.com/5070ab4579c29174624d5c0c5c52ef14)

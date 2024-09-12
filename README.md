@@ -95,5 +95,8 @@ OmniAuth
 Heroku
 Google Calendar API
 
-画面遷移図
+# 画面遷移図
 Figma：https://www.figma.com/design/SiYqMI2oVfb0wILmlhX03J/%E3%81%82%E3%81%AA%E3%81%9F%E3%81%AE%E8%85%B0%E7%97%9B%E3%81%A9%E3%81%93%E3%81%8B%E3%82%89%EF%BC%9F?node-id=0-1&t=vpkvjyVycpMbZgLD-1
+
+# ER図
+[![Image from Gyazo](https://i.gyazo.com/efc3727c2640c09e6b3a13b675584e0c.png)](https://gyazo.com/efc3727c2640c09e6b3a13b675584e0c)

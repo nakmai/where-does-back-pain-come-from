@@ -2,7 +2,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.3'
+ruby '3.1.4'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
@@ -83,7 +83,11 @@ gem 'kaminari'
 gem 'bootstrap5-kaminari-views'
 gem 'ransack'
 gem 'config'
+gem 'rake'
+gem 'bundler'
+
 
 group :development do
  gem 'letter_opener_web'
+ gem 'listen', '~> 3.7'
 end

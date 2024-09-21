@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Where does back pain come from</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: #F9F4E8;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #272D8B;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: #272D8B;
+            margin-bottom: 30px;
+        }
+
+        .icon img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .button {
+            margin-bottom: 15px;
+            width: 200px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .start {
+            background-color: #A5C7F8;
+            color: #fff;
+        }
+
+        .login {
+            background-color: #272D8B;
+            color: #fff;
+        }
+
+        .register {
+            background-color: #fff;
+            border: 2px solid #272D8B;
+            color: #272D8B;
+        }
+
+        .register:hover {
+            background-color: #272D8B;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>あなたの腰痛どこから</h1>
+    <div class="icon">
+        <img src="spine_icon.png" alt="spine icon">
+    </div>
+    <div class="subtitle">where does back pain come from</div>
+    <button class="button start" onclick="startAction()">さっそく始める！</button>
+    <button class="button login" onclick="loginAction()">ログイン</button>
+    <button class="button register" onclick="registerAction()">新規登録</button>
+</div>
+
+<script>
+    // さっそく始める！ボタンのクリック時の動作
+    function startAction() {
+        alert('「さっそく始める！」がクリックされました。');
+    }
+
+    // ログインボタンのクリック時の動作
+    function loginAction() {
+        alert('「ログイン」がクリックされました。');
+    }
+
+    // 新規登録ボタンのクリック時の動作
+    function registerAction() {
+        alert('「新規登録」がクリックされました。');
+    }
+</script>
+
+</body>
+</html>

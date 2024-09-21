@@ -1,1 +1,3 @@
-web: bundle exec puma -C config/puma.rb
+web: bundle exec rails server -p $PORT -b '0.0.0.0' && rm -f tmp/pids/server.pid
+
+

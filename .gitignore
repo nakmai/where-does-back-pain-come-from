@@ -37,5 +37,6 @@
 # Ignore encrypted credentials and key files.
 config/credentials.yml.enc
 config/credentials/*.key
+config/credentials/*.yml.enc
 
 

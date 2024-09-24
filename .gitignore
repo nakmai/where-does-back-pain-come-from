@@ -26,17 +26,16 @@
 /storage/*
 !/storage/.keep
 
+# Ignore public assets and byebug history.
 /public/assets
 .byebug_history
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-Rails Master Key
-config/credentials/production.key
-config/credentials/production.key
-
 /config/credentials/production.key
 
+# Ignore encrypted credentials and key files.
 config/credentials.yml.enc
 config/credentials/*.key
+
 

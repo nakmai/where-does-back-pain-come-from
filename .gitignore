@@ -32,3 +32,4 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 Rails Master Key
+config/credentials/production.key

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -e
+
+# Start foreman to run multiple processes (esbuild, tailwind, rails server)
+bin/rails server

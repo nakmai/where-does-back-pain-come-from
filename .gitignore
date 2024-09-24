@@ -33,3 +33,4 @@
 /config/master.key
 Rails Master Key
 config/credentials/production.key
+config/credentials/production.key

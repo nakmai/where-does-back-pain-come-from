@@ -418,6 +418,7 @@ PLATFORMS
   x86-linux-gnu
   x86-linux-musl
   x86_64-darwin
+  x86_64-linux
   x86_64-linux-gnu
   x86_64-linux-musl
 
@@ -457,7 +458,7 @@ DEPENDENCIES
   webdrivers
 
 RUBY VERSION
-   ruby 3.2.3p157
+   ruby 3.1.4p223
 
 BUNDLED WITH
    2.5.19

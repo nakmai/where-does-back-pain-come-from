@@ -34,3 +34,9 @@
 Rails Master Key
 config/credentials/production.key
 config/credentials/production.key
+
+/config/credentials/production.key
+
+config/credentials.yml.enc
+config/credentials/*.key
+

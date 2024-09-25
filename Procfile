@@ -1,3 +1,3 @@
-web: bundle exec rails server -p $PORT
+wweb: bundle exec puma -C config/puma.rb
 js: yarn build --watch
 css: yarn build:css --watch

@@ -25,7 +25,15 @@ group :development do
   # gem "spring"
 end
 
-gem "mysql2", "~> 0.5" # Add this line
+# 開発・テスト環境専用のgem
+group :development, :test do
+  gem 'sqlite3', '~> 1.4'
+end
+
+# 本番環境専用のgem
+group :production do
+  gem 'mysql2', '>= 0.5'
+end
 
 
 group :test do

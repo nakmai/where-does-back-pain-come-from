@@ -31,3 +31,5 @@ COPY . /where-does-back-pain-come-from
 # RUN gem install rails
 
 CMD ["bash", "-c", "bundle exec rails server -b 0.0.0.0 -p ${PORT}"]
+RUN bundle exec rake assets:precompile
+

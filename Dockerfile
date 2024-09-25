@@ -30,3 +30,4 @@ COPY . /where-does-back-pain-come-from
 # Railsをインストール（すでにGemfileで管理している場合は不要）
 # RUN gem install rails
 
+CMD ["bundle", "exec", "rails", "server", "-b", "0.0.0.0", "-p", "$PORT"]

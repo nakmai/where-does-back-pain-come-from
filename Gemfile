@@ -26,6 +26,7 @@ group :development do
 end
 
 gem "mysql2", "~> 0.5" # Add this line
+gem 'sqlite3'
 
 group :test do
   gem "capybara"

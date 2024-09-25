@@ -12,6 +12,7 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
   config.log_level = :debug
+  config.logger = ActiveSupport::Logger.new(STDOUT)
   config.logger = Logger.new(STDOUT)
   config.logger.formatter = config.log_formatter
 

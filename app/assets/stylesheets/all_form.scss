@@ -1,0 +1,78 @@
+.form-container {
+
+  padding: 20px; /* 内側余白 */
+  border-radius: 8px; /* 角を丸める */
+  max-width: 400px; /* 最大幅 */
+  margin: 0 auto; /* 中央寄せ */
+  font-family: 'Arial', sans-serif; /* フォント */
+}
+
+.form-title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px; /* 各入力フィールドの下に余白を追加 */
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.gender-section {
+  margin-bottom: 30px; /* 性別セクションの下に余白を追加 */
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.form-check-label {
+  margin-left: 10px;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px; /* ボタン群の上に余白を追加 */
+}
+
+.button-next {
+  width: 100%;
+  background-color: #2e2365;
+  color: white;
+  margin-bottom: 20px; /* 次へ進むボタンの下に余白を追加 */
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.button-back {
+  width: 100%;
+  background-color: #c9e1ff;
+  color: black;
+  margin-bottom: 35px; /* 同意画面へ戻るボタンの下に余白を追加 */
+  border-radius: 8px;
+  padding: 10px;
+  font-weight: bold;
+}
+
+.button-next:hover {
+  background-color: #3b2b82;
+}
+
+.button-back:hover {
+  background-color: #aacdfd;
+}
+
+h2.form-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+

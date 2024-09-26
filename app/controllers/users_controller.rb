@@ -1,4 +1,4 @@
-class Users < ApplicationRecord
+class UsersController < ApplicationController
     devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
     
     # パスワードのバリデーション

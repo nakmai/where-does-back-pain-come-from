@@ -3,4 +3,4 @@
 //= link_tree ../../../vendor/javascript .js
 //= link_tree ../builds
 //= link registrations.css
-
+//= link_directory ../stylesheets .css

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
 
   # ルートページ ("/")
   root 'home#index'
+
+  # 規約ページへのルート
+  get 'terms', to: 'pages#terms'
+  
 end
 
 

@@ -20,6 +20,11 @@
         <!-- トップページへのリンク -->
         <a class="navbar-brand" href="<%= root_path %>">where does back pain come from</a>
 
+        <!-- トグルボタン（モバイル用） -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <% if user_signed_in? %>
@@ -43,7 +48,8 @@
     <%= yield %>
 
     <!-- Bootstrap JavaScript -->
-    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js", integrity: "sha384-qX+965DzO0rT7abK41f23/2yDphlpBQ5znDCCp", crossorigin: "anonymous" %>
+    <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js", integrity: "sha384-qVjmWBw3Jr7e3VoPf+P2xx6qfLRpBFeTujwHG2aWnB3lRmy8lue3tEmf6svYENNp", crossorigin: "anonymous" %>
+
 
     <!-- Importmap Tags -->
     <%= javascript_importmap_tags %>

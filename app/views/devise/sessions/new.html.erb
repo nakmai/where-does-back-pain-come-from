@@ -1,6 +1,5 @@
-<!-- app/views/devise/sessions/new.html.erb -->
 <div class="container vh-100 d-flex justify-content-center align-items-center">
-  <div class="card p-4 shadow-sm" style="width: 350px; background-color: #ffffff;"> <!-- 背景色を白に変更 -->
+  <div class="card p-4 shadow-sm" style="width: 350px; background-color: #ffffff;">
     <h2 class="text-center mb-4">ログイン</h2>
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -25,8 +24,15 @@
     <div class="text-center mt-3">
       <%= link_to "パスワードを忘れた", new_password_path(resource_name), class: "text-primary" %>
     </div>
+
+    <!-- トップページへ戻るボタン -->
+    <div class="text-center mt-3">
+      <%= link_to "トップページへ戻る", root_path, class: "btn btn-secondary" %>
+    </div>
   </div>
 </div>
+
+
 
 
 

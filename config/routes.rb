@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  # Devise のルーティング設定
+  devise_for :users
+  
+  # ホームページ
   get 'home/index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Defines the root path route ("/")
-  # root "articles#index"
-
-    root 'home#index'
-
-    
+  
+  # ログアウト完了ページのルート
+  get 'logout_complete', to: 'home#logout_complete'
+  
+  # ルートページ ("/")
+  root 'home#index'
 end
+
+

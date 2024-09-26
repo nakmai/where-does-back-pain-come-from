@@ -1,0 +1,84 @@
+/* app/assets/stylesheets/registrations.css */
+
+
+  
+  .container {
+
+    padding: 20px;
+    border-radius: 5px;
+
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-control {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  #year, #month, #day {
+    text-align: center;
+  }
+  
+  input[type="text"], input[type="email"], input[type="password"] {
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 5px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  .form-check-label {
+    margin-left: 5px;
+  }
+  
+  .form-check-inline {
+    margin-right: 20px;
+  }
+  
+  .btn-primary {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .btn-primary:hover {
+    background-color: #ddd;
+  }
+  
+  @media (min-width: 576px) {
+    .form-control {
+      max-width: 100%;
+    }
+  
+    .w-50 {
+      width: 50% !important;
+    }
+  }
+  

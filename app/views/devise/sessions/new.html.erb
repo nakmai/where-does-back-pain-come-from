@@ -1,0 +1,33 @@
+<!-- app/views/devise/sessions/new.html.erb -->
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="card p-4 shadow-sm" style="width: 350px; background-color: #ffffff;"> <!-- 背景色を白に変更 -->
+    <h2 class="text-center mb-4">ログイン</h2>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, class: "form-control" %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :password, "パスワード" %>
+        <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+      </div>
+
+      <div class="form-check mb-3">
+        <%= f.check_box :remember_me, class: "form-check-input" %>
+        <%= f.label :remember_me, "次回から自動でログインする", class: "form-check-label" %>
+      </div>
+
+      <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
+    <% end %>
+
+    <div class="text-center mt-3">
+      <%= link_to "パスワードを忘れた", new_password_path(resource_name), class: "text-primary" %>
+    </div>
+  </div>
+</div>
+
+
+
+

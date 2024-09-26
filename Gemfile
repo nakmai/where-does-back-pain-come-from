@@ -48,9 +48,12 @@ group :production do
 end
 
 
+
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
 
 gem "cssbundling-rails", "~> 1.4"
+gem 'devise'
+

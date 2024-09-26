@@ -6,19 +6,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <!-- 全ページで application.css を読み込み -->
+    <!-- 全ページで application.css を読み込む -->
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
-    <!-- HomeController#index のページでのみ home.css を読み込む -->
-    <% if controller_name == 'home' && action_name == 'index' %>
-      <%= stylesheet_link_tag 'home', "data-turbo-track": "reload" %>
-    <% end %>
-
     <%= javascript_importmap_tags %>
+    
+
   </head>
 
   <body>
+  <button class="btn btn-primary">Primary Button</button>
+
+
     <%= yield %>
   </body>
 </html>
+
+
 

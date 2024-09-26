@@ -313,7 +313,7 @@ Devise.setup do |config|
 
   # ログアウト後のリダイレクト先を指定
 Devise.setup do |config|
-  config.sign_out_via = :delete
+  config.sign_out_via = :get
   config.navigational_formats = ['*/*', :html, :turbo_stream]
 end
 

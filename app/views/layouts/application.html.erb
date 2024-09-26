@@ -17,12 +17,14 @@
     <!-- ナビゲーションバー -->
     <nav class="navbar navbar-expand-lg navbar-custom">
       <div class="container-fluid">
-        <!-- ナビゲーションタイトルの削除済み -->
+        <!-- トップページへのリンク -->
+        <a class="navbar-brand" href="<%= root_path %>">where does back pain come from</a>
+
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav ms-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+                <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'btn btn-danger', data: { confirm: "本当にログアウトしますか?" } %>
               </li>
             <% else %>
               <li class="nav-item">
@@ -45,8 +47,6 @@
 
     <!-- Importmap Tags -->
     <%= javascript_importmap_tags %>
-
-
 
   </body>
 </html>

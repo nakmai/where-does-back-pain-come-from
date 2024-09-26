@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "パスワードは6文字以上で入力してください"

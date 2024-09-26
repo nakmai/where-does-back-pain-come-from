@@ -99,6 +99,7 @@ Rails.application.configure do
   config.assets.digest = true
   config.serve_static_files = true
   config.assets.js_compressor = :terser
+  config.assets.compile = true
 
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?

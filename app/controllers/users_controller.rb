@@ -1,7 +1,5 @@
 class UsersController < ApplicationController
-    devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable
-    
-    # パスワードのバリデーション
-    validates :password, length: { minimum: 6 }, if: -> { password.present? }
+    # アクションをここに記述
   end
+  
   

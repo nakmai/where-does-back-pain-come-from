@@ -1,0 +1,45 @@
+.orthopedics-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+  
+    .orthopedics-text {
+      font-size: 16px;
+      line-height: 1.8;
+      color: #333;
+      margin-bottom: 30px;
+      text-align: center;
+  
+      .highlight {
+        color: red;
+        font-weight: bold;
+      }
+    }
+  
+    .button-group {
+      display: flex;
+      gap: 10px;
+  
+      .btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        width: 200px;
+  
+        &.btn-primary {
+          background-color: #4f4fc6;
+          border-color: #4f4fc6;
+        }
+  
+        &.btn-outline-primary {
+          color: #4f4fc6;
+          border-color: #4f4fc6;
+        }
+      }
+    }
+  }
+  

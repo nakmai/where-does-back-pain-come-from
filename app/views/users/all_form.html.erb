@@ -1,36 +1,36 @@
-<div class="form-container">
-  <h2 class="form-title">生年月日</h2>
+<%= form_with url: users_submit_form_path, method: :post do |f| %>
+
+    <div class="form-container">
+      <h2 class="form-title">生年月日</h2>
   
-  <div class="form-row">
-    <div class="col">
-      <input type="text" id="year" name="year" placeholder="年" class="form-control" />
+      <div class="form-row">
+        <div class="col">
+          <%= text_field_tag :year, nil, placeholder: '年', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= text_field_tag :month, nil, placeholder: '月', class: 'form-control' %>
+        </div>
+        <div class="col">
+          <%= text_field_tag :day, nil, placeholder: '日', class: 'form-control' %>
+        </div>
+      </div>
+  
+      <div class="gender-section">
+        <h2 class="form-title">性別</h2>
+        <div class="form-check">
+          <%= radio_button_tag :gender, 'male', false, id: 'male', class: 'form-check-input' %>
+          <%= label_tag :male, '男性', class: 'form-check-label' %>
+        </div>
+        <div class="form-check">
+          <%= radio_button_tag :gender, 'female', false, id: 'female', class: 'form-check-input' %>
+          <%= label_tag :female, '女性', class: 'form-check-label' %>
+        </div>
+      </div>
+  
+      <div class="button-group">
+        <%= submit_tag '次へ進む', class: 'btn btn-primary button-next' %>
+        <%= link_to '同意画面へ戻る', terms_path, class: 'btn btn-secondary button-back' %>
+      </div>
     </div>
-    <div class="col">
-      <input type="text" id="month" name="month" placeholder="月" class="form-control" />
-    </div>
-    <div class="col">
-      <input type="text" id="day" name="day" placeholder="日" class="form-control" />
-    </div>
-  </div>
-
-  <div class="gender-section">
-    <h2 class="form-title">性別</h2>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" id="male" name="gender" value="male">
-      <label class="form-check-label" for="male">
-        男性
-      </label>
-    </div>
-    <div class="form-check">
-      <input class="form-check-input" type="radio" id="female" name="gender" value="female">
-      <label class="form-check-label" for="female">
-        女性
-      </label>
-    </div>
-  </div>
-
-  <div class="button-group">
-    <%= link_to '同意画面へ戻る', terms_path, class: 'btn btn-secondary button-back' %>
-    <button type="submit" class="btn btn-primary button-next">次へ進む</button>
-  </div>
-</div>
+  <% end %>
+  

@@ -16,6 +16,8 @@ gem 'sassc-rails', '~> 2.1'
 gem 'uglifier'
 gem 'terser'
 gem 'bootstrap', '~> 5.3.0'
+gem 'sass-rails'
+gem 'uglifier'
 
 
 

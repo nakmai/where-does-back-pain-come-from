@@ -1,17 +1,25 @@
 class GynecologyController < ApplicationController
- 
     def gynecology_question
-    def submit_gynecology_question
-      Rails.logger.debug "Params: #{params.inspect}" # デバッグ用のパラメータ表示
+      # フォーム表示用のアクション
+    end
   
-      if params[:no_specific_issue] == "1" # "特に問題なし" にチェックが入っている場合
-        redirect_to red_flag_path # red_flag ページにリダイレクト
-      else
-        redirect_to orthopedics_advice_path # それ以外の場合は整形外科受診催促ページへ
+    def submit_gynecology_question
+        Rails.logger.debug "Params: #{params.inspect}" # デバッグ用のパラメータ表示
+    
+        # パラメータが配列で送信されることを想定
+        if params[:conditions]&.include?('no_specific_issue') # "特に問題なし" にチェックが入っている場合
+          redirect_to red_flag_path # red_flag ページにリダイレクト
+        else
+          redirect_to gynecology_advice_path # それ以外の場合は婦人科受診催促ページへ
+        end
+    end
+
+    def gynecology_advice
+        # フォーム表示用のアクション
       end
-    end 
+
   end
-end
+  
   
   
   

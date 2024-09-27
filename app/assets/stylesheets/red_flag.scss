@@ -1,0 +1,47 @@
+.red-flag-container {
+    max-width: 400px;
+    margin-top: 50px;
+    
+    .card {
+      border-radius: 12px;
+      padding: 20px;
+  
+      h5 {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 20px;
+      }
+  
+      .form-check {
+        margin-bottom: 15px;
+  
+        .form-check-input {
+          margin-right: 10px;
+        }
+  
+        .form-check-label {
+          font-size: 14px;
+        }
+      }
+  
+      .btn-primary {
+        background-color: #4A63E7;
+        border: none;
+        border-radius: 6px;
+        padding: 10px 20px;
+        width: 100%;
+        color: white;
+        font-weight: bold;
+      }
+  
+      .btn-light {
+        border-radius: 6px;
+        padding: 10px 20px;
+        width: 100%;
+        background-color: #E0E7FF;
+        color: #4A63E7;
+        margin-top: 10px;
+      }
+    }
+  }
+  

@@ -11,8 +11,4 @@ class PagesController < ApplicationController
       # 整形外科
     end
 
-    def red_flag
-      # レッドフラッグ
-    end
-
   end

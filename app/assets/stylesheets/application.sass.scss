@@ -5,10 +5,19 @@
 @import 'logout_complete';
 @import 'gynecology_advice';
 @import 'gynecology_question';
+@import "red_flag";
+@import "red_flag2";
 
 
 
+body {
+  background-color: #fff2e5; /* ページ全体の背景色 */
+}
 
+.container {
+  background-color: #fff2e5; /* コンテナの背景色も同じにする */
+  border: none; /* 必要に応じて境界線も削除 */
+}
 
 
 .navbar-custom .nav-link {

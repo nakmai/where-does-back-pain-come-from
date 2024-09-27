@@ -1,0 +1,45 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+
+  <%= form_with url: red_flag_submit_path, method: :post, local: true do %>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'pain_moving', false, class: 'form-check-input', id: 'pain_moving' %>
+      <%= label_tag 'pain_moving', '痛い場所が移動する', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'chest_pain', false, class: 'form-check-input', id: 'chest_pain' %>
+      <%= label_tag 'chest_pain', '胸の痛みもある', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'cancer_history', false, class: 'form-check-input', id: 'cancer_history' %>
+      <%= label_tag 'cancer_history', 'がん・ステロイド治療・HIVの既往歴がある', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'weight_loss', false, class: 'form-check-input', id: 'weight_loss' %>
+      <%= label_tag 'weight_loss', '意図せず1ヶ月で体重が5kg以上痩せた', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'wide_pain', false, class: 'form-check-input', id: 'wide_pain' %>
+      <%= label_tag 'wide_pain', '痩れの範囲が左半身全体・右半身全体など、広範囲に出現している', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'nerve_pain', false, class: 'form-check-input', id: 'nerve_pain' %>
+      <%= label_tag 'nerve_pain', '元々側湾症・分離症・すべり症などの脊柱の病気、ケガを持っている', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'fever', false, class: 'form-check-input', id: 'fever' %>
+      <%= label_tag 'fever', '現在、熱が出ている', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
+      <%= label_tag 'no_issues', '特に問題なし', class: 'form-check-label' %>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <button type="button" class="btn btn-light" onclick="history.back();">前のページへ戻る</button>
+      <%= submit_tag '次へ進む', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+

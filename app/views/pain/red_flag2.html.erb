@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+
+  <%= form_with url: red_flag2_submit_path, method: :post, local: true do %>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'no_rest_pain', false, class: 'form-check-input', id: 'no_rest_pain' %>
+      <%= label_tag 'no_rest_pain', 'ベッドなどでじっとしていても痛みがおさまらない', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
+      <%= label_tag 'pain_at_rest', '上むき・横向きなど姿勢に関係なく休んでいても痛みが出ている', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'wake_from_pain', false, class: 'form-check-input', id: 'wake_from_pain' %>
+      <%= label_tag 'wake_from_pain', '就寝中、痛みで目が覚めてしまう', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'sleep_disorder', false, class: 'form-check-input', id: 'sleep_disorder' %>
+      <%= label_tag 'sleep_disorder', 'この痛みのせいで不眠気味だ', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
+      <%= label_tag 'no_issues', '特になし', class: 'form-check-label' %>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+    <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary">前のページへ戻る</a>
+      <%= submit_tag '次へ進む', class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+

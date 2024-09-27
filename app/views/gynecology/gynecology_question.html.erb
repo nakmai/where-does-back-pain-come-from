@@ -1,0 +1,33 @@
+<div class="gynecology-question-page">
+  <%= form_with url: submit_gynecology_question_path, method: :post do %>
+    <h2>女性の方へ</h2>
+    <p>下記に当てはまるものがあればチェックをお願いします。</p>
+    
+    <div class="form-check">
+      <%= check_box_tag 'no_specific_issue', '1', false, class: "form-check-input", id: "noSpecificIssue" %>
+      <%= label_tag 'noSpecificIssue', '特に問題なし', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'pregnancy', '1', false, class: "form-check-input", id: "pregnancy" %>
+      <%= label_tag 'pregnancy', '妊娠している・可能性がある', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'strong_menstrual_pain', '1', false, class: "form-check-input", id: "strongMenstrualPain" %>
+      <%= label_tag 'strongMenstrualPain', '年々生理痛が強くなってきている', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'calorie_intake', '1', false, class: "form-check-input", id: "calorieIntake" %>
+      <%= label_tag 'calorieIntake', '摂取カロリーは変わっていないのに、ウエストがキツくなってきた', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'menstrual_irregularity', '1', false, class: "form-check-input", id: "menstrualIrregularity" %>
+      <%= label_tag 'menstrual_irregularity', '生理不順がある', class: 'form-check-label' %>
+    </div>
+
+    <div class="button-group mt-4 d-flex justify-content-between">
+      <%= submit_tag '次へ進む', class: "btn btn-primary btn-lg" %>
+      <br>
+      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary btn-lg">前のページへ戻る</a>
+    </div>
+  <% end %>
+</div>

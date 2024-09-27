@@ -21,14 +21,19 @@ Rails.application.routes.draw do
   # 規約ページへのルート
   get 'terms', to: 'pages#terms'
 
-  # 整形外科受診ページへのルート
-  get 'orthopedics', to: 'pages#orthopedics'
+  # 整形外科受診催促ページへのルート
+  get 'orthopedics_advice', to: 'orthopedics#orthopedics_advice'
 
   # レッドフラッグページへのルート
   get 'red_flag', to: 'pages#red_flag'
 
-  # 婦人科 ページへのルート
-  get 'gynecology', to: 'pages#gynecology'
+  # 婦人科に関する質問ページへのルート
+  get 'gynecology_question', to: 'gynecology#gynecology_question'
+  post 'submit_gynecology_question', to: 'gynecology#submit_gynecology_question'
+
+
+  # 婦人科受診催促 ページへのルート
+  get 'gynecology_advice', to: 'gynecology#gynecology_advice'
 
   # ルートページ ("/")
   root 'home#index'

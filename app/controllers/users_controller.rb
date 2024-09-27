@@ -29,18 +29,17 @@ class UsersController < ApplicationController
 
     # 条件に基づいてリダイレクト
     if age < 20 || age > 55
-      redirect_to orthopedics_path
+      # 20歳未満または55歳以上の場合、orthopedics_adviceページにリダイレクト
+      redirect_to orthopedics_advice_path
     elsif age >= 20 && age <= 55 && gender == "female"
-      # 女性かつ 20歳以上55歳以下の場合、gynecology.html .erbにリダイレクト
-      redirect_to gynecology_path
-      # 男性性かつ 20歳以上55歳以下の場合、red_flag.html.erbページにリダイレクト
+      # 女性で 20歳以上55歳以下の場合、gynecology_questionページにリダイレクト
+      redirect_to gynecology_question_path
     elsif age >= 20 && age <= 55 && gender == "male"
+      # 男性で 20歳以上55歳以下の場合、レッドフラッグページにリダイレクト
       redirect_to red_flag_path
     else
+      # その他無効なデータの場合はルートにリダイレクト
       redirect_to root_path, alert: "無効なデータです"
     end
   end
 end
-
-  
-  

@@ -1,0 +1,53 @@
+.gynecology-page {
+  background-color: #faf5ef; /* 背景色を調整 */
+  padding: 20px;
+
+  .card {
+    border: none; /* カードの枠線を消す */
+    background-color: #fff; /* 背景色を白に設定 */
+    padding: 20px;
+    border-radius: 15px; /* カードの角を丸く */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* カードに影を追加 */
+    text-align: left;
+  }
+
+  .card-body p {
+    font-size: 16px;
+    color: #333; /* テキストカラー */
+    margin-bottom: 15px;
+    line-height: 1.6; /* 行間を少し広げる */
+  }
+
+  .btn-primary {
+    background-color: #333399; /* 次へ進むボタンの背景色 */
+    border-color: #333399;
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 100%; /* ボタンを幅いっぱいに */
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .btn-outline-primary {
+    background-color: #f0f0f0; /* 前の質問へ戻るボタンの背景色 */
+    color: #333399; /* テキストカラー */
+    border: 1px solid #333399; /* ボーダーカラー */
+    padding: 10px 20px;
+    font-size: 16px;
+    width: 100%; /* ボタンを幅いっぱいに */
+    border-radius: 8px;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #333399; /* ホバー時の背景色 */
+    color: white; /* ホバー時のテキストカラー */
+  }
+
+  .d-flex {
+    flex-direction: column; /* ボタンを縦に配置 */
+  }
+
+  .d-flex .btn {
+    margin-bottom: 10px; /* ボタン同士の間隔を追加 */
+  }
+}

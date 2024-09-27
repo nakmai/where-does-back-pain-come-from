@@ -1,0 +1,2 @@
+module GynecologyHelper
+end

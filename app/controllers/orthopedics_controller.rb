@@ -1,0 +1,2 @@
+class OrthopedicsController < ApplicationController
+end

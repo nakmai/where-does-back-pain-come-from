@@ -12,6 +12,13 @@ class GynecologyController < ApplicationController
       calorie_intake = params[:calorie_intake] == '1'
       menstrual_irregularity = params[:menstrual_irregularity] == '1'
   
+      # チェック項目が何も選択されていない場合の処理
+      if !no_specific_issue && !pregnancy && !strong_menstrual_pain && !calorie_intake && !menstrual_irregularity
+        flash[:alert] = "チェック項目を選択してください"
+        redirect_to gynecology_question_path
+        return
+      end
+  
       # 条件に基づいてリダイレクト
       if no_specific_issue
         # 「特になし」が選択されている場合、レッドフラッグページにリダイレクト
@@ -22,4 +29,5 @@ class GynecologyController < ApplicationController
       end
     end
   end
+  
   

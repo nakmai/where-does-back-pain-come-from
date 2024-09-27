@@ -1,4 +1,11 @@
 <div class="gynecology-question-page">
+  <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+
+<div class="gynecology-question-page">
   <%= form_with url: submit_gynecology_question_path, method: :post do %>
     <h2>女性の方へ</h2>
     <p>下記に当てはまるものがあればチェックをお願いします。</p>

@@ -1,0 +1,48 @@
+body {
+  background-color: #FDF5E6; /* 背景色 */
+  font-family: 'Arial', sans-serif;
+}
+
+.logo-section h1 {
+  font-size: 24px;
+  color: #2E2A71;
+}
+
+.logo-section h2 {
+  font-size: 18px;
+  color: #2E2A71;
+}
+
+.logo-image {
+  width: 150px;
+  height: 150px;
+}
+
+.buttons .btn {
+  display: block;
+  width: 250px;
+  margin: 0 auto 10px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.start-btn {
+  background-color: #ADD8E6;
+  color: #2E2A71;
+}
+
+.login-btn {
+  background-color: #2E2A71;
+  color: white;
+}
+
+.signup-btn {
+  background-color: #FFFFFF;
+  color: #2E2A71;
+  border: 2px solid #2E2A71;
+}
+
+  

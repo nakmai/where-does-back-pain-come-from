@@ -1,0 +1,19 @@
+@import "bootstrap/scss/bootstrap";
+@import "home";
+@import "all_form";
+@import "orthopedics";
+@import 'logout_complete';
+
+
+
+
+
+.navbar-custom .nav-link {
+    background-color: #FDF5E6; /* 背景色 */
+    font-family: 'Arial', sans-serif;
+    color: #333; /* リンクの文字色をトップページと同じに */
+  }
+  
+  .navbar-custom .nav-link:hover {
+    color: #000; /* ホバー時の色も変更 */
+  }

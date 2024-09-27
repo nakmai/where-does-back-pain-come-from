@@ -1,0 +1,44 @@
+.logout-complete-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center; /* テキストを中央揃え */
+  
+    .logout-message {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+  
+    .logout-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 25px; 
+      align-items: center; /* ボタンを水平に中央揃え */
+      justify-content: center; /* ボタンを縦方向に中央揃え */
+      width: 100%; /* ボタンを親コンテナの幅に合わせる */
+  
+      .btn {
+        width: 250px;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 8px;
+      }
+  
+      .btn-primary {
+        background-color: #323e92; /* 濃い青 */
+        color: white;
+      }
+  
+      .btn-secondary {
+        background-color: white;
+        border: 2px solid #323e92;
+        color: #323e92;
+      }
+    }
+  }
+  
+  
+  

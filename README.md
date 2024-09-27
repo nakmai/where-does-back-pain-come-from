@@ -82,6 +82,7 @@ MVP
 ・アカウント1つに対し、三人まで診断内容を記録
 
 
+
 ■ 機能の実装方針予定
 Ruby 3.2.2 
 Bootstrap
@@ -100,3 +101,4 @@ Figma：https://www.figma.com/design/SiYqMI2oVfb0wILmlhX03J/%E3%81%82%E3%81%AA%E
 
 # ER図
 [![Image from Gyazo](https://i.gyazo.com/efc3727c2640c09e6b3a13b675584e0c.png)](https://gyazo.com/efc3727c2640c09e6b3a13b675584e0c)
+

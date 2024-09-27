@@ -1,0 +1,19 @@
+<div class="container text-center">
+  <div class="logo-section mt-5">
+    <!-- ロゴ画像を表示 -->
+    <%= image_tag "スライド1.png", class: "logo-image", alt: "Logo" %>
+  </div>
+
+  <h1 class="mt-3">あなたの腰痛どこから</h1>
+  <h2 class="text-muted">where does back pain come from</h2>
+
+  <div class="buttons mt-4">
+    <!-- ボタンのBootstrapクラスを適用 -->
+    <a href="<%= terms_path %>" class="btn btn-primary btn-lg">さっそく始める！</a>
+    <a href="<%= new_user_session_path %>" class="btn btn-dark login-btn mb-3">ログイン</a>
+    <a href="<%= new_user_registration_path %>" class="btn btn-outline-secondary signup-btn">新規登録</a>
+  </div>
+</div>
+
+
+

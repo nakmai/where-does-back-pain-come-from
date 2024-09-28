@@ -14,12 +14,12 @@
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
-      <%= label_tag 'pain_at_rest', '姿勢に関係なく、休んでいても痛みがある', class: 'form-check-label' %>
+      <%= label_tag 'pain_at_rest', '姿勢に関係なく、休んでいても痛みがある・楽な姿勢がない', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
-      <%= label_tag 'pain_at_rest', '楽な姿勢がない', class: 'form-check-label' %>
+      <%= check_box_tag 'conditions[]', 'pain_at_norest', false, class: 'form-check-input', id: 'pain_at_rest' %>
+      <%= label_tag 'pain_at_rest', '逆に動いていないと痛みが増悪する', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">

@@ -1,78 +1,68 @@
-.form-container {
-  padding: 20px; /* 内側余白 */
-  border-radius: 8px; /* 角を丸める */
-  max-width: 400px; /* 最大幅 */
-  margin: 0 auto; /* 中央寄せ */
-  font-family: 'Arial', sans-serif; /* フォント */
-}
-
-.form-title {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
 .form-row {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px; /* 各入力フィールドの下に余白を追加 */
+  justify-content: center; /* 中央寄せ */
+  align-items: center; /* 縦方向に中央揃え */
+  margin-bottom: 10px; /* 入力フィールドの下に余白 */
 }
 
-.form-control {
-  width: 100%;
-  padding: 10px;
-  text-align: center;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+.form-row .col {
+  flex: 1;
+  max-width: 125px ; /* テキストボックスの幅を小さく */
+  margin: 0 5px; /* テキストボックス間のスペースを狭く */
 }
 
 .gender-section {
-  margin-bottom: 30px; /* 性別セクションの下に余白を追加 */
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center; /* 中央寄せ */
+  margin-bottom: 20px; /* 性別セクションの下に余白を追加 */
 }
 
-.form-check-label {
-  margin-left: 10px;
+.gender-section .form-check {
+  display: flex;
+  align-items: center;
+  margin: 0 15px; /* ラジオボタン間のスペースを狭く */
+}
+
+.form-check-input {
+  margin-right: 5px; /* ラジオボタンとラベルの間隔を狭く */
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 30px; /* ボタン群の上に余白を追加 */
+  margin-top: 20px; /* ボタン群の上に余白を追加 */
 }
 
-.button-next {
+.button-next, .button-back {
   width: 100%;
-  background-color: #2e2365;
-  color: white;
-  margin-bottom: 20px; /* 次へ進むボタンの下に余白を追加 */
+  padding: 15px;
+  margin-bottom: 30px;
   border-radius: 8px;
-  padding: 10px;
   font-weight: bold;
+  font-size: 18px;
+  background-color: #333399; /* 次へ進むと同じ色に設定 */
+  border-color: #333399;
+  color: white;
 }
+
+.button-next:hover, {
+  background-color: #333399; /* ホバー時の色を変えない */
+  border-color: #333399;
+  color: white; /* テキスト色も変えない */
+}
+
 
 .button-back {
-  width: 100%;
-  background-color: #c9e1ff;
-  color: black;
-  margin-bottom: 35px; /* 同意画面へ戻るボタンの下に余白を追加 */
-  border-radius: 8px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.button-next:hover {
-  background-color: #3b2b82;
+  background-color:  #007bff; /* 次へ進むボタンと同じ色 */
+  color: white;
 }
 
 .button-back:hover {
-  background-color: #aacdfd;
+  background-color:  #007bff; /* ホバー時の色を変えない */
+  border-color:  #007bff;
+  color: white; /* テキスト色も変えない */
 }
 
-h2.form-title {
-  font-size: 16px;
-  font-weight: bold;
-}
 
 

@@ -17,17 +17,17 @@
         <%= f.check_box :remember_me, class: "form-check-input" %>
         <%= f.label :remember_me, "次回から自動でログインする", class: "form-check-label" %>
       </div>
-
-      <%= f.submit "ログイン", class: "btn btn-primary w-100" %>
+<br>
+      <%= f.submit "ログイン", class: "btn btn-primary custom-btn w-100" %>
     <% end %>
 
     <div class="text-center mt-3">
       <%= link_to "パスワードを忘れた", new_password_path(resource_name), class: "text-primary" %>
     </div>
-
+<br>
     <!-- トップページへ戻るボタン -->
     <div class="text-center mt-3">
-      <%= link_to "トップページへ戻る", root_path, class: "btn btn-secondary" %>
+      <%= link_to "トップページへ戻る", root_path, class: "btn btn-outline-primary custom-btn w-100" %>
     </div>
   </div>
 </div>

@@ -1,13 +1,15 @@
 @import "bootstrap/scss/bootstrap";
 @import "home";
 @import "all_form";
-@import "orthopedics_advice";
+@import "orthopedics_advice1";
+@import "orthopedics_advice2";
+@import "orthopedics_advice3";
 @import 'logout_complete';
 @import 'gynecology_advice';
 @import 'gynecology_question';
 @import "red_flag";
 @import "red_flag2";
-
+@import "terms";
 
 
 body {
@@ -15,13 +17,30 @@ body {
 }
 
 .container {
+  width: 100%;
+  max-width: none; 
+  margin: 0 auto;
   background-color: #fff2e5; /* コンテナの背景色も同じにする */
   border: none; /* 必要に応じて境界線も削除 */
+  box-shadow: none; /* 影をなくす */
+}
+
+.text-center {
+  text-align: center; /* テキストを中央揃え */
+}
+
+.custom-btn {
+  width: 60%;
+  max-width: 600px; /* 必要に応じて最大幅を設定 */
+  min-width: 200px; /* 必要に応じて最小幅を設定 */
+  margin: 0 auto; /* ボタンを中央に配置 */
+  margin-bottom: 20px; /* ボタンの下に20pxの余白を追加 */
+  padding: 10px 20px; /* ボタン内の余白 */
 }
 
 
 .navbar-custom .nav-link {
-    background-color: #FDF5E6; /* 背景色 */
+    background-color:  #fff2e5; /* 背景色 */
     font-family: 'Arial', sans-serif;
     color: #333; /* リンクの文字色をトップページと同じに */
   }

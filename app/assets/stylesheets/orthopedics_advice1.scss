@@ -1,0 +1,60 @@
+.orthopedics-container1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+
+  .orthopedics-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+    text-align: center;
+    max-width: 80%;
+  
+    p {
+      font-size: 1.5rem; /* 各段落のフォントサイズをさらに大きく */
+    }
+
+    .highlight {
+      color: #ff0000;
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+  }
+
+  .button-group {
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 8px;
+    text-align: center;
+
+    a.btn-primary1 {
+      background-color: #333399;
+      border-color: #333399;
+      color: white;
+    }
+
+    a.btn-primary1:hover {
+      background-color: #333399;
+      border-color: #333399;
+      color: white;
+    }
+
+    a.btn-outline-primary1 {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+    }
+
+    a.btn-outline-primary1:hover {
+      background-color: #007bff;
+      border-color: #007bff;
+      color: white;
+    }
+  }
+}
+

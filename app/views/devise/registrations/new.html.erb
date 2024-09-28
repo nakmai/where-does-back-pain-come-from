@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
   <h2 class="text-center mb-4">新規登録</h2>
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-50 mx-auto" }) do |f| %>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "w-80 mx-auto" }) do |f| %>
     <%= devise_error_messages! %>
 
     <div class="form-group">
@@ -51,9 +51,10 @@
       <%= f.label :password_confirmation, "もう一度パスワードを入力" %>
       <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
     </div>
-
+<br>
     <div class="form-group text-center">
-      <%= f.submit "新規登録", class: "btn btn-primary w-100" %>
+      <%= f.submit "新規登録", class: "btn btn-primary custom-btn" %>
+      <%= link_to 'トップページへ戻る', root_path, class: 'btn btn-outline-primary custom-btn button-back  w-60' %>
     </div>
   <% end %>
 </div>

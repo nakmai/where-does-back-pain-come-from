@@ -1,8 +1,9 @@
 .gynecology-question-page {
-    background-color:  #FDF5E6; /* 背景色を統一 */
+/* 背景色を統一 */
     padding: 20px;
     border-radius: 10px;
-  
+    line-height: 1.8;
+
     h2 {
       font-weight: bold;
       font-size: 24px;
@@ -13,6 +14,7 @@
       font-size: 16px;
       margin-bottom: 20px;
       color: #333;
+      margin-bottom: 20px;
     }
   
     .form-check {
@@ -25,6 +27,7 @@
   
       label {
         font-size: 18px;
+
       }
     }
   

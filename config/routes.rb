@@ -22,8 +22,9 @@ Rails.application.routes.draw do
   get 'terms', to: 'pages#terms'
 
   # 整形外科受診催促ページへのルート
-  get 'orthopedics_advice', to: 'orthopedics#orthopedics_advice', as: 'orthopedics_advice'
+  get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1', as: 'orthopedics_advice1'
   get 'orthopedics_advice2', to: 'orthopedics#orthopedics_advice2', as: 'orthopedics_advice2'
+  get 'orthopedics_advice3', to: 'orthopedics#orthopedics_advice3', as: 'orthopedics_advice3'
 
 
   # レッドフラッグページ処理

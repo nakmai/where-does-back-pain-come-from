@@ -11,7 +11,7 @@ class PainController < ApplicationController
         redirect_to red_flag2_path
       else
         # 他の項目がチェックされている場合
-        redirect_to orthopedics_advice_path
+        redirect_to orthopedics_advice2_path
       end
     end
   
@@ -27,16 +27,20 @@ class PainController < ApplicationController
           redirect_to pain_scale_path
         else
           # それ以外の項目が選択されている場合は他のページにリダイレクト
-          redirect_to orthopedics_advice2_path
+          redirect_to orthopedics_advice3_path
         end
     end
   
-    def orthopedics_advice
+    def orthopedics_advice1
       # orthopedics_advice ビューを表示
     end
   
     def orthopedics_advice2
       # orthopedics_advice2 ビューを表示
+    end
+
+    def orthopedics_advice3
+        # orthopedics_advice3 ビューを表示
     end
   end
   

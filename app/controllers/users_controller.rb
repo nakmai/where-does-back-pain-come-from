@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     # 条件に基づいてリダイレクト
     if age < 20 || age > 55
       # 20歳未満または55歳以上の場合、orthopedics_adviceページにリダイレクト
-      redirect_to orthopedics_advice_path
+      redirect_to orthopedics_advice1_path
     elsif age >= 20 && age <= 55 && gender == "female"
       # 女性で 20歳以上55歳以下の場合、gynecology_questionページにリダイレクト
       redirect_to gynecology_question_path

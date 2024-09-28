@@ -1,47 +1,64 @@
-.red-flag-container {
-    max-width: 400px;
-    margin-top: 50px;
-    
-    .card {
-      border-radius: 12px;
-      padding: 20px;
+.red-flag-page {
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
   
-      h5 {
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+  
+    .form-check {
+      margin-bottom: 15px;
+  
+      input {
+        margin-right: 10px;
+        transform: scale(1.5);
+      }
+  
+      label {
         font-size: 18px;
-        font-weight: bold;
-        margin-bottom: 20px;
-      }
-  
-      .form-check {
-        margin-bottom: 15px;
-  
-        .form-check-input {
-          margin-right: 10px;
-        }
-  
-        .form-check-label {
-          font-size: 14px;
-        }
-      }
-  
-      .btn-primary {
-        background-color: #4A63E7;
-        border: none;
-        border-radius: 6px;
-        padding: 10px 20px;
-        width: 100%;
-        color: white;
-        font-weight: bold;
-      }
-  
-      .btn-light {
-        border-radius: 6px;
-        padding: 10px 20px;
-        width: 100%;
-        background-color: #E0E7FF;
-        color: #4A63E7;
-        margin-top: 10px;
+
       }
     }
-  }
+  
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .btn-primary {
+        background-color: #333399;
+        border-color: #333399;
+      }
+  
+      .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+        background-color: #007bff; /* ホバー時と同じ背景色に変更 */
+        color: white; /* ボタンテキストも白に */
+      }
+  
+      .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: #fff;
+      }
+  
+      .btn-lg {
+        padding: 10px 30px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+}
+
   

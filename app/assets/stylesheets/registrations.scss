@@ -29,16 +29,17 @@ input[type="text"], input[type="email"], input[type="password"] {
 
 .form-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 10px; /* 年月日の間隔を狭くする */
 }
 
 .col {
-  flex: 1;
-  margin-right: 5px;
+  flex: 0 0 auto;
+ /* 各テキストボックスの右側の余白をなくす */
 }
 
-.col:last-child {
-  margin-right: 0;
+.col input {
+  width: 100%; /* 各テキストボックスを親要素にフィットさせる */
 }
 
 label {
@@ -63,23 +64,9 @@ label {
 }
 
 .btn-primary:hover {
-  background-color: #ddd;
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
 }
 
-/* スマホサイズ以下の場合はフォーム幅を100%に */
-@media (max-width: 767px) {
-  .container .form-control {
-    width: 100%;
-  }
-  
-  .container form {
-    width: 100%;
-  }
-}
 
-/* デスクトップサイズ以上では、フォームの幅を50% */
-@media (min-width: 768px) {
-  .container form {
-    width: 50%;
-  }
-}

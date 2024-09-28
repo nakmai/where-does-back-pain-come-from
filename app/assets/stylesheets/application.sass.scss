@@ -10,17 +10,18 @@
 @import "red_flag";
 @import "red_flag2";
 @import "terms";
+@import "pain_scale";
 
 
 body {
-  background-color: #fff2e5; /* ページ全体の背景色 */
+  background-color: #FDF5E6; /* ページ全体の背景色 */
 }
 
 .container {
   width: 100%;
   max-width: none; 
   margin: 0 auto;
-  background-color: #fff2e5; /* コンテナの背景色も同じにする */
+  background-color: #FDF5E6; /* コンテナの背景色も同じにする */
   border: none; /* 必要に応じて境界線も削除 */
   box-shadow: none; /* 影をなくす */
 }
@@ -40,7 +41,7 @@ body {
 
 
 .navbar-custom .nav-link {
-    background-color:  #fff2e5; /* 背景色 */
+    background-color:  #FDF5E6; /* 背景色 */
     font-family: 'Arial', sans-serif;
     color: #333; /* リンクの文字色をトップページと同じに */
   }

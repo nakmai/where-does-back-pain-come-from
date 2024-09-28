@@ -29,12 +29,12 @@
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'wide_pain', false, class: 'form-check-input', id: 'wide_pain' %>
-      <%= label_tag 'wide_pain', '痩れの範囲が左半身全体・右半身全体など、広範囲に出現している', class: 'form-check-label' %>
+      <%= label_tag 'wide_pain', '半身全体・右脚全体など広範囲に出現しているしびれや痛み・力が入らないなどがある', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'nerve_pain', false, class: 'form-check-input', id: 'nerve_pain' %>
-      <%= label_tag 'nerve_pain', '元々側湾症・分離症・すべり症などの脊柱の病気、ケガを持っている', class: 'form-check-label' %>
+      <%= label_tag 'nerve_pain', '脊柱の病気やケガの既往歴がある', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
@@ -48,6 +48,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 

@@ -14,17 +14,22 @@
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
-      <%= label_tag 'pain_at_rest', '上むき・横向きなど姿勢に関係なく休んでいても痛みが出ている', class: 'form-check-label' %>
+      <%= label_tag 'pain_at_rest', '姿勢に関係なく、休んでいても痛みがある', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
+      <%= label_tag 'pain_at_rest', '楽な姿勢がない', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'wake_from_pain', false, class: 'form-check-input', id: 'wake_from_pain' %>
-      <%= label_tag 'wake_from_pain', '就寝中、痛みで目が覚めてしまう', class: 'form-check-label' %>
+      <%= label_tag 'wake_from_pain', '痛みで夜中に目が覚める', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'sleep_disorder', false, class: 'form-check-input', id: 'sleep_disorder' %>
-      <%= label_tag 'sleep_disorder', 'この痛みのせいで不眠気味だ', class: 'form-check-label' %>
+      <%= label_tag 'sleep_disorder', 'この痛みのせいで不眠気味', class: 'form-check-label' %>
     </div>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
@@ -33,6 +38,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 

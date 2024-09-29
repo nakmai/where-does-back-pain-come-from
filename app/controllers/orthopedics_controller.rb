@@ -16,6 +16,12 @@ class OrthopedicsController < ApplicationController
         redirect_to root_path, alert: "必要な登録が完了していません"
       end
     end
+
+    def orthopedics_advice5
+      # ビジネスロジックやビューのレンダリングをここに記述
+      render 'orthopedics_advice5'
+    end
+    
   end
   
   

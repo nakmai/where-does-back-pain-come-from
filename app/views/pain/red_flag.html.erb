@@ -13,6 +13,11 @@
     </div>
 
     <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'bruise', false, class: 'form-check-input', id: 'bruise' %>
+    <%= label_tag 'bruise', '背骨を叩くと激痛が走る', class: 'form-check-label' %>
+  </div>
+
+    <div class="form-check">
       <%= check_box_tag 'conditions[]', 'chest_pain', false, class: 'form-check-input', id: 'chest_pain' %>
       <%= label_tag 'chest_pain', '胸の痛みもある', class: 'form-check-label' %>
     </div>
@@ -33,14 +38,19 @@
     </div>
 
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'nerve_pain', false, class: 'form-check-input', id: 'nerve_pain' %>
-      <%= label_tag 'nerve_pain', '脊柱の病気やケガの既往歴がある', class: 'form-check-label' %>
+      <%= check_box_tag 'conditions[]', 'nerve_nopain', false, class: 'form-check-input', id: 'nerve_nopain' %>
+      <%= label_tag 'nerve_nopain', '脊柱の病気やケガの既往歴がある', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'fever', false, class: 'form-check-input', id: 'fever' %>
-      <%= label_tag 'fever', '現在、熱が出ている', class: 'form-check-label' %>
+      <%= label_tag 'fever', '現在、熱が出ている。過去１週間以内に熱を出していた', class: 'form-check-label' %>
     </div>
+
+    <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'cysto_rectal_disorder', false, class: 'form-check-input', id: 'cysto_rectal_disorde' %>
+    <%= label_tag 'cysto_rectal_disorde', '突然おしっこやうんちが出なくなった(膀胱直腸障害)', class: 'form-check-label' %>
+  </div>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
       <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
@@ -48,8 +58,3 @@
     </div>
   <% end %>
 </div>
-
-
-
-
-

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1', as: 'orthopedics_advice1'
   get 'orthopedics_advice2', to: 'orthopedics#orthopedics_advice2', as: 'orthopedics_advice2'
   get 'orthopedics_advice3', to: 'orthopedics#orthopedics_advice3', as: 'orthopedics_advice3'
-
+  get 'orthopedics_advice5', to: 'orthopedics#orthopedics_advice5', as: 'orthopedics_advice5'
 
   # レッドフラッグページ処理
   get 'red_flag', to: 'pain#red_flag'
@@ -35,8 +35,7 @@ Rails.application.routes.draw do
   post 'gynecology/check', to: 'gynecology#check', as: 'gynecology_check'
 
   # レッドフラッグ２のフォームページと処理
-  get 'red_flag2', to: 'pain#red_flag2', as: 'red_flag2'  # 追加
-  get 'pain_scale', to: 'pain#pain_scale', as: 'pain_scale'
+  get 'red_flag2', to: 'pain#red_flag2', as: 'red_flag2'  
   post 'red_flag2_submit', to: 'pain#red_flag2_submit', as: 'red_flag2_submit'
 
   # 婦人科に関する質問ページへのルート
@@ -48,6 +47,16 @@ Rails.application.routes.draw do
 
   # 特に問題がない場合のリダイレクト先
   get 'pages/red_flag', to: 'pages#red_flag'
+
+  #ペインスケール画面
+  get 'pain_scale', to: 'pain#pain_scale', as: 'pain_scale'
+  post 'pain/submit_pain_scale', to: 'pain#submit_pain_scale'
+ 
+  # 痛みの強さが6以上の場合のリダイレクト先 orthopedics_advice5
+  get 'orthopedics_advice5', to: 'orthopedics#orthopedics_advice5'
+
+  # 痛みの強さが5以下の場合のリダイレクト先 achlorhydria
+  get 'achlorhydria', to: 'diagnosis#achlorhydria'
 
   # ルートページ ("/")
   root 'home#index'

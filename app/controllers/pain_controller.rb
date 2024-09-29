@@ -30,6 +30,25 @@ class PainController < ApplicationController
           redirect_to orthopedics_advice3_path
         end
     end
+
+    def red_flag2
+      # red_flag2 ビューを表示
+    end
+
+    def pain_scale
+      # 何もしない。ビューを表示するだけ。
+    end
+  
+    def submit_pain_scale
+      pain_level = params[:pain_level].to_i
+  
+      if pain_level >= 6
+        redirect_to orthopedics_advice5_path
+      else
+        redirect_to achlorhydria_path
+      end
+    end
+
   
     def orthopedics_advice1
       # orthopedics_advice ビューを表示
@@ -42,6 +61,13 @@ class PainController < ApplicationController
     def orthopedics_advice3
         # orthopedics_advice3 ビューを表示
     end
+
+    def orthopedics_advice5
+      # orthopedics_advice5 ビューを表示
+    end 
+
+    
+
   end
   
   

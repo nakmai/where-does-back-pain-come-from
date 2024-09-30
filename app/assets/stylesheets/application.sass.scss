@@ -14,8 +14,6 @@
 @import "pain_scale";
 @import "achlorhydria";
 
-
-
 body {
   background-color: #FDF5E6; /* ページ全体の背景色 */
 }
@@ -42,35 +40,50 @@ body {
   padding: 10px 20px; /* ボタン内の余白 */
 }
 
-
 .navbar-custom .nav-link {
-    background-color:  #FDF5E6; /* 背景色 */
-    font-family: 'Arial', sans-serif;
-    color: #333; /* リンクの文字色をトップページと同じに */
-  }
-  
-  .navbar-custom .nav-link:hover {
-    color: #000; /* ホバー時の色も変更 */
-  }
+  background-color:  #FDF5E6; /* 背景色 */
+  font-family: 'Arial', sans-serif;
+  color: #333; /* リンクの文字色をトップページと同じに */
+}
 
-  .btn.btn-danger {
-    background-color: transparent !important;  // 背景をなしに設定
-    color: black !important;                  // テキストの色を黒に設定
-    border: none;                             // 枠線をなしに設定（必要に応じて）                      // テキストを太字に（必要に応じて）
-  }
-  
-  // ホバー時のスタイル（必要に応じて）
-  .btn.btn-danger:hover {
-    background-color: rgba(0, 0, 0, 0.1);     // ホバー時に薄い背景色を付ける（オプション）
-    color: black !important;                  // ホバー時もテキストカラーを黒に維持
-  }
+.navbar-custom .nav-link:hover {
+  color: #000; /* ホバー時の色も変更 */
+}
 
-  // スマホ版トグルボタン
+.navbar-logo {
+  height: 40px; /* 画像の高さを調整 */
+  width: auto;  /* アスペクト比を保持しながら幅を自動調整 */
+}
+
+.btn.btn-danger {
+  background-color: transparent !important;  // 背景をなしに設定
+  color: black !important;                  // テキストの色を黒に設定
+  border: none;                             // 枠線をなしに設定（必要に応じて）
+}
+
+// ホバー時のスタイル（必要に応じて）
+.btn.btn-danger:hover {
+  background-color: rgba(0, 0, 0, 0.1);     // ホバー時に薄い背景色を付ける（オプション）
+  color: black !important;                  // ホバー時もテキストカラーを黒に維持
+}
+
+// スマホ版トグルボタン
+@media (max-width: 768px) {
+  .navbar-toggler {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}
+
+// ナビゲーションバーのテキストサイズ
+.navbar-brand {
+  font-size: 1.5rem; /* デフォルトの文字サイズ */
+  
+  /* スマホサイズ（768px以下の画面幅）で文字サイズを変更 */
   @media (max-width: 768px) {
-    .navbar-toggler {
-      position: absolute;
-      right: 10px;
-      top: 10px;
-    }
+    font-size: 1rem /* スマホ用の文字サイズを指定 */
   }
+}
+
   

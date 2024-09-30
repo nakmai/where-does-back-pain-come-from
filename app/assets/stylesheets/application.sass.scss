@@ -64,3 +64,13 @@ body {
     background-color: rgba(0, 0, 0, 0.1);     // ホバー時に薄い背景色を付ける（オプション）
     color: black !important;                  // ホバー時もテキストカラーを黒に維持
   }
+
+  // スマホ版トグルボタン
+  @media (max-width: 768px) {
+    .navbar-toggler {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+    }
+  }
+  

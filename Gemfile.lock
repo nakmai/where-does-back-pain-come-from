@@ -285,6 +285,7 @@ DEPENDENCIES
   cssbundling-rails (~> 1.4)
   debug
   devise
+  i18n
   importmap-rails
   jbuilder
   mysql2 (>= 0.5)

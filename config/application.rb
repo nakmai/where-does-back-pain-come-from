@@ -11,6 +11,9 @@ module Test1111
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    # アプリケーションのデフォルト言語を日本語に設定
+    config.i18n.default_locale = :ja
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -20,3 +23,4 @@ module Test1111
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+

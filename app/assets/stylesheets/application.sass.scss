@@ -4,6 +4,7 @@
 @import "orthopedics_advice1";
 @import "orthopedics_advice2";
 @import "orthopedics_advice3";
+@import "orthopedics_advice5";
 @import 'logout_complete';
 @import 'gynecology_advice';
 @import 'gynecology_question';
@@ -11,6 +12,8 @@
 @import "red_flag2";
 @import "terms";
 @import "pain_scale";
+@import "achlorhydria";
+
 
 
 body {
@@ -48,4 +51,16 @@ body {
   
   .navbar-custom .nav-link:hover {
     color: #000; /* ホバー時の色も変更 */
+  }
+
+  .btn.btn-danger {
+    background-color: transparent !important;  // 背景をなしに設定
+    color: black !important;                  // テキストの色を黒に設定
+    border: none;                             // 枠線をなしに設定（必要に応じて）                      // テキストを太字に（必要に応じて）
+  }
+  
+  // ホバー時のスタイル（必要に応じて）
+  .btn.btn-danger:hover {
+    background-color: rgba(0, 0, 0, 0.1);     // ホバー時に薄い背景色を付ける（オプション）
+    color: black !important;                  // ホバー時もテキストカラーを黒に維持
   }

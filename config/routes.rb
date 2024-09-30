@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   # Devise のルーティング設定
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+  
 
   # ユーザー関連ルート
   resources :users, only: [:create]
@@ -48,7 +52,7 @@ Rails.application.routes.draw do
   # 特に問題がない場合のリダイレクト先
   get 'pages/red_flag', to: 'pages#red_flag'
 
-  #ペインスケール画面
+  # ペインスケール画面
   get 'pain_scale', to: 'pain#pain_scale', as: 'pain_scale'
   post 'pain/submit_pain_scale', to: 'pain#submit_pain_scale'
  
@@ -57,8 +61,20 @@ Rails.application.routes.draw do
 
   # 痛みの強さが5以下の場合のリダイレクト先 achlorhydria
   get 'achlorhydria', to: 'diagnosis#achlorhydria'
+  post 'diagnosis', to: 'diagnosis#create', as: 'diagnosis'
+
+  # 腰部伸展時の痛み
+  get 'extention', to: 'diagnosis#extention', as: 'extention'
+
+  # 腰部屈曲の痛み
+  get 'flexion', to: 'diagnosis#flexion', as: 'flexion'
+
+  # 腰部屈曲・伸展の痛み
+  get 'extention_flexion', to: 'diagnosis#extention_flexion', as: 'extention_flexion'
 
   # ルートページ ("/")
   root 'home#index'
 end
+
+
 

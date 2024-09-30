@@ -25,7 +25,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto">
             <% if user_signed_in? %>
               <li class="nav-item">
@@ -44,15 +44,28 @@
       </div>
     </nav>
 
+    <!-- フラッシュメッセージを表示 -->
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+
     <!-- ここで各ページのコンテンツを表示 -->
     <%= yield %>
 
-    <!-- Bootstrap JavaScript -->
+    <!-- Bootstrap JavaScript（Popper.jsを含むバンドル版） -->
     <%= javascript_include_tag "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js", integrity: "sha384-qVjmWBw3Jr7e3VoPf+P2xx6qfLRpBFeTujwHG2aWnB3lRmy8lue3tEmf6svYENNp", crossorigin: "anonymous" %>
-
 
     <!-- Importmap Tags -->
     <%= javascript_importmap_tags %>
 
   </body>
 </html>
+

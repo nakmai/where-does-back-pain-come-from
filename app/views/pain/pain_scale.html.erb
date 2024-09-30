@@ -12,7 +12,7 @@
   <div class="container mt-5">
     <h2>痛みの強さ</h2>
     <p>今の痛みはどれぐらいですか？</p>
-    <p>全く痛くない状態：0<br>人生の中で一番痛い：10</p>
+    <p>全く痛くない状態:0<br>人生の中で一番痛い:10</p>
     <br>
 
     <%= form_with url: "/pain/submit_pain_scale", method: :post do %>
@@ -40,40 +40,56 @@
   </div>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const slider = document.getElementById('painRange');
-      const painValueSpan = document.getElementById('painValue');
-      const hiddenPainLevelInput = document.getElementById('painLevelInput');
+  // DOMContentLoaded イベントが発生した時に実行される関数。ページの内容が完全に読み込まれた後にスクリプトを実行。
+  document.addEventListener('DOMContentLoaded', () => {
+    // スライダー（<input type="range">）の要素を取得
+    const slider = document.getElementById('painRange');
+    // 現在の痛みの値を表示するための要素（<span>）を取得
+    const painValueSpan = document.getElementById('painValue');
+    // フォームに送信される hidden フィールド（<input type="hidden">）の要素を取得
+    const hiddenPainLevelInput = document.getElementById('painLevelInput');
 
-      const increaseButton = document.getElementById('increase');
-      const decreaseButton = document.getElementById('decrease');
+    // スライダーの値を1増やすボタンの要素を取得
+    const increaseButton = document.getElementById('increase');
+    // スライダーの値を1減らすボタンの要素を取得
+    const decreaseButton = document.getElementById('decrease');
 
-      function updatePainValue(value) {
-        painValueSpan.textContent = value;
-        hiddenPainLevelInput.value = value;  // hiddenフィールドに値を設定
+    // スライダーの値が変わるたびに表示される痛みの値と hidden フィールドの値を更新する関数
+    function updatePainValue(value) {
+      // スライダーの現在の値を表示
+      painValueSpan.textContent = value;
+      // hidden フィールドの値をスライダーの値に更新（フォーム送信時に使う）
+      hiddenPainLevelInput.value = value;
+    }
+
+    // 増加ボタンをクリックした時の処理
+    increaseButton.addEventListener('click', () => {
+      // スライダーの現在の値が最大値未満の場合、値を1増やす
+      if (parseInt(slider.value) < parseInt(slider.max)) {
+        slider.value = parseInt(slider.value) + 1;
+        // 値が変わったので表示を更新
+        updatePainValue(slider.value);
       }
-
-      increaseButton.addEventListener('click', () => {
-        if (parseInt(slider.value) < parseInt(slider.max)) {
-          slider.value = parseInt(slider.value) + 1;
-          updatePainValue(slider.value);
-        }
-      });
-
-      decreaseButton.addEventListener('click', () => {
-        if (parseInt(slider.value) > parseInt(slider.min)) {
-          slider.value = parseInt(slider.value) - 1;
-          updatePainValue(slider.value);
-        }
-      });
-
-      slider.addEventListener('input', (event) => {
-        updatePainValue(event.target.value);
-      });
     });
-  </script>
-</body>
-</html>
+
+    // 減少ボタンをクリックした時の処理
+    decreaseButton.addEventListener('click', () => {
+      // スライダーの現在の値が最小値より大きい場合、値を1減らす
+      if (parseInt(slider.value) > parseInt(slider.min)) {
+        slider.value = parseInt(slider.value) - 1;
+        // 値が変わったので表示を更新
+        updatePainValue(slider.value);
+      }
+    });
+
+    // スライダーを直接操作したときに値が変わるイベントリスナー
+    slider.addEventListener('input', (event) => {
+      // スライダーの現在の値をリアルタイムで表示と hidden フィールドに更新
+      updatePainValue(event.target.value);
+    });
+  });
+</script>
+
 
 
 

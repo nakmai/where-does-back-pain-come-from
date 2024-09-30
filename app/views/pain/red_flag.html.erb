@@ -1,7 +1,7 @@
 <div class="red-flag-page">
   <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: red_flag_submit_path, method: :post, local: true do %>
+  <%= form_with url: red_flag_path, method: :post, local: true do %>
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
       <%= label_tag 'no_issues', '特に問題なし', class: 'form-check-label' %>

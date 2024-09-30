@@ -1,22 +1,25 @@
 class PainController < ApplicationController
     def red_flag
       # フォーム表示用アクション
+      flash.clear
     end
   
     def submit_red_flag
+      flash.clear
       conditions = params[:conditions] || []
-  
+    
       if conditions.include?('no_issues') && conditions.length == 1
         # 特に問題なしのみがチェックされている場合
-        redirect_to red_flag2_path
+        redirect_to red_flag2_path, notice: 
       else
         # 他の項目がチェックされている場合
-        redirect_to orthopedics_advice2_path
+        redirect_to orthopedics_advice2_path, notice:
       end
     end
   
     def red_flag2
       # red_flag2 ビューを表示
+      flash.clear
     end
   
     def red_flag2_submit
@@ -41,7 +44,7 @@ class PainController < ApplicationController
   
     def submit_pain_scale
       pain_level = params[:pain_level].to_i
-  
+    
       if pain_level >= 6
         redirect_to orthopedics_advice5_path
       else
@@ -66,6 +69,9 @@ class PainController < ApplicationController
       # orthopedics_advice5 ビューを表示
     end 
 
+    def flexion
+      # 処理をここに記述
+    end
     
 
   end

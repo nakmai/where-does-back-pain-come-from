@@ -21,6 +21,14 @@ class OrthopedicsController < ApplicationController
       # ビジネスロジックやビューのレンダリングをここに記述
       render 'orthopedics_advice5'
     end
+  
+    def orthopedics_advice2
+      # orthopedics_advice2 ビューを表示
+    end
+
+    def orthopedics_advice3
+        # orthopedics_advice3 ビューを表示
+    end
     
   end
   

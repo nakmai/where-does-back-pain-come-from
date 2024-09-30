@@ -1,0 +1,35 @@
+<div class="pain-location-flexion-container">
+  <h2>動かした時の痛み</h2>
+  <p>どこが痛みますか？</p>
+
+  <div class="image-container">
+    <%= image_tag "シェーマ図.png", alt: "人体図" %>
+  </div>
+
+  <div class="radio-container">
+    <%= form_with url: pain_location_flexion_diagnosis_index_path, method: :post do |f| %>
+      <div class="radio">
+        <%= f.radio_button :pain_location, '腰骨の外', id: 'pain_external' %>
+        <%= f.label 'pain_external', '腰骨の外 (腰全体)' %>
+      </div>
+
+      <div class="radio">
+        <%= f.radio_button :pain_location, '腰の中心', id: 'pain_center' %>
+        <%= f.label 'pain_center', '腰の中心 (背骨付近)' %>
+      </div>
+
+      <div class="radio">
+        <%= f.radio_button :pain_location, '腰骨の下(お尻のライン)', id: 'pain_below' %>
+        <%= f.label 'pain_below', '腰骨の下(お尻のライン)' %>
+      </div>
+
+      <div class="form-actions">
+        <%= f.submit "次へ進む", class: "btn btn-primary" %>
+        <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+
+

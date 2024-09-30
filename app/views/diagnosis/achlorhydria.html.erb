@@ -1,37 +1,37 @@
 <div class="achlorhydria-page">
   <h2 class="text-center mb-4">どの動作が一番痛いですか？<br>一つ選んでください</h2>
   
-<br>
+  <br>
 
-  <%= form_with url: diagnosis_path, method: :post, local: true do %>
-
-<!-- 腰椎伸展・屈曲タイプ -->
+  <%= form_with url: diagnosis_index_path, method: :post, local: true do %>
+    
+    <!-- 腰椎伸展・屈曲タイプ -->
     <div class="form-check">
-      <%= check_box_tag 'pain_type[]', '腰を曲げても反っても痛い', false, class: 'form-check-input', id: 'pain5' %>
+      <%= radio_button_tag 'pain_type', '腰を曲げても反っても痛い', false, class: 'form-check-input', id: 'pain5' %>
       <%= label_tag 'pain5', '腰を曲げても反っても痛い', class: 'form-check-label' %>
     </div>
 
     <br>
 
-<!-- 腰椎伸展タイプ -->
+    <!-- 腰椎伸展タイプ -->
     <div class="form-check">
-      <%= check_box_tag 'pain_type[]', '腰を反ると痛い', false, class: 'form-check-input', id: 'pain1' %>
+      <%= radio_button_tag 'pain_type', '腰を反ると痛い', false, class: 'form-check-input', id: 'pain1' %>
       <%= label_tag 'pain1', '腰を反ると痛い', class: 'form-check-label' %>
     </div>
     <div class="form-check">
-      <%= check_box_tag 'pain_type[]', '腰を反って捻ると痛い', false, class: 'form-check-input', id: 'pain2' %>
+      <%= radio_button_tag 'pain_type', '腰を反って捻ると痛い', false, class: 'form-check-input', id: 'pain2' %>
       <%= label_tag 'pain2', '腰を反って捻ると痛い', class: 'form-check-label' %>
     </div>
 
     <br>
 
-<!-- 腰椎屈曲タイプ -->
+    <!-- 腰椎屈曲タイプ -->
     <div class="form-check">
-      <%= check_box_tag 'pain_type[]', '腰を曲げると痛い', false, class: 'form-check-input', id: 'pain3' %>
+      <%= radio_button_tag 'pain_type', '腰を曲げると痛い', false, class: 'form-check-input', id: 'pain3' %>
       <%= label_tag 'pain3', '腰を曲げると痛い', class: 'form-check-label' %>
     </div>
     <div class="form-check">
-      <%= check_box_tag 'pain_type[]', '腰を反って曲げると痛い', false, class: 'form-check-input', id: 'pain4' %>
+      <%= radio_button_tag 'pain_type', '腰を反って曲げると痛い', false, class: 'form-check-input', id: 'pain4' %>
       <%= label_tag 'pain4', '腰を反って曲げると痛い', class: 'form-check-label' %>
     </div>
 
@@ -41,4 +41,7 @@
     </div>
   <% end %>
 </div>
+
+
+
 

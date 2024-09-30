@@ -4,76 +4,62 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
-  
 
   # ユーザー関連ルート
-  resources :users, only: [:create]
+  resources :users, only: [:create] do
+    collection do
+      get 'all_form'
+      post 'submit_form'
+    end
+  end
 
-  # ホームページ
+  # ホームページとログイン後のページ
+  root 'home#index'
   get 'home/index'
-
-  # ログイン後のページ
   get 'after_sign_in', to: 'home#after_sign_in'
-
-  # ログアウト完了ページ
   get 'logout_complete', to: 'home#logout_complete'
-
-  # all_form ページへのルート
-  get 'users/all_form', to: 'users#all_form'
-  post 'users/submit_form', to: 'users#submit_form'
 
   # 規約ページへのルート
   get 'terms', to: 'pages#terms'
 
-  # 整形外科受診催促ページへのルート
-  get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1', as: 'orthopedics_advice1'
-  get 'orthopedics_advice2', to: 'orthopedics#orthopedics_advice2', as: 'orthopedics_advice2'
-  get 'orthopedics_advice3', to: 'orthopedics#orthopedics_advice3', as: 'orthopedics_advice3'
-  get 'orthopedics_advice5', to: 'orthopedics#orthopedics_advice5', as: 'orthopedics_advice5'
+  # 整形外科関連のルート
+  get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1'
+  get 'orthopedics_advice2', to: 'orthopedics#orthopedics_advice2'
+  get 'orthopedics_advice3', to: 'orthopedics#orthopedics_advice3'
+  get 'orthopedics_advice5', to: 'orthopedics#orthopedics_advice5'
+  get 'orthopedics_advice6', to: 'orthopedics#orthopedics_advice6'
 
-  # レッドフラッグページ処理
+  # ペインスケール関連
+  get 'pain_scale', to: 'pain#pain_scale'
+  post 'pain/submit_pain_scale', to: 'pain#submit_pain_scale'
+
+  # レッドフラッグ関連
   get 'red_flag', to: 'pain#red_flag'
-  post 'red_flag_submit', to: 'pain#submit_red_flag', as: 'red_flag_submit'
+  post 'red_flag', to: 'pain#submit_red_flag'
+  get 'red_flag2', to: 'pain#red_flag2'
+  post 'red_flag2_submit', to: 'pain#red_flag2_submit'
 
-  # gynecology_controllerのチェック処理に関連するルート
-  post 'gynecology/check', to: 'gynecology#check', as: 'gynecology_check'
-
-  # レッドフラッグ２のフォームページと処理
-  get 'red_flag2', to: 'pain#red_flag2', as: 'red_flag2'  
-  post 'red_flag2_submit', to: 'pain#red_flag2_submit', as: 'red_flag2_submit'
-
-  # 婦人科に関する質問ページへのルート
+  # 婦人科に関するルート
   get 'gynecology_question', to: 'gynecology#gynecology_question'
   post 'submit_gynecology_question', to: 'gynecology#submit_gynecology_question'
-
-  # 婦人科受診催促 ページへのルート
+  post 'gynecology/check', to: 'gynecology#check', as: 'gynecology_check'
   get 'gynecology_advice', to: 'gynecology#gynecology_advice'
 
-  # 特に問題がない場合のリダイレクト先
-  get 'pages/red_flag', to: 'pages#red_flag'
+  # 診断関連のルート
+  resources :diagnosis do
+    collection do
+      get 'pain_behavior_myofascial_back_pain'
+      get 'pain_behavior_intervertebral_disk'
+      get 'pain_behavior_sacroiliac_joint'
+      get 'extention', to: 'pain_location#extention'
+      get 'flexion', to: 'pain_location#flexion'
+      get 'extention_flexion', to: 'pain_location#extention_flexion'
+      get 'pain_location_flexion', to: 'pain_location#flexion', as: 'pain_location_flexion'
+    end
+  end
 
-  # ペインスケール画面
-  get 'pain_scale', to: 'pain#pain_scale', as: 'pain_scale'
-  post 'pain/submit_pain_scale', to: 'pain#submit_pain_scale'
- 
-  # 痛みの強さが6以上の場合のリダイレクト先 orthopedics_advice5
-  get 'orthopedics_advice5', to: 'orthopedics#orthopedics_advice5'
-
-  # 痛みの強さが5以下の場合のリダイレクト先 achlorhydria
+  # その他のルート
   get 'achlorhydria', to: 'diagnosis#achlorhydria'
-  post 'diagnosis', to: 'diagnosis#create', as: 'diagnosis'
-
-  # 腰部伸展時の痛み
-  get 'extention', to: 'diagnosis#extention', as: 'extention'
-
-  # 腰部屈曲の痛み
-  get 'flexion', to: 'diagnosis#flexion', as: 'flexion'
-
-  # 腰部屈曲・伸展の痛み
-  get 'extention_flexion', to: 'diagnosis#extention_flexion', as: 'extention_flexion'
-
-  # ルートページ ("/")
-  root 'home#index'
 end
 
 

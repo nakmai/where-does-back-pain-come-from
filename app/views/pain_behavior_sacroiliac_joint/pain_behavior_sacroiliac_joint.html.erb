@@ -2,7 +2,7 @@
 <div class="pain_behavior_sacroiliac_joint">
   <h2 class="text-center mb-4">どこが痛みますか？</h2>
 
-  <%= form_with url: pain_behavior_sacroiliac_joint_path, method: :post, local: true do %>  <!-- 送信先をpain_behavior_sacroiliac_jointに修正 -->
+  <%= form_with url: diagnostic_result_sacroiliac_joint_path, method: :post, local: true do %>  <!-- 送信先をpain_behavior_sacroiliac_jointに修正 -->
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
       <%= label_tag 'standing_posture', '長時間立ちっぱなしだと痛みが出る', class: 'form-check-label' %>
@@ -19,8 +19,8 @@
     </div>
 
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
-      <%= label_tag 'uncomfortable_feeling', '太ももやお尻に痛みや違和感が出ている', class: 'form-check-label' %>
+      <%= check_box_tag 'conditions[]', 'a_feeling_of_unease', false, class: 'form-check-input', id: 'a_feeling_of_unease' %>
+      <%= label_tag 'a_feeling_of_unease', '太ももやお尻に痛みや違和感が出ている', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">

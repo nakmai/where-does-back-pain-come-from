@@ -82,7 +82,7 @@ Rails.application.routes.draw do
   post 'pain_behavior_intervertebral_joint', to: 'pain_behavior_flexion#pain_behavior_intervertebral_joint'
 
   # 診断結果関連のルート
-  get 'diagnostic_result_myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain' 
+  get 'diagnostic_result_myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain'
   post 'diagnostic_result_myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain'
 
   get 'diagnostic_result_sacroiliac_joint', to: 'diagnostic_result#sacroiliac_joint', as: 'diagnostic_result_sacroiliac_joint'
@@ -91,9 +91,11 @@ Rails.application.routes.draw do
   get 'diagnostic_result_intervertebral_disk', to: 'diagnostic_result#intervertebral_disk'
   post 'diagnostic_result_intervertebral_disk', to: 'diagnostic_result#intervertebral_disk'
 
-  get 'diagnostic_result_incontestable', to: 'diagnostic_result#incontestable', as: 'diagnostic_result_incontestable'  # 追加
+  get 'diagnostic_result_intervertebral_joint', to: 'diagnostic_result#intervertebral_joint'
+  post 'diagnostic_result_intervertebral_joint', to: 'diagnostic_result#intervertebral_joint'
+  
 
   # その他のルート
   get 'achlorhydria', to: 'diagnosis#achlorhydria'
-
 end
+

@@ -32,30 +32,20 @@ class PainBehaviorFlexionController < ApplicationController
       def pain_behavior_sacroiliac_joint
         conditions = params[:conditions] || []
         logger.debug("Conditions: #{conditions.inspect}")  # ログでパラメータを確認
-    
+      
         if conditions.include?('nothing')
-          # 「どれも当てはまらない」を選択した場合
-          logger.debug("Redirecting to incontestable result")
-          redirect_to diagnostic_result_incontestable_path
-        elsif conditions.include?('standing_posture') || conditions.include?('sitting_posture') || conditions.include?('uncomfortable_feeling') || conditions.include?('limbs')
-          # 条件に該当する場合、仙腸関節の結果にリダイレクト
+          logger.debug("Redirecting to myofascial back pain")
+          redirect_to pain_behavior_myofascial_back_pain_path
+        elsif conditions.include?('standing_posture') || conditions.include?('sitting_posture') || conditions.include?('uncomfortable_feeling') || conditions.include?('limbs')|| conditions.include?('a_feeling_of_unease')
           logger.debug("Redirecting to sacroiliac joint result")
           redirect_to diagnostic_result_sacroiliac_joint_path
         else
-          # どの条件にも該当しない場合、再度フォームを表示
           logger.debug("Rendering sacroiliac joint form")
           render 'pain_behavior_sacroiliac_joint/pain_behavior_sacroiliac_joint'
         end
       end
+    end
 
-      def incontestable
-        render 'diagnostic_result/incontestable'
-      end
-    
-
-
-
-end
   
 
   

@@ -14,7 +14,7 @@ class PainLocationFlexionController < ApplicationController
       when '背骨付近'
         redirect_to pain_behavior_intervertebral_disk_path
       when '腰骨の下(お尻のライン)'
-        redirect_to diagnostic_result_sacroiliac_joint_path
+        redirect_to pain_behavior_sacroiliac_joint_path
       else
         flash[:alert] = "選択してください。"
         render :pain_location_flexion

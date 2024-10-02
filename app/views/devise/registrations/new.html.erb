@@ -9,32 +9,6 @@
       <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
     </div>
 
-    <div class="form-group">
-      <label for="birthday">生年月日</label>
-      <div class="form-row">
-        <div class="col">
-          <input type="text" id="year" name="year" placeholder="年" class="form-control" />
-        </div>
-        <div class="col">
-          <input type="text" id="month" name="month" placeholder="月" class="form-control" />
-        </div>
-        <div class="col">
-          <input type="text" id="day" name="day" placeholder="日" class="form-control" />
-        </div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <%= f.label :gender, "性別" %><br>
-      <div class="form-check form-check-inline">
-        <%= f.radio_button :gender, 'male', class: "form-check-input" %>
-        <%= f.label :gender, '男性', value: 'male', class: "form-check-label" %>
-      </div>
-      <div class="form-check form-check-inline">
-        <%= f.radio_button :gender, 'female', class: "form-check-input" %>
-        <%= f.label :gender, '女性', value: 'female', class: "form-check-label" %>
-      </div>
-    </div>
 
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>

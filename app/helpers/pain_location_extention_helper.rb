@@ -1,0 +1,2 @@
+module PainLocationExtentionHelper
+end

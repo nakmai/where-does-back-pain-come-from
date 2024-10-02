@@ -1,0 +1,2 @@
+module DiagnosticResultHelper
+end

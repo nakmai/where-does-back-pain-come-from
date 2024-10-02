@@ -69,9 +69,7 @@ class PainController < ApplicationController
       # orthopedics_advice5 ビューを表示
     end 
 
-    def flexion
-      # 処理をここに記述
-    end
+
     
 
   end

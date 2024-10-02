@@ -1,0 +1,3 @@
+class PainBehaviorExtentionFlexionController < ApplicationController
+
+end

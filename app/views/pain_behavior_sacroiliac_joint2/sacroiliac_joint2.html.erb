@@ -1,0 +1,43 @@
+#sacroiliac_joint2.html
+<div class="pain_behavior_sacroiliac_joint2">
+  <h2 class="text-center mb-4">どこが痛みますか？</h2>
+
+  <%= form_with url: diagnostic_result_sacroiliac_joint_path, method: :post, local: true do %>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
+      <%= label_tag 'standing_posture', '長時間立ちっぱなしだと痛みが出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
+    <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
+  </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
+      <%= label_tag 'uncomfortable_feelinge', '痛みの出ている方の足で片足立をすると腰に痛みや違和感が出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
+      <%= label_tag 'uncomfortable_feelinge', '太ももやお尻に痛みや違和感が出ている', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'limbs', false, class: 'form-check-input', id: 'limbs' %>
+    <%= label_tag 'limbs', '下半身に痺れや力が入りにくいなど違和感がある', class: 'form-check-label' %>
+  </div>
+
+  <br>
+
+  <div class="form-check">
+  <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
+  <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
+</div>
+
+    <div class="button-group mt-4 d-flex flex-column align-items-center">
+     <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
+      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    </div>
+  <% end %>
+</div>

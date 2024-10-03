@@ -1,2 +1,4 @@
 class PainBehaviorExtentionController < ApplicationController
+
+
 end

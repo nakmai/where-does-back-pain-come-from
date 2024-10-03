@@ -1,4 +1,6 @@
 class PainBehaviorController < ApplicationController
 
-  end
+end
+
+
   

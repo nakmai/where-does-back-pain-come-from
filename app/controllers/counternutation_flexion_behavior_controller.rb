@@ -1,0 +1,3 @@
+class CounternutationFlexionBehaviorController < ApplicationController
+      
+end

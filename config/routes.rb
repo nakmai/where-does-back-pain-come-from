@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  post 'diagnosis', to: 'diagnosis#create'
+
   # ホームページとログイン後のページ
   root 'home#index'
   get 'home/index'
@@ -46,56 +48,32 @@ Rails.application.routes.draw do
   post 'gynecology/check', to: 'gynecology#check', as: 'gynecology_check'
   get 'gynecology_advice', to: 'gynecology#gynecology_advice'
 
-  # 診断関連のルート
-  resources :diagnosis do
-    collection do
-      get 'extention', to: 'pain_location#extention'
-      get 'flexion', to: 'pain_location#flexion'
-      get 'extention_flexion', to: 'pain_location#extention_flexion'
-    end
-  end
-
   # 痛みの場所関連のルート
-  get 'pain_location_extention', to: 'pain_location_extention#extention', as: 'pain_location_extention'
-  post 'pain_location_extention', to: 'pain_location_extention#extention'
+  get 'pain_location_flexion', to: 'pain_location_flexion#flexion'
+  post 'submit_pain_location_flexion', to: 'pain_location_flexion#submit'
 
-  get 'pain_location_extention_flexion', to: 'pain_location_extention_flexion#extention_flexion', as: 'pain_location_extention_flexion'
-  post 'pain_location_extention_flexion', to: 'pain_location_extention_flexion#extention_flexion'
+  # 椎間板関連
+  get 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'get_pain_behavior_flexion_intervertebral_disk_flexion_behavior'
+  post 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'pain_behavior_flexion_intervertebral_disk_flexion_behavior'
+  get 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'intervertebral_disk_flexion_behavior'
 
-  get 'pain_location_flexion', to: 'pain_location_flexion#flexion', as: 'pain_location_flexion'
-  post 'pain_location_flexion/submit', to: 'pain_location_flexion#submit_flexion', as: 'submit_pain_location_flexion'
 
-  # 各疾患特徴関連のルート
-  get 'pain_behavior_myofascial_back_pain', to: 'pain_behavior_flexion#pain_behavior_myofascial_back_pain'
-  post 'pain_behavior_myofascial_back_pain', to: 'pain_behavior_flexion#pain_behavior_myofascial_back_pain'
-
-  get 'pain_behavior_intervertebral_disk', to: 'pain_behavior_flexion#pain_behavior_intervertebral_disk'
-  post 'pain_behavior_intervertebral_disk', to: 'pain_behavior_flexion#pain_behavior_intervertebral_disk'
-
-  get 'pain_behavior_sacroiliac_joint', to: 'pain_behavior_flexion#pain_behavior_sacroiliac_joint'
-  post 'pain_behavior_sacroiliac_joint', to: 'pain_behavior_flexion#pain_behavior_sacroiliac_joint'
-
-  get 'pain_behavior_sacroiliac_joint2', to: 'pain_behavior_flexion#sacroiliac_joint2'
-  post 'pain_behavior_sacroiliac_joint2', to: 'pain_behavior_flexion#sacroiliac_joint2'
-
-  get 'pain_behavior_intervertebral_joint', to: 'pain_behavior_flexion#pain_behavior_intervertebral_joint'
-  post 'pain_behavior_intervertebral_joint', to: 'pain_behavior_flexion#pain_behavior_intervertebral_joint'
-
+  # カウンターニューテーション関連
+  get 'pain_behavior_flexion/counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior', as: 'get_counternutation_flexion_behavior'
+  post 'pain_behavior_flexion/counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior', as: 'post_counternutation_flexion_behavior'
+  get 'pain_behavior_flexion/counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior', as: 'counternutation_flexion_behavior'
+ 
+  # 筋膜性腰痛関連
+  get 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior', as: 'myofascial_back_pain_flexion_behavior'
+  post 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
+ 
   # 診断結果関連のルート
-  get 'diagnostic_result_myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain'
-  post 'diagnostic_result_myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain'
-
-  get 'diagnostic_result_sacroiliac_joint', to: 'diagnostic_result#sacroiliac_joint', as: 'diagnostic_result_sacroiliac_joint'
-  post 'diagnostic_result_sacroiliac_joint', to: 'diagnostic_result#sacroiliac_joint'
-
-  get 'diagnostic_result_intervertebral_disk', to: 'diagnostic_result#intervertebral_disk'
-  post 'diagnostic_result_intervertebral_disk', to: 'diagnostic_result#intervertebral_disk'
-
-  get 'diagnostic_result_intervertebral_joint', to: 'diagnostic_result#intervertebral_joint'
-  post 'diagnostic_result_intervertebral_joint', to: 'diagnostic_result#intervertebral_joint'
-  
+  get 'diagnostic_result/myofascial_back_pain', to: 'diagnostic_result#myofascial_back_pain', as: 'diagnostic_result_myofascial_back_pain'
+  get 'diagnostic_result/intervertebral_disk', to: 'diagnostic_result#intervertebral_disk', as: 'diagnostic_result_intervertebral_disk'
+  get 'diagnostic_result/counternutation', to: 'diagnostic_result#counternutation', as: 'diagnostic_result_counternutation'
 
   # その他のルート
   get 'achlorhydria', to: 'diagnosis#achlorhydria'
-end
+  get 'diagnostic_result/incontestable', to: 'diagnostic_result#incontestable', as: 'diagnostic_result_incontestable'
 
+end

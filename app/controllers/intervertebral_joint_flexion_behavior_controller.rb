@@ -1,0 +1,2 @@
+class IntervertebralJointFlexionBehaviorController < ApplicationController
+end

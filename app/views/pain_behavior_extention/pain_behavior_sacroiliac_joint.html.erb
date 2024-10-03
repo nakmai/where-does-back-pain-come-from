@@ -1,5 +1,5 @@
-#sacroiliac_joint2.html
-<div class="pain_behavior_sacroiliac_joint2">
+
+<div class="pain_behavior_sacroiliac_joint">
   <h2 class="text-center mb-4">どこが痛みますか？</h2>
 
   <%= form_with url: diagnostic_result_sacroiliac_joint_path, method: :post, local: true do %>
@@ -36,7 +36,7 @@
 </div>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
-     <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
+      <%= link_to '次のページへ進む', pain_behavior_sacroiliac_joint2_path, class: 'btn btn-primary custom-btn' %>
       <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
     </div>
   <% end %>

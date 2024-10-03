@@ -1,0 +1,53 @@
+椎間関節
+
+
+
+<div class="pain_behavior_intervertebral_joint">
+  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+
+  <%= form_with url: pain_behavior_intervertebral_joint_path, method: :post, local: true, authenticity_token: true do %>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
+      <%= label_tag 'standing_posture', '長時間立ちっぱなしだと痛みが出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
+      <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'parietal_flexion', false, class: 'form-check-input', id: 'parietal_flexion' %>
+      <%= label_tag 'parietal_flexion', '身体を横に曲げると痛みが出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'rotation', false, class: 'form-check-input', id: 'rotation' %>
+      <%= label_tag 'rotation', '腰を捻ると痛みが出る', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'sluggishn', false, class: 'form-check-input', id: 'sluggish' %>
+      <%= label_tag 'sluggish', '腰が重だるい感じがする', class: 'form-check-label' %>
+    </div>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'massage', false, class: 'form-check-input', id: 'massage' %>
+      <%= label_tag 'massage', '背中・腰回りの筋肉をほぐすと楽になる', class: 'form-check-label' %>
+    </div>
+
+    <br>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
+      <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
+    </div>
+
+    <div class="button-group mt-4 d-flex flex-column align-items-center">
+      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
+      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    </div>
+  <% end %>
+</div>
+

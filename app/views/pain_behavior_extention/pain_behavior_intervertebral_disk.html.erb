@@ -1,5 +1,5 @@
 <div class="pain_behavior_intervertebral_disk">
-  <h2 class="text-center mb-4">どこが痛みますか？</h2>
+  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
   <%= form_with url: pain_behavior_intervertebral_disk_path, method: :post, local: true, authenticity_token: true do %>  <!-- 送信先修正 -->
     <div class="form-check">
@@ -9,7 +9,7 @@
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'massage', false, class: 'form-check-input', id: 'massage' %>
-      <%= label_tag 'massage', '椅子に座った状態で足を伸ばすと痺れが起きる', class: 'form-check-label' %>
+      <%= label_tag 'massage', '椅子に座った状態で身体を前に倒し、足を伸ばすと痺れが起きる', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">

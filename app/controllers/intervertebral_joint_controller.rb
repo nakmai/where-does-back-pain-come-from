@@ -1,0 +1,2 @@
+class IntervertebralJointController < ApplicationController
+end

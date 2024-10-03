@@ -1,53 +1,31 @@
-<div class="pain-location-extention-container">
+<div class="pain-location-flexion-container">
   <h2>一番痛い場所はどこですか？</h2>
 
   <div class="image-container">
     <%= image_tag "シェーマ図_疼痛部位.png", alt: "人体図", class: "human-body-image" %>
   </div>
 
-  <div class="radio-container">
-  <%= form_with url: pain_location_extention_path, method: :post, local: true do |f| %>
-  <div class="radio">
-    <%= radio_button_tag 'pain_location_flexion[pain_location]', '腰骨の外', id: 'pain_external' %>
-    <%= label_tag 'pain_external', '腰の筋肉' %>
-  </div>
-
-
+  <%= form_with url: submit_extention_path, method: :post, local: true, id: 'painLocationForm' do %>
+    
     <div class="radio">
-      <%= f.radio_button :pain_location, '腰の中心', id: 'pain_center' %>
-      <%= f.label 'pain_center', '背骨付近' %>
+      <%= radio_button_tag 'pain_location_flexion[pain_location]', '腰の筋肉', false, id: 'pain_external' %>
+      <%= label_tag 'pain_external', '腰の筋肉' %>
     </div>
 
     <div class="radio">
-      <%= f.radio_button :pain_location, '腰骨の下(お尻のライン)', id: 'pain_below' %>
-      <%= f.label 'pain_below', '腰骨の下(お尻のライン)' %>
+      <%= radio_button_tag 'pain_location_flexion[pain_location]', '背骨付近', false, id: 'pain_center' %>
+      <%= label_tag 'pain_center', '背骨付近' %>
+    </div>
+
+    <div class="radio">
+      <%= radio_button_tag 'pain_location_flexion[pain_location]', '腰骨の下(お尻のライン)', false, id: 'pain_below' %>
+      <%= label_tag 'pain_below', '腰骨の下(お尻のライン)' %>
     </div>
 
     <div class="button-group">
-      <%= f.submit "次へ進む", class: "btn btn-primary custom-btn btn-lg" %>
+      <%= submit_tag "次へ進む", class: "btn btn-primary custom-btn btn-lg" %>
       <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
     </div>
   <% end %>
 </div>
-</div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const form = document.getElementById("painLocationForm");
-    const radioExternal = document.getElementById("pain_external");
-    const radioCenter = document.getElementById("pain_center");
-    const radioBelow = document.getElementById("pain_below");
-
-    form.addEventListener("submit", function(event) {
-      if (radioExternal.checked) {
-        form.action = "<%= pain_behavior_myofascial_back_pain_path %>";
-      } else if (radioCenter.checked) {
-        form.action = "<%= pain_behavior_intervertebral_disk_path %>";  // 修正済み
-      } else if (radioBelow.checked) {
-        form.action = "<%= pain_behavior_sacroiliac_joint_path %>";
-      }
-      event.preventDefault();  // デフォルトのフォーム送信を防止
-      form.submit();  // 修正後のフォームアクションで送信
-    });
-  });
-</script>

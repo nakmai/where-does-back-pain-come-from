@@ -4,8 +4,6 @@ class GynecologyController < ApplicationController
     end
   
     def submit_gynecology_question
-        Rails.logger.debug "Params: #{params.inspect}" # デバッグ用のパラメータ表示
-    
         # パラメータが配列で送信されることを想定
         if params[:conditions]&.include?('no_specific_issue') # "特に問題なし" にチェックが入っている場合
           redirect_to red_flag_path # red_flag ページにリダイレクト

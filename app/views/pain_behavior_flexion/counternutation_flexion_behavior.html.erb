@@ -1,8 +1,9 @@
 カウンターニューテーション
 <div class="counternutation_flexion_behavior">
+<div class="submit_pain_location_flexion">
   <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: counternutation_flexion_behavior_path, method: :post, local: true do %>
+  <%= form_with url: myofascial_back_pain_flexion_behavior_path, method: :post, local: true do %>
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
       <%= label_tag 'standing_posture', '尾骨を強く押さえながら腰を曲げ伸ばしすると楽な気がする', class: 'form-check-label' %>
@@ -41,5 +42,5 @@
     </div>
   <% end %>
 </div>
-
+</div>
 

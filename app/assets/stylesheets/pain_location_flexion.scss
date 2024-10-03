@@ -16,6 +16,34 @@
         text-align: center; // 説明を中央揃え
     }
 
+    .radio {
+        margin-bottom: 10px; /* 各ラジオボタンの下に余白を追加して縦幅を広げる */
+    }
+    
+    .radio input[type="radio"] {
+        transform: scale(1.5); /* ラジオボタン自体を大きくする */
+        margin-right: 10px; /* ボタンとラベルの間に余白を追加 */
+    }
+    
+    .radio label {
+        font-size: 22px; /* ラベルのフォントサイズを大きくする */
+        line-height: 1.5; /* 縦の間隔を調整 */
+    }
+    
+
+    .radio #pain_external + label {
+        color: red; /* 腰の筋肉を赤に */
+    }
+    
+    .radio #pain_center + label {
+        color: blue; /* 背骨付近を青に */
+    }
+    
+    .radio #pain_below + label {
+        color: darkgreen; /* 腰骨の下(お尻のライン)を深緑に */
+    }
+    
+
     .image-container {
         position: relative;
         margin-bottom: 20px; // 上部の余白を追加

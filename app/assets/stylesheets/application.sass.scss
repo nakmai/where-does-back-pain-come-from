@@ -16,12 +16,12 @@
 @import "pain_location_flexion";
 @import "pain_location_extention";
 @import "pain_location_extention_flexion";
-
-
+@import "flexion_behavior.scss";
 
 body {
-  background-color: #FDF5E6; /* ページ全体の背景色 */
+  background-color: #FDF5E6;
 }
+
 
 .container {
   width: 100%;
@@ -31,6 +31,7 @@ body {
   border: none; /* 必要に応じて境界線も削除 */
   box-shadow: none; /* 影をなくす */
 }
+
 
 .text-center {
   text-align: center; /* テキストを中央揃え */
@@ -65,6 +66,7 @@ body {
   color: black !important;                  // テキストの色を黒に設定
   border: none;                             // 枠線をなしに設定（必要に応じて）
 }
+
 
 // ホバー時のスタイル（必要に応じて）
 .btn.btn-danger:hover {

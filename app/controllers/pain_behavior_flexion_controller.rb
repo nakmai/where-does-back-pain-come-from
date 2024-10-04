@@ -5,24 +5,24 @@ class PainBehaviorFlexionController < ApplicationController
       Rails.logger.debug "Conditions: #{conditions}"
   
       if conditions.include?('nothing')
-        # 椎間板のページに進む
+        # 椎間板のページをレンダリング
         render 'pain_behavior_flexion/intervertebral_disk_flexion_behavior'
       else
-        # 筋膜性腰痛の診断結果ページに進む
+        # 筋膜性腰痛の診断結果ページをレンダリング
         render 'diagnostic_result/myofascial_back_pain'
       end
     end
   
-    # 椎間板の処理
+    # 椎間板ページの処理
     def intervertebral_disk_flexion_behavior
-      conditions = params[:conditions] || []
+      selected_conditions = params[:conditions] || []
   
-      if conditions.include?('nothing')
-        # カウンターニューテーションのページに進む
+      if selected_conditions.include?('nothing')
+        # "nothing" が選択された場合、カウンターニューテーションページをレンダリング
         render 'pain_behavior_flexion/counternutation_flexion_behavior'
       else
-        # 椎間板の診断結果ページに進む
-        render 'diagnostic_result/intervertebral_disk'
+        # 他の選択肢に応じて筋膜性腰痛ページをレンダリング
+        render 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior'
       end
     end
   
@@ -31,10 +31,10 @@ class PainBehaviorFlexionController < ApplicationController
       conditions = params[:conditions] || []
   
       if conditions.include?('nothing')
-        # 筋膜性腰痛ページに戻る
+        # 筋膜性腰痛ページをレンダリング
         render 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior'
       else
-        # カウンターニューテーションの診断結果ページに進む
+        # カウンターニューテーションの診断結果ページをレンダリング
         render 'diagnostic_result/counternutation'
       end
     end

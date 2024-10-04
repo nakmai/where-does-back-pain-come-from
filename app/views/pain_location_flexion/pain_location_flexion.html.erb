@@ -6,7 +6,7 @@
 </div>
 
 <!-- フォームの開始 -->
-<%= form_with url: submit_pain_location_flexion_path, method: :post, local: true, id: "pain-location-form" do %>
+<%= form_with url: submit_pain_location_flexion_path, method: :post, local: true do |f| %>
   <div class="radio">
     <%= radio_button_tag 'pain_location_flexion[pain_location]', '腰の筋肉', false, id: 'pain_external' %>
     <%= label_tag 'pain_external', '腰の筋肉' %>

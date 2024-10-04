@@ -92,8 +92,16 @@ Rails.application.routes.draw do
   post 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
   get 'pain_behavior_flexion/intervertebral_joint_extention_behavior', to: 'pain_behavior_flexion#intervertebral_joint_extention_behavior'
   get 'users/all_form', to: 'users#all_form'
-
-
+    get 'pain_behavior_flextion/myofascial_back_pain_flextion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flextion_behavior'
+  get 'pain_behavior_extention/myofascial_back_pain_extention_behavior', to: 'pain_behavior_extention#myofascial_back_pain_extention_behavior'
+  get 'pain_behavior_extention/intervertebral_disk_extention_behavior', to: 'pain_behavior_extention#intervertebral_disk_extention_behavior'
+  get 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'pain_behavior_flexion_intervertebral_disk_flexion_behavior'
+  post 'pain_behavior_flexion/submit_pain_flexion', to: 'pain_behavior_flexion#submit_pain_flexion'
+  get 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'get_pain_behavior_flexion_intervertebral_disk'
+  post 'pain_behavior_flexion/counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior', as: 'submit_counternutation_flexion_behavior'
+  post 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior', as: 'submit_myofascial_back_pain_flexion_behavior'
+  post 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'submit_intervertebral_disk_flexion_behavior'
+  post 'pain_behavior_flexion/counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior', as: 'submit_counternutation_flexion_behavior_v2'
 
   # 筋膜性腰痛ページの処理
   get 'pain_behavior_extention_flexion/myofascial_back_pain_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior', as: 'myofascial_back_pain_extention_flexion_behavior'
@@ -116,7 +124,7 @@ post 'pain_behavior_extention/myofascial_back_pain_extention_behavior', to: 'pai
   # 椎間板ページの処理
   get 'pain_behavior_extention_flexion/intervertebral_disk_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_disk_extention_flexion_behavior', as: 'intervertebral_disk_extention_flexion_behavior'
   post 'pain_behavior_extention_flexion/intervertebral_disk_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_disk_extention_flexion_behavior'
-  post 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'pain_behavior_flexion_intervertebral_disk_flexion_behavior'
+  post 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'post_pain_behavior_flexion_intervertebral_disk'
 
 
 

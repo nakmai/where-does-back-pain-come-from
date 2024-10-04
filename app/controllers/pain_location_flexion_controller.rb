@@ -3,6 +3,13 @@ class PainLocationFlexionController < ApplicationController
     # ビューをレンダリングするだけの場合
     render 'pain_location_flexion'
   end
+
+
+  def counternutation_flexion_behavior
+    # リダイレクト処理があるか確認
+    # redirect_to xxx がある場合、意図したURLにリダイレクトされているか確認
+
+  end
   
   def submit
     selected_location = params[:pain_location_flexion][:pain_location]

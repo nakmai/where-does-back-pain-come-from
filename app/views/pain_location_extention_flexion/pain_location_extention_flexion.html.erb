@@ -2,10 +2,10 @@
 <h2>一番痛い場所はどこですか？</h2>
 
 <div class="image-container">
-  <%= image_tag "シェーマ図_疼痛部位.png", alt: "人体図", class: "human-body-image" %>
+<%= image_tag "シェーマ図_疼痛部位.png", alt: "人体図", class: "human-body-image" %>
 </div>
 
-<%= form_with url: submit_pain_location_flexion_path, method: :post, local: true, id: 'painLocationForm' do %>
+<%= form_with url: submit_pain_location_extention_flexion_path, method: :post, local: true do %>
   <div class="radio">
     <%= radio_button_tag 'pain_location_flexion[pain_location]', '腰の筋肉', false, id: 'pain_external' %>
     <%= label_tag 'pain_external', '腰の筋肉' %>

@@ -41,7 +41,7 @@ class PainController < ApplicationController
     def pain_scale
       # 何もしない。ビューを表示するだけ。
     end
-  
+
     def submit_pain_scale
       pain_level = params[:pain_level].to_i
     
@@ -52,6 +52,9 @@ class PainController < ApplicationController
       end
     end
 
+  def achlorhydria
+    # 必要な処理をここに追加
+  end
   
     def orthopedics_advice1
       # orthopedics_advice ビューを表示

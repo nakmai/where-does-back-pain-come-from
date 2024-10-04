@@ -1,16 +1,13 @@
-<div class="pain_behavior_myofascial_back_pain">
+
+<div class="myofascial_back_painflextion_behavior">
+<div class="submit_pain_location_flexion">
   <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: pain_behavior_myofascial_back_pain_path, method: :post, local: true, authenticity_token: true do %>
-
+  <%= form_with url: new_myofascial_back_pain_extention_behavior_path, method: :post, local: true do %>
+    <!-- 各チェックボックスの項目 -->
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
-      <%= label_tag 'standing_posture', '長時間立ちっぱなしだと痛みが出る', class: 'form-check-label' %>
-    </div>
-
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
-      <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
+      <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
+      <%= label_tag 'posture', '長時間、同じ姿勢や同じ動作をしていると痛みが出る', class: 'form-check-label' %>
     </div>
 
     <div class="form-check">
@@ -24,7 +21,7 @@
     </div>
 
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'sluggishn', false, class: 'form-check-input', id: 'sluggish' %>
+      <%= check_box_tag 'conditions[]', 'sluggish', false, class: 'form-check-input', id: 'sluggish' %>
       <%= label_tag 'sluggish', '腰が重だるい感じがする', class: 'form-check-label' %>
     </div>
 
@@ -36,15 +33,17 @@
     <br>
 
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
-      <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
-    </div>
+    <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
+    <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
+  </div>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
-      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
+      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn' %>  <!-- submit_tagを使用してフォームを送信 -->
       <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
     </div>
   <% end %>
 </div>
+</div>
+
 
 

@@ -1,7 +1,6 @@
 .intervertebral_disk_flexion_behavior,
 .counternutation_flexion_behavior, /* 修正: 'behavio' -> 'behavior' */
 .intervertebral_joint_flexion_behavior,
-.myofascial_back_pain_flexion_behavior,
 .nutation_flexion_behavior,
 .submit_pain_location_flexion {
   padding: 20px;
@@ -10,6 +9,17 @@
     padding: 20px;
     border-radius: 10px;
     line-height: 1.8;
+    width: 100%; 
+
+.myofascial_back_pain_flexion_behavior {
+  padding: 20px;
+  border-radius: 10px;
+  line-height: 1.8;
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+    width: 100%; 
+   }
   
     h2 {
       font-weight: bold;

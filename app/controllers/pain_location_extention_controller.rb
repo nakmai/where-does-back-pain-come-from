@@ -1,22 +1,31 @@
 class PainLocationExtentionController < ApplicationController
-    def extention
-      render :pain_location_extention
-    end
+  def extention
+    # ビューをレンダリングするだけの場合
+    render 'pain_location_extention'
+  end
 
-    def submit_extention
-      pain_location = params[:pain_location_flexion][:pain_location]
-
-      case pain_location
+  def submit
+    selected_location = params[:pain_location_extention][:pain_location]
+  
+      case selected_location
       when '腰の筋肉'
-        redirect_to pain_behavior_myofascial_back_pain_path
+        # 直接ビューを表示する
+        render 'pain_behavior_extention/myofascial_back_pain_extention_behavior'
       when '背骨付近'
-        redirect_to pain_behavior_intervertebral_joint_path
+        # 直接ビューを表示する
+        render 'pain_behavior_extention/intervertebral_joint_extention_behavior'
       when '腰骨の下(お尻のライン)'
-        redirect_to pain_behavior_sacroiliac_joint_path
+        # 直接ビューを表示する
+        render 'pain_behavior_extention/nutation_extention_behavior'
       else
-        flash[:alert] = "選択してください。"
-        render :pain_location_extention
+        # 無効な選択だった場合にホームにリダイレクト
+        redirect_to root_path, alert: '無効な選択です。'
       end
-    end
+  end
 end
+
+
+
+
+
   

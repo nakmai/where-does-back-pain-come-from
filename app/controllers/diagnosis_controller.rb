@@ -19,6 +19,12 @@ class DiagnosisController < ApplicationController
   def show
     @diagnosis = Diagnosis.find(params[:id])
   end
+
+  def achlorhydria
+    # 必要な処理をここに記述
+    # 例: head :no_content や render 'diagnosis/achlorhydria'
+    render 'diagnosis/achlorhydria' # 対応するビューを表示させる場合
+  end
   
 end
 

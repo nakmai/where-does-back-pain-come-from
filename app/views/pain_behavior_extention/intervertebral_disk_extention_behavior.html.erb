@@ -1,0 +1,39 @@
+
+<div class="intervertebral_disk_flexion_behavior">
+<div class="submit_pain_location_flexion">
+  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+
+  <%= form_with url: pain_behavior_flexion_intervertebral_disk_extention_behavior_path, method: :post, local: true do %>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
+      <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'deep_pain', false, class: 'form-check-input', id: 'deep_pain' %>
+      <%= label_tag 'deep_pain', '骨近くの深層部分が痛い', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'morning_pain', false, class: 'form-check-input', id: 'morning_pain' %>
+      <%= label_tag 'morning_pain', '朝に痛みが起こりやすい', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
+      <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
+    </div>
+
+    <br>
+
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
+      <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
+    </div>
+    <div class="button-group mt-4 d-flex flex-column align-items-center">
+    <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn' %>
+    <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+  </div>
+  <% end %>
+</div>
+</div>
+
+
+

@@ -1,25 +1,14 @@
 class PainBehaviorExtentionController < ApplicationController
-  before_action :check_loop, only: [:myofascial_back_pain_extention_behavior, 
-                                    :intervertebral_joint_extention_behavior, 
-                                    :nutation_extention_behavior]
 
   # 筋膜性腰痛ページの処理
   def myofascial_back_pain_extention_behavior
     conditions = params[:conditions] || []
-    
-    # セッションでサイクルを管理
-    session[:cycle_count] ||= 0
 
     if conditions.include?('nothing')
-      session[:cycle_count] += 1
-      if session[:cycle_count] > 1
-        session[:cycle_count] = 0
-        render 'pain_behavior_extention/myofascial_back_pain_extention_behavior'
-      else
-        render 'pain_behavior_extention/intervertebral_joint_extention_behavior'
-      end
+      # 椎間関節のページに進む
+      render 'pain_behavior_extention/intervertebral_joint_extention_behavior'
     else
-      session[:cycle_count] = 0
+      # 筋膜性腰痛の診断結果ページに進む
       render 'diagnostic_result/myofascial_back_pain'
     end
   end
@@ -29,8 +18,10 @@ class PainBehaviorExtentionController < ApplicationController
     conditions = params[:conditions] || []
 
     if conditions.include?('nothing')
+      # ニューテーションページに進む
       render 'pain_behavior_extention/nutation_extention_behavior'
     else
+      # 椎間関節の診断結果ページに進む
       render 'diagnostic_result/intervertebral_joint'
     end
   end
@@ -40,32 +31,13 @@ class PainBehaviorExtentionController < ApplicationController
     conditions = params[:conditions] || []
 
     if conditions.include?('nothing')
+      # 筋膜性腰痛ページに戻る
       render 'pain_behavior_extention/myofascial_back_pain_extention_behavior'
     else
+      # ニューテーションの診断結果ページに進む
       render 'diagnostic_result/nutation'
     end
   end
-
-  private
-
-  # ループをチェックしてリダイレクトするメソッド
-  def check_loop
-    session[:visited_pages] ||= []  # 訪問したページの履歴をセッションに保存
-    session[:visited_pages] << request.path
-
-    # 各ページが1巡したかをチェック（全ページを1回以上訪問したらリセット）
-    if session[:visited_pages].count(request.path) > 1
-      session[:visited_pages] = []  # ループが発生したら履歴をリセット
-      redirect_to diagnostic_result_incontestable_path and return
-    end
-  end
 end
-
-
-
-
-
-  
-
 
 

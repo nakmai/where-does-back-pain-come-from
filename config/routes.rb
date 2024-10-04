@@ -77,12 +77,23 @@ Rails.application.routes.draw do
 
   # その他のルート
   get 'terms', to: 'pages#terms'
+  get 'diagnosis/achlorhydria', to: 'diagnosis#achlorhydria', as: 'diagnosis_achlorhydria'
 
   # 追加分
   get 'pain_location_extention_flexion/extention_flexion', to: 'pain_location_extention_flexion#extention_flexion'
   post 'pain_behavior_extention_flexion/myofascial_back_pain_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior'
   post 'pain_behavior_extention_flexion/intervertebral_joint_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_joint_extention_flexion_behavior', as: 'pain_behavior_extention_flexion_intervertebral_joint_extention_flexion_behavior'
   post 'pain_behavior_extention_flexion/nutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#nutation_extention_flexion_behavior'
+  post 'pain_behavior_extention_flexion/myofascial_back_pain_extention_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_behavior', as: 'pain_behavior_extention_flexion_myofascial_back_pain_extention_behavior'
+  get 'pain_behavior_extention/myofascial_back_pain_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior', as: 'pain_behavior_extention_myofascial_back_pain_extention_flexion_behavior'
+  get 'pain_behavior_extention/intervertebral_joint_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_joint_extention_flexion_behavior', as: 'pain_behavior_extention_intervertebral_joint_extention_flexion_behavior'
+  get 'pain_behavior_extention/nutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#nutation_extention_flexion_behavior', as: 'pain_behavior_extention_nutation_extention_flexion_behavior'
+  get 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
+  post 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
+  get 'pain_behavior_flexion/intervertebral_joint_extention_behavior', to: 'pain_behavior_flexion#intervertebral_joint_extention_behavior'
+  get 'users/all_form', to: 'users#all_form'
+
+
 
   # 筋膜性腰痛ページの処理
   get 'pain_behavior_extention_flexion/myofascial_back_pain_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior', as: 'myofascial_back_pain_extention_flexion_behavior'
@@ -126,7 +137,7 @@ post 'pain_behavior_extention/myofascial_back_pain_extention_behavior', to: 'pai
   # 椎間関節の処理
   get 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior', as: 'new_intervertebral_joint_extention_behavior'
   post 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior'
-
+  get 'diagnostic_result/intervertebral_joint', to: 'diagnostic_result#intervertebral_joint', as: 'diagnostic_result_intervertebral_joint'
   # ニューテーションページの処理
   get 'pain_behavior_extention/nutation_extention_behavior', to: 'pain_behavior_extention#nutation_extention_behavior', as: 'new_nutation_extention_behavior'
 

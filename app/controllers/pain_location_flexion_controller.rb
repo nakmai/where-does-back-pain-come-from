@@ -13,23 +13,23 @@ class PainLocationFlexionController < ApplicationController
   
   def submit
     selected_location = params[:pain_location_flexion][:pain_location]
-
+  
     case selected_location
     when '腰の筋肉'
-      # ビューを直接レンダリングして確認
+      # '腰の筋肉'が選択された場合、該当するビューをレンダリング
       render 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior'
     when '背骨付近'
-      # ビューを直接レンダリングして確認
+      # '背骨付近'が選択された場合、該当するビューをレンダリング
       render 'pain_behavior_flexion/intervertebral_disk_flexion_behavior'
     when '腰骨の下(お尻のライン)'
-      # ビューを直接レンダリングして確認
+      # '腰骨の下(お尻のライン)'が選択された場合、該当するビューをレンダリング
       render 'pain_behavior_flexion/counternutation_flexion_behavior'
     else
-      redirect_to root_path, alert: '無効な選択です。'
+      # 無効な選択があった場合、ルートページに戻る
+      render 'root', alert: '無効な選択です。'
     end
   end
-end
-
+end 
 
 
 

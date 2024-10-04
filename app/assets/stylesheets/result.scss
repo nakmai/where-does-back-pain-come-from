@@ -1,0 +1,71 @@
+.result-container {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  
+  .diagnosis {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .possibility {
+    font-size: 18px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .button-group {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* ボタンの共通スタイル */
+  .btn-primary, .btn-outline-primary, .btn-lg {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;
+    width: 80%; /* ボタンの幅を揃える */
+  }
+  
+  /* 次へ進むボタン */
+  .btn-primary {
+    background-color: #333399!important;
+    border-color: #333399!important;
+    color: white!important;
+  }
+  
+  .btn-primary:hover {
+    background-color: #1a1a80!important;
+    border-color: #1a1a80!important;
+    color: white!important;
+  }
+  
+  /* 前のページへ戻るボタン */
+  .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: #fff;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  

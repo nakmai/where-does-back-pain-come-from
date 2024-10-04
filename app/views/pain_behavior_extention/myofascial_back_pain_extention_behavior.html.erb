@@ -3,7 +3,7 @@
 <div class="submit_pain_location_flexion">
   <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: new_myofascial_back_pain_extention_behavior_path, method: :post, local: true do %>
+  <%= form_with url: pain_behavior_extention_myofascial_back_pain_extention_behavior_path, method: :post, local: true do %>
     <!-- 各チェックボックスの項目 -->
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
@@ -36,11 +36,16 @@
     <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
     <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
   </div>
+  <br>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
       <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn' %>  <!-- submit_tagを使用してフォームを送信 -->
       <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
     </div>
+ 
+    <div class="button-group mt-4 d-flex flex-column align-items-center">
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
+  </div>
   <% end %>
 </div>
 </div>

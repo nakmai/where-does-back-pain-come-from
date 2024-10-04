@@ -1,9 +1,5 @@
 class PainBehaviorExtentionFlexionController < ApplicationController
-  before_action :check_loop, only: [:myofascial_back_pain_extention_flexion_behavior, 
-                                    :intervertebral_joint_extention_flexion_behavior, 
-                                    :intervertebral_disk_extention_flexion_behavior, 
-                                    :nutation_extention_flexion_behavior, 
-                                    :counternutation_extention_flexion_behavior]
+
 
   # 筋膜性腰痛ページの処理
   def myofascial_back_pain_extention_flexion_behavior
@@ -59,17 +55,8 @@ class PainBehaviorExtentionFlexionController < ApplicationController
       render 'diagnostic_result/counternutation'
     end
   end
-
-  # ループをチェックしてリダイレクトするメソッド
-  def check_loop
-    session[:visited_pages] ||= []  # 訪問したページの履歴をセッションに保存
-    session[:visited_pages] << request.path
-
-    # 各ページが1巡したかをチェック（全ページを1回以上訪問したらリセット）
-    if session[:visited_pages].count(request.path) > 1
-      session[:visited_pages] = []  # ループが発生したら履歴をリセット
-      redirect_to diagnostic_result_incontestable_path and return
-    end
-  end
 end
+
+
+
 

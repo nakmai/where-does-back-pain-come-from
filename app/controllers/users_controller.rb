@@ -42,4 +42,8 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: "無効なデータです"
     end
   end
+
+  def my_page_counternutation
+  end
+  
 end

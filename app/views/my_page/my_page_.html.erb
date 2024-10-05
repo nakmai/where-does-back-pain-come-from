@@ -1,0 +1,33 @@
+<div class="my_page">
+<%= link_to "仙腸関節障害", user_my_page_counternutation_path(current_user), method: :get %>
+
+
+    <%= render 'shared/counternutation_diagnosis' %>
+
+    <!-- ツボセクション -->
+
+       <!-- ストレッチセクション -->
+
+       <%= render 'strech/hamstrings_towel' %>
+
+
+
+        <!-- 運動方法セクション -->
+        <%= render 'rehabilitation/draw_in' %>
+
+    <% if user_signed_in? %>
+  <%= button_to "マイページに登録", user_my_page_path(current_user), method: :post %>
+<% else %>
+  <%= button_to "新規登録ページに飛ぶ", new_user_registration_path %>
+<% end %>
+
+
+    <!-- Buttons Section -->
+    <div class="buttons">
+    <%= button_to "マイページ登録", user_my_page_counternutation_path(current_user), method: :post %>
+        <button class="button-secondary">フォーム棚ページに戻る</button>
+        <button class="button-tertiary">トップページに戻る</button>
+    </div>
+</div>
+
+

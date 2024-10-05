@@ -3,16 +3,11 @@
 <div class="submit_pain_location_flexion">
   <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: nutation_extention_behavior_path, method: :post, local: true do %> <!-- 送信先をpain_behavior_sacroiliac_jointに修正 -->
+  <%= form_with url: nutation_flexion_behavior_path, method: :post, local: true do %> <!-- 送信先をpain_behavior_sacroiliac_jointに修正 -->
     <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
-      <%= label_tag 'standing_posture', '長時間立ちっぱなしだと痛みが出る', class: 'form-check-label' %>
-    </div>
-
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
-      <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
-    </div>
+    <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
+    <%= label_tag 'posture', '仙骨の上を強く押さえながら腰を曲げると楽な気がする', class: 'form-check-label' %>
+  </div>
 
     <div class="form-check">
       <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>

@@ -23,7 +23,7 @@ class PainLocationFlexionController < ApplicationController
       render 'pain_behavior_flexion/intervertebral_disk_flexion_behavior'
     when '腰骨の下(お尻のライン)'
       # '腰骨の下(お尻のライン)'が選択された場合、該当するビューをレンダリング
-      render 'pain_behavior_flexion/counternutation_flexion_behavior'
+      render 'pain_behavior_flexion/nutation_flexion_behavior'
     else
       # 無効な選択があった場合、ルートページに戻る
       render 'root', alert: '無効な選択です。'

@@ -1,10 +1,14 @@
 <div class="result-container">
-<h2>あなたの腰痛は...</h2>
-  <p class="diagnosis">仙腸関節障害（ニューテーション）</p>
+  <h2>あなたの腰痛は...</h2>
+  <%= render 'shared/nutation' %>
   <p class="possibility">の可能性があります</p>
+  
+  <% if user_signed_in? %>
+    <%= link_to '次へ進む', nutation_user_path(current_user), class: 'btn btn-primary' %>
+  <% else %>
+    <%= link_to '次へ進む', nutation_guest_path, class: 'btn btn-primary' %>
+  <% end %>
 
-
-<%= link_to '次へ進む', my_page_path, class: 'btn btn-primary' %>
-<%= link_to '最初から始める', users_all_form_path, class: 'btn btn-outline-primary' %>
-
+  <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+  <%= link_to '最初から始める', users_all_form_path, class: 'btn btn-outline-primary' %>
 </div>

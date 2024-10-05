@@ -1,0 +1,31 @@
+<div class="my_page">
+<div class="my_page">
+  <%= render 'shared/nutation' %>
+
+  <!-- ツボセクション -->
+
+
+  <!-- ストレッチセクション -->
+  <%= render 'strech/hamstrings_towel' %>
+  
+  <!-- 運動方法セクション -->
+  <%= render 'rehabilitation/draw_in' %>
+
+  <!-- マイページ登録ボタン -->
+  <% if user_signed_in? %>
+    <%= button_to "マイページに登録", user_my_page_path(current_user), method: :post %>
+  <% else %>
+    <%= button_to "新規登録ページに飛ぶ", new_user_registration_path %>
+  <% end %>
+
+  <!-- Buttons Section -->
+  <div class="buttons">
+    <% if user_signed_in? %>
+      <%= button_to "マイページ登録", user_my_page_nutation_path(current_user), method: :post, class: "btn btn-primary" %>
+    <% else %>
+      <button class="button-secondary">フォーム欄ページに戻る</button>
+      <button class="button-tertiary">トップページに戻る</button>
+    <% end %> <!-- ここでelseに対応するendを追加 -->
+  </div>
+</div>
+

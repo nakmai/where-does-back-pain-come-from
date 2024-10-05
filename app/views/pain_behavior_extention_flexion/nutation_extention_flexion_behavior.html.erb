@@ -2,26 +2,26 @@
   <div class="submit_pain_location_flexion">
     <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-    <%= form_with url: counternutation_extention_flexion_behavior_path, method: :post, local: true do %>
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
-        <%= label_tag 'standing_posture', '尾骨を強く押さえながら腰を反らすと楽な気がする', class: 'form-check-label' %>
-      </div>
+    <%= form_with url: nutation_extention_flexion_behavior_path, method: :post, local: true do %>
+   <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
+    <%= label_tag 'posture', '仙骨の上を強く押さえながら腰を曲げると楽な気がする', class: 'form-check-label' %>
+  </div>
 
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
-        <%= label_tag 'uncomfortable_feeling', '痛みの出ている方の足で片足立をすると腰に痛みや違和感が出る', class: 'form-check-label' %>
-      </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
+      <%= label_tag 'uncomfortable_feeling', '痛みの出ている方の足で片足立をすると腰に痛みや違和感が出る', class: 'form-check-label' %>
+    </div>
 
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'a_feeling_of_unease', false, class: 'form-check-input', id: 'a_feeling_of_unease' %>
-        <%= label_tag 'a_feeling_of_unease', '太ももやお尻にも痛みや違和感が出る', class: 'form-check-label' %>
-      </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'a_feeling_of_unease', false, class: 'form-check-input', id: 'a_feeling_of_unease' %>
+      <%= label_tag 'a_feeling_of_unease', '太ももやお尻にも痛みや違和感が出ている', class: 'form-check-label' %>
+    </div>
 
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
-        <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
-      </div>
+    <div class="form-check">
+    <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
+    <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
+  </div>
 
       <br>
 

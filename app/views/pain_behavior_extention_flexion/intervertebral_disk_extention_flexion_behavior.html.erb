@@ -1,23 +1,23 @@
 <div class="counternutation_flexion_behavior">
   <div class="submit_pain_location_flexion">
     <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
-    <%= form_with url: pain_behavior_extention_flexion_counternutation_extention_flexion_behavior_path, method: :post, local: true do %>
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
-        <%= label_tag 'standing_posture', '尾骨を強く押さえながら腰を反らすと楽な気がする', class: 'form-check-label' %>
-      </div>
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
-        <%= label_tag 'uncomfortable_feeling', '痛みの出ている方の足で片足立をすると腰に痛みや違和感が出る', class: 'form-check-label' %>
-      </div>
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'a_feeling_of_unease', false, class: 'form-check-input', id: 'a_feeling_of_unease' %>
-        <%= label_tag 'a_feeling_of_unease', '太ももやお尻にも痛みや違和感が出る', class: 'form-check-label' %>
-      </div>
-      <div class="form-check">
-        <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
-        <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
-      </div>
+    <%= form_with url: pain_behavior_extention_flexion_intervertebral_disk_extention_flexion_behavior_path, method: :post, local: true do %>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
+      <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'deep_pain', false, class: 'form-check-input', id: 'deep_pain' %>
+      <%= label_tag 'deep_pain', '骨近くの深層部分が痛い', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'morning_pain', false, class: 'form-check-input', id: 'morning_pain' %>
+      <%= label_tag 'morning_pain', '朝に痛みが起こりやすい', class: 'form-check-label' %>
+    </div>
+    <div class="form-check">
+      <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
+      <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
+    </div>
       <br>
       <div class="form-check">
         <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>

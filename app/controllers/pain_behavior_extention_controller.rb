@@ -18,7 +18,7 @@ class PainBehaviorExtentionController < ApplicationController
     end
   end
 
-  # 椎間板ページの処理
+  # 椎間関節ページの処理
   def intervertebral_joint_extention_behavior
     conditions = params[:conditions] || []
     if conditions.include?('nothing')

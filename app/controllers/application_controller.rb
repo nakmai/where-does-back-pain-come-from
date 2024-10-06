@@ -1,26 +1,40 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception  
+  # Devise のヘルパーメソッドを使えるようにする
+  include Devise::Controllers::Helpers
+  
+  # CSRF対策
+  protect_from_forgery with: :exception
 
-    def after_sign_in_path_for(resource)
-      after_sign_in_path # ログイン後に after_sign_in ページにリダイレクト
-      stored_location_for(resource_or_scope) || root_path
+  # ログイン前にいたページを保存する
+  before_action :store_user_location!, if: :storable_location?
+
+  # サインイン後にリダイレクトするパスを決定する
+  def after_sign_in_path_for(resource)
+    if params[:return_to].present?
+      return params[:return_to]
     end
     
-    def after_sign_out_path_for(resource_or_scope)
-        logout_complete_path # ログアウト後はログアウト完了ページにリダイレクト
-    end
-
-    private
-    
-      # ユーザーがアクセスしたページのURLを保存
-    def store_user_location!
-      store_location_for(:user, request.fullpath)
-    end
-
-  # 保存するべきリクエストかどうかを判定
-    def storable_location?
-      request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
-    end
+    # 保存された場所、もしくはデフォルトのページ
+    stored_location_for(resource) || my_page_myofascial_back_pain_path(resource)  # デフォルトをマイページに
   end
+
+  # サインアウト後にリダイレクトするパスを決定する
+  def after_sign_out_path_for(resource_or_scope)
+    logout_complete_path  # ログアウト後にログアウト完了ページにリダイレクト
+  end
+
+  private
+
+  # GETリクエストで、Devise コントローラではなく、AJAXリクエストでもない場合、URLを保存する
+  def storable_location?
+    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+  end
+
+  # ログイン前にいたページのURLを保存する
+  def store_user_location!
+    store_location_for(:user, request.fullpath)
+  end
+end
+
   
   

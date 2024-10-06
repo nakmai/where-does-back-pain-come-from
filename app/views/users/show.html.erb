@@ -1,0 +1,39 @@
+<div class="my_page">
+  <%= render 'shared/myofascial_back_pain' %>
+
+  <!-- ツボセクション -->
+
+  <!-- ストレッチセクション -->
+  <%= render 'strech/hamstrings_towel' %>
+  
+  <!-- 運動方法セクション -->
+  <%= render 'rehabilitation/draw_in' %>
+
+  <!-- マイページ登録ボタン -->
+  <% if user_signed_in? %>
+   <% if user_signed_in? %>
+  <%= button_to "マイページに登録", copy_myofascial_back_pain_user_path(current_user), method: :post, class: 'btn btn-primary' %>
+<% else %>
+  <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
+<% end %>
+    <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>
+  <% end %>
+
+  <!-- Buttons Section -->
+  <div class="buttons">
+    <% if user_signed_in? %>
+      <!-- 他のリンク -->
+      <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>
+      <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
+    <% end %> <!-- ここでelseに対応するendを追加 -->
+  </div>
+</div>
+
+<script>
+  document.getElementById("register_button").addEventListener("click", function(event) {
+    event.preventDefault();  // デフォルトの動作を防ぐ
+    var form = this.closest("form");
+    form.submit();  // まずフォームを送信
+
+</script>
+

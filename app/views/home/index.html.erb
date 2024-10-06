@@ -10,10 +10,19 @@
   <div class="buttons mt-4">
     <!-- ボタンのBootstrapクラスを適用 -->
     <a href="<%= terms_path %>" class="btn btn-primary custom-btn btn-lg">さっそく始める！</a>
-    <a href="<%= new_user_session_path %>" class="btn btn-dark login-btn mb-3">ログイン</a>
-    <a href="<%= new_user_registration_path %>" class="btn btn-outline-secondary signup-btn">新規登録</a>
+
+    <!-- サインイン状態によってボタン表示を切り替える -->
+    <% if user_signed_in? %>
+      <!-- ログインしている場合 -->
+      <%= link_to "マイページに行く", users_profile_page_path(current_user), class: "btn btn-primary" %>
+    <% else %>
+      <!-- サインインしていない場合 -->
+      <a href="<%= new_user_session_path %>" class="btn btn-dark login-btn mb-3">ログイン</a>
+      <a href="<%= new_user_registration_path %>" class="btn btn-outline-secondary signup-btn">新規登録</a>
+    <% end %>
   </div>
 </div>
+
 
 
 

@@ -13,9 +13,11 @@
 
   <!-- マイページ登録ボタン -->
   <% if user_signed_in? %>
-    <%= button_to "マイページに登録", user_my_page_path(current_user), method: :post %>
+    <!-- 会員がサインインしている場合、会員用のルートを使用 -->
+    <%= link_to '次へ進む', nutation_user_path(current_user), class: 'btn btn-primary' %>
   <% else %>
-    <%= button_to "新規登録ページに飛ぶ", new_user_registration_path %>
+    <!-- ゲスト用のルートを使用 -->
+    <%= link_to '次へ進む', nutation_guest_path, class: 'btn btn-primary' %>
   <% end %>
 
   <!-- Buttons Section -->

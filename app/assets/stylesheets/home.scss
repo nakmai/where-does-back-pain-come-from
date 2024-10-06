@@ -29,17 +29,32 @@ body {
   text-decoration: none;
 }
 
-.start-btn {
-  background-color: #ADD8E6;
-  color: #2E2A71;
+a.start-btn {
+  background-color: #ADD8E6 !important;
+  color: #2E2A71 !important;
 }
 
-.login-btn {
+a.start-btn :hover{
+  background-color: #ADD8E6 !important;
+  color: #2E2A71 !important;
+}
+
+a.login-btn {
+  background-color: #2E2A71;
+  color: white;
+}
+a.login-btn :hover{
   background-color: #2E2A71;
   color: white;
 }
 
-.signup-btn {
+a.signup-btn {
+  background-color: #FFFFFF;
+  color: #2E2A71;
+  border: 2px solid #2E2A71;
+}
+
+a.signup-btn :hover {
   background-color: #FFFFFF;
   color: #2E2A71;
   border: 2px solid #2E2A71;

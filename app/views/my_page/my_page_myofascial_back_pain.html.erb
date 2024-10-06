@@ -3,7 +3,6 @@
 
   <!-- ツボセクション -->
 
-
   <!-- ストレッチセクション -->
   <%= render 'strech/hamstrings_towel' %>
   
@@ -11,21 +10,26 @@
   <%= render 'rehabilitation/draw_in' %>
 
   <!-- マイページ登録ボタン -->
-  <% if user_signed_in? %>
-    <%= button_to "マイページに登録", user_my_page_path(current_user), method: :post %>
-  <% else %>
-    <%= button_to "新規登録ページに飛ぶ", new_user_registration_path %>
-  <% end %>
-
-  <!-- Buttons Section -->
   <div class="buttons">
     <% if user_signed_in? %>
-      <%= button_to "マイページ登録", user_my_page_myofascial_back_pain_path(current_user), method: :post, class: "btn btn-primary" %>
+      <%= button_to "マイページに登録", copy_myofascial_back_pain_user_path(current_user), method: :post, class: 'btn btn-primary', id: 'register_button' %>
     <% else %>
-      <button class="button-secondary">フォーム欄ページに戻る</button>
-      <button class="button-tertiary">トップページに戻る</button>
-    <% end %> <!-- ここでelseに対応するendを追加 -->
+      <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
+      <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>
+    <% end %>
+
+    <!-- サインインしているかに関係なく表示されるボタン -->
+    <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>
+    <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
   </div>
 </div>
+
+<script>
+  document.getElementById("register_button")?.addEventListener("click", function(event) {
+    event.preventDefault();  // デフォルトの動作を防ぐ
+    var form = this.closest("form");
+    form.submit();  // まずフォームを送信
+  });
+</script>
 
 

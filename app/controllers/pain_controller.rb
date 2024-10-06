@@ -1,5 +1,7 @@
 class PainController < ApplicationController
-    def red_flag
+
+  
+  def red_flag
       # フォーム表示用アクション
       flash.clear
     end

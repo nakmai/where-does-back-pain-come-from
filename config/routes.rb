@@ -5,32 +5,46 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+  devise_scope :user do
+    post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'
+  end
 
   # ユーザー関連のルート
   resources :users, only: [:create] do
     collection do
-      get 'all_form'
       post 'submit_form'
+    end
+  end
+
+  resources :users, only: [] do
+    collection do
+      get 'all_form', to: 'users#all_form'
     end
   end
 
   resources :users do
     member do
+
+      get 'profile_page'
       post 'my_page' 
       get 'my_page_myofascial_back_pain'
-      get 'my_page_counternutation'# POSTリクエストでマイページに登録
+      post 'my_page_myofascial_back_pain', to: 'users#my_page_myofascial_back_pain'
+      post 'users/copy_myofascial_back_pain', to: 'users#copy_myofascial_back_pain', as: 'copy_myofascial_back_pain'
+      get 'my_page_counternutation'
       get 'my_page_intervertebral_disk'
       get 'my_page_intervertebral_joint'
-      get 'my_page_nutation'    
+      get 'my_page_nutation'
+
       # flexion_behavior
       get 'myofascial_back_pain_flexion_behavior'
       get 'intervertebral_disk_flexion_behavior'
       get 'counternutation_flexion_behavior'
-
+      # extention_behavior
       get 'myofascial_back_pain_extention_behavior'
       get 'intervertebral_joint_extention_behavior'
       get 'nutation_extention_behavior'
-
+      get 'counternutation_extention_behavior'
+      # extention_flexion_behavior
       get 'myofascial_back_pain_extention_flexion_behavior'
       get 'intervertebral_joint_extention_flexion_behavior'
       get 'intervertebral_disk_extention_flexion_behavior'
@@ -38,28 +52,33 @@ Rails.application.routes.draw do
       get 'counternutation_extention_flexion_behavior'
     end
   end
+  get 'profile_page', to: 'users#profile_page', as: 'user_profile_page'
+
+
+  
 
   # ゲスト用のルートを追加
   get 'my_page_myofascial_back_pain_guest', to: 'my_page#my_page_myofascial_back_pain_guest'
+  get 'guestcounternutation', to: 'my_page#my_page_counternutation', as: 'counternutation_guest'
+  get 'guest_intervertebral_disk', to: 'my_page#my_page_intervertebral_disk', as: 'intervertebral_disk_guest'
+  get 'guestintervertebral_joint', to: 'my_page#my_page_intervertebral_joint', as: 'intervertebral_joint_guest'
+  get 'guest_nutation', to: 'my_page#my_page_nutation', as: 'nutation_guest'
   get 'my_page_counternutation_guest', to: 'my_page#counternutation_guest'
-  get 'my_page_intervertebral_disk_guest', to: 'my_page#intervertebral_disk_guest'  
-  get 'my_page_intervertebral_joint_guest', to: 'my_page#intervertebral_joint_guest'
-  get 'my_page_nutation_guest', to: 'my_page#nutation_guest'
-  get 'my_page_counternutation_guest', to: 'my_page#counternutation_guest', as: 'counternutation_guest'
+  
   # flexion_behavior
   get 'guest_myofascial_back_pain_flexion', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
   get 'guest_intervertebral_disk_flexion', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior'
   get 'guest_counternutation_flexion', to: 'pain_behavior_flexion#counternutation_flexion_behavior'
   get 'nutation_guest', to: 'pain_behavior_flexion#rnutation_flexion_behavior'
   get 'guest_counternutation_flexion', to: 'pain_behavior_flexion#counternutation_flexion_behavior'
-  get 'intervertebral_disk_guest', to: 'diagnostic_result#intervertebral_disk_guest', as: 'intervertebral_disk_guest'
+  
 
   # extention_behavior
   get 'guest_myofascial_back_pain_extention', to: 'pain_behavior_extention#myofascial_back_pain_extention_behavior'
-  get 'guest_intervertebral_joint_extention', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior'
+  get 'guest_intervertebral_joint', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior'
   get 'guest_nutation_extention', to: 'pain_behavior_extention#nutation_extention_behavior'
   get 'intervertebral_joint_guest', to: 'pain_behavior_extention#intervertebral_joint_guest'
-
+  get 'guest_counternutation_extention', to: 'pain_behavior_extention_flexion#counternutation_extention_behavior'
   
   # extention_flexion_behavior
   get 'guest_myofascial_back_pain_extention_flexion', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior'
@@ -67,6 +86,15 @@ Rails.application.routes.draw do
   get 'guest_intervertebral_disk_extention_flexion', to: 'pain_behavior_extention_flexion#intervertebral_disk_extention_flexion_behavior'
   get 'guest_nutation_extention_flexion', to: 'pain_behavior_extention_flexion#nutation_extention_flexion_behavior'
   get 'guest_counternutation_extention_flexion', to: 'pain_behavior_extention_flexion#counternutation_extention_flexion_behavior'
+
+  #purofile
+  get 'users/profile_page', to: 'users#profile_page', as: 'users_profile_page'
+
+ 
+
+
+
+
 
 
   # ホームページとログイン後のページ
@@ -134,6 +162,7 @@ Rails.application.routes.draw do
   get 'terms', to: 'pages#terms'
   get 'diagnosis/achlorhydria', to: 'diagnosis#achlorhydria', as: 'diagnosis_achlorhydria'
   get 'users/all_form', to: 'users#all_form', as: 'users_all_form'
+
 
 
   # 追加分

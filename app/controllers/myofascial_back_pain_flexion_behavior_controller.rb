@@ -7,4 +7,3 @@ class MyofascialBackPainFlexionBehaviorController < ApplicationController
         render 'my_page/my_page_myofascial_back_pain'
       end
     end
-end

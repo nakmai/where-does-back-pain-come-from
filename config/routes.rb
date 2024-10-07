@@ -5,6 +5,21 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }
+
+  # ゲストページ
+  get 'guest/counternutation', to: 'users/guest#counternutation', as: :guest_counternutation
+  get 'guest/intervertebral_disk', to: 'users/guest#intervertebral_disk', as: :guest_intervertebral_disk
+  get 'guest/intervertebral_joint', to: 'users/guest#intervertebral_joint', as: :guest_intervertebral_joint
+  get 'guest/myofascial_back_pain', to: 'users/guest#myofascial_back_pain', as: :guest_myofascial_back_pain
+  get 'guest/nutation', to: 'users/guest#nutation', as: :guest_nutation
+
+  # ユーザーページ
+  get 'user/counternutation', to: 'users#counternutation', as: :user_counternutation
+  get 'user/intervertebral_disk', to: 'users#intervertebral_disk', as: :user_intervertebral_disk
+  get 'user/intervertebral_joint', to: 'users#intervertebral_joint', as: :user_intervertebral_joint
+  get 'user/myofascial_back_pain', to: 'users#myofascial_back_pain', as: :user_myofascial_back_pain
+  get 'user/nutation', to: 'users#nutation', as: :user_nutation
+
   devise_scope :user do
     post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'
   end
@@ -164,8 +179,8 @@ Rails.application.routes.draw do
   get 'intervertebral_joint_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_joint_extention_flexion_behavior'
  get 'pain_behavior_extention_flexion/myofascial_back_pain_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#myofascial_back_pain_extention_flexion_behavior'
  delete 'myofascial_back_pain_guest', to: 'my_page#destroy_myofascial_back_pain_guest', as: 'my_page_destroy_myofascial_back_pain_guest'
-get 'guest_myofascial_back_pain', to: 'my_page#myofascial_back_pain_guest', as: 'guest_myofascial_back_pain'
-get 'guest_intervertebral_disk', to: 'my_page#intervertebral_disk_guest', as: 'guest_intervertebral_disk'
+
+
 
 get 'my_page_counternutation_guest', to: 'users#counternutation_guest', as: 'my_page_counternutation_guest_user'
 get 'guest_intervertebral_joint', to: 'my_page#intervertebral_joint_guest', as: 'guest_intervertebral_joint_page'
@@ -180,7 +195,7 @@ get 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'my_p
 
 post 'users/add_bookmark', to: 'users#add_bookmark', as: 'add_bookmark'
 
-
+get 'new_guest_intervertebral_joint', to: 'users#guest_page', as: :guest_intervertebral_joint_path
 
 
 

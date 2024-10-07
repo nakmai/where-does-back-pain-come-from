@@ -14,16 +14,23 @@ class User < ApplicationRecord
 
   # registered_pagesにブックマーク（URL）を追加
   def add_bookmark(url:, name:)
-    self.registered_pages ||= []  # registered_pages が nil の場合は空の配列を初期化
-
-    # ブックマークとして保存するデータをハッシュとして扱う
+    self.registered_pages ||= []  # nilの場合は空の配列を初期化
     bookmark = { name: name, url: url }
-
-    # 同じ URL がすでに登録されていないかを確認し、登録されていなければ追加
-    unless self.registered_pages.any? { |b| b.is_a?(Hash) && b[:url] == url }
+    
+    # URLが重複していないかチェックしてから追加
+    unless self.registered_pages.any? { |b| b[:url] == url }
       self.registered_pages << bookmark
       save
     end
+  end
+
+  def remove_bookmark(url)
+    self.registered_pages ||= []  # nilの場合は空の配列を初期化
+    
+    # URLに該当するブックマークを削除
+    self.registered_pages.delete_if { |bookmark| bookmark[:url] == url }
+    
+    save  # 保存
   end
 
   private

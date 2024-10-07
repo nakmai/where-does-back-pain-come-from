@@ -1,5 +1,6 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    skip_before_action :store_user_location!
     def create
       # ユーザーデータが存在しない場合
       if params[:user].nil?
@@ -41,16 +42,30 @@ module Users
 
     # 新規登録後のリダイレクト先を決定
     def after_sign_up_path_for(resource)
-      # セッションに保存されたURLがあればそこにリダイレクト
       stored_location = session[:user_return_to]
-      if stored_location.present?
-        session.delete(:user_return_to) # 一度リダイレクトしたらセッションから削除
-        stored_location
-      else
-        # トップページから来た場合は特定のページにリダイレクト
-        after_sign_in_path
+      Rails.logger.debug "Stored location: #{stored_location}"
+        if stored_location.present?
+          case stored_location
+          when guest_counternutation_path
+            return user_counternutation_path(resource)
+          when guest_intervertebral_disk_path
+            return user_intervertebral_disk_path(resource)
+          when guest_intervertebral_joint_path
+            return user_intervertebral_joint_path(resource)
+          when guest_myofascial_back_pain_path
+            return user_myofascial_back_pain_path(resource)
+          when guest_nutation_path
+            return user_nutation_path(resource)
+          else
+            after_sign_in_path_for(resource)
+          end
+        else
+          after_sign_in_path_for(resource)
+        end
       end
     end
+      
+    
 
     private
 
@@ -64,4 +79,4 @@ module Users
       params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
     end
   end
-end
+

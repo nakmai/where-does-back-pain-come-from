@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :store_user_location!, if: :storable_location?
 
+
+  # フォーム処理アクション
   def all_form
     render 'users/all_form'
   end
@@ -35,94 +36,49 @@ class UsersController < ApplicationController
     end
   end
 
-  def counternutation_user
+  # ユーザー用ページのアクション
+  def user_page
     if user_signed_in?
-      render 'users/user/counternutation'  # ユーザー用テンプレートをレンダリング
+      render @user_template
     else
-      redirect_to my_page_counternutation_guest_path  # ログインしていない場合はゲスト用ページへリダイレクト
+      redirect_to @guest_redirect_path
     end
   end
 
-  # ゲスト用のcounternutationページを表示するアクション
-  def counternutation_guest
+  # ゲスト用ページのアクション
+  def guest_page
     unless user_signed_in?
-      render 'users/guest/counternutation'  # ゲスト用テンプレートをレンダリング
+      render @guest_template
     else
-      redirect_to my_page_counternutation_user_path  # ログインしている場合はユーザー用ページへリダイレクト
-    end
-  end
-  def intervertebral_disk_user
-    if user_signed_in?
-      render 'users/user/intervertebral_disk'
-    else
-      redirect_to my_page_intervertebral_disk_guest_path
+      redirect_to @user_redirect_path
     end
   end
 
-  def intervertebral_disk_guest
-    unless user_signed_in?
-      render 'users/guest/intervertebral_disk'
-    else
-      redirect_to my_page_intervertebral_disk_user_path
-    end
+  def counternutation
+    render 'users/user/counternutation'
   end
 
-  # Intervertebral Joint
-  def intervertebral_joint_user
-    if user_signed_in?
-      render 'users/user/intervertebral_joint'
-    else
-      redirect_to my_page_intervertebral_joint_guest_path
-    end
+  def intervertebral_disk
+    render 'users/user/intervertebral_disk'
   end
 
-  def intervertebral_joint_guest
-    unless user_signed_in?
-      render 'users/guest/intervertebral_joint'
-    else
-      redirect_to my_page_intervertebral_joint_user_path
-    end
+  def intervertebral_joint
+    render 'users/user/intervertebral_joint'
   end
 
-  # Myofascial Back Pain
-  def myofascial_back_pain_user
-    if user_signed_in?
-      render 'users/user/myofascial_back_pain'
-    else
-      redirect_to my_page_myofascial_back_pain_guest_path
-    end
+  def myofascial_back_pain
+    render 'users/user/myofascial_back_pain'
   end
 
-  def myofascial_back_pain_guest
-    unless user_signed_in?
-      render 'users/guest/myofascial_back_pain'
-    else
-      redirect_to my_page_myofascial_back_pain_user_path
-    end
-    render 'diagnostic_result/myofascial_back_pain'
+  def nutation
+    render 'users/user/nutation'
   end
 
-  # Nutation
-  def nutation_user
-    if user_signed_in?
-      render 'users/user/nutation'
-    else
-      redirect_to my_page_nutation_guest_path
-    end
-  end
-
-  def nutation_guest
-    unless user_signed_in?
-      render 'users/guest/nutation'
-    else
-      redirect_to my_page_nutation_user_path
-    end
-  end
-
+  # ブックマーク追加・削除
   def add_bookmark
     url = params[:url]
     name = params[:name]
-  
+
     if url.present? && name.present?
       current_user.add_bookmark(url: url, name: name)  # キーワード引数を渡す
       redirect_to profile_page_user_path(current_user.id), notice: "ページをマイページに登録しました。"
@@ -130,10 +86,10 @@ class UsersController < ApplicationController
       redirect_to profile_page_user_path(current_user.id), alert: "ブックマークするページが指定されていません。"
     end
   end
-  
+
   def remove_bookmark
     url = params[:url]
-    
+
     if url.present?
       current_user.remove_bookmark(url)
       redirect_to profile_page_user_path(current_user.id), notice: "ブックマークを削除しました。"
@@ -148,37 +104,52 @@ class UsersController < ApplicationController
     redirect_to profile_page_user_path(current_user.id), notice: "全てのブックマークを削除しました。"
   end
 
-  def my_page
+  # プロフィールページ
+  def profile_page
     @user = User.find(params[:id])
-    # ここに必要なロジックを追加
+    @bookmarks = @user.registered_pages || []
+    render 'users/profile/profile_page'
   end
-  
 
+  # インデックスと詳細ページ
+  def index
+    @user = current_user  # 現在サインインしているユーザーを取得
+  end
 
-# プロフィールページ
-def profile_page
-  @bookmarks = current_user.registered_pages || []
-  Rails.logger.debug "ブックマークデータ: #{@bookmarks.inspect}"
+  def show
+    @user = User.find(params[:id])
+    @bookmarks = @user.registered_pages || []
+  end
+
+  private
+
+  def set_template_paths
+    case action_name
+    when 'counternutation_user', 'counternutation_guest'
+      @user_template = 'users/user/counternutation'
+      @guest_template = 'users/guest/counternutation'
+      @guest_redirect_path = my_page_counternutation_guest_path
+      @user_redirect_path = my_page_counternutation_user_path
+    when 'intervertebral_disk_user', 'intervertebral_disk_guest'
+      @user_template = 'users/user/intervertebral_disk'
+      @guest_template = 'users/guest/intervertebral_disk'
+      @guest_redirect_path = my_page_intervertebral_disk_guest_path
+      @user_redirect_path = my_page_intervertebral_disk_user_path
+    when 'intervertebral_joint_user', 'intervertebral_joint_guest'
+      @user_template = 'users/user/intervertebral_joint'
+      @guest_template = 'users/guest/intervertebral_joint'
+      @guest_redirect_path = my_page_intervertebral_joint_guest_path
+      @user_redirect_path = my_page_intervertebral_joint_user_path
+    when 'myofascial_back_pain_user', 'myofascial_back_pain_guest'
+      @user_template = 'users/user/myofascial_back_pain'
+      @guest_template = 'users/guest/myofascial_back_pain'
+      @guest_redirect_path = my_page_myofascial_back_pain_guest_path
+      @user_redirect_path = my_page_myofascial_back_pain_user_path
+    when 'nutation_user', 'nutation_guest'
+      @user_template = 'users/user/nutation'
+      @guest_template = 'users/guest/nutation'
+      @guest_redirect_path = my_page_nutation_guest_path
+      @user_redirect_path = my_page_nutation_user_path
+    end
+  end
 end
-
-def index
-  @user = current_user  # 現在サインインしているユーザーを取得
-end
-
-def show
-  Rails.logger.debug "params[:id]: #{params[:id]}"  # params[:id] の内容を確認
-  @user = User.find(params[:id])
-  @bookmarks = @user.registered_pages || []
-end
-
-# my_pageアクション
-def profile_page
-  @user = User.find(params[:id])
-  @bookmarks = @user.registered_pages || []
-  render 'users/profile/profile_page'
-end
-
-end
-
-
-

@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
   # Devise のヘルパーメソッドを使えるようにする
-  include Devise::Controllers::Helpers
-  before_action :authenticate_user!
-  skip_before_action :authenticate_user!
+
+
+
   # CSRF対策
   protect_from_forgery with: :exception
 
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
 
   # ログイン前にいたページのURLを保存する
   def store_user_location!
-    store_location_for(:user, request.fullpath)
+    session[:user_return_to] = request.fullpath if request.get? && !devise_controller? && !request.xhr?
   end
 end
 

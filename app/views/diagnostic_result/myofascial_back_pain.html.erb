@@ -2,18 +2,30 @@
   <h2>あなたの腰痛は...</h2>
   <%= render 'shared/myofascial_back_pain' %>
   <p class="possibility">の可能性があります</p>
-  
+
+  <br>
+
   <% if user_signed_in? %>
- <%= link_to '次へ進む', my_page_myofascial_back_pain_user_path(current_user.id, current_user.id), class: 'btn btn-primary' %>
+    <!-- 次へ進むボタン for signed in user -->
+    <%= link_to '次へ進む', my_page_myofascial_back_pain_user_path(current_user.id, current_user.id), class: 'btn btn-primary btn-lg next custom-btn' %>
+  <% else %>
+    <!-- 次へ進むボタン for guest user -->
+    <%= link_to '次へ進む', guest_myofascial_back_pain_path, class: 'btn btn-primary btn-lg next custom-btn' %>
+  <% end %>
 
-<% else %>
-  <%= link_to '次へ進む', guest_myofascial_back_pain_path, class: 'btn btn-primary' %>
-<% end %>
+  <!-- 前のページへ戻るボタン -->
+  <a href="javascript:window.history.go(-1);" class="btn btn-secondary btn-lg before custom-btn">前のページへ戻る</a>
+  
+  <div class="button-group mt-4 d-flex flex-column align-items-center">
+    <!-- 痛みの動作に戻るボタン -->
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-warning btn-lg operation custom-btn' %>
+  </div>
+  <br>
+  <br>
 
-
-
-
-  <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
-  <%= link_to '最初から始める', users_all_form_path, class: 'btn btn-outline-primary' %>
+  <!-- 最初から始めるボタン -->
+  <%= link_to '最初から始める', users_all_form_path, class: 'btn btn-outline-primary btn-lg first custom-btn' %>
 </div>
+
+
 

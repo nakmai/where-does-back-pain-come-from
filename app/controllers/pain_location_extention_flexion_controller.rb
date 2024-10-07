@@ -1,4 +1,5 @@
 class PainLocationExtentionFlexionController < ApplicationController
+ 
   def extention_flexion
     render 'pain_location_extention_flexion/pain_location_extention_flexion'
   end

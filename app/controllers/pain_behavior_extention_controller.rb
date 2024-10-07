@@ -1,6 +1,5 @@
 class PainBehaviorExtentionController < ApplicationController
   
- 
   # 筋膜性腰痛ページの処理
   def myofascial_back_pain_extention_behavior
     conditions = params[:conditions] || []

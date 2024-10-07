@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
   before_action :store_user_location!, if: :storable_location?
-  before_action :authenticate_user!
-  
+
   def all_form
     render 'users/all_form'
   end
@@ -149,7 +148,10 @@ class UsersController < ApplicationController
     redirect_to profile_page_user_path(current_user.id), notice: "全てのブックマークを削除しました。"
   end
 
-
+  def my_page
+    @user = User.find(params[:id])
+    # ここに必要なロジックを追加
+  end
   
 
 

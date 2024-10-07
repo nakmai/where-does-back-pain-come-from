@@ -1,0 +1,82 @@
+.result-container {
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+    text-align: center; /* コンテンツ全体を中央寄せ */
+    
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .pain-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 20px 0;
+      font-size: 1.5rem;
+      text-align: left;
+      width: 100%;
+      max-width: 350px;
+    }
+  
+    .pain-list li {
+      margin: 10px 0;
+      font-weight: bold;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    // カスタムボタンの共通スタイル
+    .custom-btn {
+      width: 100%;
+      max-width: 300px; /* 幅を調整 */
+      padding: 15px 20px; /* 十分なパディングを設定 */
+      font-size: 16px; /* ボタン内のテキストサイズ */
+      margin-bottom: 10px; /* 各ボタンの間隔 */
+      text-align: center;
+      border-radius: 10px; /* ボタンの角を丸くする */
+      text-decoration: none;
+      font-weight: bold;
+    }
+  
+    // 次へ進むボタン
+    .next {
+        background-color: #333399;
+        border-color: #333399;
+        font-weight: bold;
+    }
+  
+    // 前の質問へ戻るボタン
+    .before {
+        color: #007bff;
+        border-color: #007bff;
+        background-color: #007bff;
+        color: white;
+    }
+  
+    // 痛みの動作に戻るボタン
+    .operation {
+        background-color:#59626A;
+        color: white;
+        border: 2px solid #59626A;
+    }
+  
+    // 最初から始めるボタン
+    .first {
+      background-color: transparent;
+      color:  #333399;; /* 青いテキスト */
+      border:transparent;
+    }
+  
+
+  }
+  
+  
+  

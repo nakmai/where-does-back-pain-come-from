@@ -2,9 +2,9 @@ class User < ApplicationRecord
   # Devise のモジュール設定
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
+
   # registered_pages を配列として扱う
-  serialize :registered_pages, Array  
+  serialize :registered_pages, Array
 
   # パスワードのバリデーション
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
@@ -15,32 +15,16 @@ class User < ApplicationRecord
   # registered_pagesにブックマーク（URL）を追加
   def add_bookmark(url:, name:)
     self.registered_pages ||= []  # registered_pages が nil の場合は空の配列を初期化
-  
+
     # ブックマークとして保存するデータをハッシュとして扱う
     bookmark = { name: name, url: url }
-  
+
     # 同じ URL がすでに登録されていないかを確認し、登録されていなければ追加
     unless self.registered_pages.any? { |b| b.is_a?(Hash) && b[:url] == url }
       self.registered_pages << bookmark
       save
     end
   end
-  
-  
-  def add_bookmark(url:, name:)
-    self.registered_pages ||= []  # registered_pages が nil の場合は空配列を初期化
-  
-    # ブックマークとして保存するデータをハッシュとして扱う
-    bookmark = { name: name, url: url }
-    
-    # URLが重複していないかチェックし、なければ追加
-    self.registered_pages << bookmark unless self.registered_pages.any? { |b| b[:url] == url || b["url"] == url }
-    save
-  end
-  
-  
-  
-  
 
   private
 
@@ -48,5 +32,6 @@ class User < ApplicationRecord
     self.registered_pages ||= []  # nil の場合は空配列を代入
   end
 end
+
 
 

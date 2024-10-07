@@ -1,4 +1,5 @@
 class PainLocationExtentionController < ApplicationController
+  
   def extention
     # ビューをレンダリングするだけの場合
     render 'pain_location_extention'

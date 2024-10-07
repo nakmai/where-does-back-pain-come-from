@@ -1,4 +1,5 @@
 class PainLocationFlexionController < ApplicationController
+  
   def flexion
     # ビューをレンダリングするだけの場合
     render 'pain_location_flexion'

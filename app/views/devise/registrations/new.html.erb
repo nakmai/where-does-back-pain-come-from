@@ -22,6 +22,17 @@
       <%= f.submit "新規登録", class: "btn btn-primary custom-btn" %>
     </div>
   <% end %>
+
+  <% if resource.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(resource.errors.count, "error") %> が発生しました:</h2>
+    <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
   
 
 

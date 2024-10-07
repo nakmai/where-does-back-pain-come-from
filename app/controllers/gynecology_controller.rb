@@ -1,5 +1,7 @@
 class GynecologyController < ApplicationController
-    def gynecology_question
+
+ 
+  def gynecology_question
       # フォーム表示用のアクション
     end
   

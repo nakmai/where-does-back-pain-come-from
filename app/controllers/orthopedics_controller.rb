@@ -1,5 +1,6 @@
 class OrthopedicsController < ApplicationController
-    def orthopedics_advice1
+
+  def orthopedics_advice1
       # ビューを表示するだけならこのままでOKです
     end
   

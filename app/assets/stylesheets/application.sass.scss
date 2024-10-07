@@ -18,6 +18,9 @@
 @import "pain_location_extention_flexion";
 @import "flexion_behavior.scss";
 @import "result";
+@import 'diagnostic_result'; 
+@import "_hamstrings_towel";
+@import "_draw_in";
 
 body {
   background-color: #FDF5E6;
@@ -61,6 +64,31 @@ body {
   height: 40px; /* 画像の高さを調整 */
   width: auto;  /* アスペクト比を保持しながら幅を自動調整 */
 }
+
+.btn-primary {
+  background-color: #333399;
+  border-color: #333399;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #1a1a80;
+  border-color: #1a1a80;
+  color: white;
+}
+
+
+.btn-outline-primary {
+  color: #007bff;
+  border-color: #007bff;
+  background-color: #fff;
+}
+
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: white;
+}
+
 
 .btn.btn-danger {
   background-color: transparent !important;  // 背景をなしに設定

@@ -26,7 +26,9 @@ Rails.application.routes.draw do
     member do
       post 'my_page_register', to: 'users#my_page_register'
       get 'profile_page'
-      post 'my_page' 
+      post 'my_page'
+      get 'my_page'
+      get 'myofascial_back_pain/:pain_id', to: 'users#myofascial_back_pain', as: 'myofascial_back_pain'  
     end
   end
       post 'pain_behavior_extention_flexion/counternutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#counternutation_extention_flexion_behavior', as: 'pain_behavior_extention_flexion_counternutation_extention_flexion_behavior'
@@ -189,4 +191,6 @@ resources :users, only: [:show] do
     delete 'remove_all_bookmarks', to: 'users#remove_all_bookmarks'  # 全て削除
   end
 end
+
+
 end

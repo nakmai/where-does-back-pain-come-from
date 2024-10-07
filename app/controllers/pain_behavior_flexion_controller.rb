@@ -1,5 +1,5 @@
 class PainBehaviorFlexionController < ApplicationController
-  
+ 
   
   # 筋膜性腰痛ページの処理
 

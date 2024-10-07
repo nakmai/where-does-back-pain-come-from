@@ -1,35 +1,67 @@
 .rehabilitation-container {
-  margin: 40px auto;
   padding: 20px;
-  max-width: 800px;
-  background-color: #f9f9f9;
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 0 auto; /* 中央寄せ */
 }
 
-h2, h3 {
-  margin-bottom: 20px;
+.rehabilitation-container h2, 
+.rehabilitation-container h3 {
+  font-family: 'Arial', sans-serif;
   font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.rehabilitation-container .rehabilitation-img {
+  width: 100%; /* 画像全体の幅を親要素にフィット */
+  height: auto;
+  margin-bottom: 20px; /* 画像の下にマージンを追加してスペースを空ける */
+}
+
+.rehabilitation-container .rehabilitation-img-small {
+  width: 100%; /* 2つの画像が同じサイズになるように調整 */
+  height: auto; /* 高さを自動調整 */
+  object-fit: cover; /* 画像を引き伸ばすのではなく、比率を保つ */
+  margin-bottom: 20px; /* 画像の下にマージンを追加してスペースを空ける */
+}
+
+.rehabilitation-container img {
+  display: block;
+  margin: 0 0 20px 0; /* 画像の下に20pxの隙間を追加 */
 }
 
 .rehabilitation-instructions {
-  font-size: 1.2em;
+  font-size: 1.2rem;
+  color: #333;
+  font-family: 'Arial', sans-serif;
+  line-height: 1.8;
   text-align: left;
 }
 
-.rehabilitation-instructions p {
-  margin-bottom: 20px;
-  line-height: 1.5;
+.rehabilitation-instructions ul {
+  list-style-type: none;
+  padding: 0;
 }
 
-.rehabilitation-img {
-  border-radius: 8px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+.rehabilitation-instructions ul li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
+@media (max-width: 768px) {
+  .rehabilitation-container .row {
+    flex-direction: column;
+  }
+
+  .rehabilitation-container .rehabilitation-instructions {
+    margin-top: 20px;
+  }
 }
+
+
+
+
 
   

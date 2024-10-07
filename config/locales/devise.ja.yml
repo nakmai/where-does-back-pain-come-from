@@ -37,6 +37,7 @@ ja:
     registrations:
       destroyed: "アカウントは正常に削除されました。またのご利用をお待ちしております。"
       signed_up: "登録が完了しました。"
+      email_taken: "このメールアドレスは既に登録されています"
       signed_up_but_inactive: "登録が完了しましたが、アカウントはまだ有効化されていません。"
       signed_up_but_locked: "登録が完了しましたが、アカウントがロックされています。"
       signed_up_but_unconfirmed: "確認メールを送信しました。メール内のリンクをクリックしてアカウントを有効化してください。"
@@ -53,6 +54,7 @@ ja:
       unlocked: "アカウントのロックが解除されました。ログインしてください。"
   errors:
     messages:
+      taken: "このメールアドレスは既に登録されています"
       already_confirmed: "既に確認済みです。サインインを試してください。"
       confirmation_period_expired: "確認期限が切れました。新しい確認メールをリクエストしてください。"
       expired: "期限切れです。新しいリンクをリクエストしてください。"

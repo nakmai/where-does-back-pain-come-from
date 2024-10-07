@@ -1,5 +1,5 @@
 class PainController < ApplicationController
-
+  
   
   def red_flag
       # フォーム表示用アクション

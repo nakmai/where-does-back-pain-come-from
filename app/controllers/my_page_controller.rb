@@ -19,6 +19,11 @@ class MyPageController < ApplicationController
   end
 
   def intervertebral_joint_guest
+    render 'users/guest/intervertebral_joint'  # 正しいビューを指定
+  end
+
+  def new_guest_intervertebral_joint
+    # 必要に応じてロジックを追加することも可能です。
     render 'users/guest/intervertebral_joint'
   end
 
@@ -30,7 +35,8 @@ class MyPageController < ApplicationController
 
   def intervertebral_joint_user
     user_id = params[:user_id]
-    # 必要な処理を追加
-    render 'users/user/myofascial_back_pain'  # 遷移先のビューを指定
+    render 'users/user/intervertebral_joint'  # 遷移先のビューを指定
   end
 end
+
+

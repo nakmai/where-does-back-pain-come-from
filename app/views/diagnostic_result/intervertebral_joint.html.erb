@@ -6,7 +6,9 @@
   <% if user_signed_in? %>
 <%= link_to '次へ進む', my_page_intervertebral_joint_user_path(current_user.id), class: 'btn btn-primary' %>
 <% else %>
-  <%= link_to '次へ進む', guest_intervertebral_joint_page_path, class: 'btn btn-primary' %>
+  <%= link_to '次へ進む', new_guest_intervertebral_joint_page_path, class: 'btn btn-primary' %>
+
+
 <% end %>
 
  <div class="button-group mt-4 d-flex flex-column align-items-center">

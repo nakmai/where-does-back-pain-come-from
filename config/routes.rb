@@ -38,6 +38,7 @@ Rails.application.routes.draw do
       get 'my_page_intervertebral_disk_guest', to: 'users#intervertebral_disk_guest', as: 'my_page_intervertebral_disk_guest'
       get 'intervertebral_joint', to: 'my_page#intervertebral_joint'
       get 'my_page_intervertebral_joint_guest', to: 'users#intervertebral_joint_guest', as: 'my_page_intervertebral_joint_guest'
+   
       get 'my_page_nutation_user', to: 'users#nutation_user', as: 'my_page_nutation_user'
       get 'my_page_nutation_guest', to: 'users#nutation_guest', as: 'my_page_nutation_guest'
       get 'profile_page', to: 'users#profile_page', as: 'user_profile_page'
@@ -172,7 +173,9 @@ get 'users/:id/myofascial_back_pain/:user_id', to: 'my_page#myofascial_back_pain
 
   get 'users/:id/intervertebral_joint', to: 'my_page#intervertebral_joint_user', as: 'my_page_intervertebral_joint_user'
   post 'pain_behavior_extention_flexion/nutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#nutation_extention_flexion_behavior', as: 'nutation_extention_flexion_behavior'
-  
+  get 'new_guest_intervertebral_joint', to: 'my_page#new_guest_intervertebral_joint', as: 'new_guest_intervertebral_joint_page'
+get 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'my_page#intervertebral_joint_user', as: 'intervertebral_joint_extention_behavior'
+
  
 
 

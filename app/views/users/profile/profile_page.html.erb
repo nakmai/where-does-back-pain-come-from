@@ -1,4 +1,31 @@
-<% @user.registered_pages.each do |page| %>
-  <h3><%= マイページ%></h3>
-  <%= render "my_page/_my_page_#{page}" %>  <!-- ページに対応する部分テンプレートを表示 -->
+<h2>マイページ</h2>
+
+
+
+<% if @bookmarks.any? %>
+  <ul>
+    <% @bookmarks.each do |bookmark| %>
+      <li>
+        <!-- ブックマークがハッシュか単なるURLか確認 -->
+        <% if bookmark.is_a?(Hash) %>
+          <%= link_to bookmark[:name], bookmark[:url], target: "_blank", class: "bookmark-link" %>
+          <%= button_to '削除', remove_bookmark_user_path(current_user, url: bookmark[:url]), method: :delete, data: { confirm: '本当にこのブックマークを削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+        <% else %>
+          <%= link_to bookmark, bookmark, target: "_blank", class: "bookmark-link" %>
+          <%= button_to '削除', remove_bookmark_user_path(current_user, url: bookmark), method: :delete, data: { confirm: '本当にこのブックマークを削除しますか？' }, class: 'btn btn-danger btn-sm' %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <!-- 全て削除するボタン -->
+  <%= button_to '全てのブックマークを削除', remove_all_bookmarks_user_path(current_user), method: :delete, data: { confirm: '本当に全てのブックマークを削除しますか？' }, class: 'btn btn-danger' %>
+
+<% else %>
+  <p>まだブックマークがありません。</p>
 <% end %>
+
+
+
+
+

@@ -1,8 +1,9 @@
+<title><%= render 'my_page/my_page_intervertebral_joint' %></title>
 <%= render 'my_page/my_page_intervertebral_joint' %>
 
-
   <div class="buttons">
-  <%= button_to "マイページに登録", my_page_nutation_user_path(current_user), method: :post, class: 'btn btn-primary', id: "register_button" %>
+  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '椎間関節タイプ'), method: :post, class: 'btn btn-primary' %>
+
     <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
     <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>
     <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>

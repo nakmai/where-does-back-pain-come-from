@@ -20,8 +20,8 @@ class ApplicationController < ActionController::Base
   end
 
   # サインアウト後にリダイレクトするパスを決定する
-  def after_sign_out_path_for(resource_or_scope)
-    logout_complete_path  # ログアウト後にログアウト完了ページにリダイレクト
+  def after_sign_in_path_for(resource)
+    logout_complete_path # ここでログイン後のリダイレクト先を指定
   end
 
   private

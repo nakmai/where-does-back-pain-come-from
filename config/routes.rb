@@ -41,7 +41,7 @@ Rails.application.routes.draw do
    
       get 'my_page_nutation_user', to: 'users#nutation_user', as: 'my_page_nutation_user'
       get 'my_page_nutation_guest', to: 'users#nutation_guest', as: 'my_page_nutation_guest'
-      get 'profile_page', to: 'users#profile_page', as: 'user_profile_page'
+
 
   
   # flexion_behavior
@@ -176,8 +176,17 @@ get 'users/:id/myofascial_back_pain/:user_id', to: 'my_page#myofascial_back_pain
   get 'new_guest_intervertebral_joint', to: 'my_page#new_guest_intervertebral_joint', as: 'new_guest_intervertebral_joint_page'
 get 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'my_page#intervertebral_joint_user', as: 'intervertebral_joint_extention_behavior'
 
- 
+post 'users/add_bookmark', to: 'users#add_bookmark', as: 'add_bookmark'
 
 
 
+
+
+get 'users/:id/profile_page', to: 'users#profile_page', as: 'user_profile_page'
+resources :users, only: [:show] do
+  member do
+    delete 'remove_bookmark', to: 'users#remove_bookmark'
+    delete 'remove_all_bookmarks', to: 'users#remove_all_bookmarks'  # 全て削除
+  end
+end
 end

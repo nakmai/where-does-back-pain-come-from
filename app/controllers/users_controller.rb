@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :store_user_location!, if: :storable_location?
+  before_action :authenticate_user!
   
   def all_form
     render 'users/all_form'
@@ -118,6 +119,63 @@ class UsersController < ApplicationController
       redirect_to my_page_nutation_user_path
     end
   end
+
+  def add_bookmark
+    url = params[:url]
+    name = params[:name]
+  
+    if url.present? && name.present?
+      current_user.add_bookmark(url: url, name: name)  # キーワード引数を渡す
+      redirect_to profile_page_user_path(current_user.id), notice: "ページをマイページに登録しました。"
+    else
+      redirect_to profile_page_user_path(current_user.id), alert: "ブックマークするページが指定されていません。"
+    end
+  end
+  
+  def remove_bookmark
+    url = params[:url]
+    
+    if url.present?
+      current_user.remove_bookmark(url)
+      redirect_to profile_page_user_path(current_user.id), notice: "ブックマークを削除しました。"
+    else
+      redirect_to profile_page_user_path(current_user.id), alert: "ブックマークの削除に失敗しました。"
+    end
+  end
+
+  def remove_all_bookmarks
+    current_user.registered_pages = []  # 全てのブックマークをクリア
+    current_user.save
+    redirect_to profile_page_user_path(current_user.id), notice: "全てのブックマークを削除しました。"
+  end
+
+
+  
+
+
+# プロフィールページ
+def profile_page
+  @bookmarks = current_user.registered_pages || []
+  Rails.logger.debug "ブックマークデータ: #{@bookmarks.inspect}"
+end
+
+def index
+  @user = current_user  # 現在サインインしているユーザーを取得
+end
+
+def show
+  Rails.logger.debug "params[:id]: #{params[:id]}"  # params[:id] の内容を確認
+  @user = User.find(params[:id])
+  @bookmarks = @user.registered_pages || []
+end
+
+# my_pageアクション
+def profile_page
+  @user = User.find(params[:id])
+  @bookmarks = @user.registered_pages || []
+  render 'users/profile/profile_page'
+end
+
 end
 
 

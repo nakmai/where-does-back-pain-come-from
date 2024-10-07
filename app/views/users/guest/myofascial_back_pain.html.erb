@@ -1,0 +1,17 @@
+<%= render 'my_page/my_page_myofascial_back_pain' %>
+
+    
+  <div class="buttons">
+      <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
+      <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
+    <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
+  </div>
+
+<script>
+  document.getElementById("register_button")?.addEventListener("click", function(event) {
+    event.preventDefault();  // デフォルトの動作を防ぐ
+    var form = this.closest("form");
+    form.submit();  // まずフォームを送信
+  });
+</script>

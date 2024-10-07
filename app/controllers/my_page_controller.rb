@@ -1,26 +1,36 @@
 class MyPageController < ApplicationController
-    def my_page_myofascial_back_pain_guest
-        # ゲストユーザーが表示できるビューをレンダリング
-        render 'my_page/my_page_myofascial_back_pain'
-      end
+  def myofascial_back_pain_guest
+    render 'users/guest/myofascial_back_pain'
+  end
 
-    def my_page_intervertebral_disk
-        # 会員でもゲストでもアクセスできるアクション
-        render 'my_page/my_page_intervertebral_disk'
-    end
+  def intervertebral_disk_guest
+    # このアクション内に処理を記述してください
+    render 'users/guest/intervertebral_disk'
+  end
 
-    def my_page_intervertebral_joint
-      # ここで必要な処理を記述
-      render 'my_page/my_page_intervertebral_joint'
-    end
+  def nutation_guest
+    # 必要であれば、ここで必要な処理を行う
+    render 'users/guest/nutation'  # ゲスト向けのテンプレートを表示
+  end
 
-    def my_page_my_page_nutation
-        # 会員でもゲストでもアクセスできるアクション
-      render 'my_page/my_page_nutation'
-    end
-    
-    def my_page_counternutation
-      # 必要な処理をここに記述
-      render 'my_page/my_page_counternutation'
-    end
+  def counternutation_guest
+    # 必要であれば、ここで必要な処理を行う
+    render 'users/guest/counternutation'  # ゲスト向けのテンプレートを表示
+  end
+
+  def intervertebral_joint_guest
+    render 'users/guest/intervertebral_joint'
+  end
+
+  def myofascial_back_pain_user
+    user_id = params[:user_id]  # user_idを取得
+    @user = User.find(user_id)
+    render 'users/user/myofascial_back_pain'
+  end
+
+  def intervertebral_joint_user
+    user_id = params[:user_id]
+    # 必要な処理を追加
+    render 'users/user/myofascial_back_pain'  # 遷移先のビューを指定
+  end
 end

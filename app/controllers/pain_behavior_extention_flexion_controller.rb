@@ -1,11 +1,4 @@
 class PainBehaviorExtentionFlexionController < ApplicationController
-  before_action :authenticate_user!, except: [
-    :myofascial_back_pain_extention_flexion_behavior,
-    :intervertebral_joint_extention_flexion_behavior,
-    :intervertebral_disk_extention_flexion_behavior,
-    :nutation_extention_flexion_behavior,
-    :counternutation_extention_flexion_behavior,
-  ]
   
   def myofascial_back_pain_extention_flexion_behavior
       conditions = params[:conditions] || []
@@ -19,6 +12,8 @@ class PainBehaviorExtentionFlexionController < ApplicationController
     # 椎間関節ページの処理
     def intervertebral_joint_extention_flexion_behavior
       conditions = params[:conditions] || []
+      logger.debug "Conditions: #{params[:conditions]}"
+
       if conditions.include?('nothing')
         render 'pain_behavior_extention_flexion/intervertebral_disk_extention_flexion_behavior'
       else
@@ -56,5 +51,6 @@ logger.debug "Processing counternutation_extention_flexion_behavior action"
         render 'diagnostic_result/counternutation'
       end
     end
+
   end
 

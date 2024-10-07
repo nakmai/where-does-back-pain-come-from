@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   # Devise のヘルパーメソッドを使えるようにする
   include Devise::Controllers::Helpers
-  
+  before_action :authenticate_user!
+  skip_before_action :authenticate_user!
   # CSRF対策
   protect_from_forgery with: :exception
 

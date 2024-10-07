@@ -4,11 +4,12 @@
   <p class="possibility">の可能性があります</p>
   
   <% if user_signed_in? %>
-  <%= link_to '次へ進む', my_page_myofascial_back_pain_user_path(current_user), class: "btn btn-primary" %>
+<%= link_to '次へ進む', my_page_counternutation_user_path, class: 'btn btn-primary' %>
 <% else %>
-  <%= link_to '次へ進む', my_page_myofascial_back_pain_guest_path, class: 'btn btn-primary' %>
+  <%= link_to '次へ進む', my_page_counternutation_guest_user_path, class: 'btn btn-primary' %>
 <% end %>
 
   <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
   <%= link_to '最初から始める', users_all_form_path, class: 'btn btn-outline-primary' %>
 </div>
+

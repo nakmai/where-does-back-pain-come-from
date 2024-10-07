@@ -1,0 +1,4 @@
+<% @user.registered_pages.each do |page| %>
+  <h3><%= マイページ%></h3>
+  <%= render "my_page/_my_page_#{page}" %>  <!-- ページに対応する部分テンプレートを表示 -->
+<% end %>

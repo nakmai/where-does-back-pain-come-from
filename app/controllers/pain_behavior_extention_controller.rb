@@ -1,13 +1,6 @@
 class PainBehaviorExtentionController < ApplicationController
-
-  before_action :authenticate_user!, except: [
-    :myofascial_back_pain_extention_behavior,
-    :intervertebral_joint_extention_behavior,
-    :counternutation_extention_behavior,
-    :nutation_extention_behavior,
-    :counternutation_extention_flexion_behavior
-  ]
   
+ 
   # 筋膜性腰痛ページの処理
   def myofascial_back_pain_extention_behavior
     conditions = params[:conditions] || []

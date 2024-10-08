@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  
 
   # フォーム処理アクション
   def all_form
@@ -55,23 +55,67 @@ class UsersController < ApplicationController
   end
 
   def counternutation
+    if user_signed_in?
+      render 'users/user/counternutation'
+    else
+      render 'users/guest/counternutation'
+    end
+  end
+
+  def counternutation_user
+    # ここに必要な処理を記述します
     render 'users/user/counternutation'
   end
 
+  def counternutation_guest
+    # ここに必要な処理を記述します
+    render 'users/guest/counternutation'
+  end
+
   def intervertebral_disk
-    render 'users/user/intervertebral_disk'
+    if user_signed_in?
+      render 'users/user/intervertebral_disk'
+    else
+      render 'users/guest/intervertebral_disk'
+    end
+  end
+
+  def intervertebral_disk_user
+    # 必要な処理をここに追加してください
+    render 'users/user/intervertebral_disk' # 適切なビューを指定します
   end
 
   def intervertebral_joint
-    render 'users/user/intervertebral_joint'
+    if user_signed_in?
+      render 'users/user/intervertebral_joint'
+    else
+      render 'users/guest/intervertebral_joint'
+    end
   end
 
   def myofascial_back_pain
-    render 'users/user/myofascial_back_pain'
+    if user_signed_in?
+      render 'users/user/myofascial_back_pain'
+    else
+      render 'users/guest/myofascial_back_pain'
+    end
   end
 
   def nutation
-    render 'users/user/nutation'
+    if user_signed_in?
+      render 'users/user/nutation'
+    else
+      render 'users/guest/nutation'
+    end
+  end
+  
+
+  def nutation_guest
+    render 'users/guest/nutation'
+  end
+
+  def nutation_user
+    render 'users/user/nutation'  # 適切なビューを表示
   end
 
   # ブックマーク追加・削除

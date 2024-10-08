@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # Devise のヘルパーメソッドを使えるようにする
   require_dependency 'users/guest_controller'
-
+  before_action :store_user_location!, if: :storable_location?
 
   # CSRF対策
   protect_from_forgery with: :exception
@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
 
   # サインアウト後にリダイレクトするパスを決定する
   def after_sign_in_path_for(resource)
-    logout_complete_path # ここでログイン後のリダイレクト先を指定
+    root_path   # ログイン後はトップページへリダイレクト
   end
 
   private

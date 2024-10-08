@@ -1,6 +1,6 @@
 module Users
   class RegistrationsController < Devise::RegistrationsController
-    skip_before_action :store_user_location!
+ 
     def create
       # ユーザーデータが存在しない場合
       if params[:user].nil?
@@ -29,43 +29,16 @@ module Users
           if resource.persisted? # 登録成功
             flash[:notice] = "登録されました"
           end
-        end
+        end # ここで super ブロックを閉じる
       end
-    end
-  
-    # Deviseの新規登録フォームを表示
-    def new
-      super
-    end
+    end # create メソッドを閉じる
 
     protected
 
     # 新規登録後のリダイレクト先を決定
     def after_sign_up_path_for(resource)
-      stored_location = session[:user_return_to]
-      Rails.logger.debug "Stored location: #{stored_location}"
-        if stored_location.present?
-          case stored_location
-          when guest_counternutation_path
-            return user_counternutation_path(resource)
-          when guest_intervertebral_disk_path
-            return user_intervertebral_disk_path(resource)
-          when guest_intervertebral_joint_path
-            return user_intervertebral_joint_path(resource)
-          when guest_myofascial_back_pain_path
-            return user_myofascial_back_pain_path(resource)
-          when guest_nutation_path
-            return user_nutation_path(resource)
-          else
-            after_sign_in_path_for(resource)
-          end
-        else
-          after_sign_in_path_for(resource)
-        end
-      end
+      root_path # ここでリダイレクト先を固定する
     end
-      
-    
 
     private
 
@@ -79,4 +52,5 @@ module Users
       params.require(:user).permit(:email, :password, :password_confirmation, :current_password)
     end
   end
+end
 

@@ -1,13 +1,15 @@
-
 <div class="counternutation_flexion_behavior">
   <div class="submit_pain_location_flexion">
     <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-    <%= form_with url: pain_behavior_extention_flexion_counternutation_extention_flexion_behavior_path, method: :post, local: true do %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
 
-
-
-       <div class="form-check">
+    <%= form_with url: pain_behavior_extention_flexion_counternutation_extention_flexion_behavior_path, method: :post, local: true, id: 'counternutation_form' do %>
+      <div class="form-check">
         <%= check_box_tag 'conditions[]', 'standing_posture', false, class: 'form-check-input', id: 'standing_posture' %>
         <%= label_tag 'standing_posture', '尾骨を強く押さえながら腰を反らすと楽な気がする', class: 'form-check-label' %>
       </div>
@@ -33,21 +35,42 @@
         <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
         <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
       </div>
-    
       <br>
 
       <div class="button-group mt-4 d-flex flex-column align-items-center">
-        <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn' %>
+        <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn', id: 'submit_button' %>
         <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
       </div>
-
+    <% end %>
 
     <div class="button-group mt-4 d-flex flex-column align-items-center">
       <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
     </div>
-    <% end %>
   </div>
 </div>
+
+<script>
+  document.getElementById("submit_button").addEventListener("click", function(event) {
+    var checkboxes = document.querySelectorAll('#counternutation_form input[type="checkbox"]:checked');
+    if (checkboxes.length === 0) {
+      event.preventDefault();  // フォーム送信を防ぐ
+
+      // 既存のフラッシュメッセージがある場合は削除する
+      var existingFlashMessage = document.querySelector('#counternutation_form .alert.alert-danger');
+      if (existingFlashMessage) {
+        existingFlashMessage.remove();
+      }
+
+      // 新たにフラッシュメッセージを追加する
+      var flashMessage = document.createElement('div');
+      flashMessage.className = 'alert alert-danger';
+      flashMessage.textContent = "一つ選択してください";  // エラーメッセージを表示
+      var form = document.getElementById("counternutation_form");
+      form.insertBefore(flashMessage, form.firstChild);  // フォームの上部にフラッシュメッセージを表示
+    }
+  });
+</script>
+
 
 
 

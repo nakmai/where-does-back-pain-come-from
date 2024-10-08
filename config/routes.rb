@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'
+
   end
 
   # ユーザー関連のルート
@@ -44,6 +45,10 @@ Rails.application.routes.draw do
       post 'my_page'
       get 'my_page'
       get 'myofascial_back_pain/:pain_id', to: 'users#myofascial_back_pain', as: 'myofascial_back_pain'  
+      get 'nutation/:pain_id', to: 'users#nutation', as: 'nutation'  
+      get 'counternutation/:pain_id', to: 'users#counternutation', as: 'counternutation' 
+      get 'intervertebral_disk/:pain_id', to: 'users#intervertebral_disk', as: 'intervertebral_disk'  
+      get 'intervertebral_joint/:pain_id', to: 'users#intervertebral_joint', as: 'intervertebral_joint' 
     end
   end
       post 'pain_behavior_extention_flexion/counternutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#counternutation_extention_flexion_behavior', as: 'pain_behavior_extention_flexion_counternutation_extention_flexion_behavior'

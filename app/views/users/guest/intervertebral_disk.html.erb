@@ -1,5 +1,5 @@
 <%= render 'my_page/my_page_intervertebral_disk' %>
-
+<a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a>
   <div class="buttons">
       <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
       <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>

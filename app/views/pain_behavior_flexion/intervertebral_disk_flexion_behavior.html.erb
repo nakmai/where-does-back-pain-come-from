@@ -2,7 +2,13 @@
   <div class="submit_pain_location_flexion">
     <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
 
-    <%= form_with url: submit_intervertebral_disk_flexion_behavior_path, method: :post, local: true do %>
+    <% if flash[:alert] %>
+      <div class="alert alert-danger">
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+
+    <%= form_with url: submit_intervertebral_disk_flexion_behavior_path, method: :post, local: true, id: 'intervertebral_disk_form' do %>
       <div class="form-check">
         <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
         <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>
@@ -32,7 +38,7 @@
       <br>
 
       <div class="button-group mt-4 d-flex flex-column align-items-center">
-        <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn' %>
+        <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn', id: 'intervertebral_disk_submit_button' %>
         <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
       </div>
     <% end %>
@@ -42,4 +48,20 @@
     </div>
   </div>
 </div>
+
+<script>
+  document.getElementById("intervertebral_disk_submit_button").addEventListener("click", function(event) {
+    var checkboxes = document.querySelectorAll('#intervertebral_disk_form input[type="checkbox"]:checked');
+    if (checkboxes.length === 0) {
+      event.preventDefault();  // フォーム送信を防ぐ
+      var flashMessage = document.createElement('div');
+      flashMessage.className = 'alert alert-danger';
+      flashMessage.textContent = "一つ選択してください";  // エラーメッセージを表示
+      var form = document.getElementById("intervertebral_disk_form");
+      form.insertBefore(flashMessage, form.firstChild);  // フォームの上部にフラッシュメッセージを挿入
+    }
+  });
+</script>
+
+
 

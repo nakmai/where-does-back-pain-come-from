@@ -23,12 +23,8 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   # ログイン後のリダイレクト先
-  def after_sign_in_path_for(resource)
-    if params[:return_to].present?
-      return params[:return_to]
-    end
-    # 保存された場所があればそこにリダイレクト、なければ root_path
-    stored_location_for(resource) || root_path
+  def after_sign_up_path_for(resource)
+    root_path # ここでリダイレクト先を固定する
   end
 
   # ログアウト後のリダイレクト先

@@ -1,0 +1,9 @@
+/* CSSシートに追加または修正 */
+.login.notes {
+    font-style: italic;   /* 斜め文字にする */
+    color: gray;          /* 色を灰色にする */
+    text-align: center;   /* テキストを中央寄せにする */
+    width: 100%;          /* 親要素の幅を100%にする */
+    display: block;       /* ブロック要素にして、中央寄せを適用 */
+    margin: 0 auto;       /* 必要に応じて中央寄せをさらに補強 */
+}

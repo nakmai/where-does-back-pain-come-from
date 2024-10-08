@@ -38,6 +38,8 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
+    # 開発環境でメールを送るためのホストの設定（Railsチュートリアル11章）
+    config.action_mailer.default_url_options = { host: 'localhost', protocol: 'http' }
 
   config.action_mailer.perform_caching = false
 

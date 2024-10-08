@@ -21,11 +21,10 @@ module Test1111
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+  end # <- This closes the class Application
+end   # <- This closes the module Test1111
 
 
-    end
-  end
-end
 
 
 

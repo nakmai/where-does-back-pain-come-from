@@ -13,10 +13,6 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     root_path
     end
-    
-    # 保存された場所、もしくはデフォルトのページ
-    stored_location_for(resource) || my_page_myofascial_back_pain_path(resource)  # デフォルトをマイページに
-  end
 
   # サインアウト後にリダイレクトするパスを決定する
   def after_sign_out_path_for(resource)

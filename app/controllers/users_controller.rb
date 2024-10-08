@@ -120,19 +120,26 @@ class UsersController < ApplicationController
 
   # ブックマーク追加・削除
   def add_bookmark
-    url = params[:url]
-    name = params[:name]
-
-    if url.present? && name.present?
-      current_user.add_bookmark(url: url, name: name)  # キーワード引数を渡す
-      redirect_to profile_page_user_path(current_user.id), notice: "ページをマイページに登録しました。"
+    if user_signed_in?
+      url = params[:url].sub(/^http:/, 'https:')
+      name = params[:name]
+  
+      if url.present? && name.present?
+        if current_user.add_bookmark(url: url, name: name)
+          redirect_to profile_page_user_path(current_user.id), notice: "ページをマイページに登録しました。"
+        else
+          redirect_to profile_page_user_path(current_user.id), alert: "ブックマークの保存に失敗しました。"
+        end
+      else
+        redirect_to profile_page_user_path(current_user.id), alert: "ブックマークするページが指定されていません。"
+      end
     else
-      redirect_to profile_page_user_path(current_user.id), alert: "ブックマークするページが指定されていません。"
+      redirect_to new_user_session_path, alert: "ブックマークするにはログインが必要です。"
     end
   end
 
   def remove_bookmark
-    url = params[:url]
+    url = params[:url].sub(/^http:/, 'https:')
 
     if url.present?
       current_user.remove_bookmark(url)

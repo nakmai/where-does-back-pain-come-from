@@ -71,7 +71,7 @@ Rails.application.configure do
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default_url_options = { host: 'where.does.back.pain.come.from@gmail.com', protocol: 'https' }
+  config.action_mailer.default_url_options = { host: 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'}
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
@@ -104,16 +104,17 @@ Rails.application.configure do
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  
+  config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-  address:              'smtp.gmail.com',
-  port:                 587,
-  domain:               'www.where-does-back-pain-come-from.com',
-  user_name:            ENV['GOOGLE_CLIENT_ID'],
-  password:             ENV['GOOGLE_CLIENT_SECRET'],
-  authentication:       'plain',
-  enable_starttls_auto: true,
-  openssl_verify_mode:  'none',
-}
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'your-domain.com',
+    user_name:            ENV['GMAIL_USERNAME'], # 環境変数からGmailのユーザー名を取得
+    password:             ENV['GMAIL_PASSWORD'], # 環境変数からGmailのパスワードを取得
+    authentication:       'plain',
+    enable_starttls_auto: true
+  }
 
 
 end

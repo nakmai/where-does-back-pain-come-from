@@ -3,8 +3,17 @@ Rails.application.routes.draw do
   # Devise のルーティング
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    passwords: 'passwords'
   }
+
+  devise_scope :user do
+    post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'
+    get 'users/password/new', to: 'devise/passwords#new'
+    post 'users/password', to: 'devise/passwords#create'
+    get 'users/password/edit', to: 'devise/passwords#edit'
+    put 'users/password', to: 'devise/passwords#update'
+  end
 
   # ゲストページ
   get 'guest/counternutation', to: 'users/guest#counternutation', as: :guest_counternutation
@@ -20,10 +29,6 @@ Rails.application.routes.draw do
   get 'user/myofascial_back_pain', to: 'users#myofascial_back_pain', as: :user_myofascial_back_pain
   get 'user/nutation', to: 'users#nutation', as: :user_nutation
 
-  devise_scope :user do
-    post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'
-
-  end
 
   # ユーザー関連のルート
   resources :users, only: [:create] do

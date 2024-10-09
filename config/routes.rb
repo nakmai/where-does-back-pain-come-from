@@ -202,7 +202,7 @@ post 'users/add_bookmark', to: 'users#add_bookmark', as: 'add_bookmark'
 
 get 'new_guest_intervertebral_joint', to: 'users#guest_page', as: :guest_intervertebral_joint_path
 
-
+get '/oauth2callback', to: 'oauth#callback'
 
 get 'users/:id/profile_page', to: 'users#profile_page', as: 'user_profile_page'
 resources :users, only: [:show] do

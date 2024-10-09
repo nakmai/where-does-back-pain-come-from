@@ -104,4 +104,16 @@ Rails.application.configure do
 
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'www.where-does-back-pain-come-from.com',
+  user_name:            ENV['GOOGLE_CLIENT_ID'],
+  password:             ENV['GOOGLE_CLIENT_SECRET'],
+  authentication:       'plain',
+  enable_starttls_auto: true,
+  openssl_verify_mode:  'none',
+}
+
+
 end

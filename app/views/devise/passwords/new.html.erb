@@ -1,16 +1,25 @@
-<h2>パスワードを忘れた方へ</h2>
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+  <div class="card p-4 shadow-sm" style="width: 350px; background-color: #ffffff;">
+    <h2 class="text-center mb-4">パスワードを忘れた方へ</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="mb-3">
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+      </div>
+<br>
+      <div class="actions mb-3">
+        <%= f.submit "送信", class: "btn btn-primary custom-btn w-100" %>
+      </div>
+    <% end %>
+    <br>
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary custom-btn w-100" %>
+
+    <a href="<%= new_user_registration_path %>" class="btn btn-secondary signup-btn w-100">新規登録</a>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "送信" %>
-  </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+

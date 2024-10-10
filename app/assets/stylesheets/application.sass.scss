@@ -21,7 +21,6 @@
 @import 'diagnostic_result'; 
 @import "_hamstrings_towel";
 @import "_draw_in";
-
 @import " login_notes";
 
 
@@ -64,8 +63,8 @@ body {
 }
 
 .navbar-logo {
-  height: 40px; /* 画像の高さを調整 */
-  width: auto;  /* アスペクト比を保持しながら幅を自動調整 */
+  height: 40px !important; /* 画像の高さを調整 */
+  width: auto !important;  /* アスペクト比を保持しながら幅を自動調整 */
 }
 
 .btn-primary {

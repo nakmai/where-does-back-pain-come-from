@@ -2,7 +2,7 @@
 <%= render 'my_page/my_page_nutation' %>
   <!-- マイページ登録ボタン -->
   <div class="buttons">
-  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '仙腸関節(カウンターニューテーション)タイプ'), method: :post, class: 'btn btn-primary' %>
+  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '仙腸関節(ニューテーション)タイプ'), method: :post, class: 'btn btn-primary' %>
 
     <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
     <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>

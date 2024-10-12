@@ -1,36 +1,42 @@
-<%= form_with url: submit_form_users_path, method: :post do %>
+<%= form_with url: submit_form_users_path, method: :post do |f| %>
   <div class="form-container">
     <h2 class="form-title">生年月日</h2>
 
     <div class="form-row">
+      <!-- 年のプルダウン -->
       <div class="col">
-        <%= text_field_tag :year, nil, placeholder: '年', class: 'form-control' %>
+        <%= f.select :year, options_for_select((1900..Date.today.year).to_a.reverse), { prompt: '年' }, { class: 'form-control' } %>
       </div>
       <span>/</span>
+
+      <!-- 月のプルダウン -->
       <div class="col">
-        <%= text_field_tag :month, nil, placeholder: '月', class: 'form-control' %>
+        <%= f.select :month, options_for_select((1..12).to_a), { prompt: '月' }, { class: 'form-control' } %>
       </div>
       <span>/</span>
+
+      <!-- 日のプルダウン -->
       <div class="col">
-        <%= text_field_tag :day, nil, placeholder: '日', class: 'form-control' %>
+        <%= f.select :day, options_for_select((1..31).to_a), { prompt: '日' }, { class: 'form-control' } %>
       </div>
     </div>
 
     <div class="gender-section">
       <div class="form-check">
-        <%= radio_button_tag :gender, 'male', false, id: 'male', class: 'form-check-input' %>
-        <%= label_tag :male, '男性', class: 'form-check-label' %>
+        <%= f.radio_button :gender, 'male', id: 'male', class: 'form-check-input' %>
+        <%= f.label :male, '男性', class: 'form-check-label' %>
       </div>
       <div class="form-check">
-        <%= radio_button_tag :gender, 'female', false, id: 'female', class: 'form-check-input' %>
-        <%= label_tag :female, '女性', class: 'form-check-label' %>
+        <%= f.radio_button :gender, 'female', id: 'female', class: 'form-check-input' %>
+        <%= f.label :female, '女性', class: 'form-check-label' %>
       </div>
     </div>
 
     <div class="button-group">
-      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn button-next' %>
+      <%= f.submit '次へ進む', class: 'btn btn-primary custom-btn button-next' %>
       <%= link_to '同意画面へ戻る', 'javascript:history.back();', class: 'btn btn-outline-primary custom-btn button-back' %>
     </div>
   </div>
 <% end %>
+
 

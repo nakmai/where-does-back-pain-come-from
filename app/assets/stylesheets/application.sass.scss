@@ -63,8 +63,8 @@ body {
 }
 
 .navbar-logo {
-  height: 40px !important; /* 画像の高さを調整 */
-  width: auto !important;  /* アスペクト比を保持しながら幅を自動調整 */
+  width: 300px; /* デフォルトの横幅を設定 */
+  height: auto; /* 縦横比を保つ *//* アスペクト比を保持しながら幅を自動調整 */
 }
 
 .btn-primary {
@@ -122,6 +122,10 @@ body {
   @media (max-width: 768px) {
     font-size: 1rem /* スマホ用の文字サイズを指定 */
   }
+  .navbar-logo {
+    width: 100x;
+    height: auto; /* ロゴの横幅を一回り小さくする */
+      }
 }
 
   

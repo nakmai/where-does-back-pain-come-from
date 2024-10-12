@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   # フォーム処理アクション
   def all_form
+    @user_data = { year: nil, month: nil, day: nil, gender: nil }
     render 'users/all_form'
   end
 
@@ -11,20 +12,35 @@ class UsersController < ApplicationController
     month = params[:month].to_i
     day = params[:day].to_i
     gender = params[:gender]
-
-    if year.zero? || month.zero? || day.zero? || gender.blank?
-      redirect_to users_all_form_path, alert: "すべての項目を正しく入力してください"
-      return
+  
+    # フォームの再表示用にパラメータを保存
+    @user_data = { year: year, month: month, day: day, gender: gender }
+  
+    if year.zero? || month.zero? || day.zero?
+      flash.now[:alert] = "生年月日を入力してください"
+      render :all_form and return
     end
-
+  
+    if gender.blank?
+      flash.now[:alert] = "性別を選んでください"
+      render :all_form and return
+    end
+  
     begin
       birthdate = Date.new(year, month, day)
+  
+      if birthdate > Date.today
+        flash.now[:alert] = "この日付は無効です"
+        render :all_form and return
+      end
+  
       age = ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
     rescue ArgumentError
-      redirect_to users_all_form_path, alert: "無効な日付が入力されました"
-      return
+      flash.now[:alert] = "無効な日付が入力されました"
+      render :all_form and return
     end
-
+  
+    # 年齢によるリダイレクト処理
     if age < 21 || age > 55
       redirect_to orthopedics_advice1_path
     elsif age >= 21 && age <= 55 && gender == "female"
@@ -35,6 +51,8 @@ class UsersController < ApplicationController
       redirect_to root_path, alert: "無効なデータです"
     end
   end
+  
+  
 
   # ユーザー用ページのアクション
   def user_page

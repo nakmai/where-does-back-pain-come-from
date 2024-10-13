@@ -70,3 +70,15 @@ label {
 }
 
 
+.label-small-gray {
+  color: gray;
+  font-size: 12px;
+}
+
+.is-invalid {
+  background-color: #f8d7da; /* 背景色を赤く（エラー用） */
+  border-color: #dc3545;     /* 枠線の色も赤く */
+}
+
+
+

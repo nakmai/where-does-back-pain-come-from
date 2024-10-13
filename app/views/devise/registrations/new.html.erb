@@ -3,37 +3,113 @@
 <div class="container mt-5">
   <h2 class="text-center mb-4">新規登録</h2>
   <%= form_for(resource, as: resource_name, url: user_registration_path, html: { method: :post }) do |f| %>
+
+    <!-- 生年月日 -->
+    <div class="form-group">
+      <%= f.label :birthdate, "生年月日" %>
+      <div class="form-row">
+        <div class="col">
+          <%= select_tag "user[birthdate_year]", 
+                options_for_select((1900..Date.today.year).to_a.reverse, selected: (params[:user] ? params[:user][:birthdate_year] : resource.birthdate&.year)), 
+                { prompt: '年', class: "form-control #{'is-invalid' if resource.errors[:birthdate].present?}" } %>
+        </div>
+        <span>/</span>
+        <div class="col">
+          <%= select_tag "user[birthdate_month]", 
+                options_for_select((1..12).to_a, selected: (params[:user] ? params[:user][:birthdate_month] : resource.birthdate&.month)), 
+                { prompt: '月', class: "form-control #{'is-invalid' if resource.errors[:birthdate].present?}" } %>
+        </div>
+        <span>/</span>
+        <div class="col">
+          <%= select_tag "user[birthdate_day]", 
+                options_for_select((1..31).to_a, selected: (params[:user] ? params[:user][:birthdate_day] : resource.birthdate&.day)), 
+                { prompt: '日', class: "form-control #{'is-invalid' if resource.errors[:birthdate].present?}" } %>
+        </div>
+      </div>
+      <% if resource.errors[:birthdate].present? %>
+        <div class="invalid-feedback d-block">
+          <%= resource.errors[:birthdate].join(', ') %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- 性別 -->
+    <div class="form-group">
+      <%= f.label :gender, "性別" %>
+      <div class="gender-section">
+        <div class="form-check">
+          <%= f.radio_button :gender, 'male', id: 'male', checked: (params[:user] && params[:user][:gender] == 'male'), class: "form-check-input #{'is-invalid' if resource.errors[:gender].present?}" %>
+          <%= f.label :male, '男性', class: 'form-check-label' %>
+        </div>
+        <div class="form-check">
+          <%= f.radio_button :gender, 'female', id: 'female', checked: (params[:user] && params[:user][:gender] == 'female'), class: "form-check-input #{'is-invalid' if resource.errors[:gender].present?}" %>
+          <%= f.label :female, '女性', class: 'form-check-label' %>
+        </div>
+      </div>
+      <% if resource.errors[:gender].present? %>
+        <div class="invalid-feedback d-block">
+          <%= resource.errors[:gender].join(', ') %>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- メールアドレス -->
     <div class="form-group">
       <%= f.label :email, "メールアドレス" %>
-      <%= f.email_field :email, class: "form-control" %>
+      <%= f.email_field :email, value: (params[:user] ? params[:user][:email] : resource.email), class: "form-control #{'is-invalid' if resource.errors[:email].present?}" %>
+      <% if resource.errors[:email].present? %>
+        <div class="invalid-feedback d-block">
+          <%= resource.errors[:email].join(', ') %>
+        </div>
+      <% end %>
     </div>
-  
+
+    <!-- パスワード -->
     <div class="form-group">
       <%= f.label :password, "パスワード" %>
-      <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
+      <%= f.label :password2, "6文字以上・20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください", class: "label-small-gray" %>
+
+
+      <%= f.password_field :password, autocomplete: "new-password", class: "form-control #{'is-invalid' if resource.errors[:password].present?}" %>
+      <% if resource.errors[:password].present? %>
+        <div class="invalid-feedback d-block">
+          <%= resource.errors[:password].join(', ') %>
+        </div>
+      <% end %>
     </div>
-  
+
+    <!-- もう一度パスワード -->
     <div class="form-group">
       <%= f.label :password_confirmation, "もう一度パスワードを入力" %>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control #{'is-invalid' if resource.errors[:password_confirmation].present?}" %>
+      <% if resource.errors[:password_confirmation].present? %>
+        <div class="invalid-feedback d-block">
+          <%= resource.errors[:password_confirmation].join(', ') %>
+        </div>
+      <% end %>
     </div>
-  
+
     <div class="form-group text-center">
       <%= f.submit "新規登録", class: "btn btn-primary custom-btn" %>
     </div>
   <% end %>
 
+  <!-- 全体のエラーリスト -->
   <% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(resource.errors.count, "error") %> が発生しました:</h2>
-    <ul>
-      <% resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-  
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %> が発生しました:</h2>
+      <ul>
+        <% resource.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</div>
+
+
+
+
 
 
 

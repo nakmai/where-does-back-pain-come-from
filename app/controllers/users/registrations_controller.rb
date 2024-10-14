@@ -62,7 +62,7 @@ module Users
       # パスワードの長さと構成の確認
       if params[:user][:password].length < 6 || params[:user][:password].length > 20 ||
          !(params[:user][:password] =~ /[A-Z]/ && params[:user][:password] =~ /[a-z]/ && params[:user][:password] =~ /\d/)
-        flash.now[:alert] = "6文字以上・20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください"
+        flash.now[:alert] = "6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください"
         build_resource(sign_up_params)  # resource を保持
         render :new and return
       end

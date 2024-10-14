@@ -16,8 +16,6 @@ class PasswordsController < Devise::PasswordsController
   
     # 3. 新しいパスワードを設定後の処理
     def update
-      # パスワードの長さと構成の確認
-      def update
         # パスワードが不一致の場合
         if params[:user][:password] != params[:user][:password_confirmation]
           flash.now[:alert] = "パスワードが一致していません"

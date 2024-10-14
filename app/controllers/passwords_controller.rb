@@ -5,45 +5,35 @@ class PasswordsController < Devise::PasswordsController
   end
 
   # 2. パスワードリセット用URLクリック時の処理
-  def edit
-    # トークンを用いてリソースを探す
-    self.resource = resource_class.with_reset_password_token(params[:reset_password_token])
-
-    # リソースが見つからない場合
-    if resource.nil?
-      flash.now[:alert] = "パスワードリセットトークンが無効です。もう一度試してください。"
-      self.resource = resource_class.new # 空のリソースを設定してフォームの再表示を可能にする
-    else
-      # トークンが見つかった場合はパスワードリセットトークンを設定
-      resource.reset_password_token = params[:reset_password_token]
-    end
-
-    # リソースがあってもなくても同じビューをレンダリング
-    render :edit
-  end
-
-  # 3. 新しいパスワードを設定後の処理
   def update
+    # パスワードと確認が一致しない場合のエラーハンドリング
     if params[:user][:password] != params[:user][:password_confirmation]
       flash.now[:alert] = "パスワードが一致していません"
+      self.resource = resource_class.new # リソースを再設定
       render :edit and return
     end
-
+  
+    # パスワードの形式チェック
     if params[:user][:password].length < 6 || params[:user][:password].length > 20 ||
        !(params[:user][:password] =~ /[A-Z]/ && params[:user][:password] =~ /[a-z]/ && params[:user][:password] =~ /\d/)
       flash.now[:alert] = "6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください"
+      self.resource = resource_class.new # リソースを再設定
       render :edit and return
     end
-
+  
+    # パスワードリセットをトークンで行う
     self.resource = resource_class.reset_password_by_token(resource_params)
-
+  
+    # パスワードリセットが成功した場合
     if resource.errors.empty?
       yield resource if block_given?
       set_flash_message!(:notice, :updated_not_active)
       flash.now[:notice] = "パスワードが正常に変更されました。再度ログインしてください。"
       render :edit
     else
+      # リソースがエラーを持っている場合
       flash.now[:alert] = resource.errors.full_messages.join(", ")
+      self.resource ||= resource_class.new # リソースがnilの場合は新しいインスタンスを設定
       render :edit
     end
   end

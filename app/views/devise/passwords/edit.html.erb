@@ -8,6 +8,7 @@
 
   <div class="field">
     <%= f.label :password, "新しいパスワード" %><br />
+    <small class="text-muted">6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください</small><br />
     <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> 文字以上の文字列)</em><br />
     <% end %>

@@ -74,13 +74,6 @@ module Users
         render :new and return
       end
 
-      # 性別が選択されていない場合の処理
-      if params[:user][:gender].blank?
-        flash.now[:alert] = "性別を選択してください"
-        build_resource(sign_up_params)  # resource を保持
-        render :new and return
-      end
-
       # sign_up_params をマージしてユーザーリソースを作成
       @user = build_resource(sign_up_params.merge(birthdate: birthdate))
 

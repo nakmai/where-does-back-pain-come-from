@@ -8,14 +8,17 @@ class PasswordsController < Devise::PasswordsController
   def edit
     # トークンを用いてリソースを探す
     self.resource = resource_class.with_reset_password_token(params[:reset_password_token])
-    
-    # リソースが存在しない場合の処理
+
+    # リソースが見つからない場合
     if resource.nil?
-      flash[:alert] = "パスワードリセットトークンが無効です。もう一度試してください。"
-      redirect_to new_user_password_path and return
+      flash.now[:alert] = "パスワードリセットトークンが無効です。もう一度試してください。"
+      self.resource = resource_class.new # 空のリソースを設定してフォームの再表示を可能にする
+    else
+      # トークンが見つかった場合はパスワードリセットトークンを設定
+      resource.reset_password_token = params[:reset_password_token]
     end
 
-    # リソースが見つかった場合にビューをレンダリング
+    # リソースがあってもなくても同じビューをレンダリング
     render :edit
   end
 

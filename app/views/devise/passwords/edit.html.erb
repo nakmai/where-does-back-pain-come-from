@@ -4,30 +4,27 @@
 
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
-      <%= f.hidden_field :reset_password_token, value: params[:reset_password_token] %>
+      <%= f.hidden_field :reset_password_token, value: resource.reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "新しいパスワード" %><br />
-   
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワード)</em><br />
+      <div class="field">
+        <%= f.label :password, "新しいパスワード" %><br />
+        <em>6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワード</em><br />
+        <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"  %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation, "新しいパスワード(確認)" %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+      </div>
+
+      <br>
+      <div class="actions">
+        <%= f.submit "変更", class: "btn btn-primary custom-btn w-100" %>
+      </div>
     <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"  %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "新しいパスワード(確認)" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" , class: "form-control" %>
-  </div>
-<br>
-  <div class="actions">
-    <%= f.submit "変更" , class: "btn btn-primary custom-btn w-100"%>
-  </div>
-<% end %>
     <br>
- <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary custom-btn w-100" %>
-
-
-
+    <%= link_to "トップページへ戻る", root_path, class: "btn btn-primary custom-btn w-100" %>
   </div>
 </div>
+

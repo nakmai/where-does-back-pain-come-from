@@ -10,7 +10,7 @@
     <%= f.label :password, "新しいパスワード" %><br />
    
     <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> 文字以上以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワード)</em><br />
+      <em>(<%= @minimum_password_length %> 文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワード)</em><br />
     <% end %>
     <%= f.password_field :password, autofocus: true, autocomplete: "new-password", class: "form-control"  %>
   </div>

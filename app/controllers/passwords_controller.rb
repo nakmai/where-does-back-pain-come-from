@@ -6,17 +6,13 @@ class PasswordsController < Devise::PasswordsController
 
   # 2. パスワードリセット用URLクリック時の処理
   def edit
-    # トークンをもとにリソースを見つける
+    # tokenがある場合はリソースを取得
     self.resource = resource_class.with_reset_password_token(params[:reset_password_token])
-  
-    unless resource
+
+    if resource.nil? || resource.reset_password_token.blank?
       flash[:alert] = "パスワードリセットトークンが無効です。もう一度試してください。"
       redirect_to new_user_password_path and return
     end
-  
-    render :edit
-  end
-  
 
     # Deviseが適切にリソースを認識できるように
     render :edit
@@ -54,6 +50,7 @@ class PasswordsController < Devise::PasswordsController
     new_user_session_path
   end
 end
+
 
 
   

@@ -18,12 +18,11 @@ gem 'terser'
 gem 'bootstrap', '~> 5.3.0'
 gem 'i18n'
 
-
-
-
-
-
-
+#google ログイン
+gem 'dotenv-rails', groups: [:development, :test]
+gem 'oauth2', '~> 2.0'
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
 
 
 

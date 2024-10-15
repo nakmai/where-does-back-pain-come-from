@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  get 'static_pages/terms'
+  get 'static_pages/privacy_policy'
   get 'my/page'
   # Devise のルーティング
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
-    passwords: 'passwords'
+    passwords: 'passwords',
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
+
 
   devise_scope :user do
     post 'users/sign_up', to: 'users/registrations#create', as: 'custom_user_registration'

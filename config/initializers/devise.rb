@@ -280,6 +280,8 @@ Devise.setup do |config|
       skip_jwt: true
     }
   end
+  OmniAuth.config.full_host = Rails.env.production? ? 'https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com/' : 'http://localhost:3000'
+
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

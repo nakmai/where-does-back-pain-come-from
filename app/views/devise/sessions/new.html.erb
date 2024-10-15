@@ -22,12 +22,7 @@
     <% end %>
 
     <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, authenticity_token: true %>
-
-
-
     
-    
-
     <div class="text-center mt-3">
       <%= link_to "パスワードを忘れた", new_password_path(resource_name), class: "text-primary" %>
     </div>

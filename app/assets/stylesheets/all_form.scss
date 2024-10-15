@@ -1,14 +1,22 @@
 .form-row {
   display: flex;
-  justify-content: center; /* 中央寄せ */
-  align-items: center; /* 縦方向に中央揃え */
-  margin-bottom: 10px; /* 入力フィールドの下に余白 */
+  justify-content: center; /* 水平方向で中央揃え */
+  align-items: center; /* 縦方向で中央揃え */
+  margin-bottom: 30px; /* 入力フィールドの下に余白 */
+  width: fit-content; /* 子要素に基づいて幅を自動調整 */
+  margin-left: auto;
+  margin-right: auto; /* 左右の中央揃えを明確に */
 }
 
 .form-row .col {
-  flex: 1;
-  max-width: 125px ; /* テキストボックスの幅を小さく */
-  margin: 0 5px; /* テキストボックス間のスペースを狭く */
+  flex: none; /* テキストボックスの幅を固定にする */
+  width: 110px; /* テキストボックスの幅を広げる */
+  margin: 0 5px; /* テキストボックス間のスペースを確保 */
+  box-sizing: border-box; /* パディングや境界を含めて幅を計算 */
+}
+
+.form-row span {
+  margin: 0 3px; /* スラッシュ（/）の間隔を確保 */
 }
 
 .gender-section {

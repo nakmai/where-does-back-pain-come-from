@@ -21,8 +21,9 @@
       <%= f.submit "ログイン", class: "btn btn-primary custom-btn w-100" %>
     <% end %>
 
-    <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post %>
-    <%= submit_tag "Sign in with Google" %>
+    <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, authenticity_token: true %>
+
+
     
     
 

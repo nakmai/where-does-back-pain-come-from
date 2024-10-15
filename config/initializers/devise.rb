@@ -273,13 +273,11 @@ Devise.setup do |config|
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
 
-  Devise.setup do |config|
-    config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
-      scope: 'email,profile',
-      prompt: 'select_account',
-      skip_jwt: true
-    }
-  end
+  config.omniauth :google_oauth2, "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", {
+    scope: "email,profile",
+    prompt: "select_account",
+    provider_ignores_state: false
+  }
   OmniAuth.config.full_host = Rails.env.production? ? 'https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com/' : 'http://localhost:3000'
 
 

@@ -27,10 +27,10 @@ class MyPageController < ApplicationController
     render 'users/guest/intervertebral_joint'
   end
 
-  def myofascial_back_pain_user
-    user_id = params[:user_id]  # user_idを取得
-    @user = User.find(user_id)
-    render 'users/user/myofascial_back_pain'
+  def myofascial_back_pain
+    @user = User.find(params[:id])
+    # 必要な処理をここに記述
+    render 'users/myofascial_back_pain' # ビューのテンプレートが `app/views/users/myofascial_back_pain.html.erb` にある場合
   end
 
   def intervertebral_joint_user

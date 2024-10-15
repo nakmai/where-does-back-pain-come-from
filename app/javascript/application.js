@@ -7,6 +7,8 @@ import "@hotwired/turbo-rails"
 import "controllers"
 import "bootstrap"
 import Rails from "@rails/ujs"
+import axios from 'axios';
+
 
 Rails.start()
 import "pain_behavior_myofascial_back_pain"

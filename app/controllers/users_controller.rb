@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
-  
+  before_action :authenticate_user!, only: [:redirect_based_on_age_and_gender]
 
-  # フォーム処理アクション
   def all_form
     @user_data = { year: nil, month: nil, day: nil, gender: nil }
     render 'users/all_form'
@@ -12,46 +11,63 @@ class UsersController < ApplicationController
     month = params[:month].to_i
     day = params[:day].to_i
     gender = params[:gender]
-  
-    # フォームの再表示用にパラメータを保存
-    @user_data = { year: year, month: month, day: day, gender: gender }
-  
-    if year.zero? || month.zero? || day.zero?
-      flash.now[:alert] = "生年月日を入力してください"
-      render :all_form and return
+
+    birthdate = Date.new(year, month, day)
+    age = calculate_age(birthdate)
+
+    redirect_based_on_age_and_gender(age, gender)
+  end
+
+  # ログイン済みユーザーの場合
+  def redirect_based_on_age_and_gender
+    user = current_user
+
+    if user.birthday.present? && user.gender.present?
+      age = calculate_age(user.birthday)
+      gender = user.gender
+
+      redirect_user_based_on_age_and_gender(age, gender)
+    else
+      redirect_to all_form_path
     end
-  
-    if gender.blank?
-      flash.now[:alert] = "性別を選んでください"
-      render :all_form and return
+  end
+
+  # Googleログイン時のデータ取得処理
+  def google_oauth2_callback
+    auth = request.env['omniauth.auth']
+    birthday = auth.extra.raw_info.birthday
+    gender = auth.extra.raw_info.gender
+
+    if birthday.present? && gender.present?
+      birthdate = Date.parse(birthday)
+      age = calculate_age(birthdate)
+      redirect_based_on_age_and_gender(age, gender)
+    else
+      redirect_to all_form_path
     end
-  
-    begin
-      birthdate = Date.new(year, month, day)
-  
-      if birthdate > Date.today
-        flash.now[:alert] = "この日付は無効です"
-        render :all_form and return
-      end
-  
-      age = ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
-    rescue ArgumentError
-      flash.now[:alert] = "無効な日付が入力されました"
-      render :all_form and return
-    end
-  
-    # 年齢によるリダイレクト処理
-    if age < 21 || age > 55
+  end
+
+  private
+
+  def calculate_age(birthday)
+    ((Time.zone.now - birthday.to_time) / 1.year.seconds).floor
+  end
+
+  def redirect_based_on_age_and_gender(age, gender)
+    if age <= 20 || age >= 56
       redirect_to orthopedics_advice1_path
-    elsif age >= 21 && age <= 55 && gender == "female"
-      redirect_to gynecology_question_path
-    elsif age >= 21 && age <= 55 && gender == "male"
-      redirect_to red_flag_path
+    elsif age >= 21 && age <= 55
+      if gender == "male"
+        redirect_to red_flag_path
+      elsif gender == "female"
+        redirect_to gynecology_question_path
+      else
+        redirect_to root_path, alert: "無効なデータです"
+      end
     else
       redirect_to root_path, alert: "無効なデータです"
     end
   end
-  
   
 
   # ユーザー用ページのアクション

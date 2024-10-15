@@ -10,12 +10,12 @@ class User < ApplicationRecord
   # パスワードのバリデーション
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
 
-  # registered_pagesがnilの場合に空配列を返す（デフォルト値を空配列にする）
-  after_initialize :set_default_registered_pages, if: :new_record?
-
   # 生年月日と性別のバリデーション
   validates :birthdate, presence: true
   validates :gender, presence: true, inclusion: { in: %w(male female), message: "性別を選んでください" }
+
+  # registered_pagesがnilの場合に空配列を返す（デフォルト値を空配列にする）
+  after_initialize :set_default_registered_pages, if: :new_record?
 
   # registered_pagesにブックマーク（URL）を追加
   def add_bookmark(url:, name:)
@@ -39,17 +39,22 @@ class User < ApplicationRecord
     save  # 保存
   end
 
-  def self.from_omniauth(access_token)
-    data = access_token.info
-    user = User.where(email: data['email']).first
+  # Google OAuth2 からユーザーを作成または検索する
+  def self.from_omniauth(auth)
+    # すでにユーザーが存在するかをメールで確認
+    user = User.where(email: auth.info.email).first
 
-    # ユーザーが存在しない場合、新規作成
     unless user
+      # ユーザーが存在しない場合、新規作成
       user = User.create(
-        email: data['email'],
-        password: Devise.friendly_token[0, 20]
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        name: auth.info.name,
+        birthdate: parse_birthdate(auth.extra.raw_info.birthday),
+        gender: auth.extra.raw_info.gender
       )
     end
+
     user
   end
 
@@ -58,6 +63,13 @@ class User < ApplicationRecord
   # registered_pagesのデフォルト値を設定
   def set_default_registered_pages
     self.registered_pages ||= []  # nil の場合は空配列を代入
+  end
+
+  # 生年月日の解析処理
+  def self.parse_birthdate(birthday_string)
+    Date.parse(birthday_string) if birthday_string.present?
+  rescue ArgumentError
+    nil  # 無効な日付の場合はnilを返す
   end
 end
 

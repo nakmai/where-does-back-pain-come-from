@@ -21,7 +21,11 @@
       <%= f.submit "ログイン", class: "btn btn-primary custom-btn w-100" %>
     <% end %>
 
-    <%= button_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, method: :post, authenticity_token: true %>
+    <%= link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: "google-signin-button", authenticity_token: true do %>
+      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google logo">
+      Sign in with Google
+    <% end %>
+    
     
     <div class="text-center mt-3">
       <%= link_to "パスワードを忘れた", new_password_path(resource_name), class: "text-primary" %>
@@ -33,6 +37,32 @@
     </div>
   </div>
 </div>
+
+<style>
+.google-signin-button {
+  background-color: white;
+  color: black;
+  border: 1px solid black; 
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.google-signin-button img {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+}
+
+
+</style>
 
 
 

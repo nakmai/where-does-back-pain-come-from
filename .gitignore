@@ -33,6 +33,8 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+/config/initializers/omniauth.rb
+
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

@@ -44,7 +44,7 @@ end
 
 # 開発・テスト環境専用のgem
 group :development, :test do
-  gem 'sqlite3', '~> 1.4'
+  gem 'mysql2', '>= 0.5'
 end
 
 # 本番環境専用のgem

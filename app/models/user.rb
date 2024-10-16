@@ -70,8 +70,8 @@ class User < ApplicationRecord
         email: google_user_info["emailAddresses"].first["value"],
         password: Devise.friendly_token[0, 20],
         name: google_user_info["names"].first["displayName"],
-        birthdate: parse_birthdate(google_user_info["birthdays"].first["date"]),
-        gender: google_user_info["genders"].first["value"]
+        birthdate: google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil,
+        gender: google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
       )
     end
   

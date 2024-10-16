@@ -111,11 +111,28 @@ class User < ApplicationRecord
   end
 
   # 生年月日の解析処理
-  def self.parse_birthdate(birthdate_string)
-    Date.parse(birthdate_string) if birthdate_string.present?
+  def self.parse_birthdate(birthdate_hash)
+    if birthdate_hash.present?
+      year = birthdate_hash["year"]
+      month = birthdate_hash["month"]
+      day = birthdate_hash["day"]
+      
+      # 年、月、日が存在する場合に日付を生成
+      Date.new(year, month, day) if year && month && day
+    end
   rescue ArgumentError
     nil  # 無効な日付の場合はnilを返す
   end
+  
+  def self.parse_gender(gender_array)
+    if gender_array.present? && gender_array.is_a?(Array)
+      # 最初の性別データを取得
+      gender_data = gender_array.first
+      gender_data["value"] if gender_data.present? && gender_data["value"].present?
+    end
+  end
+
+
 end
 
 

@@ -1,8 +1,22 @@
 class PagesController < ApplicationController
+  def home
+    render 'pages/home'
+  end
+
   def terms
-    # ログインしていない場合は処理なし
-    unless user_signed_in?
-      render 'pages/terms'
+    # まず利用規約ページを表示する
+    render 'pages/terms'
+  end
+
+  def check_user_data
+    # ユーザーの生年月日と性別を確認
+    if current_user.birthdate.present? && current_user.gender.present?
+      age = calculate_age(current_user.birthdate)
+      gender = current_user.gender
+      redirect_based_on_age_and_gender(age, gender)
+    else
+      # 生年月日と性別がない場合は、all_formページへ
+      redirect_to all_form_users_path
     end
   end
 
@@ -25,6 +39,11 @@ class PagesController < ApplicationController
         redirect_to terms_path unless action_name == 'terms'
       end
     end
+
+    # 生年月日から年齢を計算
+    def calculate_age(birthdate)
+      ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
+    end
   
     # 年齢と性別によるリダイレクト
     def redirect_based_on_age_and_gender(user)
@@ -42,10 +61,5 @@ class PagesController < ApplicationController
       else
         redirect_to root_path, alert: "無効なデータです"
       end
-    end
-  
-    # 生年月日から年齢を計算
-    def calculate_age(birthdate)
-      ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
     end
   end

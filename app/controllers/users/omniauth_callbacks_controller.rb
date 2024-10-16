@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def extract_google_data(auth)
     {
-      birthdate: auth.extra.raw_info.birthdate || auth.extra.raw_info.birthday,
+      birthdate: auth.extra.raw_info.birthdate || auth.extra.raw_info.birthdate,
       gender: auth.extra.raw_info.gender
     }
   end

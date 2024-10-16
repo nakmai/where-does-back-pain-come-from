@@ -50,7 +50,7 @@ class User < ApplicationRecord
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
         name: auth.info.name,
-        birthdate: parse_birthdate(auth.extra.raw_info.birthday),
+        birthdate: parse_birthdate(auth.extra.raw_info.birthdate),
         gender: auth.extra.raw_info.gender
       )
     end
@@ -66,8 +66,8 @@ class User < ApplicationRecord
   end
 
   # 生年月日の解析処理
-  def self.parse_birthdate(birthday_string)
-    Date.parse(birthday_string) if birthday_string.present?
+  def self.parse_birthdate(birthdate_string)
+    Date.parse(birthdate_string) if birthdate_string.present?
   rescue ArgumentError
     nil  # 無効な日付の場合はnilを返す
   end

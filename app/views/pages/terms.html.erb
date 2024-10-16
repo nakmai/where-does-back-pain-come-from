@@ -25,7 +25,7 @@
     </p>
 
     <div class="d-grid gap-2">
-      <%= link_to '同意する', '/users/all_form', class: 'btn btn-primary custom-btn' %>
+      <%= link_to '同意する', ' check_user_data_path', class: 'btn btn-primary custom-btn' %>
       
       <% unless user_signed_in? %>
         <a href="<%= new_user_registration_path %>" class="btn btn-outline-primary custom-btn signup-btn">新規登録</a>

@@ -12,18 +12,7 @@ class ApplicationController < ActionController::Base
   end
 
     # Googleログイン時のリダイレクト処理
-    def google_oauth2_callback
-      auth = request.env['omniauth.auth']
-      birthdate = auth.extra.raw_info.birthdate
-      gender = auth.extra.raw_info.gender
-  
-      if birthdate.present? && gender.present?
-        age = calculate_age(birthdate)
-        redirect_based_on_age_and_gender(age, gender)
-      else
-        redirect_to all_form_users_path
-      end
-    end
+
 
 
   # サインアウト後にリダイレクトするパスを決定する

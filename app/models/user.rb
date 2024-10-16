@@ -39,20 +39,32 @@ class User < ApplicationRecord
     save  # 保存
   end
 
+# Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
   def self.get_google_user_info(access_token)
-    require 'net/http'
-    require 'uri'
-    require 'json'
-
+    # 必要なライブラリを読み込む
+    require 'net/http'  # HTTPリクエストを行うためのライブラリ
+    require 'uri'       # URI（URL）を処理するためのライブラリ
+    require 'json'      # JSON形式のデータを扱うためのライブラリ
+  
+    # Google People APIのエンドポイントを指定
+    # birthdays, genders, emailAddresses, names などのフィールドをリクエスト
     uri = URI("https://people.googleapis.com/v1/people/me?personFields=birthdays,genders,emailAddresses,names")
+    
+    # HTTPオブジェクトを作成し、SSLを使用してセキュアな通信を行う設定
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true
+    http.use_ssl = true  # SSL接続を有効にする
+  
+    # GETリクエストを作成し、Authorizationヘッダーにアクセストークンを設定
     request = Net::HTTP::Get.new(uri.request_uri)
-    request["Authorization"] = "Bearer #{access_token}"
-
+    request["Authorization"] = "Bearer #{access_token}"  # Google OAuth2のアクセストークンを利用
+  
+    # Google People APIに対してリクエストを送信し、レスポンスを受け取る
     response = http.request(request)
+  
+    # レスポンスのボディをJSON形式に変換して返す
     JSON.parse(response.body)
   end
+  
 
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
@@ -97,7 +109,7 @@ class User < ApplicationRecord
     self.registered_pages ||= []  # nil の場合は空配列を代入
   end
 
-  # 生年月日の解析処理
+  # googlePeopleAPIの生年月日の解析処理
   def self.parse_birthdate(birthdate_hash)
     if birthdate_hash.present?
       year = birthdate_hash["year"]
@@ -110,7 +122,8 @@ class User < ApplicationRecord
   rescue ArgumentError
     nil  # 無効な日付の場合はnilを返す
   end
-
+  
+ # googlePeopleAPIの性別の解析処理
   def self.parse_gender(gender_array)
     if gender_array.present? && gender_array.is_a?(Array)
       # 最初の性別データを取得

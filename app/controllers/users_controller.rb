@@ -41,38 +41,48 @@ class UsersController < ApplicationController
       age = calculate_age(birthdate)
       redirect_based_on_age_and_gender(age, gender)
     end
-  
-  
-    # ログイン済みユーザーの場合
-    def redirect_based_on_age_and_gender
-      user = current_user || session[:google_data]
-  
-      if user.present?
-        birthdate = user[:birthdate]  # 修正: 正しい変数名を使う
-        age = calculate_age(birthdate)
-        gender = user[:gender]
-        redirect_user_based_on_age_and_gender(age, gender)
-      else
-        redirect_to all_form_path
-      end
+
+
+  # 年齢と性別に基づく共通のリダイレクト処理
+  def redirect_based_on_age_and_gender
+    user = current_user || session[:google_data]  # current_user もしくは Google データを使う
+
+    if user.present?
+      birthdate = user[:birthdate] || user["birthdate"]
+      gender = user[:gender] || user["gender"]
+      age = calculate_age(birthdate)
+      redirect_user_based_on_age_and_gender(age, gender)
+    else
+      redirect_to all_form_users_path  # 生年月日や性別がない場合は入力フォームへ
     end
-  
-    # Googleログイン時のデータ取得処理
-    def google_oauth2_callback
-      auth = request.env['omniauth.auth']
-      
-      # 生年月日と性別を取得
-      birthdate = auth.extra.raw_info.birthday || auth.extra.raw_info.birthdate
-      gender = auth.extra.raw_info.gender
-  
-      if birthdate.present? && gender.present?
-        birthdate = Date.parse(birthdate) # 修正: 正しい変数名を使用
-        age = calculate_age(birthdate)
-        redirect_based_on_age_and_gender(age, gender)
-      else
-        redirect_to all_form_users_path
-      end
+  end
+
+  # Eメールログイン時のチェック
+  def check_user_data
+    if current_user.birthdate.present? && current_user.gender.present?
+      age = calculate_age(current_user.birthdate)
+      gender = current_user.gender
+      redirect_based_on_age_and_gender(age, gender)
+    else
+      redirect_to all_form_users_path
     end
+  end
+  
+
+  
+# Googleログイン時のデータ取得処理
+def google_oauth2_callback
+  auth = request.env['omniauth.auth']
+  
+  # Googleからのデータを取得してセッションに保存
+  session[:google_data] = extract_google_data(auth)
+
+  # Googleデータがある場合のリダイレクト処理
+  age = calculate_age(session[:google_data][:birthdate])
+  gender = session[:google_data][:gender]
+  redirect_based_on_age_and_gender(age, gender)
+end
+  
   
   
   
@@ -239,23 +249,32 @@ class UsersController < ApplicationController
     end
   end
 
+    # GoogleのAPIから生年月日と性別を取り出す
+    def extract_google_data(auth)
+      {
+        birthdate: auth.extra.raw_info.birthday || auth.extra.raw_info.birthdate,
+        gender: auth.extra.raw_info.gender
+      }
+    end
+  # 生年月日から年齢を計算
   def calculate_age(birthdate)
     ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
   end
 
-  def redirect_user_based_on_age_and_gender(age, gender)
-    if age <= 20 || age >= 55
-      redirect_to orthopedics_advice1_path
-    elsif age >= 21 && age <= 54
-      if gender == "male"
-        redirect_to red_flag_path
-      elsif gender == "female"
-        redirect_to gynecology_question_path
-      else
-        redirect_to root_path, alert: "無効な性別データです。"
-      end
+# 年齢と性別に基づく共通のリダイレクト処理（引数を受け取る形に変更）
+def redirect_based_on_age_and_gender(age, gender)
+  if age <= 20 || age >= 55
+    redirect_to orthopedics_advice1_path
+  elsif age >= 21 && age <= 54
+    if gender == "male"
+      redirect_to red_flag_path
+    elsif gender == "female"
+      redirect_to gynecology_question_path
     else
-      redirect_to root_path, alert: "無効な年齢データです。"
+      redirect_to root_path, alert: "無効な性別データです。"
     end
+  else
+    redirect_to root_path, alert: "無効な年齢データです。"
   end
+end
 end

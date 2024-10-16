@@ -60,8 +60,7 @@ Rails.application.routes.draw do
       get 'intervertebral_joint/:pain_id', to: 'users#intervertebral_joint', as: 'intervertebral_joint' 
     end
   end
-  get 'check_user_data', to: 'users#check_user_data'
-  
+
       post 'pain_behavior_extention_flexion/counternutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#counternutation_extention_flexion_behavior', as: 'pain_behavior_extention_flexion_counternutation_extention_flexion_behavior'
       post 'my_page_counternutation', to: 'users#my_page_counternutation'
       post 'copy_counternutation', to: 'users#copy_counternutation'
@@ -216,6 +215,9 @@ get 'new_guest_intervertebral_joint', to: 'users#guest_page', as: :guest_interve
 get '/oauth2callback', to: 'oauth#callback'
 
 get 'users/:id/profile_page', to: 'users#profile_page', as: 'user_profile_page'
+
+ get 'check_user_data', to: 'users#check_user_data'
+ 
 resources :users, only: [:show] do
   member do
     delete 'remove_bookmark', to: 'users#remove_bookmark'

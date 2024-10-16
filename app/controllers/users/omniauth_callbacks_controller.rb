@@ -13,7 +13,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @user.persisted?
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-      
+      return  
       # 生年月日と性別がある場合のリダイレクト処理
       if google_data[:birthdate].present? && google_data[:gender].present?
         birthdate = Date.parse(google_data[:birthdate]) rescue nil

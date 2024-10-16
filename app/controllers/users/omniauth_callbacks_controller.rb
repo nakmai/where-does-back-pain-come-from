@@ -17,12 +17,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # 生年月日と性別がある場合のリダイレクト処理
       if google_data[:birthdate].present? && google_data[:gender].present?
         birthdate = Date.parse(google_data[:birthdate]) rescue nil
-        age = calculate_age(birthdate) if birthdate
-        redirect_based_on_age_and_gender(age, google_data[:gender]) if age
-      else
-        # 生年月日や性別がなければ入力フォームへ
-        redirect_to all_form_users_path
+        if birthdate
+          age = calculate_age(birthdate)
+          redirect_based_on_age_and_gender(age, google_data[:gender])
+          return  
+        end
       end
+      
+      # 生年月日や性別がなければ入力フォームへ
+      redirect_to all_form_users_path
+      return  
     else
       session['devise.google_data'] = auth.except(:extra)
       redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")

@@ -51,7 +51,6 @@ class User < ApplicationRecord
     request["Authorization"] = "Bearer #{access_token}"
 
     response = http.request(request)
-    Rails.logger.info("Google People API response: #{response.body}")
     JSON.parse(response.body)
   end
 
@@ -60,13 +59,10 @@ class User < ApplicationRecord
     access_token = auth.credentials.token
   
     # Google People API からユーザー情報を取得
-    Rails.logger.info("Access Token: #{access_token}")
     google_user_info = get_google_user_info(access_token)
-    Rails.logger.info("Google People API Response: #{google_user_info}")
   
     # メールアドレスで既存ユーザーを検索
     email = google_user_info["emailAddresses"].first["value"]
-    Rails.logger.info("User Email: #{email}")
     user = User.where(email: email).first
   
     unless user
@@ -74,15 +70,10 @@ class User < ApplicationRecord
       birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
       gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
   
-      Rails.logger.info("Parsed Birthdate: #{birthdate}")
-      Rails.logger.info("Gender: #{gender}")
-  
-      # 生年月日または性別がない場合、エラーメッセージをログに記録して例外を投げる
+      # 生年月日または性別がない場合、例外を投げる
       if birthdate.nil?
-        Rails.logger.error("Birthdate is missing in Google account.")
         raise "生年月日が登録されていないため、Googleアカウントでログインできません。" 
       elsif gender.nil?
-        Rails.logger.error("Gender is missing in Google account.")
         raise "性別が登録されていないため、Googleアカウントでログインできません。"
       end
   
@@ -94,11 +85,10 @@ class User < ApplicationRecord
         birthdate: birthdate,
         gender: gender
       )
-      Rails.logger.info("New user created: #{user.inspect}")
     end
-  
     user
   end
+  
   
   private
 

@@ -68,12 +68,6 @@ class UsersController < ApplicationController
     end
   end
   
-
-  
-
-  
-  
-  
   
     # ユーザー用ページのアクション
     def user_page

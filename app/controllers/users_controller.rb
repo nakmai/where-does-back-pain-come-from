@@ -70,18 +70,7 @@ class UsersController < ApplicationController
   
 
   
-# Googleログイン時のデータ取得処理
-def google_oauth2_callback
-  auth = request.env['omniauth.auth']
-  
-  # Googleからのデータを取得してセッションに保存
-  session[:google_data] = extract_google_data(auth)
 
-  # Googleデータがある場合のリダイレクト処理
-  age = calculate_age(session[:google_data][:birthdate])
-  gender = session[:google_data][:gender]
-  redirect_based_on_age_and_gender(age, gender)
-end
   
   
   

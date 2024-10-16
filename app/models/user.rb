@@ -51,6 +51,7 @@ class User < ApplicationRecord
     request["Authorization"] = "Bearer #{access_token}"
 
     response = http.request(request)
+    Rails.logger.info("Google People API response: #{response.body}")
     JSON.parse(response.body)
   end
 
@@ -65,13 +66,24 @@ class User < ApplicationRecord
     user = User.where(email: google_user_info["emailAddresses"].first["value"]).first
   
     unless user
+      # 生年月日と性別がGoogleアカウントに登録されているかを確認
+      birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
+      gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
+  
+      # 生年月日または性別がない場合、フラッシュメッセージを表示してリダイレクト
+      if birthdate.nil?
+        raise "生年月日が登録されていないため、Googleアカウントでログインできません。" 
+      elsif gender.nil?
+        raise "性別が登録されていないため、Googleアカウントでログインできません。"
+      end
+  
       # ユーザーが存在しない場合、新規作成
       user = User.create(
         email: google_user_info["emailAddresses"].first["value"],
         password: Devise.friendly_token[0, 20],
         name: google_user_info["names"].first["displayName"],
-        birthdate: google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil,
-        gender: google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
+        birthdate: birthdate,
+        gender: gender
       )
     end
   

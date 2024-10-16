@@ -100,9 +100,6 @@ class User < ApplicationRecord
     user
   end
   
-  
-  
-
   private
 
   # registered_pagesのデフォルト値を設定
@@ -123,7 +120,7 @@ class User < ApplicationRecord
   rescue ArgumentError
     nil  # 無効な日付の場合はnilを返す
   end
-  
+
   def self.parse_gender(gender_array)
     if gender_array.present? && gender_array.is_a?(Array)
       # 最初の性別データを取得

@@ -49,7 +49,6 @@ class User < ApplicationRecord
       user = User.create(
         email: auth.info.email,
         password: Devise.friendly_token[0, 20],
-        name: auth.info.name,
         birthdate: parse_birthdate(auth.extra.raw_info.birthdate),
         gender: auth.extra.raw_info.gender
       )

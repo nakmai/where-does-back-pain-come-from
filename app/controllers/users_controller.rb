@@ -1,5 +1,13 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:redirect_based_on_age_and_gender]
+  before_action :authenticate_user!, only: [:redirect_based_on_age_and_gender, :profile_page]
+
+
+  def profile_page
+    @user = User.find(params[:id])
+    @bookmarks = @user.registered_pages || []
+    render 'users/profile/profile_page'  # app/views/users/profile/profile_page.html.erb が必要です
+  end
+
 
   def all_form
     @user_data = { year: nil, month: nil, day: nil, gender: nil }
@@ -47,28 +55,6 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-  def calculate_age(birthday)
-    ((Time.zone.now - birthday.to_time) / 1.year.seconds).floor
-  end
-
-  def redirect_based_on_age_and_gender(age, gender)
-    if age <= 20 || age >= 56
-      redirect_to orthopedics_advice1_path
-    elsif age >= 21 && age <= 55
-      if gender == "male"
-        redirect_to red_flag_path
-      elsif gender == "female"
-        redirect_to gynecology_question_path
-      else
-        redirect_to root_path, alert: "無効なデータです"
-      end
-    else
-      redirect_to root_path, alert: "無効なデータです"
-    end
-  end
-  
 
   # ユーザー用ページのアクション
   def user_page
@@ -235,6 +221,26 @@ class UsersController < ApplicationController
       @guest_template = 'users/guest/nutation'
       @guest_redirect_path = my_page_nutation_guest_path
       @user_redirect_path = my_page_nutation_user_path
+    end
+  end
+
+  def calculate_age(birthday)
+    ((Time.zone.now - birthday.to_time) / 1.year.seconds).floor
+  end
+
+  def redirect_based_on_age_and_gender(age, gender)
+    if age <= 20 || age >= 55
+      redirect_to orthopedics_advice1_path
+    elsif age >= 21 && age <= 54
+      if gender == "male"
+        redirect_to red_flag_path
+      elsif gender == "female"
+        redirect_to gynecology_question_path
+      else
+        redirect_to root_path, alert: "無効なデータです"
+      end
+    else
+      redirect_to root_path, alert: "無効なデータです"
     end
   end
 end

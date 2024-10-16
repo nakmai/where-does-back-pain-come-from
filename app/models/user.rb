@@ -39,22 +39,42 @@ class User < ApplicationRecord
     save  # 保存
   end
 
+  def self.get_google_user_info(access_token)
+    require 'net/http'
+    require 'uri'
+    require 'json'
+
+    uri = URI("https://people.googleapis.com/v1/people/me?personFields=birthdays,genders,emailAddresses,names")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    request = Net::HTTP::Get.new(uri.request_uri)
+    request["Authorization"] = "Bearer #{access_token}"
+
+    response = http.request(request)
+    JSON.parse(response.body)
+  end
+
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
-    # すでにユーザーが存在するかをメールで確認
-    user = User.where(email: auth.info.email).first
-
+    access_token = auth.credentials.token
+  
+    # Google People API からユーザー情報を取得
+    google_user_info = get_google_user_info(access_token)
+  
+    # メールアドレスで既存ユーザーを検索
+    user = User.where(email: google_user_info["emailAddresses"].first["value"]).first
+  
     unless user
       # ユーザーが存在しない場合、新規作成
       user = User.create(
-        email: auth.info.email,
+        email: google_user_info["emailAddresses"].first["value"],
         password: Devise.friendly_token[0, 20],
-        name: auth.info.name,
-        birthdate: parse_birthdate(auth.extra.raw_info.birthdate),
-        gender: auth.extra.raw_info.gender
+        name: google_user_info["names"].first["displayName"],
+        birthdate: parse_birthdate(google_user_info["birthdays"].first["date"]),
+        gender: google_user_info["genders"].first["value"]
       )
     end
-
+  
     user
   end
 

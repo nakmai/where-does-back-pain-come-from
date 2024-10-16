@@ -30,6 +30,18 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            birthdate:
+              blank: "生年月日を入力してください"
+            gender:
+              blank: "性別を選択してください"
+    messages:
+      blank: "入力が必要です"
+      
   errors:
     messages:
       select_one: "一つ選択してください"

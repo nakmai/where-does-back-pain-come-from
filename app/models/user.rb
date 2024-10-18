@@ -3,9 +3,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
-  
-  birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
-  gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
 
   # registered_pages を配列として扱う
   serialize :registered_pages, Array

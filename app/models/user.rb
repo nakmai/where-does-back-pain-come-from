@@ -39,7 +39,7 @@ class User < ApplicationRecord
     save  # 保存
   end
 
-# Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
+  # Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
   def self.get_google_user_info(access_token)
     # 必要なライブラリを読み込む
     require 'net/http'  # HTTPリクエストを行うためのライブラリ
@@ -47,7 +47,6 @@ class User < ApplicationRecord
     require 'json'      # JSON形式のデータを扱うためのライブラリ
   
     # Google People APIのエンドポイントを指定
-    # birthdays, genders, emailAddresses, names などのフィールドをリクエスト
     uri = URI("https://people.googleapis.com/v1/people/me?personFields=birthdays,genders,emailAddresses,names")
     
     # HTTPオブジェクトを作成し、SSLを使用してセキュアな通信を行う設定
@@ -64,7 +63,6 @@ class User < ApplicationRecord
     # レスポンスのボディをJSON形式に変換して返す
     JSON.parse(response.body)
   end
-  
 
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
@@ -94,6 +92,9 @@ class User < ApplicationRecord
     user
   end
   
+  def soft_delete
+    update(deleted_at: Time.current)
+  end
   
   private
 
@@ -117,16 +118,25 @@ class User < ApplicationRecord
   end
 
  # googlePeopleAPIの性別の解析処理
-  def self.parse_gender(gender_array)
-    if gender_array.present? && gender_array.is_a?(Array)
-      # 最初の性別データを取得
-      gender_data = gender_array.first
-      gender_data["value"] if gender_data.present? && gender_data["value"].present?
+# googlePeopleAPIの性別の解析処理
+def self.parse_gender(gender_array)
+  if gender_array.present? && gender_array.is_a?(Array)
+    # 最初の性別データを取得
+    gender_data = gender_array.first
+    # 性別データが存在し、値が "male" または "female" の場合のみ返す。その他はnilを返す
+    if gender_data.present? && %w[male female].include?(gender_data["value"])
+      gender_data["value"]
+    else
+      nil
     end
+  else
+    nil  # 無効なデータの場合はnilを返す
   end
-
+end
 
 end
+
+
 
 
 

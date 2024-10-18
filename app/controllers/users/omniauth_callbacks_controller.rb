@@ -13,13 +13,21 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(auth)
   
     if @user.persisted?
-      # 生年月日や性別がない場合、プロフィール編集ページにリダイレクトして入力させる
-      if @user.birthdate.nil? || @user.gender.nil?
-        redirect_to edit_user_registration_path, alert: "生年月日と性別を入力してください。"
+      # 退会済みのアカウントであれば、再登録の処理を追加
+      if @user.deleted_at.present?
+        @user.update(deleted_at: nil)
+        sign_in_and_redirect @user, event: :authentication
+        set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
         return
       end
-  
-      # 生年月日と性別がある場合は通常のログイン処理
+
+      # 生年月日や性別がない場合でもトップページにリダイレクトして後で入力させる
+      if @user.birthdate.nil? || @user.gender.nil?
+        redirect_to root_path, notice: "登録が完了しました。"
+        return
+      end
+
+      # 通常のログイン処理
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
     else

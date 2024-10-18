@@ -23,8 +23,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # ユーザーをサインインし、リダイレクト先にリダイレクト
       sign_in @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-      flash[:notice] = "登録が完了しました。生年月日や性別を後で入力してください。"
-      redirect_to destination_path
+      flash[:notice] = "登録が完了しました。"
+      redirect_to root_path
     else
       # ユーザーが保存されない場合、エラーメッセージとともに登録ページにリダイレクト
       session['devise.google_data'] = auth.except(:extra)

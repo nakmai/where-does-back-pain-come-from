@@ -11,12 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     @user = User.from_omniauth(auth)
 
-    if @user.persisted?
-      # 退会済みのアカウントであれば、再登録の処理を追加
-      if @user.deleted_at.present?
-        @user.update(deleted_at: nil)
-      end
-
       # 生年月日や性別がない場合でも一旦トップページにリダイレクトして後で入力させる
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?

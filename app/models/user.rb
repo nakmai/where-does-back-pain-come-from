@@ -3,6 +3,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
+  
+  birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
+  gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
 
   # registered_pages を配列として扱う
   serialize :registered_pages, Array
@@ -122,7 +125,7 @@ class User < ApplicationRecord
   rescue ArgumentError
     nil  # 無効な日付の場合はnilを返す
   end
-  
+
  # googlePeopleAPIの性別の解析処理
   def self.parse_gender(gender_array)
     if gender_array.present? && gender_array.is_a?(Array)

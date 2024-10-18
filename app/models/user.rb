@@ -93,9 +93,6 @@ class User < ApplicationRecord
     user
   end
   
-  def soft_delete
-    update(deleted_at: Time.current)
-  end
   
   private
 

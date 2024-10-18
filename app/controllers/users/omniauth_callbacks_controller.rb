@@ -64,10 +64,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       elsif gender == "female"
         gynecology_question_path
       else
-        root_path, alert: "無効な性別データです。"
+        redirect_to root_path, alert: "無効な性別データです。"
       end
     else
-      root_path, alert: "無効な年齢データです。"
+      redirect_to root_path, alert: "無効な性別データです。"
     end
   end
 end

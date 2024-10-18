@@ -69,10 +69,10 @@ class User < ApplicationRecord
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
     access_token = auth.credentials.token
-  
+
     # Google People API からユーザー情報を取得
     google_user_info = get_google_user_info(access_token)
-  
+
     # メールアドレスで既存ユーザーを検索
     email = google_user_info["emailAddresses"].first["value"]
     user = User.where(email: email).first
@@ -81,21 +81,14 @@ class User < ApplicationRecord
       # 生年月日と性別がGoogleアカウントに登録されているかを確認
       birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
       gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
-  
-      # 生年月日または性別がない場合、例外を投げる
-      if birthdate.nil?
-        raise "生年月日が登録されていないため、Googleアカウントでログインできません。" 
-      elsif gender.nil?
-        raise "性別が登録されていないため、Googleアカウントでログインできません。"
-      end
-  
+
       # ユーザーが存在しない場合、新規作成
       user = User.create(
         email: email,
         password: Devise.friendly_token[0, 20],
         name: google_user_info["names"].first["displayName"],
-        birthdate: birthdate,
-        gender: gender
+        birthdate: birthdate,  # 生年月日が無い場合でも nil を許容
+        gender: gender          # 性別が無い場合でも nil を許容
       )
     end
     user

@@ -13,9 +13,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @user = User.from_omniauth(auth)
   
     if @user.persisted?
-      # 生年月日や性別がない場合、root_pathにリダイレクトしてメッセージを表示
+      # 生年月日や性別がない場合、プロフィール編集ページにリダイレクトして入力させる
       if @user.birthdate.nil? || @user.gender.nil?
-        redirect_to root_path, alert: "登録されました"
+        redirect_to edit_user_registration_path, alert: "生年月日と性別を入力してください。"
         return
       end
   

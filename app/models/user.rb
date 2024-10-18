@@ -68,30 +68,33 @@ class User < ApplicationRecord
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
     access_token = auth.credentials.token
-
+  
     # Google People API からユーザー情報を取得
     google_user_info = get_google_user_info(access_token)
-
-    # メールアドレスで既存ユーザーを検索
-    email = google_user_info["emailAddresses"].first["value"]
-    user = User.where(email: email).first
   
-    unless user
-      # 生年月日と性別がGoogleアカウントに登録されているかを確認
-      birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
-      gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
-
-      # ユーザーが存在しない場合、新規作成
-      user = User.create(
-        email: email,
-        password: Devise.friendly_token[0, 20],
-        name: google_user_info["names"].first["displayName"],
-        birthdate: birthdate,  # 生年月日が無い場合でも nil を許容
-        gender: gender          # 性別が無い場合でも nil を許容
-      )
+    # メールアドレスを取得
+    email = google_user_info["emailAddresses"]&.first&.dig("value") || auth.info.email
+  
+    # 既存のユーザーを検索（Google API のデータ、または OmniAuth のデータを使用）
+    user = User.where(email: email).first_or_initialize do |u|
+      u.email = email
+      u.password = Devise.friendly_token[0, 20]
+      u.name = google_user_info["names"]&.first&.dig("displayName") || auth.info.name
+  
+      # Google API からの生年月日と性別を取得（無い場合はnil）
+      u.birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : (auth.extra.raw_info.birthday if auth.extra&.raw_info&.birthday)
+      u.gender = google_user_info["genders"]&.first&.dig("value") || (auth.extra.raw_info.gender if auth.extra&.raw_info&.gender)
+      
+      u.provider = auth.provider
+      u.uid = auth.uid
     end
+  
+    # ユーザーが新規作成された場合、保存
+    user.save if user.new_record?
+  
     user
   end
+  
   
   
   private

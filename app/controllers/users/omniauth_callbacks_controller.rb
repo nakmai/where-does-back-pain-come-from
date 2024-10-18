@@ -16,20 +16,12 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       # 退会済みのアカウントであれば、再登録の処理を追加
       if @user.deleted_at.present?
         @user.update(deleted_at: nil)
-        sign_in_and_redirect @user, event: :authentication
-        set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
-        return
       end
 
       # 生年月日や性別がない場合でもトップページにリダイレクトして後で入力させる
-      if @user.birthdate.nil? || @user.gender.nil?
-        redirect_to root_path, notice: "登録が完了しました。"
-        return
-      end
-
-      # 通常のログイン処理
       sign_in_and_redirect @user, event: :authentication
       set_flash_message(:notice, :success, kind: 'Google') if is_navigational_format?
+      flash[:notice] = "登録が完了しました。生年月日や性別を後で入力してください。"
     else
       # ユーザーが保存されない場合
       session['devise.google_data'] = auth.except(:extra)
@@ -42,10 +34,11 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def extract_google_data(auth)
     {
-      birthdate: auth.extra.raw_info.birthday || auth.extra.raw_info.birthdate || auth.info.dob,
-      gender: auth.extra.raw_info.gender || auth.info.gender
+      birthdate: auth.extra&.raw_info&.birthday || auth.extra&.raw_info&.birthdate || auth.info&.dob,
+      gender: auth.extra&.raw_info&.gender || auth.info&.gender
     }
   end
+  
 
   def calculate_age(birthdate)
     ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor

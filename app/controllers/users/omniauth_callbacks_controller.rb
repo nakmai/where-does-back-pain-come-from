@@ -53,22 +53,27 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def determine_redirect_path_based_on_age_and_gender(age, gender)
-    return root_path, alert: "無効な年齢データです。" unless age
-
+    return { path: root_path, alert: "無効な年齢データです。" } unless age
+  
     case age
     when 0..20, 55..150
-      orthopedics_advice1_path
+      { path: orthopedics_advice1_path }
     when 21..54
       if gender == "male"
-        red_flag_path
+        { path: red_flag_path }
       elsif gender == "female"
-        gynecology_question_path
+        { path: gynecology_question_path }
       else
-        root_path, alert: "無効な性別データです。"
+        { path: root_path, alert: "無効な性別データです。" }
       end
     else
-      root_path, alert: "無効な年齢データです。"
+      { path: root_path, alert: "無効な年齢データです。" }
     end
   end
+  
+  # 呼び出し元で以下のように修正
+  redirect_to destination_path[:path], alert: destination_path[:alert]
 end
+
+
 

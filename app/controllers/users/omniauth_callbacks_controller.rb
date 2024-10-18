@@ -2,8 +2,6 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  birthdate = google_user_info["birthdays"] ? parse_birthdate(google_user_info["birthdays"].first["date"]) : nil
-  gender = google_user_info["genders"] ? google_user_info["genders"].first["value"] : nil
 
   def google_oauth2
     auth = request.env['omniauth.auth']

@@ -11,8 +11,9 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
 
   # 生年月日と性別のバリデーション
-  validates :birthdate, presence: true
-  validates :gender, presence: true, inclusion: { in: %w(male female), message: "性別を選んでください" }
+  # 登録時は無効にし、更新時のみ必須にする
+  validates :birthdate, presence: true, on: :update
+  validates :gender, presence: true, inclusion: { in: %w(male female), message: "性別を選んでください" }, on: :update
 
   # registered_pagesがnilの場合に空配列を返す（デフォルト値を空配列にする）
   after_initialize :set_default_registered_pages, if: :new_record?
@@ -118,7 +119,6 @@ class User < ApplicationRecord
   end
 
  # googlePeopleAPIの性別の解析処理
-# googlePeopleAPIの性別の解析処理
 def self.parse_gender(gender_array)
   if gender_array.present? && gender_array.is_a?(Array)
     # 最初の性別データを取得
@@ -133,8 +133,8 @@ def self.parse_gender(gender_array)
     nil  # 無効なデータの場合はnilを返す
   end
 end
-
 end
+
 
 
 

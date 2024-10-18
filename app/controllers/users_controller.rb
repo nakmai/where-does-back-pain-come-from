@@ -59,14 +59,22 @@ class UsersController < ApplicationController
 
   # Eメールログイン時のチェック
   def check_user_data
+    # current_userがnilの場合はリダイレクト
+    if current_user.nil?
+      redirect_to all_form_users_path and return
+    end
+  
+    # current_userが存在する場合の処理
     if current_user.birthdate.present? && current_user.gender.present?
       age = calculate_age(current_user.birthdate)
       gender = current_user.gender
       redirect_based_on_age_and_gender(age, gender)
     else
+      # 生年月日または性別がない場合もリダイレクト
       redirect_to all_form_users_path
     end
   end
+  
   
   
     # ユーザー用ページのアクション
@@ -86,6 +94,20 @@ class UsersController < ApplicationController
         redirect_to @user_redirect_path
       end
     end
+    
+    def cancel
+      render 'devise/registrations/cancel'
+    end
+
+    #アカウントの削除
+    def destroy
+      resource.destroy  # ユーザーの削除
+      Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+      set_flash_message! :notice, :destroyed
+      yield resource if block_given?
+      respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+    end
+    
   
     def counternutation
       if user_signed_in?
@@ -230,6 +252,11 @@ class UsersController < ApplicationController
       @guest_redirect_path = my_page_nutation_guest_path
       @user_redirect_path = my_page_nutation_user_path
     end
+  end
+
+  def ensure_user_logged_in
+    # current_userがnilの場合はリダイレクト
+    redirect_to all_form_users_path if current_user.nil?
   end
 
     # GoogleのAPIから生年月日と性別を取り出す

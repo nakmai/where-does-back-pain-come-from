@@ -1,7 +1,6 @@
 class DiagnosisController < ApplicationController
   def create
     pain_type = params[:pain_type]
-    Rails.logger.debug("Received pain_type: #{pain_type}")
 
     case pain_type
     when '腰を曲げても反っても痛い'

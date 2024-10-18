@@ -15,7 +15,7 @@ gem "bootsnap", require: false
 gem 'sassc-rails', '~> 2.1'
 gem 'uglifier'
 gem 'terser'
-gem 'bootstrap', '~> 5.3.0'
+gem 'bootstrap', '~> 5.3'
 gem 'i18n'
 
 #google ログイン
@@ -34,6 +34,7 @@ gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem 'rspec-rails', '~> 5.0.0' 
 end
 
 group :development do

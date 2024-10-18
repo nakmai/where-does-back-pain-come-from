@@ -7,7 +7,8 @@ Rails.application.routes.draw do
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     passwords: 'passwords',
-    omniauth_callbacks: "users/omniauth_callbacks"
+    omniauth_callbacks: "users/omniauth_callbacks",
+
   }
 
 
@@ -17,6 +18,8 @@ Rails.application.routes.draw do
     post 'users/password', to: 'devise/passwords#create'
     get 'users/password/edit', to: 'devise/passwords#edit'
     put 'users/password', to: 'devise/passwords#update'
+    delete 'users', to: 'users/registrations#destroy', as: 'delete_user_registration' # 退会処理
+
   end
 
   # ゲストページ
@@ -165,6 +168,7 @@ Rails.application.routes.draw do
 
   # その他のルート
   get 'terms', to: 'pages#terms'
+  post 'terms', to: 'pages#terms'
   get 'diagnosis/achlorhydria', to: 'diagnosis#achlorhydria', as: 'diagnosis_achlorhydria'
   get 'users/all_form', to: 'users#all_form', as: 'users_all_form'
 
@@ -217,7 +221,14 @@ get '/oauth2callback', to: 'oauth#callback'
 get 'users/:id/profile_page', to: 'users#profile_page', as: 'user_profile_page'
 
  get 'check_user_data', to: 'users#check_user_data'
- 
+
+
+  # 利用規約ページへのルート
+  get 'terms_of_use', to: 'pages#terms_of_use', as: 'terms_of_use'
+  
+  # プライバシーポリシーページへのルート
+  get 'privacy', to: 'pages#privacy', as: 'privacy'
+
 resources :users, only: [:show] do
   member do
     delete 'remove_bookmark', to: 'users#remove_bookmark'

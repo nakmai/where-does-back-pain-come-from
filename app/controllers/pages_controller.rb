@@ -1,24 +1,62 @@
 class PagesController < ApplicationController
+  before_action :check_user_status, only: [:check_user_data]
+  skip_before_action :verify_authenticity_token, only: [:terms]
+
   def home
     render 'pages/home'
   end
 
   def terms
-    # まず利用規約ページを表示する
+    # フォーム送信後にチェックボックスの状態を確認
+    if request.post?
+      terms_checked = params[:terms].present?
+      privacy_checked = params[:privacy].present?
+
+      if !terms_checked && !privacy_checked
+        flash.now[:alert] = "利用規約とプライバシーポリシーを確認してください"
+      elsif !terms_checked
+        flash.now[:alert] = "利用規約を確認してください"
+      elsif !privacy_checked
+        flash.now[:alert] = "プライバシーポリシーを確認してください"
+      else
+        # 全てチェックされている場合は次のステップへ
+        redirect_to check_user_data_path and return
+      end
+    end
+
+    # ページをレンダリング
     render 'pages/terms'
   end
 
+  def terms_of_use
+    # 利用規約ページのロジック
+  end
+
+  def privacy
+    # プライバシーポリシーページのロジック
+  end
+
   def check_user_data
-    # ユーザーの生年月日と性別を確認
+    # current_userがnilでないか確認
+    if current_user.nil?
+      # current_userが存在しない（ログインしていない）場合はリダイレクト
+      redirect_to all_form_users_path
+      return
+    end
+  
+    # current_userが存在する場合
     if current_user.birthdate.present? && current_user.gender.present?
       age = calculate_age(current_user.birthdate)
       gender = current_user.gender
       redirect_based_on_age_and_gender(age, gender)
     else
-      # 生年月日と性別がない場合は、all_formページへ
+      # 生年月日と性別がない場合はall_form_users_pathにリダイレクト
       redirect_to all_form_users_path
     end
   end
+  
+  
+  
 
     def gynecology
       # 婦人科
@@ -29,16 +67,26 @@ class PagesController < ApplicationController
     end
     private
 
-    def check_user_status
-      if user_signed_in?
-        redirect_based_on_age_and_gender(current_user)
-      elsif session[:google_data].present?
-        # Googleログイン後の処理
-        redirect_based_on_age_and_gender(session[:google_data])
-      else
-        redirect_to terms_path unless action_name == 'terms'
-      end
+  # ユーザーがログインしているか、Googleデータがあるか確認
+  def check_user_status
+    if user_signed_in?
+      # ユーザーがログインしている場合はそのまま処理
+      return
+    elsif session[:google_data].present?
+      # Googleログイン後の処理（セッションデータから）
+      redirect_based_on_age_and_gender(session[:google_data])
+    else
+      # ログインしていない場合、all_form_users_pathにリダイレクト
+      redirect_to all_form_users_path
     end
+  end
+
+  # current_userが存在しない場合にリダイレクト
+  def ensure_user_logged_in
+    if current_user.nil?
+      redirect_to all_form_users_path
+    end
+  end
 
     # 生年月日から年齢を計算
     def calculate_age(birthdate)

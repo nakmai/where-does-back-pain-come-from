@@ -2,6 +2,8 @@ class UsersController < ApplicationController
     before_action :authenticate_user!, only: [:redirect_based_on_age_and_gender, :profile_page]
   
   
+
+    
     def profile_page
       @user = User.find(params[:id])
       @bookmarks = @user.registered_pages || []

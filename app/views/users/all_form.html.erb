@@ -5,19 +5,19 @@
     <div class="form-row">
       <!-- 年のプルダウン -->
       <div class="col">
-        <%= f.select :year, options_for_select((1900..Date.today.year).to_a.reverse, selected: @user_data[:year]), { prompt: '年' }, { class: 'form-control' } %>
+        <%= f.select :year, options_for_select((1900..Date.today.year).to_a.reverse, selected: @user_data[:year]), { prompt: '年' }, { class: 'form-control', id: 'year' } %>
       </div>
       <span>/</span>
 
       <!-- 月のプルダウン -->
       <div class="col">
-        <%= f.select :month, options_for_select((1..12).to_a, selected: @user_data[:month]), { prompt: '月' }, { class: 'form-control' } %>
+        <%= f.select :month, options_for_select((1..12).to_a, selected: @user_data[:month]), { prompt: '月' }, { class: 'form-control', id: 'month' } %>
       </div>
       <span>/</span>
 
       <!-- 日のプルダウン -->
       <div class="col">
-        <%= f.select :day, options_for_select((1..31).to_a, selected: @user_data[:day]), { prompt: '日' }, { class: 'form-control' } %>
+        <%= f.select :day, options_for_select((1..31).to_a, selected: @user_data[:day]), { prompt: '日' }, { class: 'form-control', id: 'day' } %>
       </div>
     </div>
 

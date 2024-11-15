@@ -52,17 +52,35 @@
 
 <script>
 document.getElementById("submit_button").addEventListener("click", function(event) {
-var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-if (checkboxes.length === 0) {
-event.preventDefault();  // フォーム送信を防ぐ
-var flashMessage = document.createElement('div');
-flashMessage.className = 'alert alert-danger';
-flashMessage.textContent = "一つ選択してください";  // エラーメッセージを表示
-var form = document.getElementById("myofascial_back_pain_form");
-form.insertBefore(flashMessage, form.firstChild);  // フォームの上部にフラッシュメッセージを挿入
-}
+  // チェックされたチェックボックスを全て取得
+  var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  var nothingCheckbox = document.getElementById('nothing');
+  
+  // フォームに挿入するメッセージ内容を初期化
+  var message = "";
+  
+  // チェックボックスが何も選択されていない場合の処理
+  if (checkboxes.length === 0) {
+    message = "選択してください";
+  }
+  // "nothing" と他のチェックボックスが同時に選択されている場合の処理
+  else if (nothingCheckbox.checked && checkboxes.length > 1) {
+    message = "無効な選択です";
+  }
+
+  // エラーメッセージの処理
+  if (message) {
+    event.preventDefault(); // フォーム送信を防ぐ
+    var existingFlashMessage = document.querySelector('.alert.alert-danger');
+    if (!existingFlashMessage) {
+      var flashMessage = document.createElement('div');
+      flashMessage.className = 'alert alert-danger';
+      flashMessage.textContent = message; // エラーメッセージを設定
+      var form = document.getElementById("myofascial_back_pain_form");
+      form.insertBefore(flashMessage, form.firstChild); // フォームの上部にフラッシュメッセージを挿入
+    } else {
+      existingFlashMessage.textContent = message; // 既存のメッセージを更新
+    }
+  }
 });
 </script>
-
-
-

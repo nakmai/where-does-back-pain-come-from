@@ -1,33 +1,25 @@
-<title><%= render 'my_page/my_page_myofascial_back_pain' %></title>
-<%= render 'my_page/my_page_myofascial_back_pain' %>
-  <div class="buttons">
-  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '筋・筋膜性タイプ'), method: :post, class: 'btn btn-primary', id: 'register_button' %>
+<%= render 'shared/myofascial_back_pain' %>
 
 
+<%# ストレッチセクションから1つランダムに表示 %>
+<% stretch_partials = ['strech/hamstrings_towel', 'strech/gluteus_maximus'] %>
+<%= render stretch_partials.sample %>
 
-    <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>
-    <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
-  </div>
+<%# リハビリセクションから1つランダムに表示 %>
+<% rehab_partials = ['rehabilitation/draw_in', 'rehabilitation/hiplift'] %>
+<%= render rehab_partials.sample %>
 
-  <script>
+<div class="buttons">
+  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '筋・筋膜性障害タイプ'), method: :post, class: 'btn btn-primary' %>
+  <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
+  <a href="<%= users_all_form_path %>" class="btn btn-secondary">フォーム棚ページに戻る</a>
+  <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
+</div>
+
+<script>
   document.getElementById("register_button")?.addEventListener("click", function(event) {
     event.preventDefault();  // デフォルトの動作を防ぐ
-
-    // CSRFトークンを取得
-    var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
-    // 最寄りのフォームを取得
     var form = this.closest("form");
-
-    // フォームが存在する場合は、CSRFトークンをフォームの隠しフィールドに追加
-    if (form) {
-      var csrfInput = document.createElement('input');
-      csrfInput.setAttribute('type', 'hidden');
-      csrfInput.setAttribute('name', 'authenticity_token');
-      csrfInput.setAttribute('value', token);
-      form.appendChild(csrfInput);
-
-      form.submit();  // フォームを送信
-    }
+    form.submit();  // まずフォームを送信
   });
 </script>

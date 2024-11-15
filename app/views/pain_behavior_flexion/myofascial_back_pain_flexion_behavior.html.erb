@@ -57,16 +57,39 @@
 
 <script>
   document.getElementById("submit_button").addEventListener("click", function(event) {
-    var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+    // フォーム内でチェックされたチェックボックスを全て取得
+    var checkboxes = document.querySelectorAll('#myofascial_back_pain_form input[type="checkbox"]:checked');
+    var nothingCheckbox = document.getElementById('nothing'); // "nothing" のチェックボックスを取得
+    var message = ""; // エラーメッセージの初期値を空に設定
+
+    // チェックボックスが何も選択されていない場合の処理
     if (checkboxes.length === 0) {
+      message = "選択してください";
+    }
+    // "nothing" と他のチェックボックスが同時に選択されている場合の処理
+    else if (nothingCheckbox.checked && checkboxes.length > 1) {
+      message = "無効な選択です";
+    }
+
+    // エラーメッセージの処理
+    if (message) {
       event.preventDefault();  // フォーム送信を防ぐ
+
+      // 既存のエラーメッセージがあれば削除する
+      var existingFlashMessage = document.querySelector('#myofascial_back_pain_form .alert.alert-danger');
+      if (existingFlashMessage) {
+        existingFlashMessage.remove();
+      }
+
+      // 新たなエラーメッセージを作成し、フォームの上部に挿入
       var flashMessage = document.createElement('div');
       flashMessage.className = 'alert alert-danger';
-      flashMessage.textContent = "一つ選択してください";  // エラーメッセージを表示
+      flashMessage.textContent = message;  // メッセージ内容を設定
       var form = document.getElementById("myofascial_back_pain_form");
-      form.insertBefore(flashMessage, form.firstChild);  // フォームの上部にフラッシュメッセージを挿入
+      form.insertBefore(flashMessage, form.firstChild); // フォームの上部にエラーメッセージを表示
     }
   });
 </script>
+
 
 

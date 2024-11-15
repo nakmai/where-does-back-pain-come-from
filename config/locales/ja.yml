@@ -37,12 +37,18 @@ ja:
           attributes:
             birthdate:
               blank: "生年月日を入力してください"
+              future: "未来の日付は無効です"
             gender:
               blank: "性別を選択してください"
+            email:
+              taken: "このメールアドレスは既に登録されています"
+            password:
+              too_short: "パスワードは6文字以上〜20文字以内大文字・小文字・数字が必要です"
     messages:
       blank: "入力が必要です"
-      
+
   errors:
     messages:
       select_one: "一つ選択してください"
+
 

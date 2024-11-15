@@ -1,5 +1,8 @@
-<h2>退会確認</h2>
-<p>本当に退会しますか？この操作は取り消せません。</p>
+<div style="text-align: center;">
+  <h2>退会確認</h2>
+  <p>本当に退会しますか？この操作は取り消せません。</p>
 
-<%= button_to '退会する', delete_user_registration_path, method: :delete, data: { confirm: '本当に退会してもよろしいですか？' } %>
-<%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary3 custom-btn advice-outline-btn' %>
+  <%= button_to '退会する', delete_user_registration_path, method: :delete, data: { confirm: '本当に退会してもよろしいですか？' }, class: 'btn btn-dark' %>
+  <%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary3 custom-btn advice-outline-btn' %>
+</div>
+

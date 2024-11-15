@@ -1,0 +1,10 @@
+.image-container {
+    position: relative;
+    margin-bottom: 20px; // 上部の余白を追加
+    text-align: center; // 画像を中央揃え
+
+    .human-body-image {
+        width: 30%; // 画像の幅を調整
+        height: auto;
+    }
+}

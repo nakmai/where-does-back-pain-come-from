@@ -4,16 +4,17 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[google_oauth2]
 
+  # ユーザーは複数のブックマークを持つ  
+  has_many :bookmarks, dependent: :destroy
   # registered_pages を配列として扱う
   serialize :registered_pages, Array
 
-  # パスワードのバリデーション
+  # バリデーション設定
+  validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
-
-  # 生年月日と性別のバリデーション
-  # 登録時は無効にし、更新時のみ必須にする
   validates :birthdate, presence: true, on: :update
-  validates :gender, presence: true, inclusion: { in: %w(male female), message: "性別を選んでください" }, on: :update
+  validates :gender, presence: true, inclusion: { in: %w(male female), message: "性別を選んでください" }
+  validate :birthdate_cannot_be_in_the_future
 
   # registered_pagesがnilの場合に空配列を返す（デフォルト値を空配列にする）
   after_initialize :set_default_registered_pages, if: :new_record?
@@ -94,9 +95,13 @@ class User < ApplicationRecord
   
     user
   end
-  
-  
-  
+
+  def birthdate_cannot_be_in_the_future
+    if birthdate.present? && birthdate > Date.today
+      errors.add(:birthdate, '未来の日付は無効です')
+    end
+  end
+    
   private
 
   # registered_pagesのデフォルト値を設定
@@ -134,9 +139,3 @@ def self.parse_gender(gender_array)
   end
 end
 end
-
-
-
-
-
-

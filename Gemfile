@@ -18,6 +18,9 @@ gem 'terser'
 gem 'bootstrap', '~> 5.3'
 gem 'i18n'
 
+#静的OGP
+gem "meta-tags"
+
 #google ログイン
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'oauth2', '~> 2.0'
@@ -27,14 +30,13 @@ gem 'omniauth-rails_csrf_protection'
 
 
 
-
-
 # gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
   gem 'rspec-rails', '~> 5.0.0' 
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -58,9 +60,13 @@ end
 group :test do
   gem "capybara"
   gem "selenium-webdriver"
+  gem 'rails-controller-testing'
 end
 
 gem "cssbundling-rails", "~> 1.4"
 gem 'devise'
+
+gem 'bcrypt', '~> 3.1.7'
+
 
 

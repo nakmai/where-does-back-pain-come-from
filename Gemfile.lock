@@ -110,6 +110,11 @@ GEM
       railties (>= 6.1)
     erubi (1.13.0)
     execjs (2.9.1)
+    factory_bot (6.5.0)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     faraday (2.12.0)
       faraday-net_http (>= 2.0, < 3.4)
       json
@@ -156,6 +161,8 @@ GEM
       net-smtp
     marcel (1.0.4)
     matrix (0.4.2)
+    meta-tags (2.22.1)
+      actionpack (>= 6.0.0, < 8.1)
     method_source (1.1.0)
     mini_mime (1.1.5)
     minitest (5.25.1)
@@ -237,6 +244,10 @@ GEM
       activesupport (= 7.0.8.4)
       bundler (>= 1.15.0)
       railties (= 7.0.8.4)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -351,6 +362,7 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   bootstrap (~> 5.3)
   capybara
@@ -358,9 +370,11 @@ DEPENDENCIES
   debug
   devise
   dotenv-rails
+  factory_bot_rails
   i18n
   importmap-rails
   jbuilder
+  meta-tags
   mysql2 (>= 0.5)
   oauth2 (~> 2.0)
   omniauth
@@ -368,6 +382,7 @@ DEPENDENCIES
   omniauth-rails_csrf_protection
   puma (~> 5.0)
   rails (~> 7.0.8, >= 7.0.8.4)
+  rails-controller-testing
   rspec-rails (~> 5.0.0)
   sassc-rails (~> 2.1)
   selenium-webdriver

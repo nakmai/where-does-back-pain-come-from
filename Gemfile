@@ -25,6 +25,7 @@ gem 'terser'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier'
+gem 'rubocop-discourse'
 
 # セキュリティ監査
 gem 'brakeman', require: false

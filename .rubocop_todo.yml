@@ -159,3 +159,8 @@ Style/SpecialGlobalVars:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 250
+
+AllCops:
+  Exclude:
+    - 'test/**/*' # test ディレクトリ内の全てのファイルを除外
+    - 'test/**/*.rb' # test フォルダ内の Ruby ファイルも除外

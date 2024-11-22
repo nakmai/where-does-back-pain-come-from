@@ -277,14 +277,12 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
     scope: 'email,profile,https://www.googleapis.com/auth/user.birthday.read,https://www.googleapis.com/auth/user.gender.read',
     prompt: 'select_account',
-    access_type: 'offline',  # もしくは 'online' depending on your needs
-    skip_jwt: true  # JWTの署名検証をスキップ
+    access_type: 'offline', # もしくは 'online' depending on your needs
+    skip_jwt: true # JWTの署名検証をスキップ
   }
-  
+
   # 開発環境でOmniAuthのログを出力
   OmniAuth.config.logger = Rails.logger if Rails.env.development?
-  
-
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
@@ -325,9 +323,8 @@ Devise.setup do |config|
   # config.sign_in_after_change_password = true
 
   # ログアウト後のリダイレクト先を指定
-Devise.setup do |config|
-  config.sign_out_via = :get
-  config.navigational_formats = ['*/*', :html, :turbo_stream]
-end
-
+  Devise.setup do |config|
+    config.sign_out_via = :get
+    config.navigational_formats = ['*/*', :html, :turbo_stream]
+  end
 end

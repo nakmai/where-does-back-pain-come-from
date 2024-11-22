@@ -1,6 +1,6 @@
-require_relative "boot"
+require_relative 'boot'
 
-require "rails/all"
+require 'rails/all'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -15,7 +15,7 @@ module Test1111
     config.i18n.default_locale = :ja
 
     # 許可するホストを設定
-    config.hosts << "where-does-back-pain-come-from-07a8b4b21813.herokuapp.com"
+    config.hosts << 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -26,9 +26,3 @@ module Test1111
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
-
-
-
-
-
-

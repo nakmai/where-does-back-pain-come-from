@@ -6,9 +6,9 @@ class PainBehaviorExtentionFlexionController < ApplicationController
 
   def check_nothing_selections
     session[:nothing_selections] ||= 0
-    if session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
-      redirect_to pain_behavior_extention_flexion_unknown_extention_behavior_flexion_path and return
-    end
+    return unless session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
+
+    redirect_to pain_behavior_extention_flexion_unknown_extention_behavior_flexion_path and return
   end
 
   def myofascial_back_pain_extention_flexion_behavior
@@ -21,7 +21,7 @@ class PainBehaviorExtentionFlexionController < ApplicationController
       render 'diagnostic_result/myofascial_back_pain'
     end
   end
-  
+
   def intervertebral_joint_extention_flexion_behavior
     conditions = params[:conditions] || []
     if conditions.include?('nothing')
@@ -69,6 +69,6 @@ class PainBehaviorExtentionFlexionController < ApplicationController
   # unknown_extention_behavior_flexion のアクション
   def unknown_extention_behavior_flexion
     reset_session
-   render 'pain_behavior_extention_flexion/unknown_extention_flexion_behavior'
+    render 'pain_behavior_extention_flexion/unknown_extention_flexion_behavior'
   end
 end

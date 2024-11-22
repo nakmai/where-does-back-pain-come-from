@@ -5,11 +5,9 @@ RSpec.describe 'Login', type: :feature do
 
   it '間違った情報でエラーメッセージが表示されるかどうか' do
     visit new_user_session_path
-    fill_in 'user[email]', with: 'test2@example.com'  # フィールド名修正
-    fill_in 'user[password]', with: 'wrongpassword'  # フィールド名修正
+    fill_in 'user[email]', with: 'test2@example.com' # フィールド名修正
+    fill_in 'user[password]', with: 'wrongpassword' # フィールド名修正
     click_button 'ログイン'
-    expect(page).to have_content ('無効なメールアドレスまたはパスワードです。')
-  end  
-
-  
+    expect(page).to have_content('無効なメールアドレスまたはパスワードです。')
+  end
 end

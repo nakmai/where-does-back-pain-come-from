@@ -1,0 +1,26 @@
+<h2 class="text-left">運動方法</h2>
+
+<%= link_to 'ヒップリフト', rehabilitation_hiplift_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'バックツイスト', rehabilitation_back_twist_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'キャット＆ドッグ', rehabilitation_cat_and_dog_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'クラムシェル', rehabilitation_cramshell_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'ドローイン', rehabilitation_draw_in_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'ハンドニー', rehabilitation_hand_knee_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'SLR', rehabilitation_slr_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'ゆりかご', rehabilitation_yurikago_path, class: "btn btn-tertiary" %><br>
+<br>
+<a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a>
+  <div class="buttons">
+      <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
+      <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
+    <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
+  </div>
+
+<script>
+  document.getElementById("register_button")?.addEventListener("click", function(event) {
+    event.preventDefault();  // デフォルトの動作を防ぐ
+    var form = this.closest("form");
+    form.submit();  // まずフォームを送信
+  });
+</script>

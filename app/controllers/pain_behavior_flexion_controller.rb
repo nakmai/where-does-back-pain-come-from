@@ -6,9 +6,9 @@ class PainBehaviorFlexionController < ApplicationController
 
   def check_nothing_selections
     session[:nothing_selections] ||= 0
-    if session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
-      redirect_to action: :unknown_flexion_behavior and return
-    end
+    return unless session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
+
+    redirect_to action: :unknown_flexion_behavior and return
   end
 
   def myofascial_back_pain_flexion_behavior

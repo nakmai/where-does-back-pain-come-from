@@ -3,5 +3,3 @@ class IntervertebralDiskFlexionBehaviorController < ApplicationController
     render 'pain_behavior_flexion/intervertebral_disk_flexion_behavior'
   end
 end
-
-  

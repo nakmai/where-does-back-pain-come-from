@@ -1,10 +1,10 @@
 require 'test_helper'
 
 class UserMailerTest < ActionMailer::TestCase
-  test "welcome_email" do
+  test 'welcome_email' do
     user = users(:one) # fixtureでサンプルユーザーを用意する
     mail = UserMailer.welcome_email(user)
-    
+
     assert_emails 1 do
       mail.deliver_now
     end
@@ -14,4 +14,3 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal 'Welcome to My Awesome Site', mail.subject
   end
 end
-

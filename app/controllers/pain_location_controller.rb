@@ -1,8 +1,2 @@
 class PainLocationController < ApplicationController
-
-  end
-  
-  
-  
-  
-  
+end

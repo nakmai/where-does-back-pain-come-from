@@ -1,4 +1,3 @@
-
 module Users
   class RegistrationsController < Devise::RegistrationsController
     skip_before_action :require_no_authentication, only: [:cancel]
@@ -11,9 +10,7 @@ module Users
 
     def create
       # ユーザーデータが存在しない場合
-      if params[:user].nil?
-        redirect_to new_user_registration_path and return
-      end
+      redirect_to new_user_registration_path and return if params[:user].nil?
 
       # 生年月日を結合して birthdate を作成
       begin
@@ -23,55 +20,55 @@ module Users
           params[:user][:birthdate_day].to_i
         )
       rescue ArgumentError
-        flash.now[:alert] = "無効な日付です"
-        build_resource(sign_up_params)  # resource を保持
+        flash.now[:alert] = '無効な日付です'
+        build_resource(sign_up_params) # resource を保持
         render :new and return
       end
 
-        # 生年月日が未来の日付かを確認
+      # 生年月日が未来の日付かを確認
       if birthdate > Date.today
-         flash.now[:alert] = "無効な日付です"
-         build_resource(sign_up_params)
-          render :new and return
+        flash.now[:alert] = '無効な日付です'
+        build_resource(sign_up_params)
+        render :new and return
       end
 
-        # 性別が選択されていない場合の処理
+      # 性別が選択されていない場合の処理
       if params[:user][:gender].blank?
-        flash.now[:alert] = "性別を選択してください"
+        flash.now[:alert] = '性別を選択してください'
         build_resource(sign_up_params)
         render :new and return
       end
 
       # メールアドレスまたはパスワードが空の場合の処理
       if params[:user][:email].blank?
-        flash.now[:alert] = "メールアドレスを入力してください"
+        flash.now[:alert] = 'メールアドレスを入力してください'
         build_resource(sign_up_params)  # resource を保持
         render :new and return
       elsif params[:user][:password].blank?
-        flash.now[:alert] = "パスワードを入力してください"
+        flash.now[:alert] = 'パスワードを入力してください'
         build_resource(sign_up_params)  # resource を保持
         render :new and return
       end
 
       # メールアドレスが既に存在するかの確認
       if User.exists?(email: params[:user][:email].downcase)
-        flash.now[:alert] = "すでに登録されているメールアドレスです"
-        build_resource(sign_up_params)  # resource を保持
+        flash.now[:alert] = 'すでに登録されているメールアドレスです'
+        build_resource(sign_up_params) # resource を保持
         render :new and return
       end
 
       # パスワードの長さと構成の確認
       if params[:user][:password].length < 6 || params[:user][:password].length > 20 ||
          !(params[:user][:password] =~ /[A-Z]/ && params[:user][:password] =~ /[a-z]/ && params[:user][:password] =~ /\d/)
-        flash.now[:alert] = "6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください"
-        build_resource(sign_up_params)  # resource を保持
+        flash.now[:alert] = '6文字以上〜20文字以内で小文字・大文字・数字を組み合わせたパスワードを設定してください'
+        build_resource(sign_up_params) # resource を保持
         render :new and return
       end
 
       # パスワードの一致確認
       if params[:user][:password] != params[:user][:password_confirmation]
-        flash.now[:alert] = "パスワードが一致していません"
-        build_resource(sign_up_params)  # resource を保持
+        flash.now[:alert] = 'パスワードが一致していません'
+        build_resource(sign_up_params) # resource を保持
         render :new and return
       end
 
@@ -80,11 +77,11 @@ module Users
 
       # Devise の標準登録処理を使用
       if resource.save
-        flash[:notice] = "登録されました"
+        flash[:notice] = '登録されました'
         sign_up(resource_name, resource)
         respond_with resource, location: after_sign_up_path_for(resource)
       else
-        build_resource(sign_up_params)  # エラー時に resource を保持
+        build_resource(sign_up_params) # エラー時に resource を保持
         render :new
       end
     end
@@ -92,21 +89,19 @@ module Users
     def cancel
       render 'devise/registrations/cancel'
     end
-  
+
     # ユーザーを削除するアクション
     def destroy
-      resource.destroy  # ユーザーの削除
+      resource.destroy # ユーザーの削除
       Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
       set_flash_message! :notice, :destroyed
       yield resource if block_given?
-      respond_with_navigational(resource){ redirect_to after_sign_out_path_for(resource_name) }
+      respond_with_navigational(resource) { redirect_to after_sign_out_path_for(resource_name) }
     end
-    
-
 
     protected
 
-    def after_sign_up_path_for(resource)
+    def after_sign_up_path_for(_resource)
       root_path
     end
 

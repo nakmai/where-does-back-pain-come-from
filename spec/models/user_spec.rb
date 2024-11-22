@@ -6,39 +6,37 @@ RSpec.describe User, type: :model do
 
   context 'when creating a user' do
     it 'is valid with valid birthdate, gender, and email' do
-      user = User.new(email: "test@example.com", password: "Password123", birthdate: "1990-01-01", gender: "male")
+      user = User.new(email: 'test@example.com', password: 'Password123', birthdate: '1990-01-01', gender: 'male')
       expect(user).to be_valid
     end
 
     it 'is invalid with future birthdate' do
-      user = User.new(email: "test@example.com", password: "Password123", birthdate: Date.tomorrow, gender: "male")
+      user = User.new(email: 'test@example.com', password: 'Password123', birthdate: Date.tomorrow, gender: 'male')
       user.valid? # バリデーションをトリガー
       expect(user).to_not be_valid
-      expect(user.errors[:birthdate]).to include("未来の日付は無効です")
+      expect(user.errors[:birthdate]).to include('未来の日付は無効です')
     end
 
     it 'is invalid without gender' do
-      user = User.new(email: "test@example.com", password: "Password123", birthdate: "1990-01-01", gender: nil)
+      user = User.new(email: 'test@example.com', password: 'Password123', birthdate: '1990-01-01', gender: nil)
       user.valid? # バリデーションをトリガー
       expect(user).to_not be_valid
-      expect(user.errors[:gender]).to include("性別を選んでください") # カスタムメッセージに修正
+      expect(user.errors[:gender]).to include('性別を選んでください') # カスタムメッセージに修正
     end
-    
 
     it 'is invalid with duplicate email' do
-      existing_user = create(:user, email: "test@example.com")
-      user = User.new(email: existing_user.email, password: "Password123", birthdate: "1990-01-01", gender: "male")
+      existing_user = create(:user, email: 'test@example.com')
+      user = User.new(email: existing_user.email, password: 'Password123', birthdate: '1990-01-01', gender: 'male')
       expect(user).to_not be_valid
-      expect(user.errors[:email]).to include("このメールアドレスは既に登録されています")
+      expect(user.errors[:email]).to include('このメールアドレスは既に登録されています')
     end
 
     it 'is invalid with short password' do
-      user = User.new(email: "test@example.com", password: "short", birthdate: "1990-01-01", gender: "male")
+      user = User.new(email: 'test@example.com', password: 'short', birthdate: '1990-01-01', gender: 'male')
       user.valid? # バリデーションをトリガー
       expect(user).to_not be_valid
-      expect(user.errors[:password]).to include("パスワードは6文字以上〜20文字以内大文字・小文字・数字が必要です")
+      expect(user.errors[:password]).to include('パスワードは6文字以上〜20文字以内大文字・小文字・数字が必要です')
     end
-    
   end
 
   context '生年月日' do
@@ -63,7 +61,7 @@ RSpec.describe User, type: :model do
     it '性別が未入力の場合にエラーを出すかどうか' do
       user.gender = nil
       user.valid? # バリデーションをトリガー
-      expect(user.errors[:gender]).to include("性別を選んでください") # カスタムメッセージに修正
+      expect(user.errors[:gender]).to include('性別を選んでください') # カスタムメッセージに修正
     end
   end
 
@@ -92,5 +90,3 @@ RSpec.describe User, type: :model do
     end
   end
 end
-
-

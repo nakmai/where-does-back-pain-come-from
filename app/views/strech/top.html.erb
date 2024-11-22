@@ -1,0 +1,25 @@
+<h2 class='text-left'>ストレッチ</h2>
+
+<%= link_to '内転筋', stretch_adductor_path, class: "btn btn-tertiary" %><br>
+<%= link_to '大臀筋', stretch_gluteus_maximus_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'ハムストリング（タオル）', stretch_hamstrings_towel_path, class: "btn btn-tertiary" %><br>
+<%= link_to 'ハムストリング', stretch_hamstrings_path, class: "btn btn-tertiary" %><br>
+<%= link_to '腸腰筋', stretch_psoas_path, class: "btn btn-tertiary" %><br>
+<%= link_to '大腿四頭筋', stretch_quadriceps_femoris_path, class: "btn btn-tertiary" %><br>
+
+<a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a>
+  <div class="buttons">
+      <%= link_to "ログインページに飛ぶ", new_user_session_path(return_to: request.fullpath), class: "btn btn-primary" %>
+      <%= link_to "新規登録ページに飛ぶ", new_user_registration_path(return_to: request.fullpath), class: "btn btn-success" %>
+      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
+    <a href="<%= root_path %>" class="btn btn-tertiary">トップページに戻る</a>
+  </div>
+
+<script>
+  document.getElementById("register_button")?.addEventListener("click", function(event) {
+    event.preventDefault();  // デフォルトの動作を防ぐ
+    var form = this.closest("form");
+    form.submit();  // まずフォームを送信
+  });
+</script>

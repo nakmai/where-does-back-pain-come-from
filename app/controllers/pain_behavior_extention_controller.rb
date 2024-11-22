@@ -8,9 +8,9 @@ class PainBehaviorExtentionController < ApplicationController
   # 「特になし」が選択された回数を確認し、一定回数以上なら unknown_extention_behavior ビューへリダイレクト
   def check_nothing_selections
     session[:nothing_selections] ||= 0
-    if session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
-      redirect_to pain_behavior_extention_unknown_extention_behavior_path and return
-    end
+    return unless session[:nothing_selections] >= MAX_NOTHING_SELECTIONS
+
+    redirect_to pain_behavior_extention_unknown_extention_behavior_path and return
   end
 
   # 筋膜性腰痛ページの処理
@@ -42,7 +42,7 @@ class PainBehaviorExtentionController < ApplicationController
     conditions = params[:conditions] || []
     if conditions.include?('nothing')
       session[:nothing_selections] += 1
-      render 'pain_behavior_extention/counternutation_extention_behavior' 
+      render 'pain_behavior_extention/counternutation_extention_behavior'
     else
       session[:nothing_selections] = 0
       render 'diagnostic_result/nutation'
@@ -66,5 +66,4 @@ class PainBehaviorExtentionController < ApplicationController
     reset_session # セッションをリセットしてループを防ぐ
     render 'pain_behavior_extention/unknown_extention_behavior'
   end
-
 end

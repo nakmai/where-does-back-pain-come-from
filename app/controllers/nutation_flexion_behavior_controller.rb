@@ -1,3 +1,2 @@
 class NutationFlexionBehaviorController < ApplicationController
-
 end

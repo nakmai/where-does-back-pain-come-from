@@ -11,13 +11,11 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || root_path
   end
 
-    # Googleログイン時のリダイレクト処理
-
-
+  # Googleログイン時のリダイレクト処理
 
   # サインアウト後にリダイレクトするパスを決定する
-  def after_sign_out_path_for(resource)
-    root_path   # ログイン後はトップページへリダイレクト
+  def after_sign_out_path_for(_resource)
+    root_path # ログイン後はトップページへリダイレクト
   end
 
   private
@@ -39,9 +37,9 @@ class ApplicationController < ActionController::Base
     if age <= 20 || age >= 55
       orthopedics_advice1_path
     elsif age >= 21 && age <= 54
-      if gender == "male"
+      if gender == 'male'
         red_flag_path
-      elsif gender == "female"
+      elsif gender == 'female'
         gynecology_question_path
       else
         root_path
@@ -50,19 +48,4 @@ class ApplicationController < ActionController::Base
       root_path
     end
   end
-
-  # ログイン前にいたページのURLを保存する
-
-  def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
-  end
-
-  def store_user_location!
-    session[:user_return_to] = request.fullpath if storable_location?
-  end
-
-
 end
-
-  
-  

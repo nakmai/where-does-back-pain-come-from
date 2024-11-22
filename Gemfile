@@ -28,7 +28,8 @@ gem 'uglifier'
 
 # セキュリティ監査
 gem 'brakeman', require: false
-gem 'bundler-audit'
+gem 'bundler-audit', require: false
+
 
 # 静的OGP
 gem 'meta-tags'

@@ -51,6 +51,9 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+  #DNS許可
+  config.hosts << "where-does-back-pain-come-from.com"
+  config.hosts << "www.where-does-back-pain-come-from.com"
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -115,8 +118,4 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-
-  #DNS許可
-  config.hosts << "where-does-back-pain-come-from.com"
-  config.hosts << "www.where-does-back-pain-come-from.com"
 end

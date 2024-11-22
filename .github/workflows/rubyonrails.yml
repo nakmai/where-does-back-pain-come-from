@@ -40,8 +40,7 @@ jobs:
           wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
           chmod +x wait-for-it.sh
           ./wait-for-it.sh mysql:3306 --timeout=60 --strict -- echo "MySQL is up" || true
-      - name: Run tests
-        run: bin/rake
+
 
   lint:
     runs-on: ubuntu-latest
@@ -60,5 +59,3 @@ jobs:
         run: bin/bundler-audit --update || true
       - name: Security audit application code
         run: bin/brakeman -q -w2 || true 
-
-

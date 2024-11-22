@@ -18,6 +18,11 @@ gem 'terser'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier'
+gem 'mysql2', '>= 0.5'
+
+#セキュリティ監査
+gem 'bundler-audit'
+
 
 # 静的OGP
 gem 'meta-tags'
@@ -42,16 +47,6 @@ group :development do
   gem 'web-console'
   # gem "rack-mini-profiler"
   # gem "spring"
-end
-
-# 開発・テスト環境専用のgem
-group :development, :test do
-  gem 'mysql2', '>= 0.5'
-end
-
-# 本番環境専用のgem
-group :production do
-  gem 'mysql2', '>= 0.5'
 end
 
 group :test do

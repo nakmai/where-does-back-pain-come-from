@@ -1,1 +1,21 @@
 inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+
+Gemspec/AddRuntimeDependency:
+  Enabled: true
+
+Gemspec/DeprecatedAttributeAssignment:
+  Enabled: true
+
+Gemspec/DevelopmentDependencies:
+  Enabled: true
+
+Gemspec/RequireMFA:
+  Enabled: true
+
+Layout/LineContinuationLeadingSpace:
+  Enabled: true
+
+

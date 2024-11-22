@@ -60,3 +60,10 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel  
+      - name: Install dependencies
+        run: bundle install
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.4'  # あなたのプロジェクトで使用しているRubyのバージョンを指定
+          bundler-cache: true

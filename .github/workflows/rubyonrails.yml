@@ -29,17 +29,19 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      # Add or replace dependency steps here
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@78c01b705fd9d5ad960d432d3a0cfa341d50e410 # v1.179.1
         with:
           bundler-cache: true
       - name: Install MySQL2 gem
         run: bundle add mysql2 || true
-      # Add or replace database setup steps here
+      - name: Wait for MySQL to be ready
+        run: |
+          wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+          chmod +x wait-for-it.sh
+          ./wait-for-it.sh mysql:3306 --timeout=60 --strict -- echo "MySQL is up"
       - name: Set up database schema
         run: bin/rails db:schema:load
-      # Add or replace test runners here
       - name: Run tests
         run: bin/rake
 
@@ -56,7 +58,6 @@ jobs:
         run: bundle install
       - name: Generate binstubs
         run: bundle binstubs bundler-audit brakeman rubocop
-      # Add or replace any other lints here
       - name: Security audit dependencies
         run: bin/bundler-audit --update || true
       - name: Security audit application code
@@ -65,8 +66,4 @@ jobs:
         run: bundle exec rubocop --parallel  
       - name: Run rubocop with autocorrect
         run: bundle exec rubocop --autocorrect --parallel
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: '3.1.4'  # あなたのプロジェクトで使用しているRubyのバージョンを指定
-          bundler-cache: true
+

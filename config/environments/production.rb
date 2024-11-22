@@ -53,7 +53,6 @@ Rails.application.configure do
   config.force_ssl = true
   #DNS許可
   config.hosts << "where-does-back-pain-come-from.com"
-  config.hosts << "www.where-does-back-pain-come-from.com"
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).

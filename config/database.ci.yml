@@ -1,7 +1,8 @@
 test:
   adapter: mysql2
   encoding: utf8
+  database: rails_test_ci
+  pool: 5
   username: root
-  password: password
-  host: 127.0.0.1
-  database: myapp_test
+  password:
+  host: mysql # CI環境でのMySQLホストを設定

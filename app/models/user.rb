@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   # Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
-  def self.get_google_user_info(access_token)
+  def self.get_google_user_info(_access_token)
     # 必要なライブラリを読み込む
     require 'net/http'  # HTTPリクエストを行うためのライブラリ
     require 'uri'       # URI（URL）を処理するためのライブラリ
@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
     # GETリクエストを作成し、Authorizationヘッダーにアクセストークンを設定
     request = Net::HTTP::Get.new(uri.request_uri)
-    request['Authorization'] = 'Bearer #{access_token}' # Google OAuth2のアクセストークンを利用
+    request['Authorization'] = "Bearer #{access_token}" # Google OAuth2のアクセストークンを利用
 
     # Google People APIに対してリクエストを送信し、レスポンスを受け取る
     response = http.request(request)

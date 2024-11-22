@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-git_source(:github) { |repo| 'https://github.com/#{repo}.git' }
+git_source(:github) { |_repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.4'
 
@@ -29,7 +29,6 @@ gem 'uglifier'
 # セキュリティ監査
 gem 'brakeman', require: false
 gem 'bundler-audit', require: false
-
 
 # 静的OGP
 gem 'meta-tags'

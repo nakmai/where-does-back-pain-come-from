@@ -18,4 +18,9 @@ Gemspec/RequireMFA:
 Layout/LineContinuationLeadingSpace:
   Enabled: true
 
+AllCops:
+  Exclude:
+    - 'test/**/*' # test ディレクトリ内の全てのファイルを除外
+    - 'test/**/*.rb' # test フォルダ内の Ruby ファイルも除外
+
 

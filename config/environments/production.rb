@@ -111,8 +111,8 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'your-domain.com',
-    user_name: ENV['GMAIL_USERNAME'], # 環境変数からGmailのユーザー名を取得
-    password: ENV['GMAIL_PASSWORD'], # 環境変数からGmailのパスワードを取得
+    user_name: ENV.fetch('GMAIL_USERNAME', nil), # 環境変数からGmailのユーザー名を取得
+    password: ENV.fetch('GMAIL_PASSWORD', nil), # 環境変数からGmailのパスワードを取得
     authentication: 'plain',
     enable_starttls_auto: true
   }

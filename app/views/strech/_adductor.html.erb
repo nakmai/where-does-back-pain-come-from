@@ -4,8 +4,8 @@
 
   <div class="row justify-content-center align-items-center">
     <div class="col-md-5 text-center">
-      <img src="<%= asset_path 'adductor 1.png' %>" alt="Stretch image 1" class="img-fluid stretch-img">
-      <img src="<%= asset_path 'adductor 2.png' %>" alt="Stretch image 2" class="img-fluid stretch-img-small mt-4">
+      <img src="<%= asset_path 'adductor1.png' %>" alt="Stretch image 1" class="img-fluid stretch-img">
+      <img src="<%= asset_path 'adductor2.jpg' %>" alt="Stretch image 2" class="img-fluid stretch-img-small mt-4">
     </div>
     <div class="col-md-5 stretch-instructions">
       <p>足を肩幅より少し広げる</p>
@@ -16,4 +16,6 @@
       </ul>
     </div>
   </div>
+  <%= link_to 'ストレッチ', stretch_top_path, class: 'btn btn-tertiary' %><br>
+  <%= link_to '筋肉', muscle_top_path, class: 'btn btn-tertiary' %><br>
 </div>

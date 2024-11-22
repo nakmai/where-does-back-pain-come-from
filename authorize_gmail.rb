@@ -27,7 +27,6 @@ end
 
 credentials = authorize
 
-
 require 'mail'
 
 # GmailのSMTP設定
@@ -37,7 +36,7 @@ options = {
   domain: 'yourdomain.com',
   authentication: :xoauth2,
   user_name: 'your_email@gmail.com',
-  oauth2_token: credentials.token,  # 先ほど取得したアクセストークンを使用
+  oauth2_token: credentials.token, # 先ほど取得したアクセストークンを使用
   enable_starttls_auto: true
 }
 

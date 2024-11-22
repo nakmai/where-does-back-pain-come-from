@@ -13,11 +13,11 @@ class PagesController < ApplicationController
       privacy_checked = params[:privacy].present?
 
       if !terms_checked && !privacy_checked
-        flash.now[:alert] = "利用規約とプライバシーポリシーを確認してください"
+        flash.now[:alert] = '利用規約とプライバシーポリシーを確認してください'
       elsif !terms_checked
-        flash.now[:alert] = "利用規約を確認してください"
+        flash.now[:alert] = '利用規約を確認してください'
       elsif !privacy_checked
-        flash.now[:alert] = "プライバシーポリシーを確認してください"
+        flash.now[:alert] = 'プライバシーポリシーを確認してください'
       else
         # 全てチェックされている場合は次のステップへ
         redirect_to check_user_data_path and return
@@ -43,7 +43,7 @@ class PagesController < ApplicationController
       redirect_to all_form_users_path
       return
     end
-  
+
     # current_userが存在する場合
     if current_user.birthdate.present? && current_user.gender.present?
       age = calculate_age(current_user.birthdate)
@@ -54,24 +54,22 @@ class PagesController < ApplicationController
       redirect_to all_form_users_path
     end
   end
-  
-  
-  
 
-    def gynecology
-      # 婦人科
-    end
+  def gynecology
+    # 婦人科
+  end
 
-    def orthopedics
-      # 整形外科
-    end
-    private
+  def orthopedics
+    # 整形外科
+  end
+
+  private
 
   # ユーザーがログインしているか、Googleデータがあるか確認
   def check_user_status
     if user_signed_in?
       # ユーザーがログインしている場合はそのまま処理
-      return
+      nil
     elsif session[:google_data].present?
       # Googleログイン後の処理（セッションデータから）
       redirect_based_on_age_and_gender(session[:google_data])
@@ -83,31 +81,31 @@ class PagesController < ApplicationController
 
   # current_userが存在しない場合にリダイレクト
   def ensure_user_logged_in
-    if current_user.nil?
-      redirect_to all_form_users_path
-    end
+    return unless current_user.nil?
+
+    redirect_to all_form_users_path
   end
 
-    # 生年月日から年齢を計算
-    def calculate_age(birthdate)
-      ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
-    end
-  
-    # 年齢と性別によるリダイレクト
-    def redirect_based_on_age_and_gender(user)
-      age = calculate_age(user.birthdate)
-      gender = user.gender
-  
-      if age <= 20 || age >= 56
-        redirect_to orthopedics_advice1_path
-      elsif age >= 21 && age <= 55
-        if gender == 'male'
-          redirect_to red_flag_path
-        elsif gender == 'female'
-          redirect_to gynecology_question_path
-        end
-      else
-        redirect_to root_path, alert: "無効なデータです"
+  # 生年月日から年齢を計算
+  def calculate_age(birthdate)
+    ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
+  end
+
+  # 年齢と性別によるリダイレクト
+  def redirect_based_on_age_and_gender(user)
+    age = calculate_age(user.birthdate)
+    gender = user.gender
+
+    if age <= 20 || age >= 56
+      redirect_to orthopedics_advice1_path
+    elsif age >= 21 && age <= 55
+      if gender == 'male'
+        redirect_to red_flag_path
+      elsif gender == 'female'
+        redirect_to gynecology_question_path
       end
+    else
+      redirect_to root_path, alert: '無効なデータです'
     end
   end
+end

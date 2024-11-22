@@ -1,0 +1,21 @@
+<div class="stretch-container">
+  <h2 class="text-center">ストレッチ</h2>
+  <h3 class="text-center">内ももの筋肉</h3>
+
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-5 text-center">
+      <img src="<%= asset_path 'adductor1.png' %>" alt="Stretch image 1" class="img-fluid stretch-img">
+      <img src="<%= asset_path 'adductor2.jpg' %>" alt="Stretch image 2" class="img-fluid stretch-img-small mt-4">
+    </div>
+    <div class="col-md-5 stretch-instructions">
+      <p>足を肩幅より少し広げる</p>
+      <p>片方の足に体重を乗せていく</p>
+      <ul>
+        <li>※痛みの出ない範囲で行う</li>
+        <li>※内もも以外の場所に痛みが出る際は中止する</li>
+      </ul>
+    </div>
+  </div>
+  <%= link_to 'ストレッチ', stretch_top_path, class: 'btn btn-tertiary' %><br>
+  <%= link_to '筋肉', muscle_top_path, class: 'btn btn-tertiary' %><br>
+</div>

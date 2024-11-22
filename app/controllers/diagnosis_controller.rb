@@ -24,10 +24,4 @@ class DiagnosisController < ApplicationController
     # 例: head :no_content や render 'diagnosis/achlorhydria'
     render 'diagnosis/achlorhydria' # 対応するビューを表示させる場合
   end
-  
 end
-
-
-
-
-

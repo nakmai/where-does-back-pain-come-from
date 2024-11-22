@@ -10,16 +10,16 @@ class MyPageController < ApplicationController
 
   def nutation_guest
     # 必要であれば、ここで必要な処理を行う
-    render 'users/guest/nutation'  # ゲスト向けのテンプレートを表示
+    render 'users/guest/nutation' # ゲスト向けのテンプレートを表示
   end
 
   def counternutation_guest
     # 必要であれば、ここで必要な処理を行う
-    render 'users/guest/counternutation'  # ゲスト向けのテンプレートを表示
+    render 'users/guest/counternutation' # ゲスト向けのテンプレートを表示
   end
 
   def intervertebral_joint_guest
-    render 'users/guest/intervertebral_joint'  # 正しいビューを指定
+    render 'users/guest/intervertebral_joint' # 正しいビューを指定
   end
 
   def new_guest_intervertebral_joint
@@ -34,9 +34,7 @@ class MyPageController < ApplicationController
   end
 
   def intervertebral_joint_user
-    user_id = params[:user_id]
-    render 'users/user/intervertebral_joint'  # 遷移先のビューを指定
+    params[:user_id]
+    render 'users/user/intervertebral_joint' # 遷移先のビューを指定
   end
 end
-
-

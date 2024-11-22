@@ -9,6 +9,7 @@
     <% end %>
 
     <%= form_with url: submit_intervertebral_disk_flexion_behavior_path, method: :post, local: true, id: 'intervertebral_disk_form' do %>
+
       <div class="form-check">
         <%= check_box_tag 'conditions[]', 'sitting_posture', false, class: 'form-check-input', id: 'sitting_posture' %>
         <%= label_tag 'sitting_posture', '長時間座りっぱなしだと痛みが出る', class: 'form-check-label' %>

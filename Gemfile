@@ -22,6 +22,7 @@ gem 'mysql2', '>= 0.5'
 
 #セキュリティ監査
 gem 'bundler-audit'
+gem 'brakeman', require: false
 
 
 # 静的OGP

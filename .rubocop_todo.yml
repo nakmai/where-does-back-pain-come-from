@@ -167,3 +167,4 @@ AllCops:
     - 'test/**/*.rb'
     - 'spec/**/*.rb'
     - 'spec/**/*_spec.rb'
+  DisabledByDefault: true

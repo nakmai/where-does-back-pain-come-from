@@ -9,7 +9,7 @@ gem 'i18n'
 gem 'importmap-rails'
 gem 'jbuilder'
 gem 'puma', '~> 5.0'
-gem 'rails', '~> 7.0.8', '>= 7.0.8.4'
+gem 'rails', '~> 7.0.8', '>= 7.0.8.5'
 gem 'rubocop', require: false
 gem 'sassc-rails', '~> 2.1'
 gem 'sprockets-rails'
@@ -60,3 +60,10 @@ gem 'cssbundling-rails', '~> 1.4'
 gem 'devise'
 
 gem 'bcrypt', '~> 3.1.7'
+
+#GithubActions
+gem 'actionmailer', '~> 7.0.8.5'  # Action Mailerのアップデート
+gem 'actionpack', '~> 7.0.8.5'    # Action Packのアップデート
+gem 'actiontext', '~> 7.0.8.5'    # Action Textのアップデート
+gem 'rexml', '>= 3.3.9'           # REXMLのアップデート
+

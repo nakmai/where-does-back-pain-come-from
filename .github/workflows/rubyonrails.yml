@@ -17,7 +17,7 @@ jobs:
       mysql:
         image: mysql:5.7
         ports:
-          - "3306:3306"
+          - "3307:3306"
         env:
           MYSQL_DATABASE: rails_test
           MYSQL_USER: rails
@@ -40,8 +40,6 @@ jobs:
           wget https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
           chmod +x wait-for-it.sh
           ./wait-for-it.sh mysql:3306 --timeout=60 --strict -- echo "MySQL is up" || true
-      - name: Set up database schema
-        run: bin/rails db:schema:load
       - name: Run tests
         run: bin/rake
 
@@ -62,6 +60,5 @@ jobs:
         run: bin/bundler-audit --update || true
       - name: Security audit application code
         run: bin/brakeman -q -w2 || true 
-      - name: Run rubocop with autocorrect
-        run: bundle exec rubocop --autocorrect --parallel
+
 

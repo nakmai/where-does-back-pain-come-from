@@ -166,3 +166,4 @@ AllCops:
     - 'spec/**/*'
     - 'test/**/*.rb'
     - 'spec/**/*.rb'
+    - 'spec/**/*_spec.rb'

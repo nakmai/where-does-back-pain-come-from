@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.4'
 
+gem 'mysql2', '>= 0.5'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3'
 gem 'i18n'
@@ -18,11 +19,10 @@ gem 'terser'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'uglifier'
-gem 'mysql2', '>= 0.5'
 
 #セキュリティ監査
-gem 'bundler-audit'
 gem 'brakeman', require: false
+gem 'bundler-audit'
 
 
 # 静的OGP

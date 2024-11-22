@@ -14,10 +14,10 @@ jobs:
   test:
     runs-on: ubuntu-latest
     services:
-      postgres:
-        image: postgres:11-alpine
+      mysql:
+        image: mysql:5.7
         ports:
-          - "5432:5432"
+          - "3306:3306"
         env:
           POSTGRES_DB: rails_test
           POSTGRES_USER: rails

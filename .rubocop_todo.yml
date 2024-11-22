@@ -162,5 +162,7 @@ Layout/LineLength:
 
 AllCops:
   Exclude:
-    - 'test/**/*' # test ディレクトリ内の全てのファイルを除外
-    - 'test/**/*.rb' # test フォルダ内の Ruby ファイルも除外
+    - 'test/**/*'
+    - 'spec/**/*'
+    - 'test/**/*.rb'
+    - 'spec/**/*.rb'

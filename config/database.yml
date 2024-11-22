@@ -11,14 +11,11 @@ development:
   host: db
 
 test:
-  adapter: mysql2
-  encoding: utf8
-  database: rails_test
-  pool: 5
+  <<: *default
+  database: myapp_test
   username: root
-  password:
-  host: localhost
-
+  password: password
+  host: db
 
 production:
   <<: *default

@@ -1,39 +1,39 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang='ja'>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
   <title>痛みの強さ</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/pain_scale.css">
+  <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css' rel='stylesheet'>
+  <link rel='stylesheet' href='/assets/pain_scale.css'>
   <%= csrf_meta_tags %>
 </head>
-<body class="text-center">
-  <div class="container mt-5">
+<body class='text-center'>
+  <div class='container mt-5'>
     <h2>痛みの強さ</h2>
     <p>今の痛みはどれぐらいですか？</p>
     <p>全く痛くない状態:0<br>人生の中で一番痛い:10</p>
     <br>
 
-    <%= form_with url: "/pain/submit_pain_scale", method: :post do %>
-      <div class="slider-container">
-        <div class="d-flex justify-content-between align-items-center">
-          <button type="button" class="btn btn-dark square-btn" id="decrease">-</button>
-          <input type="range" class="form-range" id="painRange" min="0" max="10" value="5" step="1" oninput="updatePainValue(this.value)">
-          <button type="button" class="btn btn-dark square-btn" id="increase">+</button>
+    <%= form_with url: '/pain/submit_pain_scale', method: :post do %>
+      <div class='slider-container'>
+        <div class='d-flex justify-content-between align-items-center'>
+          <button type='button' class='btn btn-dark square-btn' id='decrease'>-</button>
+          <input type='range' class='form-range' id='painRange' min='0' max='10' value='5' step='1' oninput='updatePainValue(this.value)'>
+          <button type='button' class='btn btn-dark square-btn' id='increase'>+</button>
         </div>
-        <div class="d-flex justify-content-between">
+        <div class='d-flex justify-content-between'>
           <span>0</span>
           <span>10</span>
         </div>
         <br>
-        <h3>現在の痛みの強さ: <span id="painValue">5</span></h3>
-        <input type="hidden" name="pain_level" id="painLevelInput" value="5">
+        <h3>現在の痛みの強さ: <span id='painValue'>5</span></h3>
+        <input type='hidden' name='pain_level' id='painLevelInput' value='5'>
       </div>
 
-      <div class="button-group mt-5">
-        <button type="submit" class="btn btn-primary custom-btn">次へ進む</button>
-        <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary4 custom-btn">前の質問へ戻る</a>
+      <div class='button-group mt-5'>
+        <button type='submit' class='btn btn-primary custom-btn'>次へ進む</button>
+        <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary4 custom-btn'>前の質問へ戻る</a>
       </div>
     <% end %> <!-- form_withの閉じタグ -->
 
@@ -42,11 +42,11 @@
   <script>
   // DOMContentLoaded イベントが発生した時に実行される関数。ページの内容が完全に読み込まれた後にスクリプトを実行。
   document.addEventListener('DOMContentLoaded', () => {
-    // スライダー（<input type="range">）の要素を取得
+    // スライダー（<input type='range'>）の要素を取得
     const slider = document.getElementById('painRange');
     // 現在の痛みの値を表示するための要素（<span>）を取得
     const painValueSpan = document.getElementById('painValue');
-    // フォームに送信される hidden フィールド（<input type="hidden">）の要素を取得
+    // フォームに送信される hidden フィールド（<input type='hidden'>）の要素を取得
     const hiddenPainLevelInput = document.getElementById('painLevelInput');
 
     // スライダーの値を1増やすボタンの要素を取得

@@ -25,7 +25,7 @@ class UserTest < ActiveSupport::TestCase
   test 'should not save user without gender' do
     user = User.new(email: 'test@example.com', password: 'Password123', birthdate: '1990-01-01', gender: nil)
     assert_not user.save
-    assert_includes user.errors[:gender], "can't be blank"
+    assert_includes user.errors[:gender], 'can't be blank'
   end
 
   # Eメールがすでに登録されている場合のエラー

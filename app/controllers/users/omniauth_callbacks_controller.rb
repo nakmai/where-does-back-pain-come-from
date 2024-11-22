@@ -28,7 +28,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       # ユーザーが保存されない場合、エラーメッセージとともに登録ページにリダイレクト
       session['devise.google_data'] = auth.except(:extra)
-      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join("\n")
+      redirect_to new_user_registration_url, alert: @user.errors.full_messages.join('\n')
     end
   end
 

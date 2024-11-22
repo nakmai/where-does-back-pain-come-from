@@ -16,12 +16,12 @@ class BirthdateGenderFormTest < ActionDispatch::IntegrationTest
   test 'should not allow future birthdate' do
     patch user_path(@user), params: { user: { birthdate: Date.tomorrow, gender: 'male' } }
     assert_response :unprocessable_entity
-    assert_select 'div.alert', "Birthdate can't be in the future"
+    assert_select 'div.alert', 'Birthdate can't be in the future'
   end
 
   test 'should not allow missing gender' do
     patch user_path(@user), params: { user: { birthdate: '1990-01-01', gender: nil } }
     assert_response :unprocessable_entity
-    assert_select 'div.alert', "Gender can't be blank"
+    assert_select 'div.alert', 'Gender can't be blank'
   end
 end

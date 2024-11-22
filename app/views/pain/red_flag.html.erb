@@ -1,62 +1,62 @@
-<div class="red-flag-page">
-  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+<div class='red-flag-page'>
+  <h2 class='text-center mb-4'>当てはまるものにチェックをお願いします</h2>
 
   <%= form_with url: red_flag_path, method: :post, local: true do %>
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
       <%= label_tag 'no_issues', '特に問題なし', class: 'form-check-label' %>
     </div>
 
     <br>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'pain_moving', false, class: 'form-check-input', id: 'pain_moving' %>
       <%= label_tag 'pain_moving', '痛い場所が移動する', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
     <%= check_box_tag 'conditions[]', 'bruise', false, class: 'form-check-input', id: 'bruise' %>
     <%= label_tag 'bruise', '背骨を叩くと痛みが走る', class: 'form-check-label' %>
   </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'chest_pain', false, class: 'form-check-input', id: 'chest_pain' %>
       <%= label_tag 'chest_pain', '腰部以外に胸の痛みや、みぞおち・脇腹などの痛みもある', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'cancer_history', false, class: 'form-check-input', id: 'cancer_history' %>
       <%= label_tag 'cancer_history', 'がん・ステロイド治療・HIVの既往歴がある', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'weight_loss', false, class: 'form-check-input', id: 'weight_loss' %>
       <%= label_tag 'weight_loss', '意図せず1ヶ月で体重が5kg以上痩せた', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'wide_pain', false, class: 'form-check-input', id: 'wide_pain' %>
       <%= label_tag 'wide_pain', '半身全体・右脚全体・親指だけなど範囲を問わずしびれや力が入らないなど違和感がある', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'nerve_nopain', false, class: 'form-check-input', id: 'nerve_nopain' %>
       <%= label_tag 'nerve_nopain', '脊柱の病気やケガの既往歴がある', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'fever', false, class: 'form-check-input', id: 'fever' %>
       <%= label_tag 'fever', '現在、熱が出ている。過去１週間以内に熱を出していた', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
     <%= check_box_tag 'conditions[]', 'cysto_rectal_disorder', false, class: 'form-check-input', id: 'cysto_rectal_disorde' %>
     <%= label_tag 'cysto_rectal_disorde', '突然排尿や排便が出きなくなった(膀胱直腸障害)', class: 'form-check-label' %>
   </div>
 
-    <div class="button-group mt-4 d-flex flex-column align-items-center">
-      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
-      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    <div class='button-group mt-4 d-flex flex-column align-items-center'>
+      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn btn-lg' %>
+      <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
     </div>
   <% end %>
 </div>

@@ -1,49 +1,49 @@
 
-<div class="myofascial_back_painflextion_behavior">
-<div class="submit_pain_location_flexion">
-  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+<div class='myofascial_back_painflextion_behavior'>
+<div class='submit_pain_location_flexion'>
+  <h2 class='text-center mb-4'>当てはまるものにチェックをお願いします</h2>
 
   <%= form_with url: pain_behavior_extention_flexion_myofascial_back_pain_extention_flexion_behavior_path, method: :post, local: true ,id: 'myofascial_back_pain_form' do %>
     <!-- 各チェックボックスの項目 -->
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
       <%= label_tag 'posture', '長時間、同じ姿勢や同じ動作をしていると痛みが出る', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'parietal_flexion', false, class: 'form-check-input', id: 'parietal_flexion' %>
       <%= label_tag 'parietal_flexion', '身体を横に曲げると痛みが出る', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'rotation', false, class: 'form-check-input', id: 'rotation' %>
       <%= label_tag 'rotation', '腰を捻ると痛みが出る', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'sluggish', false, class: 'form-check-input', id: 'sluggish' %>
       <%= label_tag 'sluggish', '腰が重だるい感じがする', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'massage', false, class: 'form-check-input', id: 'massage' %>
       <%= label_tag 'massage', '背中・腰回りの筋肉をほぐすと楽になる', class: 'form-check-label' %>
     </div>
 
     <br>
 
-    <div class="form-check">
+    <div class='form-check'>
     <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
     <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
   </div>
   <br>
 
-  <div class="button-group mt-4 d-flex flex-column align-items-center">
+  <div class='button-group mt-4 d-flex flex-column align-items-center'>
   <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn', id: 'submit_button' %>
-  <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+  <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
 </div>
 
-<div class="button-group mt-4 d-flex flex-column align-items-center">
+<div class='button-group mt-4 d-flex flex-column align-items-center'>
   <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
 </div>
 <% end %>
@@ -51,19 +51,19 @@
 </div>
 
 <script>
-  document.getElementById("submit_button").addEventListener("click", function(event) {
+  document.getElementById('submit_button').addEventListener('click', function(event) {
     // フォーム内でチェックされたチェックボックスを全て取得
-    var checkboxes = document.querySelectorAll('#myofascial_back_pain_form input[type="checkbox"]:checked');
-    var nothingCheckbox = document.getElementById('nothing'); // "nothing" のチェックボックスを取得
-    var message = ""; // エラーメッセージの初期値を空に設定
+    var checkboxes = document.querySelectorAll('#myofascial_back_pain_form input[type='checkbox']:checked');
+    var nothingCheckbox = document.getElementById('nothing'); // 'nothing' のチェックボックスを取得
+    var message = ''; // エラーメッセージの初期値を空に設定
 
     // チェックボックスが何も選択されていない場合の処理
     if (checkboxes.length === 0) {
-      message = "選択してください";
+      message = '選択してください';
     }
-    // "nothing" と他のチェックボックスが同時に選択されている場合の処理
+    // 'nothing' と他のチェックボックスが同時に選択されている場合の処理
     else if (nothingCheckbox.checked && checkboxes.length > 1) {
-      message = "無効な選択です";
+      message = '無効な選択です';
     }
 
     // エラーメッセージの処理
@@ -80,7 +80,7 @@
       var flashMessage = document.createElement('div');
       flashMessage.className = 'alert alert-danger';
       flashMessage.textContent = message;  // メッセージ内容を設定
-      var form = document.getElementById("myofascial_back_pain_form");
+      var form = document.getElementById('myofascial_back_pain_form');
       form.insertBefore(flashMessage, form.firstChild); // フォームの上部にエラーメッセージを表示
     }
   });

@@ -1,47 +1,47 @@
-<div class="nutation_flexion_behavior">
-  <div class="submit_pain_location_flexion">
-    <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+<div class='nutation_flexion_behavior'>
+  <div class='submit_pain_location_flexion'>
+    <h2 class='text-center mb-4'>当てはまるものにチェックをお願いします</h2>
 
-    <div class="image-container">
-    <%= image_tag "シェーマ図_疼痛部位2.png", alt: "人体図", class: "human-body-image" %>
+    <div class='image-container'>
+    <%= image_tag 'シェーマ図_疼痛部位2.png', alt: '人体図', class: 'human-body-image' %>
   </div>
 
     <%= form_with url: pain_behavior_extention_nutation_extention_behavior_path, method: :post, local: true, id: 'nutation_flexion_form' do %>
-      <div class="form-check">
+      <div class='form-check'>
         <%= check_box_tag 'conditions[]', 'posture', false, class: 'form-check-input', id: 'posture' %>
         <%= label_tag 'posture', '仙骨の上を強く押さえながら腰を曲げると楽な気がする', class: 'form-check-label' %>
       </div>
 
-      <div class="form-check">
+      <div class='form-check'>
         <%= check_box_tag 'conditions[]', 'uncomfortable_feeling', false, class: 'form-check-input', id: 'uncomfortable_feeling' %>
         <%= label_tag 'uncomfortable_feeling', '痛みの出ている方の足で片足立をすると腰に痛みや違和感が出る', class: 'form-check-label' %>
       </div>
 
-      <div class="form-check">
+      <div class='form-check'>
         <%= check_box_tag 'conditions[]', 'a_feeling_of_unease', false, class: 'form-check-input', id: 'a_feeling_of_unease' %>
         <%= label_tag 'a_feeling_of_unease', '太ももやお尻にも痛みや違和感が出ている', class: 'form-check-label' %>
       </div>
 
-      <div class="form-check">
+      <div class='form-check'>
         <%= check_box_tag 'conditions[]', 'one_finger', false, class: 'form-check-input', id: 'one_finger' %>
         <%= label_tag 'one_finger', '人差し指で痛みの部位を指し示すことができる', class: 'form-check-label' %>
       </div>
 
       <br>
 
-      <div class="form-check">
+      <div class='form-check'>
         <%= check_box_tag 'conditions[]', 'nothing', false, class: 'form-check-input', id: 'nothing' %>
         <%= label_tag 'nothing', 'どれも当てはまらない', class: 'form-check-label' %>
       </div>
 
       <br>
 
-      <div class="button-group mt-4 d-flex flex-column align-items-center">
+      <div class='button-group mt-4 d-flex flex-column align-items-center'>
         <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn', id: 'submit_button' %>
-        <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+        <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
       </div>
 
-      <div class="button-group mt-4 d-flex flex-column align-items-center">
+      <div class='button-group mt-4 d-flex flex-column align-items-center'>
         <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
       </div>
     <% end %>
@@ -49,19 +49,19 @@
 </div>
 
 <script>
-  document.getElementById("submit_button").addEventListener("click", function(event) {
+  document.getElementById('submit_button').addEventListener('click', function(event) {
     // フォーム内でチェックされたチェックボックスを全て取得
-    var checkboxes = document.querySelectorAll('#nutation_flexion_form input[type="checkbox"]:checked');
-    var nothingCheckbox = document.getElementById('nothing'); // "nothing" のチェックボックスを取得
-    var message = ""; // エラーメッセージの初期値を空に設定
+    var checkboxes = document.querySelectorAll('#nutation_flexion_form input[type='checkbox']:checked');
+    var nothingCheckbox = document.getElementById('nothing'); // 'nothing' のチェックボックスを取得
+    var message = ''; // エラーメッセージの初期値を空に設定
 
     // チェックボックスが何も選択されていない場合の処理
     if (checkboxes.length === 0) {
-      message = "選択してください";
+      message = '選択してください';
     }
-    // "nothing" と他のチェックボックスが同時に選択されている場合の処理
+    // 'nothing' と他のチェックボックスが同時に選択されている場合の処理
     else if (nothingCheckbox.checked && checkboxes.length > 1) {
-      message = "無効な選択です";
+      message = '無効な選択です';
     }
 
     // エラーメッセージの処理
@@ -78,7 +78,7 @@
       var flashMessage = document.createElement('div');
       flashMessage.className = 'alert alert-danger';
       flashMessage.textContent = message;  // メッセージ内容を設定
-      var form = document.getElementById("nutation_flexion_form");
+      var form = document.getElementById('nutation_flexion_form');
       form.insertBefore(flashMessage, form.firstChild); // フォームの上部にエラーメッセージを表示
     }
   });

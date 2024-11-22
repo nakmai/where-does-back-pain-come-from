@@ -48,7 +48,7 @@ m = Module.new do
     lockfile =
       case File.basename(gemfile)
       when 'gems.rb' then gemfile.sub(/\.rb$/, '.locked')
-      else "#{gemfile}.lock"
+      else '#{gemfile}.lock'
       end
     File.expand_path(lockfile)
   end
@@ -70,7 +70,7 @@ m = Module.new do
   end
 
   def bundler_requirement_for(version)
-    return "#{Gem::Requirement.default}.a" unless version
+    return '#{Gem::Requirement.default}.a' unless version
 
     bundler_gem_version = Gem::Version.new(version)
 
@@ -96,7 +96,7 @@ m = Module.new do
       return
     end
 
-    warn "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
+    warn 'Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`'
     exit 42
   end
 

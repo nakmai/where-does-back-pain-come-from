@@ -1,12 +1,12 @@
-<div class="achlorhydria-page">
-  <h2 class="text-center mb-4">どの動作が一番痛いですか？<br>一つ選んでください</h2>
+<div class='achlorhydria-page'>
+  <h2 class='text-center mb-4'>どの動作が一番痛いですか？<br>一つ選んでください</h2>
   
   <br>
 
  <%= form_with url: diagnosis_path, method: :post do %>
     
     <!-- 腰椎伸展・屈曲タイプ -->
-    <div class="form-check">
+    <div class='form-check'>
       <%= radio_button_tag 'pain_type', '腰を曲げても反っても痛い', false, class: 'form-check-input', id: 'pain5' %>
       <%= label_tag 'pain5', '腰を曲げても反っても痛い', class: 'form-check-label' %>
     </div>
@@ -14,11 +14,11 @@
     <br>
 
     <!-- 腰椎伸展タイプ -->
-    <div class="form-check">
+    <div class='form-check'>
       <%= radio_button_tag 'pain_type', '腰を反ると痛い', false, class: 'form-check-input', id: 'pain1' %>
       <%= label_tag 'pain1', '腰を反ると痛い', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
+    <div class='form-check'>
       <%= radio_button_tag 'pain_type', '腰を反って捻ると痛い', false, class: 'form-check-input', id: 'pain2' %>
       <%= label_tag 'pain2', '腰を反って捻ると痛い', class: 'form-check-label' %>
     </div>
@@ -26,18 +26,18 @@
     <br>
 
     <!-- 腰椎屈曲タイプ -->
-    <div class="form-check">
+    <div class='form-check'>
       <%= radio_button_tag 'pain_type', '腰を曲げると痛い', false, class: 'form-check-input', id: 'pain3' %>
       <%= label_tag 'pain3', '腰を曲げると痛い', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
+    <div class='form-check'>
       <%= radio_button_tag 'pain_type', '腰を反って曲げると痛い', false, class: 'form-check-input', id: 'pain4' %>
       <%= label_tag 'pain4', '腰を反って曲げると痛い', class: 'form-check-label' %>
     </div>
 
-    <div class="button-group mt-4 d-flex flex-column align-items-center">
-      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
-      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    <div class='button-group mt-4 d-flex flex-column align-items-center'>
+      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn btn-lg' %>
+      <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
     </div>
   <% end %>
 </div>

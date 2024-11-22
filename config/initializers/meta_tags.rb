@@ -12,11 +12,11 @@ MetaTags.configure do |config|
   # Add HTML attributes to the <title> HTML tag. Default is {}.
   # config.title_tag_attributes = {}
 
-  # Natural separator when truncating. Default is " " (space character).
+  # Natural separator when truncating. Default is ' ' (space character).
   # Set to nil to disable natural separator.
   # This also allows you to use a whitespace regular expression (/\s/) or
   # a Unicode space (/\p{Space}/).
-  # config.truncate_on_natural_separator = " "
+  # config.truncate_on_natural_separator = ' '
 
   # Maximum length of the page description. Default is 300.
   # Set to nil or 0 to remove limits.
@@ -26,7 +26,7 @@ MetaTags.configure do |config|
   # config.keywords_limit = 255
 
   # Default separator for keywords meta tag (used when an Array passed with
-  # the list of keywords). Default is ", ".
+  # the list of keywords). Default is ', '.
   # config.keywords_separator = ', '
 
   # When true, keywords will be converted to lowercase, otherwise they will
@@ -41,8 +41,8 @@ MetaTags.configure do |config|
   # of open (`<meta ...>`). Default is true.
   # config.open_meta_tags = true
 
-  # List of additional meta tags that should use "property" attribute instead
-  # of "name" attribute in <meta> tags.
+  # List of additional meta tags that should use 'property' attribute instead
+  # of 'name' attribute in <meta> tags.
   # config.property_tags.push(
   #   'x-hearthstone:deck',
   # )

@@ -1,39 +1,39 @@
-<div class="gynecology-question-page">
+<div class='gynecology-question-page'>
   <%= form_with url: submit_gynecology_question_path, method: :post do %>
     <h2>女性の方へ</h2>
     <p>下記に当てはまるものがあればチェックをお願いします。</p>
     
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'no_specific_issue', false, class: "form-check-input", id: "noSpecificIssue" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'no_specific_issue', false, class: 'form-check-input', id: 'noSpecificIssue' %>
       <%= label_tag 'noSpecificIssue', '特に問題なし', class: 'form-check-label' %>
     </div>
 
     <br>
 
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'pregnancy', false, class: "form-check-input", id: "pregnancy" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'pregnancy', false, class: 'form-check-input', id: 'pregnancy' %>
       <%= label_tag 'pregnancy', '妊娠している・可能性がある', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'strong_menstrual_pain', false, class: "form-check-input", id: "strongMenstrualPain" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'strong_menstrual_pain', false, class: 'form-check-input', id: 'strongMenstrualPain' %>
       <%= label_tag 'strongMenstrualPain', '年々生理痛が強くなってきている', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'calorie_intake', false, class: "form-check-input", id: "calorieIntake" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'calorie_intake', false, class: 'form-check-input', id: 'calorieIntake' %>
       <%= label_tag 'calorieIntake', '摂取カロリーは変わっていないのに、ウエストがキツくなってきた', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'menstrual_irregularity', false, class: "form-check-input", id: "menstrualIrregularity" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'menstrual_irregularity', false, class: 'form-check-input', id: 'menstrualIrregularity' %>
       <%= label_tag 'menstrual_irregularity', '生理不順がある', class: 'form-check-label' %>
     </div>
-    <div class="form-check">
-      <%= check_box_tag 'conditions[]', 'vaginal_discharge', false, class: "form-check-input", id: "vaginal_discharg" %>
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'vaginal_discharge', false, class: 'form-check-input', id: 'vaginal_discharg' %>
       <%= label_tag 'vaginal_discharge', 'おりものが増えた・色がおかしい', class: 'form-check-label' %>
     </div>
 
-    <div class="button-group mt-4 d-flex justify-content-between">
-      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
-      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    <div class='button-group mt-4 d-flex justify-content-between'>
+      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn btn-lg' %>
+      <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
     </div>
   <% end %>
 </div>

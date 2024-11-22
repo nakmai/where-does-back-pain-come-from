@@ -8,10 +8,10 @@
       <li>
         <!-- ブックマークがハッシュか単なるURLか確認 -->
         <% if bookmark.is_a?(Hash) %>
-          <%= link_to bookmark[:name], bookmark[:url], target: "_blank", class: "bookmark-link" %>
+          <%= link_to bookmark[:name], bookmark[:url], target: '_blank', class: 'bookmark-link' %>
           <%= button_to '削除', remove_bookmark_user_path(current_user, url: bookmark[:url]), method: :delete, data: { confirm: '本当にこのブックマークを削除しますか？' }, class: 'btn btn-danger btn-sm' %>
         <% else %>
-          <%= link_to bookmark, bookmark, target: "_blank", class: "bookmark-link" %>
+          <%= link_to bookmark, bookmark, target: '_blank', class: 'bookmark-link' %>
           <%= button_to '削除', remove_bookmark_user_path(current_user, url: bookmark), method: :delete, data: { confirm: '本当にこのブックマークを削除しますか？' }, class: 'btn btn-danger btn-sm' %>
         <% end %>
       </li>

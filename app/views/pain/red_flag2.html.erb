@@ -1,47 +1,47 @@
-<div class="red-flag-page2">
-  <h2 class="text-center mb-4">当てはまるものにチェックをお願いします</h2>
+<div class='red-flag-page2'>
+  <h2 class='text-center mb-4'>当てはまるものにチェックをお願いします</h2>
 
   <%= form_with url: red_flag2_submit_path, method: :post, local: true do %>
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
       <%= label_tag 'no_issues', '特になし', class: 'form-check-label' %>
     </div>
 
     <br>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'severe_pain', false, class: 'form-check-input', id: 'severe_painn' %>
       <%= label_tag 'severe_pain', '１ヶ月以上痛みがおさまらない', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'no_rest_pain', false, class: 'form-check-input', id: 'no_rest_pain' %>
       <%= label_tag 'no_rest_pain', 'ベッドなどでじっとしていても痛みがおさまらない', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'pain_at_rest', false, class: 'form-check-input', id: 'pain_at_rest' %>
       <%= label_tag 'pain_at_rest', '姿勢に関係なく、休んでいても痛みがある・楽な姿勢がない', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'pain_at_norest', false, class: 'form-check-input', id: 'pain_at_norest' %>
       <%= label_tag 'pain_at_norest', '逆に動いていないと痛みが増悪する', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'wake_from_pain', false, class: 'form-check-input', id: 'wake_from_pain' %>
       <%= label_tag 'wake_from_pain', '痛みで夜中に目が覚める', class: 'form-check-label' %>
     </div>
 
-    <div class="form-check">
+    <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'sleep_disorder', false, class: 'form-check-input', id: 'sleep_disorder' %>
       <%= label_tag 'sleep_disorder', 'この痛みのせいで不眠気味', class: 'form-check-label' %>
     </div>
 
-    <div class="button-group mt-4 d-flex flex-column align-items-center">
-      <%= submit_tag '次へ進む', class: "btn btn-primary custom-btn btn-lg" %>
-      <a href="javascript:window.history.go(-1);" class="btn btn-outline-primary custom-btn">前のページへ戻る</a>
+    <div class='button-group mt-4 d-flex flex-column align-items-center'>
+      <%= submit_tag '次へ進む', class: 'btn btn-primary custom-btn btn-lg' %>
+      <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn'>前のページへ戻る</a>
     </div>
   <% end %>
 </div>

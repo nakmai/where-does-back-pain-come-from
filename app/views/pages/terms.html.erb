@@ -1,10 +1,10 @@
-<div class="container mt-5">
-  <div class="card p-4 shadow-lg">
-    <div class="alert alert-danger text-center mb-4" role="alert">
-      <i class="bi bi-exclamation-triangle-fill"></i> アプリ使用時の注意事項
+<div class='container mt-5'>
+  <div class='card p-4 shadow-lg'>
+    <div class='alert alert-danger text-center mb-4' role='alert'>
+      <i class='bi bi-exclamation-triangle-fill'></i> アプリ使用時の注意事項
     </div>
 
-    <p class="mb-3">
+    <p class='mb-3'>
       このアプリは確定診断ができるものではありません。
       <br><br>
       確定診断は医師のみ行うことができます。
@@ -12,40 +12,40 @@
       現在の腰痛に対して不安がある場合、先に整形外科へ受診することをお勧めしております。
     </p>
 
-    <p class="mb-3">
+    <p class='mb-3'>
       このアプリはあくまでも、参考程度にセルフケアを行っていただけますと幸いです。
       <br>
       このアプリをご利用いただき、セルフケアを行っていただく場合において、万が一症状の悪化や変化が見られない場合としても、当アプリでは一切の責任を負いかねますので、あらかじめご了承ください。
       <br>症状の増悪や変化が見られない場合は、整形外科への受診をお願いいたします。
     </p>
 
-    <p class="mb-3">
+    <p class='mb-3'>
       また、ユーザー登録を行うとアプリ内容の保存が行えます。
       <br>ぜひご利用ください。
     </p>
 
     <!-- 利用規約とプライバシーポリシーに同意させるチェックボックス -->
-    <form action="<%= terms_path %>" method="post">
+    <form action='<%= terms_path %>' method='post'>
     
-    <div class="mb-3">
+    <div class='mb-3'>
       <label>
-        <input type="checkbox" name="terms" id="termsCheckbox">
-        <%= link_to '利用規約', terms_of_use_path, target: "_blank" %>に同意します。
+        <input type='checkbox' name='terms' id='termsCheckbox'>
+        <%= link_to '利用規約', terms_of_use_path, target: '_blank' %>に同意します。
       </label>
     </div>
     
-    <div class="mb-3">
+    <div class='mb-3'>
       <label>
-        <input type="checkbox" name="privacy" id="privacyCheckbox">
-        <%= link_to 'プライバシーポリシー', privacy_path, target: "_blank" %>に同意します。
+        <input type='checkbox' name='privacy' id='privacyCheckbox'>
+        <%= link_to 'プライバシーポリシー', privacy_path, target: '_blank' %>に同意します。
       </label>
     </div>
   
-    <div class="d-grid gap-2">
-      <button type="submit" class="btn btn-primary custom-btn">同意する</button>
+    <div class='d-grid gap-2'>
+      <button type='submit' class='btn btn-primary custom-btn'>同意する</button>
   
       <% unless user_signed_in? %>
-        <a href="<%= new_user_registration_path %>" class="btn btn-outline-primary custom-btn signup-btn">新規登録</a>
+        <a href='<%= new_user_registration_path %>' class='btn btn-outline-primary custom-btn signup-btn'>新規登録</a>
       <% end %>
     </div>
   </form>  

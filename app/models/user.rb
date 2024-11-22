@@ -57,7 +57,7 @@ class User < ApplicationRecord
 
     # GETリクエストを作成し、Authorizationヘッダーにアクセストークンを設定
     request = Net::HTTP::Get.new(uri.request_uri)
-    request['Authorization'] = "Bearer #{access_token}" # Google OAuth2のアクセストークンを利用
+    request['Authorization'] = 'Bearer #{access_token}' # Google OAuth2のアクセストークンを利用
 
     # Google People APIに対してリクエストを送信し、レスポンスを受け取る
     response = http.request(request)
@@ -132,7 +132,7 @@ class User < ApplicationRecord
     if gender_array.present? && gender_array.is_a?(Array)
       # 最初の性別データを取得
       gender_data = gender_array.first
-      # 性別データが存在し、値が "male" または "female" の場合のみ返す。その他はnilを返す
+      # 性別データが存在し、値が 'male' または 'female' の場合のみ返す。その他はnilを返す
       gender_data['value'] if gender_data.present? && %w[male female].include?(gender_data['value'])
     else
       nil # 無効なデータの場合はnilを返す

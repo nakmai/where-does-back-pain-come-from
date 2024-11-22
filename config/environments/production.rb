@@ -51,8 +51,11 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+  config.middleware.insert_before 0, Rack::SSL
   #DNS許可
-  config.hosts << "where-does-back-pain-come-from.com"
+  config.middleware.use(Rack::Rewrite) do
+    r301 %r{^http://where-does-back-pain-come-from\.com(.*)}, 'https://www.where-does-back-pain-come-from.com$1'
+  end
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).

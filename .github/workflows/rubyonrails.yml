@@ -62,8 +62,8 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bundle exec rubocop --parallel  
-      - name: Install dependencies
-        run: bundle install
+      - name: Run rubocop with autocorrect
+        run: bundle exec rubocop --autocorrect --parallel
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:

@@ -8,8 +8,8 @@ class OauthController < ApplicationController
       # アクセストークンを取得するためのリクエスト
       response = RestClient.post('https://oauth2.googleapis.com/token', {
                                    code: code,
-                                   client_id: ENV['GOOGLE_CLIENT_ID'],
-                                   client_secret: ENV['GOOGLE_CLIENT_SECRET'],
+                                   client_id: ENV.fetch('GOOGLE_CLIENT_ID'),
+                                   client_secret: ENV.fetch('GOOGLE_CLIENT_SECRET'),
                                    redirect_uri: 'https://your-heroku-app.herokuapp.com/oauth2callback',
                                    grant_type: 'authorization_code'
                                  })

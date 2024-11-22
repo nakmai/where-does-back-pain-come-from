@@ -115,4 +115,8 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  #DNS許可
+  config.hosts << "where-does-back-pain-come-from.com"
+  config.hosts << "www.where-does-back-pain-come-from.com"
 end

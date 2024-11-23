@@ -54,6 +54,7 @@ Rails.application.configure do
 
   config.hosts << 'where-does-back-pain-come-from.com'
   config.hosts << 'www.where-does-back-pain-come-from.com'
+  config.hosts << "where-does-back-pain-come-from-07a8b4b21813.herokuapp.com"
 
   config.middleware.use Rack::Rewrite do
     r301 %r{^http://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1'

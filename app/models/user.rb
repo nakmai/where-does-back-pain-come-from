@@ -42,7 +42,7 @@ class User < ApplicationRecord
   end
 
   # Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
-  def self.get_google_user_info(_access_token)
+  def self.get_google_user_info(access_token)
     # 必要なライブラリを読み込む
     require 'net/http'  # HTTPリクエストを行うためのライブラリ
     require 'uri'       # URI（URL）を処理するためのライブラリ
@@ -68,8 +68,8 @@ class User < ApplicationRecord
 
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
-    access_token = auth.credentials.token
-
+    access_token = auth['credentials']['token']
+    
     # Google People API からユーザー情報を取得
     google_user_info = get_google_user_info(access_token)
 
@@ -139,3 +139,4 @@ class User < ApplicationRecord
     end
   end
 end
+

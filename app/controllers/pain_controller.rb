@@ -3,7 +3,6 @@ class PainController < ApplicationController
     # フォーム表示用アクション
     flash.clear
   end
-<<<<<<< HEAD
 
   def submit_red_flag
     flash.clear
@@ -49,19 +48,6 @@ class PainController < ApplicationController
       @conditions = conditions
       render :red_flag2 # red_flag2ページを再表示
       return
-=======
-
-  def submit_red_flag
-    flash.clear
-    conditions = params[:conditions] || []
-
-    if conditions.include?('no_issues') && conditions.length == 1
-      # 特に問題なしのみがチェックされている場合
-      redirect_to red_flag2_path, notice:
-    else
-      # 他の項目がチェックされている場合
-      redirect_to orthopedics_advice2_path, notice:
->>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
     end
   end
 
@@ -130,24 +116,6 @@ class PainController < ApplicationController
     render :red_flag3
   end
   
-=======
-  def red_flag2
-    # red_flag2 ビューを表示
-    flash.clear
-  end
-
-  def red_flag2_submit
-    conditions = params[:conditions] || []
-
-    if conditions.include?('no_issues')
-      # 「特になし」が選択されている場合は pain_scale にリダイレクト
-      redirect_to pain_scale_path
-    else
-      # それ以外の項目が選択されている場合は他のページにリダイレクト
-      redirect_to orthopedics_advice3_path
-    end
-  end
->>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
 
   def pain_scale
     # 何もしない。ビューを表示するだけ。

@@ -44,11 +44,12 @@ ja:
               taken: "このメールアドレスは既に登録されています"
             password:
               too_short: "パスワードは6文字以上〜20文字以内大文字・小文字・数字が必要です"
-    messages:
-      blank: "入力が必要です"
-
+            reset_password_token:
+              blank: "パスワードリセットトークンを入力してください"
   errors:
     messages:
+      blank: "入力が必要です"
       select_one: "一つ選択してください"
+
 
 

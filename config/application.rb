@@ -24,8 +24,10 @@ module Test1111
     #
     # config.time_zone = 'Central Time (US & Canada)'
     # config.eager_load_paths << Rails.root.join('extras')
-    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
-      r301 %r{^https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1'
+    config.middleware.use Rack::Rewrite do
+      r301 %r{^https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1', :if => Proc.new { |rack_env|
+        rack_env['HTTP_HOST'] == 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'
+      }
     end
   end
 end

@@ -22,12 +22,8 @@ require File.expand_path('../config/environment', __dir__)
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-<<<<<<< HEAD
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
-=======
-Dir[Rails.root.join('spec', 'support', '**', '*.rb')].sort.each { |f| require f }
->>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
 
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
 begin

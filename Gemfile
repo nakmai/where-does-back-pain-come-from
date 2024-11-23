@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.4'
 
+gem 'mysql2', '>= 0.5'
 gem 'bootsnap', require: false
 gem 'bootstrap', '~> 5.3'
 gem 'i18n'
@@ -42,16 +43,6 @@ group :development do
   gem 'web-console'
   # gem "rack-mini-profiler"
   # gem "spring"
-end
-
-# 開発・テスト環境専用のgem
-group :development, :test do
-  gem 'mysql2', '>= 0.5'
-end
-
-# 本番環境専用のgem
-group :production do
-  gem 'mysql2', '>= 0.5'
 end
 
 group :test do

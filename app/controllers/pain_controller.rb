@@ -51,7 +51,7 @@ class PainController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
+ 
     # 「特に問題なし」と他の項目が両方選ばれている場合
     if conditions.include?('no_issues') && conditions.length > 1
       flash.now[:alert] = '無効な選択です'

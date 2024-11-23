@@ -56,11 +56,9 @@ RSpec.configure do |config|
   #   # Allows RSpec to persist some state between runs in order to support
   #   # the `--only-failures` and `--next-failure` CLI options. We recommend
   #   # you configure your source control system to ignore this file.
-<<<<<<< HEAD
+
   #   config.example_status_persistence_file_path = 'spec/examples.txt'
-=======
-  #   config.example_status_persistence_file_path = "spec/examples.txt"
->>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
+
   #
   #   # Limits the available syntax to the non-monkey patched syntax that is
   #   # recommended. For more details, see:
@@ -74,11 +72,8 @@ RSpec.configure do |config|
   #     # Use the documentation formatter for detailed output,
   #     # unless a formatter has already been configured
   #     # (e.g. via a command-line flag).
-<<<<<<< HEAD
+
   #     config.default_formatter = 'doc'
-=======
-  #     config.default_formatter = "doc"
->>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
   #   end
   #
   #   # Print the 10 slowest examples and example groups at the

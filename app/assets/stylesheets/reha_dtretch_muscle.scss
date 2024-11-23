@@ -1,0 +1,30 @@
+.btn.btn-tertiary1 {
+    color:#254FFF;
+  }
+
+ .signup-btn2 {
+    font-weight: 600; // 少し太め
+    background-color: #FFFFFF;
+    color: #2E2A71;
+    border: 2px solid #2E2A71;
+  }
+  .signup-btn2:hover {
+    font-weight: 600; 
+    background-color: #FFFFFF;
+    color: #2E2A71;
+    border: 2px solid #2E2A71;
+  }
+  
+  .btn-outline-primary.back-button {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+    padding: 12px 20px;
+    font-size: 18px; /* ボタンフォントサイズを他のページと一致 */
+    border-radius: 8px;
+  }
+  
+  .btn-outline-primary.back-button:hover {
+    background-color: #0056b3; /* ホバーカラーを少し濃く */
+    color: white;
+  }

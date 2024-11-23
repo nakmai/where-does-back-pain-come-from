@@ -1,19 +1,40 @@
+<title><%= render 'shared/myofascial_back_pain' %></title>
 <%= render 'shared/myofascial_back_pain' %>
 
+<br>
+<h2 class="text-center">※0:00と12:00にシャッフルされます</h2>
 
-<%# ストレッチセクションから1つランダムに表示 %>
-<% stretch_partials = ['strech/hamstrings_towel', 'strech/gluteus_maximus'] %>
-<%= render stretch_partials.sample %>
+<%# 0:00と12:00にシャッフル%>
+<% seed = Time.zone.now.hour < 12 ? Time.zone.now.to_date.to_s.hash : "#{Time.zone.now.to_date}-PM".hash %>
 
-<%# リハビリセクションから1つランダムに表示 %>
-<% rehab_partials = ['rehabilitation/draw_in', 'rehabilitation/hiplift'] %>
-<%= render rehab_partials.sample %>
+<%# ストレッチセクションから1つランダムに表示 (固定シャッフル) %>
+<% stretch_partials = [
+  'strech/adductor', 
+  'strech/gluteus_maximus', 
+  'strech/hamstrings_towel', 
+  'strech/hamstrings', 
+  'strech/psoas', 
+  'strech/quadriceps_femoris'
+] %>
+<%= render stretch_partials.shuffle(random: Random.new(seed)).first %>
+
+<%# リハビリセクションから1つランダムに表示 (固定シャッフル) %>
+<% rehab_partials = [
+  'rehabilitation/back_twist',
+  'rehabilitation/cat&dog',
+  'rehabilitation/draw_in',
+  'rehabilitation/hand_knee',
+  'rehabilitation/hiplift'
+] %>
+<%= render rehab_partials.shuffle(random: Random.new(seed)).first %>
+
+
 
 <div class='buttons'>
-  <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '筋・筋膜性障害タイプ'), method: :post, class: 'btn btn-primary' %>
-  <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
-  <a href='<%= users_all_form_path %>' class='btn btn-secondary'>フォーム棚ページに戻る</a>
-  <a href='<%= root_path %>' class='btn btn-tertiary'>トップページに戻る</a>
+    <%= button_to 'マイページに登録', add_bookmark_path(url: request.fullpath, name: '筋・筋膜性障害タイプ'), method: :post, class: 'btn btn-primary' %>
+    <%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary custom-btn2 back-button' %>
+    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn2' %>
+    <a href='<%= root_path %>' class='btn btn-tertiary1'>トップページに戻る</a>
 </div>
 
 <script>

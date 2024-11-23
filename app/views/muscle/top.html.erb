@@ -1,24 +1,24 @@
  
 <h2 class='text-left'>筋肉名</h2>
 
-<%= link_to '内転筋', muscle_adductor_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '脊柱起立筋', muscle_erector_spinae_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '大殿筋', muscle_gluteus_maximus_path, class: 'btn btn-tertiary' %><br>
-<%= link_to 'ハムストリングス', muscle_hamstrings_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '多裂筋', muscle_polysaccharidic_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '腸腰筋', muscle_psoas_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '大腿四頭筋', muscle_quadriceps_femoris_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '腹直筋', muscle_rectus_abdominis_path, class: 'btn btn-tertiary' %><br>
-<%= link_to '腹横筋', muscle_transversus_abdominis_path, class: 'btn btn-tertiary' %><br>
+<%= link_to '内転筋', muscle_adductor_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '脊柱起立筋', muscle_erector_spinae_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '大殿筋', muscle_gluteus_maximus_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to 'ハムストリングス', muscle_hamstrings_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '多裂筋', muscle_polysaccharidic_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '腸腰筋', muscle_psoas_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '大腿四頭筋', muscle_quadriceps_femoris_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '腹直筋', muscle_rectus_abdominis_path, class: 'btn btn-tertiary1' %><br>
+<%= link_to '腹横筋', muscle_transversus_abdominis_path, class: 'btn btn-tertiary1' %><br>
 
 <br>
 <a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a>
   <div class='buttons'>
-      <%= link_to 'ログインページに飛ぶ', new_user_session_path(return_to: request.fullpath), class: 'btn btn-primary' %>
-      <%= link_to '新規登録ページに飛ぶ', new_user_registration_path(return_to: request.fullpath), class: 'btn btn-success' %>
-      
-    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn' %>
-    <a href='<%= root_path %>' class='btn btn-tertiary'>トップページに戻る</a>
+    <%= link_to 'ログインページに飛ぶ', new_user_session_path(return_to: request.fullpath), class: 'btn btn-primary' %>
+    <%= link_to '新規登録ページに飛ぶ', new_user_registration_path(return_to: request.fullpath), class: 'btn btn-outline-secondary signup-btn2' %>
+    <a href='javascript:window.history.go(-1);' class='btn btn-outline-primary custom-btn2'>前のページへ戻る</a>
+    <%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary custom-btn2 back-button' %>
+    <a href='<%= root_path %>' class='btn btn-tertiary1'>トップページに戻る</a>
   </div>
 
 <script>

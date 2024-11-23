@@ -19,7 +19,9 @@
   </ul>
 
   <!-- 全て削除するボタン -->
+  <div class="text-center">
   <%= button_to '全てのブックマークを削除', remove_all_bookmarks_user_path(current_user), method: :delete, data: { confirm: '本当に全てのブックマークを削除しますか？' }, class: 'btn btn-danger' %>
+</div>
 
 <% else %>
   <p>まだブックマークがありません。</p>

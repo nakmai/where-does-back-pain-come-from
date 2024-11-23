@@ -24,5 +24,8 @@ module Test1111
     #
     # config.time_zone = 'Central Time (US & Canada)'
     # config.eager_load_paths << Rails.root.join('extras')
+    config.middleware.insert_before(Rack::Runtime, Rack::Rewrite) do
+      r301 %r{^https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1'
+    end
   end
 end

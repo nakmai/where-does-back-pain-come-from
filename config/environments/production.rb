@@ -57,10 +57,9 @@ Rails.application.configure do
   config.hosts << "where-does-back-pain-come-from-07a8b4b21813.herokuapp.com"
 
   config.middleware.use Rack::Rewrite do
-    r301 %r{^https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1', :if => Proc.new { |rack_env|
-      rack_env['HTTP_HOST'] == 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'
-    }
+    r301 %r{^https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com(.*)}, 'https://where-does-back-pain-come-from.com$1'
   end
+  
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info

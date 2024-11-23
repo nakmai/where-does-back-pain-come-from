@@ -33,3 +33,5 @@ class GynecologyController < ApplicationController
   def gynecology_advice
     # フォーム表示用のアクション
   end
+end
+

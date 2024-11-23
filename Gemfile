@@ -55,3 +55,5 @@ gem 'cssbundling-rails', '~> 1.4'
 gem 'devise'
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'rack-rewrite'
+

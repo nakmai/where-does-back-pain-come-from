@@ -2,7 +2,7 @@
 
 
 ## Where Does Back Pain Come From
-**https://where-does-back-pain-come-from-07a8b4b21813.herokuapp.com/**
+**https://where-does-back-pain-come-from.com**
 
 
 

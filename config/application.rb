@@ -15,7 +15,7 @@ module Test1111
     config.i18n.default_locale = :ja
 
     # 許可するホストを設定
-    config.hosts << 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'
+    config.hosts << 'https://where-does-back-pain-come-from.com/'
 
     # Configuration for the application, engines, and railties goes here.
     #

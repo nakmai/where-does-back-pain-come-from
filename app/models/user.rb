@@ -132,7 +132,11 @@ class User < ApplicationRecord
     if gender_array.present? && gender_array.is_a?(Array)
       # 最初の性別データを取得
       gender_data = gender_array.first
+<<<<<<< HEAD
       # 性別データが存在し、値が 'male' または 'female' の場合のみ返す。その他はnilを返す
+=======
+      # 性別データが存在し、値が "male" または "female" の場合のみ返す。その他はnilを返す
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
       gender_data['value'] if gender_data.present? && %w[male female].include?(gender_data['value'])
     else
       nil # 無効なデータの場合はnilを返す

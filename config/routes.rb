@@ -115,8 +115,11 @@ Rails.application.routes.draw do
   post 'red_flag', to: 'pain#submit_red_flag'
   get 'red_flag2', to: 'pain#red_flag2'
   post 'red_flag2_submit', to: 'pain#red_flag2_submit'
+<<<<<<< HEAD
   get 'red_flag3', to: 'pain#red_flag3'
 post 'red_flag3_submit', to: 'pain#red_flag3_submit', as: 'red_flag3_submit'
+=======
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
 
   # 整形外科関連
   get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1'
@@ -185,8 +188,12 @@ post 'red_flag3_submit', to: 'pain#red_flag3_submit', as: 'red_flag3_submit'
   get 'users/:id/myofascial_back_pain/:user_id', to: 'my_page#myofascial_back_pain_user', as: 'my_page_myofascial_back_pain_user'
   get 'users/:id/profile_page', to: 'users#profile_page', as: 'user_profile_page'
   post 'counternutation_flexion_behavior', to: 'pain_behavior_flexion#counternutation_flexion_behavior'
+<<<<<<< HEAD
   post 'pain_behavior_extention/counternutation_extention_behavior', to: 'pain_behavior_extention#counternutation_extention_behavior',
                                                                      as: 'pain_behavior_extention_counternutation_extention_behavior'
+=======
+  post 'pain_behavior_extention/counternutation_extention_behavior', to: 'pain_behavior_extention#counternutation_extention_behavior', as: 'pain_behavior_extention_counternutation_extention_behavior'
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
   post 'pain_behavior_extention_flexion/counternutation_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#counternutation_extention_flexion_behavior'
   post 'pain_behavior_extention_flexion/intervertebral_disk_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_disk_extention_flexion_behavior'
   post 'pain_behavior_extention_flexion/intervertebral_joint_extention_flexion_behavior', to: 'pain_behavior_extention_flexion#intervertebral_joint_extention_flexion_behavior'
@@ -197,8 +204,12 @@ post 'red_flag3_submit', to: 'pain#red_flag3_submit', as: 'red_flag3_submit'
   post 'pain_behavior_flexion/intervertebral_disk_flexion_behavior', to: 'pain_behavior_flexion#intervertebral_disk_flexion_behavior', as: 'submit_intervertebral_disk_flexion_behavior'
   post 'pain_behavior_flexion/myofascial_back_pain_flexion_behavior', to: 'pain_behavior_flexion#myofascial_back_pain_flexion_behavior'
   post 'pain_behavior_flexion/nutation_flexion_behavior', to: 'pain_behavior_flexion#nutation_flexion_behavior', as: 'nutation_flexion_behavior'
+<<<<<<< HEAD
   post 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior',
                                                                           as: 'pain_behavior_extention_intervertebral_joint_extention_behavior'
+=======
+  post 'pain_behavior_extention/intervertebral_joint_extention_behavior', to: 'pain_behavior_extention#intervertebral_joint_extention_behavior', as: 'pain_behavior_extention_intervertebral_joint_extention_behavior'
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
   post 'submit_pain_location_flexion', to: 'pain_location_flexion#submit', as: 'submit_pain_location_flexion_v2'
   post 'submit_pain_location_extention_flexion', to: 'pain_location_extention_flexion#submit'
   post 'users/add_bookmark', to: 'users#add_bookmark', as: 'add_bookmark'
@@ -247,4 +258,8 @@ post 'red_flag3_submit', to: 'pain#red_flag3_submit', as: 'red_flag3_submit'
       delete 'remove_all_bookmarks', to: 'users#remove_all_bookmarks'
     end
   end
+<<<<<<< HEAD
 end
+=======
+end
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd

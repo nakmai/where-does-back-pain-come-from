@@ -1,4 +1,5 @@
 inherit_from: .rubocop_todo.yml
+<<<<<<< HEAD
 
 AllCops:
   NewCops: enable
@@ -17,3 +18,5 @@ Gemspec/RequireMFA:
 
 Layout/LineContinuationLeadingSpace:
   Enabled: true
+=======
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd

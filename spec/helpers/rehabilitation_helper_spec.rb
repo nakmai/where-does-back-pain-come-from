@@ -4,9 +4,15 @@ require 'rails_helper'
 # the RehabilitationHelper. For example:
 #
 # describe RehabilitationHelper do
+<<<<<<< HEAD
 #   describe 'string concat' do
 #     it 'concats two strings with spaces' do
 #       expect(helper.concat_strings('this','that')).to eq('this that')
+=======
+#   describe "string concat" do
+#     it "concats two strings with spaces" do
+#       expect(helper.concat_strings("this","that")).to eq("this that")
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
 #     end
 #   end
 # end

@@ -51,8 +51,13 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
+<<<<<<< HEAD
   config.hosts << 'where-does-back-pain-come-from.com'
   config.hosts << 'www.where-does-back-pain-come-from.com'
+=======
+  config.hosts << "where-does-back-pain-come-from.com"
+  config.hosts << "www.where-does-back-pain-come-from.com" 
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
@@ -111,8 +116,13 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'your-domain.com',
+<<<<<<< HEAD
     user_name: ENV.fetch('GMAIL_USERNAME', nil), # 環境変数からGmailのユーザー名を取得
     password: ENV.fetch('GMAIL_PASSWORD', nil), # 環境変数からGmailのパスワードを取得
+=======
+    user_name: ENV['GMAIL_USERNAME'], # 環境変数からGmailのユーザー名を取得
+    password: ENV['GMAIL_PASSWORD'], # 環境変数からGmailのパスワードを取得
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
     authentication: 'plain',
     enable_starttls_auto: true
   }

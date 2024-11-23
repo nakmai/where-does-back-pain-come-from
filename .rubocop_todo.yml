@@ -158,6 +158,7 @@ Style/SpecialGlobalVars:
 # Configuration parameters: AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, AllowedPatterns.
 # URISchemes: http, https
 Layout/LineLength:
+<<<<<<< HEAD
   Max: 250
 
 AllCops:
@@ -168,3 +169,6 @@ AllCops:
     - 'spec/**/*.rb'
     - 'spec/**/*_spec.rb'
   DisabledByDefault: true
+=======
+  Max: 198
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd

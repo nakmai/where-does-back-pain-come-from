@@ -350,7 +350,11 @@ GEM
     uglifier (4.2.1)
       execjs (>= 0.3.0, < 3)
     unicode-display_width (2.6.0)
+<<<<<<< HEAD
     uri (1.0.2)
+=======
+    uri (0.13.1)
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
     version_gem (1.1.4)
     warden (1.2.9)
       rack (>= 2.0.9)

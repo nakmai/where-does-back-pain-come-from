@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     month = params[:month].to_i
     day = params[:day].to_i
     gender = params[:gender]
+<<<<<<< HEAD
   
     # 生年月日が入力されていない場合の処理
     if year.zero? || month.zero? || day.zero?
@@ -56,6 +57,30 @@ class UsersController < ApplicationController
     redirect_based_on_age_and_gender(age, gender)
   end
   
+=======
+
+    # 年、月、日が無効な場合の処理
+    if year.zero? || month.zero? || day.zero? || gender.blank?
+      @user_data = { year: year, month: month, day: day, gender: gender }
+      flash.now[:alert] = 'すべてのフィールドを入力してください。'
+      render :all_form
+      return
+    end
+
+    # 正常な日付かどうかを確認するための処理
+    begin
+      birthdate = Date.new(year, month, day)
+    rescue ArgumentError
+      @user_data = { year: year, month: month, day: day, gender: gender }
+      flash.now[:alert] = '無効な日付が入力されました。'
+      render :all_form
+      return
+    end
+
+    age = calculate_age(birthdate)
+    redirect_based_on_age_and_gender(age, gender)
+  end
+>>>>>>> d83ee46f6a74ffc7cff9ee3271ce5b3b2faeafbd
 
   # 年齢と性別に基づく共通のリダイレクト処理
   def redirect_based_on_age_and_gender

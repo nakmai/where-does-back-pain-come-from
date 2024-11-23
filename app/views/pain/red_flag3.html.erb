@@ -1,7 +1,7 @@
-<div class='red-flag-page2'>
+<div class='red-flag-page3'>
   <h2 class='text-center mb-4'>当てはまるものにチェックをお願いします</h2>
 
-  <%= form_with url: red_flag2_submit_path, method: :post, local: true do %>
+  <%= form_with url: red_flag3_submit_path, method: :post, local: true do %>
     <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'no_issues', false, class: 'form-check-input', id: 'no_issues' %>
       <%= label_tag 'no_issues', '特になし', class: 'form-check-label' %>
@@ -10,7 +10,19 @@
     <br>
 
     <div class='form-check'>
-      <%= check_box_tag 'conditions[]', 'severe_pain', false, class: 'form-check-input', id: 'severe_painn' %>
+      <%= check_box_tag 'conditions[]', 'no_pain', false, class: 'form-check-input', id: 'no_pain' %>
+      <%= label_tag 'no_pain', 'ベットなどで寝たり、立ち仕事などで座って休むと楽になる', class: 'form-check-label' %>
+    </div>
+    
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'no_pain2', false, class: 'form-check-input', id: 'no_pain2' %>
+      <%= label_tag 'no_pain2', 'ラジオ体操やトイレに行くなど、長時間同じ姿勢などから身体を動かすと楽になる', class: 'form-check-label' %>
+    </div>
+
+    <br>
+
+    <div class='form-check'>
+      <%= check_box_tag 'conditions[]', 'severe_pain', false, class: 'form-check-input', id: 'severe_pain' %>
       <%= label_tag 'severe_pain', '１ヶ月以上痛みがおさまらない', class: 'form-check-label' %>
     </div>
 
@@ -26,7 +38,7 @@
 
     <div class='form-check'>
       <%= check_box_tag 'conditions[]', 'pain_at_norest', false, class: 'form-check-input', id: 'pain_at_norest' %>
-      <%= label_tag 'pain_at_norest', '逆に動き続けていないと痛みが増悪する', class: 'form-check-label' %>
+      <%= label_tag 'pain_at_norest', '動き続けていないと痛みが増悪する', class: 'form-check-label' %>
     </div>
 
     <div class='form-check'>
@@ -45,6 +57,7 @@
     </div>
   <% end %>
 </div>
+
 
 
 

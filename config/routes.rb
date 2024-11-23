@@ -115,6 +115,8 @@ Rails.application.routes.draw do
   post 'red_flag', to: 'pain#submit_red_flag'
   get 'red_flag2', to: 'pain#red_flag2'
   post 'red_flag2_submit', to: 'pain#red_flag2_submit'
+  get 'red_flag3', to: 'pain#red_flag3'
+post 'red_flag3_submit', to: 'pain#red_flag3_submit', as: 'red_flag3_submit'
 
   # 整形外科関連
   get 'orthopedics_advice1', to: 'orthopedics#orthopedics_advice1'

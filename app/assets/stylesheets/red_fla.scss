@@ -1,0 +1,65 @@
+.red-flag-page3 {
+    padding: 20px;
+    border-radius: 10px;
+    line-height: 1.8;
+  
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+  
+    .form-check {
+      display: flex;
+      align-items: flex-start; /* ラベルが複数行の場合でもチェックボックスを揃える */
+      margin-bottom: 15px;
+      gap: 10px; /* チェックボックスとラベルの間にスペースを追加 */
+      
+      input {
+        margin-top: 5px; /* チェックボックスをラベルと中央に揃える */
+        transform: scale(1.5);
+      }
+  
+      label {
+        font-size: 18px;
+        display: inline-block;
+        line-height: 1.5; /* ラベルが複数行になったときの行間を調整 */
+        margin: 0; /* ラベルの上下余白をなくす */
+        white-space: normal; /* 長いテキストを折り返す */
+        line-height: 1.6; /* 行間を少し広げる */
+      }
+    }
+  
+    .button-group {
+      margin-top: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  
+      .btn-primary {
+        background-color: #333399;
+        border-color: #333399;
+        font-weight: bold;
+      }
+  
+      .btn-outline-primary {
+        color: #007bff;
+        border-color: #007bff;
+        background-color: #007bff;
+        color: white;
+        font-weight: bold;
+      }
+  
+      .btn-outline-primary:hover {
+        background-color: #007bff;
+        color: white;
+      }
+  
+      .btn-lg {
+        padding: 10px 30px;
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  

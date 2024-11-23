@@ -31,8 +31,16 @@
       <%= label_tag 'pain3', '腰を曲げると痛い', class: 'form-check-label' %>
     </div>
     <div class='form-check'>
-      <%= radio_button_tag 'pain_type', '腰を反って曲げると痛い', false, class: 'form-check-input', id: 'pain4' %>
-      <%= label_tag 'pain4', '腰を反って曲げると痛い', class: 'form-check-label' %>
+      <%= radio_button_tag 'pain_type', '腰を捻って曲げると痛い', false, class: 'form-check-input', id: 'pain4' %>
+      <%= label_tag 'pain4', '腰を捻って曲げると痛い', class: 'form-check-label' %>
+    </div>
+
+    <br>
+
+    <!-- 安静時痛タイプ -->
+    <div class='form-check'>
+      <%= radio_button_tag 'pain_type', '何もしなくても痛い', false, class: 'form-check-input', id: 'pain6' %>
+      <%= label_tag 'pain6', '何もしなくても痛い', class: 'form-check-label' %>
     </div>
 
     <div class='button-group mt-4 d-flex flex-column align-items-center'>

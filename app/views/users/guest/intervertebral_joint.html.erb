@@ -1,12 +1,15 @@
-
+<title><%= render 'shared/intervertebral_joint' %></title>
 <%= render 'my_page/my_page_intervertebral_joint' %>
-<a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a>
+
+<br>
+  
+<a class='login notes'>※ログイン・新規登録後はトップページに戻ります。</a><br>
   <div class='buttons'>
-    <%= link_to 'ログインページに飛ぶ', new_user_session_path(return_to: request.fullpath), class: 'btn btn-primary' %>
-    <%= link_to '新規登録ページに飛ぶ', new_user_registration_path(return_to: request.fullpath), class: 'btn btn-outline-secondary signup-btn2' %>
-    <%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary custom-btn2 back-button' %>
-    <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn2' %>
-    <a href='<%= root_path %>' class='btn btn-tertiary1'>トップページに戻る</a>
+      <%= link_to 'ログインページに飛ぶ', new_user_session_path(return_to: request.fullpath), class: 'btn btn-primary' %>
+      <%= link_to '新規登録ページに飛ぶ', new_user_registration_path(return_to: request.fullpath), class: 'btn btn-outline-secondary signup-btn2' %>
+      <%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary custom-btn2 back-button' %>
+      <%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn2' %>
+      <a href='<%= root_path %>' class='btn btn-tertiary1'>トップページに戻る</a>
   </div>
 
 <script>

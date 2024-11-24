@@ -3,7 +3,13 @@
 <br>
 <h2>運動方法</h2>
  
-<%= link_to 'ヒップリフト', rehabilitation_back_twist_path, class:'btn btn-tertiary' %><br>
-<%= link_to 'ハンドニー', rehabilitation_hand_knee_path, class:'btn btn-tertiary' %><br>
+<%= link_to 'ヒップリフト', rehabilitation_back_twist_path, class:'btn btn-tertiary1' %><br>
+<%= link_to 'ハンドニー', rehabilitation_hand_knee_path, class:'btn btn-tertiary1' %><br>
 
+<br>
 
+<div class='buttons'>
+<%= link_to '前のページへ戻る', 'javascript:window.history.go(-1);', class: 'btn btn-outline-primary custom-btn2 back-button' %>
+<%= link_to '痛みの動作に戻る', diagnosis_achlorhydria_path, class: 'btn btn-secondary custom-btn2' %>
+<a href='<%= root_path %>' class='btn btn-tertiary1'>トップページに戻る</a>
+</div>

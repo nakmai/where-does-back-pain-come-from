@@ -25,6 +25,22 @@
   }
   
   .btn-outline-primary.back-button:hover {
-    background-color: #0056b3; /* ホバーカラーを少し濃く */
+    background-color: #007bff; /* ホバーカラーを少し濃く */
     color: white;
   }
+
+  .btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+    background-color: #007bff;
+    color: white;
+    font-weight: bold;
+    padding: 10px 30px; // ボタンのパディングを追加
+    font-size: 16px; // ボタンのフォントサイズを調整
+    text-align: center; /* テキストを中央に */
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: white;
+}

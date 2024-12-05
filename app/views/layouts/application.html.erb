@@ -17,7 +17,9 @@
     <%= csp_meta_tag %>
 
     <!-- OGP設定 -->
-    <%= show_meta_tags %>
+    <%= csp_meta_tag %>
+    <% set_meta_tags(default_meta_tags) %>
+    <%= display_meta_tags %>
     <meta property='og:title' content='Where Does Back Pain Come From'>
     <meta property='og:description' content='このアプリは腰痛を簡易的にタイプ別に分け、セルフケア方法をお伝えするアプリです。'>
     <meta property='og:image' content='<%= asset_path('top_page.png') %>'>

@@ -16,12 +16,12 @@ module ApplicationHelper
         noindex: !Rails.env.production?,   # 本番環境以外でnoindexを設定
         icon: [                            # FaviconやApple用アイコンの設定
           { href: image_url('スライド1.png') },
-          { href: image_url('top_page.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
+          { href: image_url('スライド1.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
         ],
         og: {                              # Open Graph Protocolの設定
           title: 'あなたの腰痛どこから',
           description: 'このアプリは腰痛を簡易的にタイプ別に分け、セルフケア方法をお伝えするアプリです。',
-          image: image_url('top_page.png'),
+          image: image_url('スライド1.png'),
           url: request.original_url,
           type: 'website'
         }

@@ -17,6 +17,7 @@
     <%= csp_meta_tag %>
 
     <!-- OGP設定 -->
+    <%= show_meta_tags %>
     <meta property='og:title' content='Where Does Back Pain Come From'>
     <meta property='og:description' content='このアプリは腰痛を簡易的にタイプ別に分け、セルフケア方法をお伝えするアプリです。'>
     <meta property='og:image' content='<%= asset_path('top_page.png') %>'>
@@ -30,9 +31,6 @@
 
     <!-- 全ページで application.css を読み込み -->
       <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
-
-    <!-- 静的OGP  -->
-
 
   </head>
 

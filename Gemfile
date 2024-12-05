@@ -22,6 +22,9 @@ gem 'uglifier'
 
 # 静的OGP
 gem 'meta-tags'
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'mini_magick'
 
 # google ログイン
 gem 'dotenv-rails', groups: %i[development test]

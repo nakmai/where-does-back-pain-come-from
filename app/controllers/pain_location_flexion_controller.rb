@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PainLocationFlexionController < ApplicationController
   def flexion
     # ビューをレンダリングするだけの場合

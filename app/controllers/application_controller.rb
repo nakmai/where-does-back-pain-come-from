@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ApplicationController < ActionController::Base
   # Devise のヘルパーメソッドを使えるようにする
   require_dependency 'users/guest_controller'

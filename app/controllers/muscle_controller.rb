@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class MuscleController < ApplicationController
- 
   # トップページに関連するロジック
   def top
     # 'top.html.erb' ビューをレンダリング

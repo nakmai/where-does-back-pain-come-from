@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PainLocationExtentionController < ApplicationController
   def extention
     # ビューをレンダリングするだけの場合

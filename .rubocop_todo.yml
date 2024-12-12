@@ -6,88 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: TreatCommentsAsGroupSeparators, ConsiderPunctuation, Include.
-# Include: **/*.gemfile, **/Gemfile, **/gems.rb
-Bundler/OrderedGems:
-  Exclude:
-    - 'Gemfile'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowForAlignment.
-Layout/CommentIndentation:
-  Exclude:
-    - 'config/initializers/devise.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Layout/EmptyLines:
-  Exclude:
-    - 'config/routes.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: normal, indented_internal_methods
-Layout/IndentationConsistency:
-  Exclude:
-    - 'config/initializers/devise.rb'
-
-# Offense count: 4
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: final_newline, final_blank_line
-Layout/TrailingEmptyLines:
-  Exclude:
-    - 'Gemfile'
-    - 'app/controllers/gynecology_controller.rb'
-    - 'app/models/user.rb'
-    - 'config/routes.rb'
-
-# Offense count: 13
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowInHeredoc.
-Layout/TrailingWhitespace:
-  Exclude:
-    - 'app/controllers/muscle_controller.rb'
-    - 'app/controllers/oauth_controller.rb'
-    - 'app/controllers/pain_controller.rb'
-    - 'app/controllers/stretch_controller.rb'
-    - 'app/controllers/users_controller.rb'
-    - 'app/models/user.rb'
-    - 'config/environments/production.rb'
-
-# Offense count: 1
-Lint/DuplicateMethods:
-  Exclude:
-    - 'app/controllers/users_controller.rb'
-
-# Offense count: 2
-Lint/IneffectiveAccessModifier:
-  Exclude:
-    - 'app/models/user.rb'
-
-# Offense count: 1
-# Configuration parameters: AllowedMethods, AllowedPatterns.
-Lint/NestedMethodDefinition:
-  Exclude:
-    - 'db/migrate/20241007041125_add_bookmarks_to_users.rb'
-
-# Offense count: 1
-Lint/ShadowingOuterLocalVariable:
-  Exclude:
-    - 'config/initializers/devise.rb'
-
-# Offense count: 3
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: AutoCorrect.
-Lint/UselessMethodDefinition:
-  Exclude:
-    - 'app/controllers/passwords_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-
 # Offense count: 18
 # Configuration parameters: AllowedMethods, AllowedPatterns, CountRepeatedAttributes.
 Metrics/AbcSize:
@@ -97,7 +15,7 @@ Metrics/AbcSize:
 # Configuration parameters: CountComments, CountAsOne, AllowedMethods, AllowedPatterns.
 # AllowedMethods: refine
 Metrics/BlockLength:
-  Max: 189
+  Max: 300
 
 # Offense count: 1
 # Configuration parameters: CountComments, CountAsOne.
@@ -119,113 +37,10 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 26
 
-# Offense count: 11
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: nested, compact
-Style/ClassAndModuleChildren:
-  Exclude:
-    - 'app/controllers/users/confirmations_controller.rb'
-    - 'app/controllers/users/omniauth_callbacks_controller.rb'
-    - 'app/controllers/users/passwords_controller.rb'
-    - 'app/controllers/users/sessions_controller.rb'
-    - 'app/controllers/users/unlocks_controller.rb'
-    - 'app/helpers/users/registrations_helper.rb'
-    - 'app/helpers/users/sessions_helper.rb'
-    - 'test/channels/application_cable/connection_test.rb'
-    - 'test/controllers/google_oauth_test.rb'
-    - 'test/controllers/registrations_controller_test.rb'
-    - 'test/test_helper.rb'
-
 # Offense count: 81
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
   Enabled: false
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AutoCorrect, EnforcedStyle, AllowComments.
-# SupportedStyles: empty, nil, both
-Style/EmptyElse:
-  Exclude:
-    - 'app/models/user.rb'
-
-# Offense count: 172
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, always_true, never
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
-# Offense count: 3
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/GlobalStdStream:
-  Exclude:
-    - 'config/environments/production.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-Style/IdenticalConditionalBranches:
-  Exclude:
-    - 'app/controllers/passwords_controller.rb'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-Style/IfUnlessModifier:
-  Exclude:
-    - 'bin/bundle'
-
-# Offense count: 1
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: MinDigits, Strict, AllowedNumbers, AllowedPatterns.
-Style/NumericLiterals:
-  Exclude:
-    - 'db/schema.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: AllowSafeAssignment, AllowInMultilineConditions.
-Style/ParenthesesAroundCondition:
-  Exclude:
-    - 'app/controllers/pain_controller.rb'
-
-# Offense count: 2
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: SafeForConstants.
-Style/RedundantFetchBlock:
-  Exclude:
-    - 'config/puma.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-Style/RedundantParentheses:
-  Exclude:
-    - 'app/controllers/pain_controller.rb'
-
-# Offense count: 1
-# This cop supports unsafe autocorrection (--autocorrect-all).
-# Configuration parameters: RequireEnglish.
-# SupportedStyles: use_perl_names, use_english_names, use_builtin_english_names
-Style/SpecialGlobalVars:
-  EnforcedStyle: use_perl_names
-
-# Offense count: 38
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'config/environments/production.rb'
-    - 'db/schema.rb'
-
-# Offense count: 2
-# This cop supports safe autocorrection (--autocorrect).
-# Configuration parameters: EnforcedStyle, MinSize, WordRegex.
-# SupportedStyles: percent, brackets
-Style/WordArray:
-  Exclude:
-    - 'app/controllers/pain_controller.rb'
-    - 'db/schema.rb'
 
 # Offense count: 38
 # This cop supports safe autocorrection (--autocorrect).

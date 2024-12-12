@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RehabilitationController < ApplicationController
   def top
     render 'rehabilitation/top'

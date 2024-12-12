@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MyPageController < ApplicationController
   def myofascial_back_pain_guest
     render 'users/guest/myofascial_back_pain'

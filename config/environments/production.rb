@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'active_support/core_ext/integer/time'
 
 Rails.application.configure do
@@ -12,8 +14,8 @@ Rails.application.configure do
   # Rake tasks automatically ignore this option for performance.
   config.eager_load = true
   config.log_level = :debug
-  config.logger = ActiveSupport::Logger.new(STDOUT)
-  config.logger = Logger.new(STDOUT)
+  config.logger = ActiveSupport::Logger.new($stdout)
+  config.logger = Logger.new($stdout)
   config.logger.formatter = config.log_formatter
 
   # Full error reports are disabled and caching is turned on.
@@ -54,8 +56,8 @@ Rails.application.configure do
 
   config.hosts << 'where-does-back-pain-come-from.com'
   config.hosts << 'www.where-does-back-pain-come-from.com'
-  config.hosts << "where-does-back-pain-come-from-07a8b4b21813.herokuapp.com"
-  
+  config.hosts << 'where-does-back-pain-come-from-07a8b4b21813.herokuapp.com'
+
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
   config.log_level = :info
@@ -93,7 +95,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end

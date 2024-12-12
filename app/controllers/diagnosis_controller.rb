@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DiagnosisController < ApplicationController
   def create
     pain_type = params[:pain_type]

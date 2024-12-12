@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class GynecologyController < ApplicationController
   def gynecology_question
     # フォーム表示用のアクション
@@ -34,4 +36,3 @@ class GynecologyController < ApplicationController
     # フォーム表示用のアクション
   end
 end
-

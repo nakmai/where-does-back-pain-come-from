@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PainBehaviorExtentionController < ApplicationController
   # `unknown_extention_behavior` アクションを `check_nothing_selections` フィルターの適用から除外
   before_action :check_nothing_selections, except: :unknown_extention_behavior

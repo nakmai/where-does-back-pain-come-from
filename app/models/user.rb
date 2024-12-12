@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   # Devise のモジュール設定
   devise :database_authenticatable, :registerable,
@@ -43,60 +45,39 @@ class User < ApplicationRecord
 
   # Google People API を使用して、ユーザーの情報（生年月日、性別、メールアドレス、名前など）を取得するメソッド
   def self.get_google_user_info(access_token)
-    # 必要なライブラリを読み込む
-    require 'net/http'  # HTTPリクエストを行うためのライブラリ
-    require 'uri'       # URI（URL）を処理するためのライブラリ
-    require 'json'      # JSON形式のデータを扱うためのライブラリ
+    require 'net/http'
+    require 'uri'
+    require 'json'
 
-    # Google People APIのエンドポイントを指定
     uri = URI('https://people.googleapis.com/v1/people/me?personFields=birthdays,genders,emailAddresses,names')
-
-    # HTTPオブジェクトを作成し、SSLを使用してセキュアな通信を行う設定
     http = Net::HTTP.new(uri.host, uri.port)
-    http.use_ssl = true # SSL接続を有効にする
-
-    # GETリクエストを作成し、Authorizationヘッダーにアクセストークンを設定
+    http.use_ssl = true
     request = Net::HTTP::Get.new(uri.request_uri)
-    request['Authorization'] = "Bearer #{access_token}" # Google OAuth2のアクセストークンを利用
+    request['Authorization'] = "Bearer #{access_token}"
 
-    # Google People APIに対してリクエストを送信し、レスポンスを受け取る
     response = http.request(request)
-
-    # レスポンスのボディをJSON形式に変換して返す
     JSON.parse(response.body)
   end
 
   # Google OAuth2 からユーザーを作成または検索する
   def self.from_omniauth(auth)
     access_token = auth['credentials']['token']
-    
-    # Google People API からユーザー情報を取得
     google_user_info = get_google_user_info(access_token)
-
-    # メールアドレスを取得
     email = google_user_info['emailAddresses']&.first&.dig('value') || auth.info.email
 
-    # 既存のユーザーを検索（Google API のデータ、または OmniAuth のデータを使用）
     user = User.where(email: email).first_or_initialize do |u|
       u.email = email
       u.password = Devise.friendly_token[0, 20]
       u.name = google_user_info['names']&.first&.dig('displayName') || auth.info.name
-
-      # Google API からの生年月日と性別を取得（無い場合はnil）
-      u.birthdate = if google_user_info['birthdays']
-                      parse_birthdate(google_user_info['birthdays'].first['date'])
-                    else
-                      (auth.extra.raw_info.birthday if auth.extra&.raw_info&.birthday)
-                    end
-      u.gender = google_user_info['genders']&.first&.dig('value') || (auth.extra.raw_info.gender if auth.extra&.raw_info&.gender)
-
+      u.birthdate = parse_birthdate(google_user_info['birthdays']&.first&.dig('date')) ||
+                    auth.extra.raw_info.birthday
+      u.gender = google_user_info['genders']&.first&.dig('value') ||
+                 auth.extra.raw_info.gender
       u.provider = auth.provider
       u.uid = auth.uid
     end
 
-    # ユーザーが新規作成された場合、保存
     user.save if user.new_record?
-
     user
   end
 
@@ -108,35 +89,28 @@ class User < ApplicationRecord
 
   private
 
-  # registered_pagesのデフォルト値を設定
   def set_default_registered_pages
-    self.registered_pages ||= [] # nil の場合は空配列を代入
+    self.registered_pages ||= []
   end
 
-  # googlePeopleAPIの生年月日の解析処理
   def self.parse_birthdate(birthdate_hash)
-    if birthdate_hash.present?
-      year = birthdate_hash['year']
-      month = birthdate_hash['month']
-      day = birthdate_hash['day']
+    return unless birthdate_hash.present?
 
-      # 年、月、日が存在する場合に日付を生成
-      Date.new(year, month, day) if year && month && day
-    end
+    year = birthdate_hash['year']
+    month = birthdate_hash['month']
+    day = birthdate_hash['day']
+
+    Date.new(year, month, day) if year && month && day
   rescue ArgumentError
-    nil # 無効な日付の場合はnilを返す
+    nil
   end
 
-  # googlePeopleAPIの性別の解析処理
   def self.parse_gender(gender_array)
-    if gender_array.present? && gender_array.is_a?(Array)
-      # 最初の性別データを取得
-      gender_data = gender_array.first
-      # 性別データが存在し、値が 'male' または 'female' の場合のみ返す。その他はnilを返す
-      gender_data['value'] if gender_data.present? && %w[male female].include?(gender_data['value'])
-    else
-      nil # 無効なデータの場合はnilを返す
-    end
-  end
-end
+    return unless gender_array.present? && gender_array.is_a?(Array)
 
+    gender_data = gender_array.first
+    gender_data['value'] if gender_data.present? && %w[male female].include?(gender_data['value'])
+  end
+
+  private_class_method :parse_birthdate, :parse_gender
+end

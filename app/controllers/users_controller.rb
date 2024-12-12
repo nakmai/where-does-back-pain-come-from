@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authenticate_user!, only: %i[redirect_based_on_age_and_gender profile_page]
 
@@ -17,8 +19,7 @@ class UsersController < ApplicationController
     month = params[:month].to_i
     day = params[:day].to_i
     gender = params[:gender]
- 
-  
+
     # 生年月日が入力されていない場合の処理
     if year.zero? || month.zero? || day.zero?
       @user_data = { year: year, month: month, day: day, gender: gender }
@@ -26,7 +27,7 @@ class UsersController < ApplicationController
       render :all_form
       return
     end
-  
+
     # 性別が選択されていない場合の処理
     if gender.blank?
       @user_data = { year: year, month: month, day: day, gender: gender }
@@ -34,11 +35,11 @@ class UsersController < ApplicationController
       render :all_form
       return
     end
-  
+
     # 正常な日付かどうかを確認するための処理
     begin
       birthdate = Date.new(year, month, day)
-  
+
       # 未来の日付が入力された場合の処理
       if birthdate > Date.today
         @user_data = { year: year, month: month, day: day, gender: gender }
@@ -52,22 +53,37 @@ class UsersController < ApplicationController
       render :all_form
       return
     end
-  
+
     age = calculate_age(birthdate)
     redirect_based_on_age_and_gender(age, gender)
   end
-  
-  # 年齢と性別に基づく共通のリダイレクト処理
-  def redirect_based_on_age_and_gender
-    user = current_user || session[:google_data] # current_user もしくは Google データを使う
 
+  # 年齢と性別に基づく共通のリダイレクト処理
+  def process_user_redirection
+    user = current_user || session[:google_data]
     if user.present?
       birthdate = user[:birthdate] || user['birthdate']
       gender = user[:gender] || user['gender']
       age = calculate_age(birthdate)
-      redirect_user_based_on_age_and_gender(age, gender)
+      redirect_based_on_age_and_gender(age, gender)
     else
-      redirect_to all_form_users_path # 生年月日や性別がない場合は入力フォームへ
+      redirect_to all_form_users_path
+    end
+  end
+
+  def redirect_based_on_age_and_gender(age, gender)
+    if age <= 20 || age >= 55
+      redirect_to orthopedics_advice1_path
+    elsif age >= 21 && age <= 54
+      if gender == 'male'
+        redirect_to red_flag_path
+      elsif gender == 'female'
+        redirect_to gynecology_question_path
+      else
+        redirect_to root_path, alert: '無効な性別データです。'
+      end
+    else
+      redirect_to root_path, alert: '無効な年齢データです。'
     end
   end
 
@@ -279,19 +295,4 @@ class UsersController < ApplicationController
   end
 
   # 年齢と性別に基づく共通のリダイレクト処理（引数を受け取る形に変更）
-  def redirect_based_on_age_and_gender(age, gender)
-    if age <= 20 || age >= 55
-      redirect_to orthopedics_advice1_path
-    elsif age >= 21 && age <= 54
-      if gender == 'male'
-        redirect_to red_flag_path
-      elsif gender == 'female'
-        redirect_to gynecology_question_path
-      else
-        redirect_to root_path, alert: '無効な性別データです。'
-      end
-    else
-      redirect_to root_path, alert: '無効な年齢データです。'
-    end
-  end
 end

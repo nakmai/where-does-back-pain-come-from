@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PainBehaviorFlexionController < ApplicationController
   # unknown_flexion_behavior アクションを除外
   before_action :check_nothing_selections, except: :unknown_flexion_behavior

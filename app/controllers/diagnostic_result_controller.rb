@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DiagnosticResultController < ApplicationController
   def counternutation
     render 'diagnostic_result/counternutation'

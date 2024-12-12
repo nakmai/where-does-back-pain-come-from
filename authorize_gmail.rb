@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require 'googleauth'
 require 'googleauth/stores/file_token_store'
 require 'fileutils'
 
-OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'.freeze
-APPLICATION_NAME = 'Your Application Name'.freeze
-CLIENT_SECRETS_PATH = 'path/to/your/client_secret.json'.freeze
+OOB_URI = 'urn:ietf:wg:oauth:2.0:oob'
+APPLICATION_NAME = 'Your Application Name'
+CLIENT_SECRETS_PATH = 'path/to/your/client_secret.json'
 SCOPE = Google::Apis::GmailV1::AUTH_GMAIL_SEND
 
 # クレデンシャルを取得するメソッド

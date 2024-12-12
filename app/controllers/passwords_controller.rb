@@ -1,8 +1,7 @@
+# frozen_string_literal: true
+
 class PasswordsController < Devise::PasswordsController
   # 1. パスワードリセットメール送信後のリダイレクト先をカスタマイズ
-  def create
-    super
-  end
 
   # 2. パスワードリセット用URLクリック時の処理
   def update
@@ -29,13 +28,12 @@ class PasswordsController < Devise::PasswordsController
       yield resource if block_given?
       set_flash_message!(:notice, :updated_not_active)
       flash.now[:notice] = 'パスワードが正常に変更されました。再度ログインしてください。'
-      render :edit
     else
       # リソースがエラーを持っている場合
       flash.now[:alert] = resource.errors.full_messages.join(', ')
       self.resource ||= resource_class.new # リソースがnilの場合は新しいインスタンスを設定
-      render :edit
     end
+    render :edit
   end
 
   protected

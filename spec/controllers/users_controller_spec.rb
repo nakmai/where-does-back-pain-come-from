@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe UsersController, type: :controller do
   let(:user) { create(:user, birthdate: '1990-01-01', gender: 'male') }
   let(:other_user) { create(:user, birthdate: '1985-05-05', gender: 'female') }

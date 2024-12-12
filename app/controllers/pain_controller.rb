@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PainController < ApplicationController
   def red_flag
     # フォーム表示用アクション
@@ -84,8 +86,9 @@ class PainController < ApplicationController
     end
 
     # 特定の条件が選ばれた場合、orthopedics_advice5_pathにリダイレクト
-    pain_conditions = ['severe_pain', 'no_rest_pain', 'pain_at_rest', 'pain_at_norest', 'wake_from_pain', 'sleep_disorder']
-    
+    pain_conditions = %w[severe_pain no_rest_pain pain_at_rest pain_at_norest wake_from_pain
+                         sleep_disorder]
+
     # 上記のいずれかの条件が選ばれた場合、リダイレクト
     if (pain_conditions & conditions).any?
       redirect_to orthopedics_advice5_path
@@ -99,13 +102,13 @@ class PainController < ApplicationController
     end
 
     # 「特になし」と no_pain や no_pain2 の条件が選ばれている場合にリダイレクト
-    if (conditions.include?('no_issues') && (conditions.include?('no_pain') || conditions.include?('no_pain2')))
+    if conditions.include?('no_issues') && (conditions.include?('no_pain') || conditions.include?('no_pain2'))
       redirect_to pain_location_extention_flexion_path
       return
     end
 
     # それ以外の条件でのリダイレクト
-    if (conditions.include?('no_pain') || conditions.include?('no_pain2'))
+    if conditions.include?('no_pain') || conditions.include?('no_pain2')
       redirect_to pain_location_extention_flexion_path
       return
     end

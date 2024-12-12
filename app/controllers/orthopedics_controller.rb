@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrthopedicsController < ApplicationController
   def orthopedics_advice1
     # ビューを表示するだけならこのままでOKです

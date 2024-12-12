@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class StretchController < ApplicationController
- 
   # トップページに関連するロジック
   def top
     render 'strech/top'

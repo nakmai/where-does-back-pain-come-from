@@ -104,10 +104,9 @@
 :----|:----
 | フロントエンド | HTML, CSS, JavaScript, BootstrapCSS |
 | バックエンド | Rails 7.0.8.4 (Ruby 3.1.4 )  |
-| インフラ | Heroku, Google Cloud Storage |
 | データベース | MySQL8.0 |
 | 開発環境 | Docker |
-| 認証 | devise, Googleログイン |
+| アプリケーションサーバー | Heroku |
 | API | Google People API |
 
 

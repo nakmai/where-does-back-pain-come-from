@@ -54,6 +54,8 @@ module Users
       ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor
     end
 
+    public
+    
     def determine_redirect_path_based_on_age_and_gender(age, gender)
       return root_path, alert: '無効な年齢データです。' unless age
 

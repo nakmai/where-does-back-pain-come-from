@@ -13,8 +13,6 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || root_path
   end
 
-  # Googleログイン時のリダイレクト処理
-
   # サインアウト後にリダイレクトするパスを決定する
   def after_sign_out_path_for(_resource)
     root_path # ログイン後はトップページへリダイレクト
@@ -22,7 +20,6 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # GETリクエストで、Devise コントローラではなく、AJAXリクエストでもない場合、URLを保存する
   def storable_location?
     request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
   end

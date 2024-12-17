@@ -103,7 +103,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # ユーザー用ページのアクション
   def user_page
     if user_signed_in?
       render @user_template
@@ -112,7 +111,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # ゲスト用ページのアクション
   def guest_page
     if user_signed_in?
       redirect_to @user_redirect_path
@@ -125,7 +123,6 @@ class UsersController < ApplicationController
     render 'devise/registrations/cancel'
   end
 
-  # アカウントの削除
   def destroy
     resource.destroy # ユーザーの削除
     Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
@@ -197,7 +194,6 @@ class UsersController < ApplicationController
     render 'users/user/nutation' # 適切なビューを表示
   end
 
-  # ブックマーク追加・削除
   def add_bookmark
     if user_signed_in?
       url = params[:url].sub(/^http:/, 'https:')
@@ -234,7 +230,6 @@ class UsersController < ApplicationController
     redirect_to profile_page_user_path(current_user.id), notice: '全てのブックマークを削除しました。'
   end
 
-  # インデックスと詳細ページ
   def index
     @user = current_user # 現在サインインしているユーザーを取得
   end
@@ -289,6 +284,8 @@ class UsersController < ApplicationController
     }
   end
 
+  public
+  
   # 生年月日から年齢を計算
   def calculate_age(birthdate)
     ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor

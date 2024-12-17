@@ -2,24 +2,14 @@
 
 module Users
   class GuestController < ApplicationController
-    def counternutation
-      # ここにcounternutationに関するロジックを記述
-    end
+    def counternutation; end
 
-    def intervertebral_disk
-      # ここにintervertebral_diskに関するロジックを記述
-    end
+    def intervertebral_disk; end
 
-    def intervertebral_joint
-      # ここにintervertebral_jointに関するロジックを記述
-    end
+    def intervertebral_joint; end
 
-    def myofascial_back_pain
-      # ここにmyofascial_back_painに関するロジックを記述
-    end
+    def myofascial_back_pain; end
 
-    def nutation
-      # ここにnutationに関するロジックを記述
-    end
+    def nutation; end
   end
 end

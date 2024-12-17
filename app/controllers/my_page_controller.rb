@@ -6,37 +6,32 @@ class MyPageController < ApplicationController
   end
 
   def intervertebral_disk_guest
-    # このアクション内に処理を記述してください
     render 'users/guest/intervertebral_disk'
   end
 
   def nutation_guest
-    # 必要であれば、ここで必要な処理を行う
-    render 'users/guest/nutation' # ゲスト向けのテンプレートを表示
+    render 'users/guest/nutation'
   end
 
   def counternutation_guest
-    # 必要であれば、ここで必要な処理を行う
-    render 'users/guest/counternutation' # ゲスト向けのテンプレートを表示
+    render 'users/guest/counternutation'
   end
 
   def intervertebral_joint_guest
-    render 'users/guest/intervertebral_joint' # 正しいビューを指定
+    render 'users/guest/intervertebral_joint'
   end
 
   def new_guest_intervertebral_joint
-    # 必要に応じてロジックを追加することも可能です。
     render 'users/guest/intervertebral_joint'
   end
 
   def myofascial_back_pain
     @user = User.find(params[:id])
-    # 必要な処理をここに記述
-    render 'users/myofascial_back_pain' # ビューのテンプレートが `app/views/users/myofascial_back_pain.html.erb` にある場合
+    render 'users/myofascial_back_pain'
   end
 
   def intervertebral_joint_user
     params[:user_id]
-    render 'users/user/intervertebral_joint' # 遷移先のビューを指定
+    render 'users/user/intervertebral_joint'
   end
 end

@@ -12,15 +12,15 @@ module ApplicationHelper
     {
       site: 'Where Does Back Pain Come From',
       title: 'あなたの腰痛どこから',
-      reverse: true,                     # サイト名とページタイトルを逆順に表示
-      separator: '|',                    # サイト名とページタイトルを区切る文字
-      keywords: 'ページキーワード', # キーワードを適切に設定
-      noindex: !Rails.env.production?,   # 本番環境以外でnoindexを設定
-      icon: [                            # FaviconやApple用アイコンの設定
+      reverse: true,
+      separator: '|',
+      keywords: 'ページキーワード',
+      noindex: !Rails.env.production?,
+      icon: [
         { href: image_url('スライド1.png') },
         { href: image_url('スライド1.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' }
       ],
-      og: {                              # Open Graph Protocolの設定
+      og: { # Open Graph Protocolの設定
         title: 'あなたの腰痛どこから',
         description: 'このアプリは腰痛を簡易的にタイプ別に分け、セルフケア方法をお伝えするアプリです。',
         image: image_url('スライド1.png'),

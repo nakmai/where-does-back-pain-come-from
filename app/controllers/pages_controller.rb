@@ -25,18 +25,12 @@ class PagesController < ApplicationController
         redirect_to check_user_data_path and return
       end
     end
-
-    # ページをレンダリング
     render 'pages/terms'
   end
 
-  def terms_of_use
-    # 利用規約ページのロジック
-  end
+  def terms_of_use; end
 
-  def privacy
-    # プライバシーポリシーページのロジック
-  end
+  def privacy; end
 
   def check_user_data
     # current_userがnilでないか確認
@@ -45,7 +39,6 @@ class PagesController < ApplicationController
       redirect_to all_form_users_path
       return
     end
-
     # current_userが存在する場合
     if current_user.birthdate.present? && current_user.gender.present?
       age = calculate_age(current_user.birthdate)
@@ -57,13 +50,9 @@ class PagesController < ApplicationController
     end
   end
 
-  def gynecology
-    # 婦人科
-  end
+  def gynecology; end
 
-  def orthopedics
-    # 整形外科
-  end
+  def orthopedics; end
 
   private
 
@@ -88,6 +77,7 @@ class PagesController < ApplicationController
     redirect_to all_form_users_path
   end
 
+  public
   # 生年月日から年齢を計算
   def calculate_age(birthdate)
     ((Time.zone.now - birthdate.to_time) / 1.year.seconds).floor

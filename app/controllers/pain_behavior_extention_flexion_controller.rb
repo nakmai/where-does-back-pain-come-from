@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PainBehaviorExtentionFlexionController < ApplicationController
-  # unknown_extention_behavior_flexion アクションを除外
   before_action :check_nothing_selections, except: :unknown_extention_behavior_flexion
 
   MAX_NOTHING_SELECTIONS = 7
@@ -68,7 +67,6 @@ class PainBehaviorExtentionFlexionController < ApplicationController
     end
   end
 
-  # unknown_extention_behavior_flexion のアクション
   def unknown_extention_behavior_flexion
     reset_session
     render 'pain_behavior_extention_flexion/unknown_extention_flexion_behavior'

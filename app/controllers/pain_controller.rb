@@ -2,7 +2,6 @@
 
 class PainController < ApplicationController
   def red_flag
-    # フォーム表示用アクション
     flash.clear
   end
 
@@ -14,15 +13,14 @@ class PainController < ApplicationController
     if conditions.empty?
       flash.now[:alert] = '選択してください'
       @conditions = conditions
-      render :red_flag # red_flagページを再表示
+      render :red_flag
       return
     end
-
     # 「特に問題なし」と他の項目が両方選ばれている場合
     if conditions.include?('no_issues') && conditions.length > 1
       flash.now[:alert] = '無効な選択です'
       @conditions = conditions
-      render :red_flag # red_flagページを再表示
+      render :red_flag
       return
     end
 
@@ -36,7 +34,6 @@ class PainController < ApplicationController
   end
 
   def red_flag2
-    # red_flag2 ビューを表示
     flash.clear
   end
 
@@ -48,7 +45,7 @@ class PainController < ApplicationController
     if conditions.empty?
       flash.now[:alert] = '選択してください'
       @conditions = conditions
-      render :red_flag2 # red_flag2ページを再表示
+      render :red_flag2
       return
     end
 
@@ -56,7 +53,7 @@ class PainController < ApplicationController
     if conditions.include?('no_issues') && conditions.length > 1
       flash.now[:alert] = '無効な選択です'
       @conditions = conditions
-      render :red_flag2 # red_flag2ページを再表示
+      render :red_flag2
       return
     end
 
@@ -117,9 +114,7 @@ class PainController < ApplicationController
     render :red_flag3
   end
 
-  def pain_scale
-    # 何もしない。ビューを表示するだけ。
-  end
+  def pain_scale; end
 
   def submit_pain_scale
     pain_level = params[:pain_level].to_i
@@ -131,23 +126,13 @@ class PainController < ApplicationController
     end
   end
 
-  def achlorhydria
-    # 必要な処理をここに追加
-  end
+  def achlorhydria; end
 
-  def orthopedics_advice1
-    # orthopedics_advice ビューを表示
-  end
+  def orthopedics_advice1; end
 
-  def orthopedics_advice2
-    # orthopedics_advice2 ビューを表示
-  end
+  def orthopedics_advice2; end
 
-  def orthopedics_advice3
-    # orthopedics_advice3 ビューを表示
-  end
+  def orthopedics_advice3; end
 
-  def orthopedics_advice5
-    # orthopedics_advice5 ビューを表示
-  end
+  def orthopedics_advice5; end
 end

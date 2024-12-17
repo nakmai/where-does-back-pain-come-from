@@ -21,12 +21,12 @@ module Users
 
     # ログイン後のリダイレクト先
     def after_sign_up_path_for(_resource)
-      root_path # ここでリダイレクト先を固定する
+      root_path
     end
 
     # ログアウト後のリダイレクト先
     def after_sign_out_path_for(_resource_or_scope)
-      root_path # ログアウト後は root_path にリダイレクト
+      root_path
     end
   end
 end

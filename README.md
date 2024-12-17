@@ -59,9 +59,52 @@
 
 | ユーザー登録 / ログイン |
 | :---: | 
-| <iframe frameBorder='0' width='640' height='360' webkitallowfullscreen mozallowfullscreen allowfullscreen src="https://www.awesomescreenshot.com/embed?id=34717580&shareKey=4c690bc46c1caf96ecdefdfcf29ad91c"></iframe>|
+|[![Image from Gyazo](https://i.gyazo.com/3484e8b75b8cadeb58741ff7cdc7b435.gif)](https://gyazo.com/3484e8b75b8cadeb58741ff7cdc7b435)|
 | <p align="left">『生年月日』『性別』『メールアドレス』『パスワード』『確認用パスワード』を入力してユーザー登録を行います。ユーザー登録後は、自動的にログイン処理が行われるようになっており、そのまま直ぐにサービスを利用する事が出来ます。<br>また、Googleアカウントを用いてGoogleログインを行う事も可能です。</p> |
 <br>
+
+**ゲストユーザー**
+
+| 生年月日・性別・質問事項の入力が毎回必要|
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/5dc0049191a3c452aec4bedffebc558b.gif)](https://gyazo.com/5dc0049191a3c452aec4bedffebc558b)|
+| <p align="left">セルフケアページに辿り着くまでに、生年月日・性別・質問事項の入力が毎回必要となります。</p> |
+<br>
+
+| セルフケアの紹介は基本１種類ずつ|
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/d7e2c6335f0b62ca4c7a2f70dd2d0cf3.gif)](https://gyazo.com/d7e2c6335f0b62ca4c7a2f70dd2d0cf3)|
+| <p align="left">セルフケア紹介は基本１種類のみに絞り、登録ユーザーと差別化を図っております。</p> |
+<br>
+
+**登録ユーザー**
+| セルフケアを0:00・12:00にシャッフルで紹介|
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/4e496f0f8a9a657268c3fff7d8ded08a.gif)](https://gyazo.com/4e496f0f8a9a657268c3fff7d8ded08a)|
+| <p align="left">セルフケア紹介をシャッフルで行い、セルフケアへの飽き・特定の筋肉のみのアプローチ防止に役立てております。<br>また、アクセスするたびセルフケア内容が異なると、ケアの効果低下にもつながるため特定の時間にシャッフルされるようにしております。</p> |
+<br>
+
+| マイページ登録 |
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/8f17b237b42626e5be0ba5d93eebea70.gif)](https://gyazo.com/8f17b237b42626e5be0ba5d93eebea70)|
+| <p align="left">セルフケアページを登録しておくことで、毎回質問事項にチェックを行わすセルフケアを行うことができます。</p> |
+<br>
+
+**質問事項**
+
+
+| 質問事項をチェック /  身体状態に問題がない場合 |
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/934dd4a603c4c1c7702dd004dfad872b.gif)](https://gyazo.com/934dd4a603c4c1c7702dd004dfad872b)|
+| <p align="left">質問事項をチェックしていきます。<br>身体状態に、特に問題がなければセルフケアの画面に移行します。</p> |
+<br>
+
+| 質問事項をチェック /  身体状態に問題がある場合 |
+| :---: | 
+|[![Image from Gyazo](https://i.gyazo.com/ee94b88abdd7b483df66994e8ce19782.gif)](https://gyazo.com/ee94b88abdd7b483df66994e8ce19782)|
+| <p align="left">身体状態に問題があった際、医療機関への診察を促す警告文が出現します。<br>すでに医療機関へ相談されている方も利用できるように設計しております。</p> |
+<br>
+
 
 ## 使用技術
 
